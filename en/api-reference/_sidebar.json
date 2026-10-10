@@ -1,0 +1,1861 @@
+[
+  {
+    "text": "accessibility",
+    "items": [
+      {
+        "text": "AccessibilityProps",
+        "link": "/en/api-reference/accessibility/accessibilityprops"
+      }
+    ]
+  },
+  {
+    "text": "anim",
+    "items": [
+      {
+        "text": "Anim",
+        "link": "/en/api-reference/anim/anim"
+      },
+      {
+        "text": "Easing",
+        "link": "/en/api-reference/anim/easing"
+      }
+    ]
+  },
+  {
+    "text": "Core",
+    "items": [
+      {
+        "text": "Application",
+        "link": "/en/api-reference/core/application"
+      },
+      {
+        "text": "InputCapabilities",
+        "link": "/en/api-reference/core/inputcapabilities"
+      },
+      {
+        "text": "LanguagePackResult",
+        "link": "/en/api-reference/core/languagepackresult"
+      },
+      {
+        "text": "LayoutBreakpoints",
+        "link": "/en/api-reference/core/layoutbreakpoints"
+      },
+      {
+        "text": "LayoutEnvironment",
+        "link": "/en/api-reference/core/layoutenvironment"
+      },
+      {
+        "text": "LayoutLength",
+        "link": "/en/api-reference/core/layoutlength"
+      },
+      {
+        "text": "LayoutMetrics",
+        "link": "/en/api-reference/core/layoutmetrics"
+      },
+      {
+        "text": "LayoutRule",
+        "link": "/en/api-reference/core/layoutrule"
+      },
+      {
+        "text": "LayoutRules",
+        "link": "/en/api-reference/core/layoutrules"
+      },
+      {
+        "text": "LayoutValues",
+        "link": "/en/api-reference/core/layoutvalues"
+      },
+      {
+        "text": "LocalizedText",
+        "link": "/en/api-reference/core/localizedtext"
+      },
+      {
+        "text": "LogicalRect",
+        "link": "/en/api-reference/core/logicalrect"
+      },
+      {
+        "text": "Point",
+        "link": "/en/api-reference/core/point"
+      },
+      {
+        "text": "Rect",
+        "link": "/en/api-reference/core/rect"
+      },
+      {
+        "text": "RenderQuality",
+        "link": "/en/api-reference/core/renderquality"
+      },
+      {
+        "text": "ScrollMetrics",
+        "link": "/en/api-reference/core/scrollmetrics"
+      },
+      {
+        "text": "Size",
+        "link": "/en/api-reference/core/size"
+      },
+      {
+        "text": "TextArg",
+        "link": "/en/api-reference/core/textarg"
+      },
+      {
+        "text": "UndoManager",
+        "link": "/en/api-reference/core/undomanager"
+      },
+      {
+        "text": "UndoManager::Snapshot",
+        "link": "/en/api-reference/core/undomanager_snapshot"
+      },
+      {
+        "text": "ViewportMetrics",
+        "link": "/en/api-reference/core/viewportmetrics"
+      },
+      {
+        "text": "WidgetState",
+        "link": "/en/api-reference/core/widgetstate"
+      },
+      {
+        "text": "Window",
+        "link": "/en/api-reference/core/window"
+      },
+      {
+        "text": "WindowAnimation",
+        "link": "/en/api-reference/core/windowanimation"
+      },
+      {
+        "text": "WindowArea",
+        "link": "/en/api-reference/core/windowarea"
+      },
+      {
+        "text": "WindowBackground",
+        "link": "/en/api-reference/core/windowbackground"
+      },
+      {
+        "text": "WindowCloseEvent",
+        "link": "/en/api-reference/core/windowcloseevent"
+      },
+      {
+        "text": "WindowProps",
+        "link": "/en/api-reference/core/windowprops"
+      }
+    ]
+  },
+  {
+    "text": "Drawing",
+    "items": [
+      {
+        "text": "Color",
+        "link": "/en/api-reference/draw/color"
+      },
+      {
+        "text": "DrawCtx",
+        "link": "/en/api-reference/draw/drawctx"
+      },
+      {
+        "text": "RGBA",
+        "link": "/en/api-reference/draw/rgba"
+      }
+    ]
+  },
+  {
+    "text": "Effects",
+    "items": [
+      {
+        "text": "BlurSource",
+        "link": "/en/api-reference/effect/blursource"
+      },
+      {
+        "text": "ExclusionZone",
+        "link": "/en/api-reference/effect/exclusionzone"
+      },
+      {
+        "text": "GlassEffect",
+        "link": "/en/api-reference/effect/glasseffect"
+      },
+      {
+        "text": "SlideRevealEffect",
+        "link": "/en/api-reference/effect/sliderevealeffect"
+      },
+      {
+        "text": "ThemeTransition",
+        "link": "/en/api-reference/effect/themetransition"
+      },
+      {
+        "text": "ThemeTransition::AnimState",
+        "link": "/en/api-reference/effect/themetransition_animstate"
+      },
+      {
+        "text": "TransitionEffect",
+        "link": "/en/api-reference/effect/transitioneffect"
+      }
+    ]
+  },
+  {
+    "text": "Events",
+    "items": [
+      {
+        "text": "BackRequest",
+        "link": "/en/api-reference/event/backrequest"
+      },
+      {
+        "text": "Callback",
+        "link": "/en/api-reference/event/callback"
+      },
+      {
+        "text": "Event",
+        "link": "/en/api-reference/event/event"
+      },
+      {
+        "text": "EventBinding",
+        "link": "/en/api-reference/event/eventbinding"
+      },
+      {
+        "text": "EventBinding::DispatchGuard",
+        "link": "/en/api-reference/event/eventbinding_dispatchguard"
+      },
+      {
+        "text": "EventCallback",
+        "link": "/en/api-reference/event/eventcallback"
+      },
+      {
+        "text": "EventHandle",
+        "link": "/en/api-reference/event/eventhandle"
+      },
+      {
+        "text": "KeyPreview",
+        "link": "/en/api-reference/event/keypreview"
+      },
+      {
+        "text": "ScopedEventHandle",
+        "link": "/en/api-reference/event/scopedeventhandle"
+      },
+      {
+        "text": "detail::EventConnectionState",
+        "link": "/en/api-reference/event/detail_eventconnectionstate"
+      }
+    ]
+  },
+  {
+    "text": "icon",
+    "items": [
+      {
+        "text": "FontIcon",
+        "link": "/en/api-reference/icon/fonticon"
+      },
+      {
+        "text": "FontIconStyle",
+        "link": "/en/api-reference/icon/fonticonstyle"
+      }
+    ]
+  },
+  {
+    "text": "Utilities",
+    "items": [
+      {
+        "text": "BlurThreadPool",
+        "link": "/en/api-reference/misc/blurthreadpool"
+      },
+      {
+        "text": "ColorUtil::HSL",
+        "link": "/en/api-reference/misc/colorutil_hsl"
+      },
+      {
+        "text": "ColorUtil::HSV",
+        "link": "/en/api-reference/misc/colorutil_hsv"
+      },
+      {
+        "text": "EmbedGif",
+        "link": "/en/api-reference/misc/embedgif"
+      },
+      {
+        "text": "EmbedPng",
+        "link": "/en/api-reference/misc/embedpng"
+      },
+      {
+        "text": "EmbedSvg",
+        "link": "/en/api-reference/misc/embedsvg"
+      },
+      {
+        "text": "GifFrame",
+        "link": "/en/api-reference/misc/gifframe"
+      },
+      {
+        "text": "HotkeyDef",
+        "link": "/en/api-reference/misc/hotkeydef"
+      },
+      {
+        "text": "HotkeyManager",
+        "link": "/en/api-reference/misc/hotkeymanager"
+      },
+      {
+        "text": "HotkeyManager::ShortcutBinding",
+        "link": "/en/api-reference/misc/hotkeymanager_shortcutbinding"
+      },
+      {
+        "text": "HotkeySpec",
+        "link": "/en/api-reference/misc/hotkeyspec"
+      },
+      {
+        "text": "ImageBuffer",
+        "link": "/en/api-reference/misc/imagebuffer"
+      },
+      {
+        "text": "Ref",
+        "link": "/en/api-reference/misc/ref"
+      },
+      {
+        "text": "Ref::Proxy",
+        "link": "/en/api-reference/misc/ref_proxy"
+      },
+      {
+        "text": "ResampledImage",
+        "link": "/en/api-reference/misc/resampledimage"
+      },
+      {
+        "text": "RuntimeImage",
+        "link": "/en/api-reference/misc/runtimeimage"
+      },
+      {
+        "text": "ShapedEmoji",
+        "link": "/en/api-reference/misc/shapedemoji"
+      },
+      {
+        "text": "TerminalInput",
+        "link": "/en/api-reference/misc/terminalinput"
+      },
+      {
+        "text": "TerminalModel",
+        "link": "/en/api-reference/misc/terminalmodel"
+      },
+      {
+        "text": "TerminalSize",
+        "link": "/en/api-reference/misc/terminalsize"
+      },
+      {
+        "text": "Timer",
+        "link": "/en/api-reference/misc/timer"
+      },
+      {
+        "text": "Timer::State",
+        "link": "/en/api-reference/misc/timer_state"
+      },
+      {
+        "text": "detail::UiTask",
+        "link": "/en/api-reference/misc/detail_uitask"
+      },
+      {
+        "text": "diagnostics::Config",
+        "link": "/en/api-reference/misc/diagnostics_config"
+      },
+      {
+        "text": "diagnostics::Display",
+        "link": "/en/api-reference/misc/diagnostics_display"
+      },
+      {
+        "text": "diagnostics::Frame",
+        "link": "/en/api-reference/misc/diagnostics_frame"
+      },
+      {
+        "text": "diagnostics::Reading",
+        "link": "/en/api-reference/misc/diagnostics_reading"
+      },
+      {
+        "text": "diagnostics::Resource",
+        "link": "/en/api-reference/misc/diagnostics_resource"
+      },
+      {
+        "text": "diagnostics::Sample",
+        "link": "/en/api-reference/misc/diagnostics_sample"
+      },
+      {
+        "text": "diagnostics::Scope",
+        "link": "/en/api-reference/misc/diagnostics_scope"
+      },
+      {
+        "text": "diagnostics::Snapshot",
+        "link": "/en/api-reference/misc/diagnostics_snapshot"
+      },
+      {
+        "text": "diagnostics::Span",
+        "link": "/en/api-reference/misc/diagnostics_span"
+      },
+      {
+        "text": "diagnostics::detail::DiagnosticScope",
+        "link": "/en/api-reference/misc/diagnostics_detail_diagnosticscope"
+      },
+      {
+        "text": "diagnostics::detail::EventScope",
+        "link": "/en/api-reference/misc/diagnostics_detail_eventscope"
+      }
+    ]
+  },
+  {
+    "text": "Platform",
+    "items": [
+      {
+        "text": "PopupDisplay",
+        "link": "/en/api-reference/platform/popupdisplay"
+      },
+      {
+        "text": "ScreenInfo",
+        "link": "/en/api-reference/platform/screeninfo"
+      },
+      {
+        "text": "SystemTray",
+        "link": "/en/api-reference/platform/systemtray"
+      },
+      {
+        "text": "TrayProps",
+        "link": "/en/api-reference/platform/trayprops"
+      },
+      {
+        "text": "hook::NativeMenuEntry",
+        "link": "/en/api-reference/platform/hook_nativemenuentry"
+      },
+      {
+        "text": "hook::PopupBlurRegion",
+        "link": "/en/api-reference/platform/hook_popupblurregion"
+      },
+      {
+        "text": "pal::BufferConfig",
+        "link": "/en/api-reference/platform/pal_bufferconfig"
+      },
+      {
+        "text": "pal::DisplayBackend",
+        "link": "/en/api-reference/platform/pal_displaybackend"
+      },
+      {
+        "text": "pal::DisplayEnvironment",
+        "link": "/en/api-reference/platform/pal_displayenvironment"
+      },
+      {
+        "text": "pal::InputBackend",
+        "link": "/en/api-reference/platform/pal_inputbackend"
+      },
+      {
+        "text": "pal::SurfaceCapabilities",
+        "link": "/en/api-reference/platform/pal_surfacecapabilities"
+      },
+      {
+        "text": "pal::SystemCaps",
+        "link": "/en/api-reference/platform/pal_systemcaps"
+      }
+    ]
+  },
+  {
+    "text": "shader",
+    "items": [
+      {
+        "text": "FragmentShader",
+        "link": "/en/api-reference/shader/fragmentshader"
+      },
+      {
+        "text": "GlslShader",
+        "link": "/en/api-reference/shader/glslshader"
+      },
+      {
+        "text": "ShaderSurface",
+        "link": "/en/api-reference/shader/shadersurface"
+      },
+      {
+        "text": "ShaderSurfaceProps",
+        "link": "/en/api-reference/shader/shadersurfaceprops"
+      },
+      {
+        "text": "ShaderUniforms",
+        "link": "/en/api-reference/shader/shaderuniforms"
+      }
+    ]
+  },
+  {
+    "text": "Shapes",
+    "items": [
+      {
+        "text": "Shape",
+        "link": "/en/api-reference/shape/shape"
+      },
+      {
+        "text": "Vec2",
+        "link": "/en/api-reference/shape/vec2"
+      }
+    ]
+  },
+  {
+    "text": "Style & Theme",
+    "items": [
+      {
+        "text": "Backdrop",
+        "link": "/en/api-reference/style/backdrop"
+      },
+      {
+        "text": "BgFill",
+        "link": "/en/api-reference/style/bgfill"
+      },
+      {
+        "text": "BgImage",
+        "link": "/en/api-reference/style/bgimage"
+      },
+      {
+        "text": "Border",
+        "link": "/en/api-reference/style/border"
+      },
+      {
+        "text": "FontScale",
+        "link": "/en/api-reference/style/fontscale"
+      },
+      {
+        "text": "Gradient",
+        "link": "/en/api-reference/style/gradient"
+      },
+      {
+        "text": "HctTonalEngine",
+        "link": "/en/api-reference/style/hcttonalengine"
+      },
+      {
+        "text": "HslTonalEngine",
+        "link": "/en/api-reference/style/hsltonalengine"
+      },
+      {
+        "text": "MD3ChromaConfig",
+        "link": "/en/api-reference/style/md3chromaconfig"
+      },
+      {
+        "text": "MD3Scheme",
+        "link": "/en/api-reference/style/md3scheme"
+      },
+      {
+        "text": "Overlay",
+        "link": "/en/api-reference/style/overlay"
+      },
+      {
+        "text": "Shadow",
+        "link": "/en/api-reference/style/shadow"
+      },
+      {
+        "text": "Style",
+        "link": "/en/api-reference/style/style"
+      },
+      {
+        "text": "StyleSet",
+        "link": "/en/api-reference/style/styleset"
+      },
+      {
+        "text": "TextFontSource",
+        "link": "/en/api-reference/style/textfontsource"
+      },
+      {
+        "text": "Theme",
+        "link": "/en/api-reference/style/theme"
+      },
+      {
+        "text": "TokenInt",
+        "link": "/en/api-reference/style/tokenint"
+      },
+      {
+        "text": "TokenValue",
+        "link": "/en/api-reference/style/tokenvalue"
+      },
+      {
+        "text": "TonalEngine",
+        "link": "/en/api-reference/style/tonalengine"
+      },
+      {
+        "text": "TransitionCfg",
+        "link": "/en/api-reference/style/transitioncfg"
+      },
+      {
+        "text": "UserStyleRegistry",
+        "link": "/en/api-reference/style/userstyleregistry"
+      },
+      {
+        "text": "hct::HctColor",
+        "link": "/en/api-reference/style/hct_hctcolor"
+      }
+    ]
+  },
+  {
+    "text": "text",
+    "items": [
+      {
+        "text": "RichBlockFormat",
+        "link": "/en/api-reference/text/richblockformat"
+      },
+      {
+        "text": "RichBlockView",
+        "link": "/en/api-reference/text/richblockview"
+      },
+      {
+        "text": "RichCharFormat",
+        "link": "/en/api-reference/text/richcharformat"
+      },
+      {
+        "text": "RichDocument",
+        "link": "/en/api-reference/text/richdocument"
+      },
+      {
+        "text": "RichFragmentView",
+        "link": "/en/api-reference/text/richfragmentview"
+      }
+    ]
+  },
+  {
+    "text": "Widgets",
+    "items": [
+      {
+        "text": "Avatar",
+        "link": "/en/api-reference/widget/avatar"
+      },
+      {
+        "text": "AvatarProps",
+        "link": "/en/api-reference/widget/avatarprops"
+      },
+      {
+        "text": "AxisConfig",
+        "link": "/en/api-reference/widget/axisconfig"
+      },
+      {
+        "text": "BarChart",
+        "link": "/en/api-reference/widget/barchart"
+      },
+      {
+        "text": "BarChart::SeriesInfo",
+        "link": "/en/api-reference/widget/barchart_seriesinfo"
+      },
+      {
+        "text": "BarChartProps",
+        "link": "/en/api-reference/widget/barchartprops"
+      },
+      {
+        "text": "Box",
+        "link": "/en/api-reference/widget/box"
+      },
+      {
+        "text": "BoxProps",
+        "link": "/en/api-reference/widget/boxprops"
+      },
+      {
+        "text": "Button",
+        "link": "/en/api-reference/widget/button"
+      },
+      {
+        "text": "ButtonProps",
+        "link": "/en/api-reference/widget/buttonprops"
+      },
+      {
+        "text": "Card",
+        "link": "/en/api-reference/widget/card"
+      },
+      {
+        "text": "CardProps",
+        "link": "/en/api-reference/widget/cardprops"
+      },
+      {
+        "text": "Carousel",
+        "link": "/en/api-reference/widget/carousel"
+      },
+      {
+        "text": "CarouselImagePageProps",
+        "link": "/en/api-reference/widget/carouselimagepageprops"
+      },
+      {
+        "text": "CarouselProps",
+        "link": "/en/api-reference/widget/carouselprops"
+      },
+      {
+        "text": "CellSpan",
+        "link": "/en/api-reference/widget/cellspan"
+      },
+      {
+        "text": "Chainable",
+        "link": "/en/api-reference/widget/chainable"
+      },
+      {
+        "text": "ChartBase",
+        "link": "/en/api-reference/widget/chartbase"
+      },
+      {
+        "text": "ChartBaseProps",
+        "link": "/en/api-reference/widget/chartbaseprops"
+      },
+      {
+        "text": "ChartHitResult",
+        "link": "/en/api-reference/widget/charthitresult"
+      },
+      {
+        "text": "ChartInteraction",
+        "link": "/en/api-reference/widget/chartinteraction"
+      },
+      {
+        "text": "ChartInteractionDelegate",
+        "link": "/en/api-reference/widget/chartinteractiondelegate"
+      },
+      {
+        "text": "ChatItem",
+        "link": "/en/api-reference/widget/chatitem"
+      },
+      {
+        "text": "ChatList",
+        "link": "/en/api-reference/widget/chatlist"
+      },
+      {
+        "text": "ChatListProps",
+        "link": "/en/api-reference/widget/chatlistprops"
+      },
+      {
+        "text": "Checkbox",
+        "link": "/en/api-reference/widget/checkbox"
+      },
+      {
+        "text": "CheckboxProps",
+        "link": "/en/api-reference/widget/checkboxprops"
+      },
+      {
+        "text": "ColorPicker",
+        "link": "/en/api-reference/widget/colorpicker"
+      },
+      {
+        "text": "ColorPickerProps",
+        "link": "/en/api-reference/widget/colorpickerprops"
+      },
+      {
+        "text": "ConfirmDialog",
+        "link": "/en/api-reference/widget/confirmdialog"
+      },
+      {
+        "text": "ConfirmDialogProps",
+        "link": "/en/api-reference/widget/confirmdialogprops"
+      },
+      {
+        "text": "Container",
+        "link": "/en/api-reference/widget/container"
+      },
+      {
+        "text": "ContextMenu",
+        "link": "/en/api-reference/widget/contextmenu"
+      },
+      {
+        "text": "ContextMenuItem",
+        "link": "/en/api-reference/widget/contextmenuitem"
+      },
+      {
+        "text": "CustomDraw",
+        "link": "/en/api-reference/widget/customdraw"
+      },
+      {
+        "text": "CustomDrawProps",
+        "link": "/en/api-reference/widget/customdrawprops"
+      },
+      {
+        "text": "DatePicker",
+        "link": "/en/api-reference/widget/datepicker"
+      },
+      {
+        "text": "DatePickerProps",
+        "link": "/en/api-reference/widget/datepickerprops"
+      },
+      {
+        "text": "DatePickerValue",
+        "link": "/en/api-reference/widget/datepickervalue"
+      },
+      {
+        "text": "DateValue",
+        "link": "/en/api-reference/widget/datevalue"
+      },
+      {
+        "text": "Dock",
+        "link": "/en/api-reference/widget/dock"
+      },
+      {
+        "text": "DockEvent",
+        "link": "/en/api-reference/widget/dockevent"
+      },
+      {
+        "text": "DockLayoutSnapshot",
+        "link": "/en/api-reference/widget/docklayoutsnapshot"
+      },
+      {
+        "text": "DockLayoutSnapshot::Floating",
+        "link": "/en/api-reference/widget/docklayoutsnapshot_floating"
+      },
+      {
+        "text": "DockLayoutSnapshot::Node",
+        "link": "/en/api-reference/widget/docklayoutsnapshot_node"
+      },
+      {
+        "text": "DockPane",
+        "link": "/en/api-reference/widget/dockpane"
+      },
+      {
+        "text": "DockPaneProps",
+        "link": "/en/api-reference/widget/dockpaneprops"
+      },
+      {
+        "text": "DockProps",
+        "link": "/en/api-reference/widget/dockprops"
+      },
+      {
+        "text": "Dropdown",
+        "link": "/en/api-reference/widget/dropdown"
+      },
+      {
+        "text": "DropdownItem",
+        "link": "/en/api-reference/widget/dropdownitem"
+      },
+      {
+        "text": "DropdownProps",
+        "link": "/en/api-reference/widget/dropdownprops"
+      },
+      {
+        "text": "DropdownState",
+        "link": "/en/api-reference/widget/dropdownstate"
+      },
+      {
+        "text": "FileDialog",
+        "link": "/en/api-reference/widget/filedialog"
+      },
+      {
+        "text": "FileDialogProps",
+        "link": "/en/api-reference/widget/filedialogprops"
+      },
+      {
+        "text": "FileDialogResult",
+        "link": "/en/api-reference/widget/filedialogresult"
+      },
+      {
+        "text": "FileFilter",
+        "link": "/en/api-reference/widget/filefilter"
+      },
+      {
+        "text": "FloatLabelInput",
+        "link": "/en/api-reference/widget/floatlabelinput"
+      },
+      {
+        "text": "FloatLabelInputProps",
+        "link": "/en/api-reference/widget/floatlabelinputprops"
+      },
+      {
+        "text": "FlowBox",
+        "link": "/en/api-reference/widget/flowbox"
+      },
+      {
+        "text": "FlowBoxProps",
+        "link": "/en/api-reference/widget/flowboxprops"
+      },
+      {
+        "text": "FrameContent",
+        "link": "/en/api-reference/widget/framecontent"
+      },
+      {
+        "text": "FrameHeader",
+        "link": "/en/api-reference/widget/frameheader"
+      },
+      {
+        "text": "FrameNavigation",
+        "link": "/en/api-reference/widget/framenavigation"
+      },
+      {
+        "text": "FrameNavigationToggle",
+        "link": "/en/api-reference/widget/framenavigationtoggle"
+      },
+      {
+        "text": "FrameNavigationToggleProps",
+        "link": "/en/api-reference/widget/framenavigationtoggleprops"
+      },
+      {
+        "text": "FrameRegionProps",
+        "link": "/en/api-reference/widget/frameregionprops"
+      },
+      {
+        "text": "GaugeChart",
+        "link": "/en/api-reference/widget/gaugechart"
+      },
+      {
+        "text": "GaugeChartProps",
+        "link": "/en/api-reference/widget/gaugechartprops"
+      },
+      {
+        "text": "GaugeChartState",
+        "link": "/en/api-reference/widget/gaugechartstate"
+      },
+      {
+        "text": "HBox",
+        "link": "/en/api-reference/widget/hbox"
+      },
+      {
+        "text": "HBoxProps",
+        "link": "/en/api-reference/widget/hboxprops"
+      },
+      {
+        "text": "Icon",
+        "link": "/en/api-reference/widget/icon"
+      },
+      {
+        "text": "IconProps",
+        "link": "/en/api-reference/widget/iconprops"
+      },
+      {
+        "text": "Image",
+        "link": "/en/api-reference/widget/image"
+      },
+      {
+        "text": "ImageProps",
+        "link": "/en/api-reference/widget/imageprops"
+      },
+      {
+        "text": "Input",
+        "link": "/en/api-reference/widget/input"
+      },
+      {
+        "text": "InputProps",
+        "link": "/en/api-reference/widget/inputprops"
+      },
+      {
+        "text": "InputSelection",
+        "link": "/en/api-reference/widget/inputselection"
+      },
+      {
+        "text": "InteractionConfig",
+        "link": "/en/api-reference/widget/interactionconfig"
+      },
+      {
+        "text": "ItemStateColor",
+        "link": "/en/api-reference/widget/itemstatecolor"
+      },
+      {
+        "text": "ItemStateStyle",
+        "link": "/en/api-reference/widget/itemstatestyle"
+      },
+      {
+        "text": "ItemTemplate",
+        "link": "/en/api-reference/widget/itemtemplate"
+      },
+      {
+        "text": "ItemVisual",
+        "link": "/en/api-reference/widget/itemvisual"
+      },
+      {
+        "text": "Label",
+        "link": "/en/api-reference/widget/label"
+      },
+      {
+        "text": "LabelProps",
+        "link": "/en/api-reference/widget/labelprops"
+      },
+      {
+        "text": "LegendEntry",
+        "link": "/en/api-reference/widget/legendentry"
+      },
+      {
+        "text": "LineChart",
+        "link": "/en/api-reference/widget/linechart"
+      },
+      {
+        "text": "LineChart::SeriesInfo",
+        "link": "/en/api-reference/widget/linechart_seriesinfo"
+      },
+      {
+        "text": "LineChartProps",
+        "link": "/en/api-reference/widget/linechartprops"
+      },
+      {
+        "text": "List",
+        "link": "/en/api-reference/widget/list"
+      },
+      {
+        "text": "ListDataItem",
+        "link": "/en/api-reference/widget/listdataitem"
+      },
+      {
+        "text": "ListDetail",
+        "link": "/en/api-reference/widget/listdetail"
+      },
+      {
+        "text": "ListDetailContent",
+        "link": "/en/api-reference/widget/listdetailcontent"
+      },
+      {
+        "text": "ListDetailList",
+        "link": "/en/api-reference/widget/listdetaillist"
+      },
+      {
+        "text": "ListDetailProps",
+        "link": "/en/api-reference/widget/listdetailprops"
+      },
+      {
+        "text": "ListItem",
+        "link": "/en/api-reference/widget/listitem"
+      },
+      {
+        "text": "ListProps",
+        "link": "/en/api-reference/widget/listprops"
+      },
+      {
+        "text": "ListRowData",
+        "link": "/en/api-reference/widget/listrowdata"
+      },
+      {
+        "text": "ListState",
+        "link": "/en/api-reference/widget/liststate"
+      },
+      {
+        "text": "Menu",
+        "link": "/en/api-reference/widget/menu"
+      },
+      {
+        "text": "MenuBar",
+        "link": "/en/api-reference/widget/menubar"
+      },
+      {
+        "text": "MenuBarItem",
+        "link": "/en/api-reference/widget/menubaritem"
+      },
+      {
+        "text": "MenuBarProps",
+        "link": "/en/api-reference/widget/menubarprops"
+      },
+      {
+        "text": "MenuContext",
+        "link": "/en/api-reference/widget/menucontext"
+      },
+      {
+        "text": "MenuExpandEvent",
+        "link": "/en/api-reference/widget/menuexpandevent"
+      },
+      {
+        "text": "MenuItem",
+        "link": "/en/api-reference/widget/menuitem"
+      },
+      {
+        "text": "MenuItemNode",
+        "link": "/en/api-reference/widget/menuitemnode"
+      },
+      {
+        "text": "MenuProps",
+        "link": "/en/api-reference/widget/menuprops"
+      },
+      {
+        "text": "MenuState",
+        "link": "/en/api-reference/widget/menustate"
+      },
+      {
+        "text": "MessageBox",
+        "link": "/en/api-reference/widget/messagebox"
+      },
+      {
+        "text": "MessageBoxProps",
+        "link": "/en/api-reference/widget/messageboxprops"
+      },
+      {
+        "text": "Pagination",
+        "link": "/en/api-reference/widget/pagination"
+      },
+      {
+        "text": "PaginationProps",
+        "link": "/en/api-reference/widget/paginationprops"
+      },
+      {
+        "text": "PaginationState",
+        "link": "/en/api-reference/widget/paginationstate"
+      },
+      {
+        "text": "PaintCtx",
+        "link": "/en/api-reference/widget/paintctx"
+      },
+      {
+        "text": "Painter",
+        "link": "/en/api-reference/widget/painter"
+      },
+      {
+        "text": "Part",
+        "link": "/en/api-reference/widget/part"
+      },
+      {
+        "text": "Part::Handler",
+        "link": "/en/api-reference/widget/part_handler"
+      },
+      {
+        "text": "Part::TypedHandler",
+        "link": "/en/api-reference/widget/part_typedhandler"
+      },
+      {
+        "text": "PartEvent",
+        "link": "/en/api-reference/widget/partevent"
+      },
+      {
+        "text": "PartStyle",
+        "link": "/en/api-reference/widget/partstyle"
+      },
+      {
+        "text": "PartStyles",
+        "link": "/en/api-reference/widget/partstyles"
+      },
+      {
+        "text": "PieChart",
+        "link": "/en/api-reference/widget/piechart"
+      },
+      {
+        "text": "PieChartProps",
+        "link": "/en/api-reference/widget/piechartprops"
+      },
+      {
+        "text": "PieSlice",
+        "link": "/en/api-reference/widget/pieslice"
+      },
+      {
+        "text": "PopupPanel",
+        "link": "/en/api-reference/widget/popuppanel"
+      },
+      {
+        "text": "PopupPanelProps",
+        "link": "/en/api-reference/widget/popuppanelprops"
+      },
+      {
+        "text": "Progress",
+        "link": "/en/api-reference/widget/progress"
+      },
+      {
+        "text": "ProgressProps",
+        "link": "/en/api-reference/widget/progressprops"
+      },
+      {
+        "text": "ProgressSegment",
+        "link": "/en/api-reference/widget/progresssegment"
+      },
+      {
+        "text": "PropertyChange",
+        "link": "/en/api-reference/widget/propertychange"
+      },
+      {
+        "text": "PropertyCommitRequest",
+        "link": "/en/api-reference/widget/propertycommitrequest"
+      },
+      {
+        "text": "PropertyConstraints",
+        "link": "/en/api-reference/widget/propertyconstraints"
+      },
+      {
+        "text": "PropertyData",
+        "link": "/en/api-reference/widget/propertydata"
+      },
+      {
+        "text": "PropertyEditor",
+        "link": "/en/api-reference/widget/propertyeditor"
+      },
+      {
+        "text": "PropertyGrid",
+        "link": "/en/api-reference/widget/propertygrid"
+      },
+      {
+        "text": "PropertyGridProps",
+        "link": "/en/api-reference/widget/propertygridprops"
+      },
+      {
+        "text": "PropertyItem",
+        "link": "/en/api-reference/widget/propertyitem"
+      },
+      {
+        "text": "PropertyOption",
+        "link": "/en/api-reference/widget/propertyoption"
+      },
+      {
+        "text": "PropertyReply",
+        "link": "/en/api-reference/widget/propertyreply"
+      },
+      {
+        "text": "PropertyValue",
+        "link": "/en/api-reference/widget/propertyvalue"
+      },
+      {
+        "text": "Radio",
+        "link": "/en/api-reference/widget/radio"
+      },
+      {
+        "text": "RadioProps",
+        "link": "/en/api-reference/widget/radioprops"
+      },
+      {
+        "text": "RichInlineFragment",
+        "link": "/en/api-reference/widget/richinlinefragment"
+      },
+      {
+        "text": "RichInlineLayout",
+        "link": "/en/api-reference/widget/richinlinelayout"
+      },
+      {
+        "text": "RichInlineLayoutStyle",
+        "link": "/en/api-reference/widget/richinlinelayoutstyle"
+      },
+      {
+        "text": "RichInput",
+        "link": "/en/api-reference/widget/richinput"
+      },
+      {
+        "text": "RichInputProps",
+        "link": "/en/api-reference/widget/richinputprops"
+      },
+      {
+        "text": "RichNode",
+        "link": "/en/api-reference/widget/richnode"
+      },
+      {
+        "text": "Segmented",
+        "link": "/en/api-reference/widget/segmented"
+      },
+      {
+        "text": "SegmentedItem",
+        "link": "/en/api-reference/widget/segmenteditem"
+      },
+      {
+        "text": "SegmentedProps",
+        "link": "/en/api-reference/widget/segmentedprops"
+      },
+      {
+        "text": "SeriesConfig",
+        "link": "/en/api-reference/widget/seriesconfig"
+      },
+      {
+        "text": "Slider",
+        "link": "/en/api-reference/widget/slider"
+      },
+      {
+        "text": "SliderProps",
+        "link": "/en/api-reference/widget/sliderprops"
+      },
+      {
+        "text": "SlotContent",
+        "link": "/en/api-reference/widget/slotcontent"
+      },
+      {
+        "text": "Spacer",
+        "link": "/en/api-reference/widget/spacer"
+      },
+      {
+        "text": "Spectrum",
+        "link": "/en/api-reference/widget/spectrum"
+      },
+      {
+        "text": "SpectrumProps",
+        "link": "/en/api-reference/widget/spectrumprops"
+      },
+      {
+        "text": "Spin",
+        "link": "/en/api-reference/widget/spin"
+      },
+      {
+        "text": "SpinProps",
+        "link": "/en/api-reference/widget/spinprops"
+      },
+      {
+        "text": "SpinState",
+        "link": "/en/api-reference/widget/spinstate"
+      },
+      {
+        "text": "Switch",
+        "link": "/en/api-reference/widget/switch"
+      },
+      {
+        "text": "SwitchProps",
+        "link": "/en/api-reference/widget/switchprops"
+      },
+      {
+        "text": "TabItem",
+        "link": "/en/api-reference/widget/tabitem"
+      },
+      {
+        "text": "Table",
+        "link": "/en/api-reference/widget/table"
+      },
+      {
+        "text": "TableColumn",
+        "link": "/en/api-reference/widget/tablecolumn"
+      },
+      {
+        "text": "TableColumnGroup",
+        "link": "/en/api-reference/widget/tablecolumngroup"
+      },
+      {
+        "text": "TableEditor",
+        "link": "/en/api-reference/widget/tableeditor"
+      },
+      {
+        "text": "TableEditorFactory",
+        "link": "/en/api-reference/widget/tableeditorfactory"
+      },
+      {
+        "text": "TableEditorFactory::Callable",
+        "link": "/en/api-reference/widget/tableeditorfactory_callable"
+      },
+      {
+        "text": "TableEditorFactory::Model",
+        "link": "/en/api-reference/widget/tableeditorfactory_model"
+      },
+      {
+        "text": "TableProps",
+        "link": "/en/api-reference/widget/tableprops"
+      },
+      {
+        "text": "TableRow",
+        "link": "/en/api-reference/widget/tablerow"
+      },
+      {
+        "text": "TableState",
+        "link": "/en/api-reference/widget/tablestate"
+      },
+      {
+        "text": "TableState::ColumnLayout",
+        "link": "/en/api-reference/widget/tablestate_columnlayout"
+      },
+      {
+        "text": "TableState::PoolRowEditors",
+        "link": "/en/api-reference/widget/tablestate_poolroweditors"
+      },
+      {
+        "text": "TableState::SortKey",
+        "link": "/en/api-reference/widget/tablestate_sortkey"
+      },
+      {
+        "text": "Tabs",
+        "link": "/en/api-reference/widget/tabs"
+      },
+      {
+        "text": "TabsEx",
+        "link": "/en/api-reference/widget/tabsex"
+      },
+      {
+        "text": "TabsExEvent",
+        "link": "/en/api-reference/widget/tabsexevent"
+      },
+      {
+        "text": "TabsExItem",
+        "link": "/en/api-reference/widget/tabsexitem"
+      },
+      {
+        "text": "TabsExProps",
+        "link": "/en/api-reference/widget/tabsexprops"
+      },
+      {
+        "text": "TabsProps",
+        "link": "/en/api-reference/widget/tabsprops"
+      },
+      {
+        "text": "TabsState",
+        "link": "/en/api-reference/widget/tabsstate"
+      },
+      {
+        "text": "TemplateList",
+        "link": "/en/api-reference/widget/templatelist"
+      },
+      {
+        "text": "TemplateListBase",
+        "link": "/en/api-reference/widget/templatelistbase"
+      },
+      {
+        "text": "TemplateListProps",
+        "link": "/en/api-reference/widget/templatelistprops"
+      },
+      {
+        "text": "TemplateListState",
+        "link": "/en/api-reference/widget/templateliststate"
+      },
+      {
+        "text": "Terminal",
+        "link": "/en/api-reference/widget/terminal"
+      },
+      {
+        "text": "TerminalProps",
+        "link": "/en/api-reference/widget/terminalprops"
+      },
+      {
+        "text": "TiledPointBuffer",
+        "link": "/en/api-reference/widget/tiledpointbuffer"
+      },
+      {
+        "text": "TiledPointBuffer::LodLevel",
+        "link": "/en/api-reference/widget/tiledpointbuffer_lodlevel"
+      },
+      {
+        "text": "TiledPointBuffer::LodPoint",
+        "link": "/en/api-reference/widget/tiledpointbuffer_lodpoint"
+      },
+      {
+        "text": "TiledPointBuffer::LodTile",
+        "link": "/en/api-reference/widget/tiledpointbuffer_lodtile"
+      },
+      {
+        "text": "TiledPointBuffer::MinMax",
+        "link": "/en/api-reference/widget/tiledpointbuffer_minmax"
+      },
+      {
+        "text": "TiledPointBuffer::Tile",
+        "link": "/en/api-reference/widget/tiledpointbuffer_tile"
+      },
+      {
+        "text": "TimePicker",
+        "link": "/en/api-reference/widget/timepicker"
+      },
+      {
+        "text": "TimePicker::FormatInfo",
+        "link": "/en/api-reference/widget/timepicker_formatinfo"
+      },
+      {
+        "text": "TimePickerProps",
+        "link": "/en/api-reference/widget/timepickerprops"
+      },
+      {
+        "text": "TimePickerValue",
+        "link": "/en/api-reference/widget/timepickervalue"
+      },
+      {
+        "text": "TimeValue",
+        "link": "/en/api-reference/widget/timevalue"
+      },
+      {
+        "text": "TitleBar",
+        "link": "/en/api-reference/widget/titlebar"
+      },
+      {
+        "text": "TitleBarProps",
+        "link": "/en/api-reference/widget/titlebarprops"
+      },
+      {
+        "text": "Toast",
+        "link": "/en/api-reference/widget/toast"
+      },
+      {
+        "text": "ToastProps",
+        "link": "/en/api-reference/widget/toastprops"
+      },
+      {
+        "text": "ToolBar",
+        "link": "/en/api-reference/widget/toolbar"
+      },
+      {
+        "text": "ToolBarProps",
+        "link": "/en/api-reference/widget/toolbarprops"
+      },
+      {
+        "text": "ToolButton",
+        "link": "/en/api-reference/widget/toolbutton"
+      },
+      {
+        "text": "ToolButtonProps",
+        "link": "/en/api-reference/widget/toolbuttonprops"
+      },
+      {
+        "text": "ToolEvent",
+        "link": "/en/api-reference/widget/toolevent"
+      },
+      {
+        "text": "ToolGroup",
+        "link": "/en/api-reference/widget/toolgroup"
+      },
+      {
+        "text": "ToolGroupProps",
+        "link": "/en/api-reference/widget/toolgroupprops"
+      },
+      {
+        "text": "ToolMenuItem",
+        "link": "/en/api-reference/widget/toolmenuitem"
+      },
+      {
+        "text": "ToolSeparator",
+        "link": "/en/api-reference/widget/toolseparator"
+      },
+      {
+        "text": "ToolSeparatorProps",
+        "link": "/en/api-reference/widget/toolseparatorprops"
+      },
+      {
+        "text": "Tooltip",
+        "link": "/en/api-reference/widget/tooltip"
+      },
+      {
+        "text": "TooltipConfig",
+        "link": "/en/api-reference/widget/tooltipconfig"
+      },
+      {
+        "text": "TplRowData",
+        "link": "/en/api-reference/widget/tplrowdata"
+      },
+      {
+        "text": "Tree",
+        "link": "/en/api-reference/widget/tree"
+      },
+      {
+        "text": "TreeNodeConfig",
+        "link": "/en/api-reference/widget/treenodeconfig"
+      },
+      {
+        "text": "TreeNodeData",
+        "link": "/en/api-reference/widget/treenodedata"
+      },
+      {
+        "text": "TreeProps",
+        "link": "/en/api-reference/widget/treeprops"
+      },
+      {
+        "text": "TreeState",
+        "link": "/en/api-reference/widget/treestate"
+      },
+      {
+        "text": "VBox",
+        "link": "/en/api-reference/widget/vbox"
+      },
+      {
+        "text": "VBoxProps",
+        "link": "/en/api-reference/widget/vboxprops"
+      },
+      {
+        "text": "Video",
+        "link": "/en/api-reference/widget/video"
+      },
+      {
+        "text": "VideoProps",
+        "link": "/en/api-reference/widget/videoprops"
+      },
+      {
+        "text": "VideoStatistics",
+        "link": "/en/api-reference/widget/videostatistics"
+      },
+      {
+        "text": "VirtualAnchor",
+        "link": "/en/api-reference/widget/virtualanchor"
+      },
+      {
+        "text": "VirtualTableBase",
+        "link": "/en/api-reference/widget/virtualtablebase"
+      },
+      {
+        "text": "WaveformChannel",
+        "link": "/en/api-reference/widget/waveformchannel"
+      },
+      {
+        "text": "WaveformChart",
+        "link": "/en/api-reference/widget/waveformchart"
+      },
+      {
+        "text": "WaveformChartProps",
+        "link": "/en/api-reference/widget/waveformchartprops"
+      },
+      {
+        "text": "Widget",
+        "link": "/en/api-reference/widget/widget"
+      },
+      {
+        "text": "Widget::DeferredCall",
+        "link": "/en/api-reference/widget/widget_deferredcall"
+      },
+      {
+        "text": "Widget::InitScope",
+        "link": "/en/api-reference/widget/widget_initscope"
+      },
+      {
+        "text": "Widget::MountLink",
+        "link": "/en/api-reference/widget/widget_mountlink"
+      },
+      {
+        "text": "Widget::PendingCall",
+        "link": "/en/api-reference/widget/widget_pendingcall"
+      },
+      {
+        "text": "WindowFrame",
+        "link": "/en/api-reference/widget/windowframe"
+      },
+      {
+        "text": "WindowFrameProps",
+        "link": "/en/api-reference/widget/windowframeprops"
+      },
+      {
+        "text": "detail::ChatListBubblePayload",
+        "link": "/en/api-reference/widget/detail_chatlistbubblepayload"
+      },
+      {
+        "text": "detail::ColorPickerChangePayload",
+        "link": "/en/api-reference/widget/detail_colorpickerchangepayload"
+      },
+      {
+        "text": "detail::ContextMenuItemStorage",
+        "link": "/en/api-reference/widget/detail_contextmenuitemstorage"
+      },
+      {
+        "text": "detail::DatePickerPanelPayload",
+        "link": "/en/api-reference/widget/detail_datepickerpanelpayload"
+      },
+      {
+        "text": "detail::DatePickerValuePayload",
+        "link": "/en/api-reference/widget/detail_datepickervaluepayload"
+      },
+      {
+        "text": "detail::DeferredButtonCb",
+        "link": "/en/api-reference/widget/detail_deferredbuttoncb"
+      },
+      {
+        "text": "detail::DialogOffScreenHandle",
+        "link": "/en/api-reference/widget/detail_dialogoffscreenhandle"
+      },
+      {
+        "text": "detail::EnvironmentBinding",
+        "link": "/en/api-reference/widget/detail_environmentbinding"
+      },
+      {
+        "text": "detail::EnvironmentCallback",
+        "link": "/en/api-reference/widget/detail_environmentcallback"
+      },
+      {
+        "text": "detail::FileDialogCallback",
+        "link": "/en/api-reference/widget/detail_filedialogcallback"
+      },
+      {
+        "text": "detail::ImageSource",
+        "link": "/en/api-reference/widget/detail_imagesource"
+      },
+      {
+        "text": "detail::InputStorage",
+        "link": "/en/api-reference/widget/detail_inputstorage"
+      },
+      {
+        "text": "detail::LayoutRulesUpdate",
+        "link": "/en/api-reference/widget/detail_layoutrulesupdate"
+      },
+      {
+        "text": "detail::MenuSession",
+        "link": "/en/api-reference/widget/detail_menusession"
+      },
+      {
+        "text": "detail::ObjectLifetime",
+        "link": "/en/api-reference/widget/detail_objectlifetime"
+      },
+      {
+        "text": "detail::PartAccess",
+        "link": "/en/api-reference/widget/detail_partaccess"
+      },
+      {
+        "text": "detail::PopupCloseCallback",
+        "link": "/en/api-reference/widget/detail_popupclosecallback"
+      },
+      {
+        "text": "detail::PopupCloseHandler",
+        "link": "/en/api-reference/widget/detail_popupclosehandler"
+      },
+      {
+        "text": "detail::PopupSurface",
+        "link": "/en/api-reference/widget/detail_popupsurface"
+      },
+      {
+        "text": "detail::PropertyCallback",
+        "link": "/en/api-reference/widget/detail_propertycallback"
+      },
+      {
+        "text": "detail::PropertyCallback< R(Args...)>",
+        "link": "/en/api-reference/widget/detail_propertycallback_r(args...)"
+      },
+      {
+        "text": "detail::PropertyCallback< R(Args...)>::Callable",
+        "link": "/en/api-reference/widget/detail_propertycallback_r(args...)_callable"
+      },
+      {
+        "text": "detail::PropertyCallback< R(Args...)>::Model",
+        "link": "/en/api-reference/widget/detail_propertycallback_r(args...)_model"
+      },
+      {
+        "text": "detail::TableCellEditPayload",
+        "link": "/en/api-reference/widget/detail_tablecelleditpayload"
+      },
+      {
+        "text": "detail::TableSortPayload",
+        "link": "/en/api-reference/widget/detail_tablesortpayload"
+      },
+      {
+        "text": "detail::TemplateListActivatePayload",
+        "link": "/en/api-reference/widget/detail_templatelistactivatepayload"
+      },
+      {
+        "text": "detail::TreeDropPayload",
+        "link": "/en/api-reference/widget/detail_treedroppayload"
+      },
+      {
+        "text": "detail::TreeNodeStatePayload",
+        "link": "/en/api-reference/widget/detail_treenodestatepayload"
+      },
+      {
+        "text": "detail::ValueChange",
+        "link": "/en/api-reference/widget/detail_valuechange"
+      }
+    ]
+  },
+  {
+    "text": "xml",
+    "items": [
+      {
+        "text": "XmlAttributeOptions",
+        "link": "/en/api-reference/xml/xmlattributeoptions"
+      },
+      {
+        "text": "XmlAttributeSpec",
+        "link": "/en/api-reference/xml/xmlattributespec"
+      },
+      {
+        "text": "XmlBindingUpdateResult",
+        "link": "/en/api-reference/xml/xmlbindingupdateresult"
+      },
+      {
+        "text": "XmlCollectionField",
+        "link": "/en/api-reference/xml/xmlcollectionfield"
+      },
+      {
+        "text": "XmlCollectionItem",
+        "link": "/en/api-reference/xml/xmlcollectionitem"
+      },
+      {
+        "text": "XmlCollectionUpdateResult",
+        "link": "/en/api-reference/xml/xmlcollectionupdateresult"
+      },
+      {
+        "text": "XmlColorRolePending",
+        "link": "/en/api-reference/xml/xmlcolorrolepending"
+      },
+      {
+        "text": "XmlCommandEvent",
+        "link": "/en/api-reference/xml/xmlcommandevent"
+      },
+      {
+        "text": "XmlContext",
+        "link": "/en/api-reference/xml/xmlcontext"
+      },
+      {
+        "text": "XmlContextRegistration",
+        "link": "/en/api-reference/xml/xmlcontextregistration"
+      },
+      {
+        "text": "XmlDefaultValue",
+        "link": "/en/api-reference/xml/xmldefaultvalue"
+      },
+      {
+        "text": "XmlDiagnostic",
+        "link": "/en/api-reference/xml/xmldiagnostic"
+      },
+      {
+        "text": "XmlDocumentMetadata",
+        "link": "/en/api-reference/xml/xmldocumentmetadata"
+      },
+      {
+        "text": "XmlEnumValue",
+        "link": "/en/api-reference/xml/xmlenumvalue"
+      },
+      {
+        "text": "XmlFactoryContext",
+        "link": "/en/api-reference/xml/xmlfactorycontext"
+      },
+      {
+        "text": "XmlField",
+        "link": "/en/api-reference/xml/xmlfield"
+      },
+      {
+        "text": "XmlFieldError",
+        "link": "/en/api-reference/xml/xmlfielderror"
+      },
+      {
+        "text": "XmlItemResult",
+        "link": "/en/api-reference/xml/xmlitemresult"
+      },
+      {
+        "text": "XmlItemTreeNode",
+        "link": "/en/api-reference/xml/xmlitemtreenode"
+      },
+      {
+        "text": "XmlLayout",
+        "link": "/en/api-reference/xml/xmllayout"
+      },
+      {
+        "text": "XmlLoadOptions",
+        "link": "/en/api-reference/xml/xmlloadoptions"
+      },
+      {
+        "text": "XmlModuleMetadata",
+        "link": "/en/api-reference/xml/xmlmodulemetadata"
+      },
+      {
+        "text": "XmlModuleRegistrationOwner",
+        "link": "/en/api-reference/xml/xmlmoduleregistrationowner"
+      },
+      {
+        "text": "XmlModuleSpec",
+        "link": "/en/api-reference/xml/xmlmodulespec"
+      },
+      {
+        "text": "XmlRegistration",
+        "link": "/en/api-reference/xml/xmlregistration"
+      },
+      {
+        "text": "XmlRegistrationOwner",
+        "link": "/en/api-reference/xml/xmlregistrationowner"
+      },
+      {
+        "text": "XmlRegistry",
+        "link": "/en/api-reference/xml/xmlregistry"
+      },
+      {
+        "text": "XmlRegistrySnapshot",
+        "link": "/en/api-reference/xml/xmlregistrysnapshot"
+      },
+      {
+        "text": "XmlReloadHost",
+        "link": "/en/api-reference/xml/xmlreloadhost"
+      },
+      {
+        "text": "XmlSchema",
+        "link": "/en/api-reference/xml/xmlschema"
+      },
+      {
+        "text": "XmlSchemaMergeResult",
+        "link": "/en/api-reference/xml/xmlschemamergeresult"
+      },
+      {
+        "text": "XmlSchemaParseResult",
+        "link": "/en/api-reference/xml/xmlschemaparseresult"
+      },
+      {
+        "text": "XmlSchemaTextResult",
+        "link": "/en/api-reference/xml/xmlschematextresult"
+      },
+      {
+        "text": "XmlSource",
+        "link": "/en/api-reference/xml/xmlsource"
+      },
+      {
+        "text": "XmlSourceResolver",
+        "link": "/en/api-reference/xml/xmlsourceresolver"
+      },
+      {
+        "text": "XmlStringStorage",
+        "link": "/en/api-reference/xml/xmlstringstorage"
+      },
+      {
+        "text": "XmlValidationResult",
+        "link": "/en/api-reference/xml/xmlvalidationresult"
+      },
+      {
+        "text": "XmlValue",
+        "link": "/en/api-reference/xml/xmlvalue"
+      },
+      {
+        "text": "XmlValueWriter",
+        "link": "/en/api-reference/xml/xmlvaluewriter"
+      },
+      {
+        "text": "XmlWidgetMetadata",
+        "link": "/en/api-reference/xml/xmlwidgetmetadata"
+      },
+      {
+        "text": "XmlWidgetResult",
+        "link": "/en/api-reference/xml/xmlwidgetresult"
+      },
+      {
+        "text": "XmlWidgetSpec",
+        "link": "/en/api-reference/xml/xmlwidgetspec"
+      },
+      {
+        "text": "XmlWindowLayout",
+        "link": "/en/api-reference/xml/xmlwindowlayout"
+      }
+    ]
+  }
+]

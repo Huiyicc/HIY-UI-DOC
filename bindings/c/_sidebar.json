@@ -1,0 +1,959 @@
+[
+  {
+    "text": "C 绑定",
+    "items": [
+      {
+        "text": "anim.h",
+        "link": "/bindings/c/anim.h"
+      },
+      {
+        "text": "app.h",
+        "link": "/bindings/c/app.h"
+      },
+      {
+        "text": "basic.h",
+        "link": "/bindings/c/basic.h"
+      },
+      {
+        "text": "box.h",
+        "link": "/bindings/c/box.h"
+      },
+      {
+        "text": "card.h",
+        "link": "/bindings/c/card.h"
+      },
+      {
+        "text": "carousel.h",
+        "link": "/bindings/c/carousel.h"
+      },
+      {
+        "text": "chart.h",
+        "link": "/bindings/c/chart.h"
+      },
+      {
+        "text": "chat_list.h",
+        "link": "/bindings/c/chat_list.h"
+      },
+      {
+        "text": "color_picker.h",
+        "link": "/bindings/c/color_picker.h"
+      },
+      {
+        "text": "context_menu.h",
+        "link": "/bindings/c/context_menu.h"
+      },
+      {
+        "text": "custom_draw.h",
+        "link": "/bindings/c/custom_draw.h"
+      },
+      {
+        "text": "date_picker.h",
+        "link": "/bindings/c/date_picker.h"
+      },
+      {
+        "text": "date_value.h",
+        "link": "/bindings/c/date_value.h"
+      },
+      {
+        "text": "diagnostics.h",
+        "link": "/bindings/c/diagnostics.h"
+      },
+      {
+        "text": "dialog.h",
+        "link": "/bindings/c/dialog.h"
+      },
+      {
+        "text": "dock.h",
+        "link": "/bindings/c/dock.h"
+      },
+      {
+        "text": "draw_ctx.h",
+        "link": "/bindings/c/draw_ctx.h"
+      },
+      {
+        "text": "easing.h",
+        "link": "/bindings/c/easing.h"
+      },
+      {
+        "text": "emoji.h",
+        "link": "/bindings/c/emoji.h"
+      },
+      {
+        "text": "event.h",
+        "link": "/bindings/c/event.h"
+      },
+      {
+        "text": "file_dialog.h",
+        "link": "/bindings/c/file_dialog.h"
+      },
+      {
+        "text": "float_label_input.h",
+        "link": "/bindings/c/float_label_input.h"
+      },
+      {
+        "text": "form.h",
+        "link": "/bindings/c/form.h"
+      },
+      {
+        "text": "glass.h",
+        "link": "/bindings/c/glass.h"
+      },
+      {
+        "text": "hiyui.h",
+        "link": "/bindings/c/hiyui.h"
+      },
+      {
+        "text": "hiyui_accessibility_props_t",
+        "link": "/bindings/c/hiyui_accessibility_props_t"
+      },
+      {
+        "text": "hiyui_anim_props_t",
+        "link": "/bindings/c/hiyui_anim_props_t"
+      },
+      {
+        "text": "hiyui_avatar_props_t",
+        "link": "/bindings/c/hiyui_avatar_props_t"
+      },
+      {
+        "text": "hiyui_back_request_t",
+        "link": "/bindings/c/hiyui_back_request_t"
+      },
+      {
+        "text": "hiyui_backdrop_t",
+        "link": "/bindings/c/hiyui_backdrop_t"
+      },
+      {
+        "text": "hiyui_bar_chart_props_t",
+        "link": "/bindings/c/hiyui_bar_chart_props_t"
+      },
+      {
+        "text": "hiyui_bg_fill_t",
+        "link": "/bindings/c/hiyui_bg_fill_t"
+      },
+      {
+        "text": "hiyui_bg_image_t",
+        "link": "/bindings/c/hiyui_bg_image_t"
+      },
+      {
+        "text": "hiyui_blur_source_t",
+        "link": "/bindings/c/hiyui_blur_source_t"
+      },
+      {
+        "text": "hiyui_border_t",
+        "link": "/bindings/c/hiyui_border_t"
+      },
+      {
+        "text": "hiyui_box_props_t",
+        "link": "/bindings/c/hiyui_box_props_t"
+      },
+      {
+        "text": "hiyui_button_props_t",
+        "link": "/bindings/c/hiyui_button_props_t"
+      },
+      {
+        "text": "hiyui_card_props_t",
+        "link": "/bindings/c/hiyui_card_props_t"
+      },
+      {
+        "text": "hiyui_carousel_image_page_t",
+        "link": "/bindings/c/hiyui_carousel_image_page_t"
+      },
+      {
+        "text": "hiyui_carousel_props_t",
+        "link": "/bindings/c/hiyui_carousel_props_t"
+      },
+      {
+        "text": "hiyui_cell_span_t",
+        "link": "/bindings/c/hiyui_cell_span_t"
+      },
+      {
+        "text": "hiyui_chart_axis_t",
+        "link": "/bindings/c/hiyui_chart_axis_t"
+      },
+      {
+        "text": "hiyui_chart_channel_t",
+        "link": "/bindings/c/hiyui_chart_channel_t"
+      },
+      {
+        "text": "hiyui_chart_hit_t",
+        "link": "/bindings/c/hiyui_chart_hit_t"
+      },
+      {
+        "text": "hiyui_chart_interaction_t",
+        "link": "/bindings/c/hiyui_chart_interaction_t"
+      },
+      {
+        "text": "hiyui_chart_series_t",
+        "link": "/bindings/c/hiyui_chart_series_t"
+      },
+      {
+        "text": "hiyui_chart_slice_t",
+        "link": "/bindings/c/hiyui_chart_slice_t"
+      },
+      {
+        "text": "hiyui_chat_item_t",
+        "link": "/bindings/c/hiyui_chat_item_t"
+      },
+      {
+        "text": "hiyui_chat_list_props_t",
+        "link": "/bindings/c/hiyui_chat_list_props_t"
+      },
+      {
+        "text": "hiyui_checkbox_props_t",
+        "link": "/bindings/c/hiyui_checkbox_props_t"
+      },
+      {
+        "text": "hiyui_color_picker_props_t",
+        "link": "/bindings/c/hiyui_color_picker_props_t"
+      },
+      {
+        "text": "hiyui_confirm_dialog_props_t",
+        "link": "/bindings/c/hiyui_confirm_dialog_props_t"
+      },
+      {
+        "text": "hiyui_context_menu_item_t",
+        "link": "/bindings/c/hiyui_context_menu_item_t"
+      },
+      {
+        "text": "hiyui_custom_draw_props_t",
+        "link": "/bindings/c/hiyui_custom_draw_props_t"
+      },
+      {
+        "text": "hiyui_date_picker_props_t",
+        "link": "/bindings/c/hiyui_date_picker_props_t"
+      },
+      {
+        "text": "hiyui_date_picker_value_t",
+        "link": "/bindings/c/hiyui_date_picker_value_t"
+      },
+      {
+        "text": "hiyui_date_value_t",
+        "link": "/bindings/c/hiyui_date_value_t"
+      },
+      {
+        "text": "hiyui_diagnostics_config_t",
+        "link": "/bindings/c/hiyui_diagnostics_config_t"
+      },
+      {
+        "text": "hiyui_diagnostics_display_t",
+        "link": "/bindings/c/hiyui_diagnostics_display_t"
+      },
+      {
+        "text": "hiyui_diagnostics_frame_t",
+        "link": "/bindings/c/hiyui_diagnostics_frame_t"
+      },
+      {
+        "text": "hiyui_diagnostics_reading_t",
+        "link": "/bindings/c/hiyui_diagnostics_reading_t"
+      },
+      {
+        "text": "hiyui_diagnostics_resource_t",
+        "link": "/bindings/c/hiyui_diagnostics_resource_t"
+      },
+      {
+        "text": "hiyui_diagnostics_sample_t",
+        "link": "/bindings/c/hiyui_diagnostics_sample_t"
+      },
+      {
+        "text": "hiyui_diagnostics_scope_t",
+        "link": "/bindings/c/hiyui_diagnostics_scope_t"
+      },
+      {
+        "text": "hiyui_diagnostics_snapshot_info_t",
+        "link": "/bindings/c/hiyui_diagnostics_snapshot_info_t"
+      },
+      {
+        "text": "hiyui_diagnostics_span_t",
+        "link": "/bindings/c/hiyui_diagnostics_span_t"
+      },
+      {
+        "text": "hiyui_dock_event_t",
+        "link": "/bindings/c/hiyui_dock_event_t"
+      },
+      {
+        "text": "hiyui_dock_pane_props_t",
+        "link": "/bindings/c/hiyui_dock_pane_props_t"
+      },
+      {
+        "text": "hiyui_dock_props_t",
+        "link": "/bindings/c/hiyui_dock_props_t"
+      },
+      {
+        "text": "hiyui_dropdown_item_t",
+        "link": "/bindings/c/hiyui_dropdown_item_t"
+      },
+      {
+        "text": "hiyui_dropdown_props_t",
+        "link": "/bindings/c/hiyui_dropdown_props_t"
+      },
+      {
+        "text": "hiyui_file_dialog_props_t",
+        "link": "/bindings/c/hiyui_file_dialog_props_t"
+      },
+      {
+        "text": "hiyui_file_filter_t",
+        "link": "/bindings/c/hiyui_file_filter_t"
+      },
+      {
+        "text": "hiyui_float_label_input_props_t",
+        "link": "/bindings/c/hiyui_float_label_input_props_t"
+      },
+      {
+        "text": "hiyui_flowbox_props_t",
+        "link": "/bindings/c/hiyui_flowbox_props_t"
+      },
+      {
+        "text": "hiyui_font_icon_style_t",
+        "link": "/bindings/c/hiyui_font_icon_style_t"
+      },
+      {
+        "text": "hiyui_frame_navigation_toggle_props_t",
+        "link": "/bindings/c/hiyui_frame_navigation_toggle_props_t"
+      },
+      {
+        "text": "hiyui_gauge_chart_props_t",
+        "link": "/bindings/c/hiyui_gauge_chart_props_t"
+      },
+      {
+        "text": "hiyui_gradient_t",
+        "link": "/bindings/c/hiyui_gradient_t"
+      },
+      {
+        "text": "hiyui_hbox_props_t",
+        "link": "/bindings/c/hiyui_hbox_props_t"
+      },
+      {
+        "text": "hiyui_hotkey_t",
+        "link": "/bindings/c/hiyui_hotkey_t"
+      },
+      {
+        "text": "hiyui_icon_props_t",
+        "link": "/bindings/c/hiyui_icon_props_t"
+      },
+      {
+        "text": "hiyui_image_props_t",
+        "link": "/bindings/c/hiyui_image_props_t"
+      },
+      {
+        "text": "hiyui_input_capabilities_t",
+        "link": "/bindings/c/hiyui_input_capabilities_t"
+      },
+      {
+        "text": "hiyui_input_props_t",
+        "link": "/bindings/c/hiyui_input_props_t"
+      },
+      {
+        "text": "hiyui_item_list_props_t",
+        "link": "/bindings/c/hiyui_item_list_props_t"
+      },
+      {
+        "text": "hiyui_label_props_t",
+        "link": "/bindings/c/hiyui_label_props_t"
+      },
+      {
+        "text": "hiyui_layout_environment_t",
+        "link": "/bindings/c/hiyui_layout_environment_t"
+      },
+      {
+        "text": "hiyui_layout_length_t",
+        "link": "/bindings/c/hiyui_layout_length_t"
+      },
+      {
+        "text": "hiyui_layout_metrics_t",
+        "link": "/bindings/c/hiyui_layout_metrics_t"
+      },
+      {
+        "text": "hiyui_layout_rule_t",
+        "link": "/bindings/c/hiyui_layout_rule_t"
+      },
+      {
+        "text": "hiyui_layout_rules_t",
+        "link": "/bindings/c/hiyui_layout_rules_t"
+      },
+      {
+        "text": "hiyui_layout_values_t",
+        "link": "/bindings/c/hiyui_layout_values_t"
+      },
+      {
+        "text": "hiyui_line_chart_props_t",
+        "link": "/bindings/c/hiyui_line_chart_props_t"
+      },
+      {
+        "text": "hiyui_list_color_t",
+        "link": "/bindings/c/hiyui_list_color_t"
+      },
+      {
+        "text": "hiyui_list_detail_props_t",
+        "link": "/bindings/c/hiyui_list_detail_props_t"
+      },
+      {
+        "text": "hiyui_list_item_t",
+        "link": "/bindings/c/hiyui_list_item_t"
+      },
+      {
+        "text": "hiyui_list_props_t",
+        "link": "/bindings/c/hiyui_list_props_t"
+      },
+      {
+        "text": "hiyui_list_state_style_t",
+        "link": "/bindings/c/hiyui_list_state_style_t"
+      },
+      {
+        "text": "hiyui_list_template_t",
+        "link": "/bindings/c/hiyui_list_template_t"
+      },
+      {
+        "text": "hiyui_list_visual_t",
+        "link": "/bindings/c/hiyui_list_visual_t"
+      },
+      {
+        "text": "hiyui_localized_menu_text_t",
+        "link": "/bindings/c/hiyui_localized_menu_text_t"
+      },
+      {
+        "text": "hiyui_localized_text_s",
+        "link": "/bindings/c/hiyui_localized_text_s"
+      },
+      {
+        "text": "hiyui_logical_rect_t",
+        "link": "/bindings/c/hiyui_logical_rect_t"
+      },
+      {
+        "text": "hiyui_menu_bar_item_t",
+        "link": "/bindings/c/hiyui_menu_bar_item_t"
+      },
+      {
+        "text": "hiyui_menu_bar_props_t",
+        "link": "/bindings/c/hiyui_menu_bar_props_t"
+      },
+      {
+        "text": "hiyui_menu_item",
+        "link": "/bindings/c/hiyui_menu_item"
+      },
+      {
+        "text": "hiyui_menu_props_t",
+        "link": "/bindings/c/hiyui_menu_props_t"
+      },
+      {
+        "text": "hiyui_message_box_props_t",
+        "link": "/bindings/c/hiyui_message_box_props_t"
+      },
+      {
+        "text": "hiyui_pagination_props_t",
+        "link": "/bindings/c/hiyui_pagination_props_t"
+      },
+      {
+        "text": "hiyui_paint_ctx_t",
+        "link": "/bindings/c/hiyui_paint_ctx_t"
+      },
+      {
+        "text": "hiyui_painter_callbacks_t",
+        "link": "/bindings/c/hiyui_painter_callbacks_t"
+      },
+      {
+        "text": "hiyui_part_style_t",
+        "link": "/bindings/c/hiyui_part_style_t"
+      },
+      {
+        "text": "hiyui_part_styles_t",
+        "link": "/bindings/c/hiyui_part_styles_t"
+      },
+      {
+        "text": "hiyui_pie_chart_props_t",
+        "link": "/bindings/c/hiyui_pie_chart_props_t"
+      },
+      {
+        "text": "hiyui_point_t",
+        "link": "/bindings/c/hiyui_point_t"
+      },
+      {
+        "text": "hiyui_popup_panel_props_t",
+        "link": "/bindings/c/hiyui_popup_panel_props_t"
+      },
+      {
+        "text": "hiyui_progress_props_t",
+        "link": "/bindings/c/hiyui_progress_props_t"
+      },
+      {
+        "text": "hiyui_progress_segment_t",
+        "link": "/bindings/c/hiyui_progress_segment_t"
+      },
+      {
+        "text": "hiyui_property_change_t",
+        "link": "/bindings/c/hiyui_property_change_t"
+      },
+      {
+        "text": "hiyui_property_constraints_t",
+        "link": "/bindings/c/hiyui_property_constraints_t"
+      },
+      {
+        "text": "hiyui_property_grid_props_t",
+        "link": "/bindings/c/hiyui_property_grid_props_t"
+      },
+      {
+        "text": "hiyui_property_item_t",
+        "link": "/bindings/c/hiyui_property_item_t"
+      },
+      {
+        "text": "hiyui_property_option_t",
+        "link": "/bindings/c/hiyui_property_option_t"
+      },
+      {
+        "text": "hiyui_property_value_t",
+        "link": "/bindings/c/hiyui_property_value_t"
+      },
+      {
+        "text": "hiyui_radio_props_t",
+        "link": "/bindings/c/hiyui_radio_props_t"
+      },
+      {
+        "text": "hiyui_rect_t",
+        "link": "/bindings/c/hiyui_rect_t"
+      },
+      {
+        "text": "hiyui_rgba_t",
+        "link": "/bindings/c/hiyui_rgba_t"
+      },
+      {
+        "text": "hiyui_rich_block_format_t",
+        "link": "/bindings/c/hiyui_rich_block_format_t"
+      },
+      {
+        "text": "hiyui_rich_char_format_t",
+        "link": "/bindings/c/hiyui_rich_char_format_t"
+      },
+      {
+        "text": "hiyui_rich_input_props_t",
+        "link": "/bindings/c/hiyui_rich_input_props_t"
+      },
+      {
+        "text": "hiyui_rich_node_t",
+        "link": "/bindings/c/hiyui_rich_node_t"
+      },
+      {
+        "text": "hiyui_scroll_metrics_t",
+        "link": "/bindings/c/hiyui_scroll_metrics_t"
+      },
+      {
+        "text": "hiyui_segmented_item_t",
+        "link": "/bindings/c/hiyui_segmented_item_t"
+      },
+      {
+        "text": "hiyui_segmented_props_t",
+        "link": "/bindings/c/hiyui_segmented_props_t"
+      },
+      {
+        "text": "hiyui_shader_surface_props_t",
+        "link": "/bindings/c/hiyui_shader_surface_props_t"
+      },
+      {
+        "text": "hiyui_shadow_t",
+        "link": "/bindings/c/hiyui_shadow_t"
+      },
+      {
+        "text": "hiyui_size_t",
+        "link": "/bindings/c/hiyui_size_t"
+      },
+      {
+        "text": "hiyui_slider_props_t",
+        "link": "/bindings/c/hiyui_slider_props_t"
+      },
+      {
+        "text": "hiyui_sort_key_t",
+        "link": "/bindings/c/hiyui_sort_key_t"
+      },
+      {
+        "text": "hiyui_spin_props_t",
+        "link": "/bindings/c/hiyui_spin_props_t"
+      },
+      {
+        "text": "hiyui_style_set_t",
+        "link": "/bindings/c/hiyui_style_set_t"
+      },
+      {
+        "text": "hiyui_style_spec_set_t",
+        "link": "/bindings/c/hiyui_style_spec_set_t"
+      },
+      {
+        "text": "hiyui_style_spec_t",
+        "link": "/bindings/c/hiyui_style_spec_t"
+      },
+      {
+        "text": "hiyui_style_t",
+        "link": "/bindings/c/hiyui_style_t"
+      },
+      {
+        "text": "hiyui_switch_props_t",
+        "link": "/bindings/c/hiyui_switch_props_t"
+      },
+      {
+        "text": "hiyui_system_tray_props_t",
+        "link": "/bindings/c/hiyui_system_tray_props_t"
+      },
+      {
+        "text": "hiyui_tab_item_t",
+        "link": "/bindings/c/hiyui_tab_item_t"
+      },
+      {
+        "text": "hiyui_table_column_group_t",
+        "link": "/bindings/c/hiyui_table_column_group_t"
+      },
+      {
+        "text": "hiyui_table_column_t",
+        "link": "/bindings/c/hiyui_table_column_t"
+      },
+      {
+        "text": "hiyui_table_props_t",
+        "link": "/bindings/c/hiyui_table_props_t"
+      },
+      {
+        "text": "hiyui_table_row_t",
+        "link": "/bindings/c/hiyui_table_row_t"
+      },
+      {
+        "text": "hiyui_tabs_ex_event_t",
+        "link": "/bindings/c/hiyui_tabs_ex_event_t"
+      },
+      {
+        "text": "hiyui_tabs_ex_item_t",
+        "link": "/bindings/c/hiyui_tabs_ex_item_t"
+      },
+      {
+        "text": "hiyui_tabs_ex_props_t",
+        "link": "/bindings/c/hiyui_tabs_ex_props_t"
+      },
+      {
+        "text": "hiyui_tabs_props_t",
+        "link": "/bindings/c/hiyui_tabs_props_t"
+      },
+      {
+        "text": "hiyui_terminal_input_t",
+        "link": "/bindings/c/hiyui_terminal_input_t"
+      },
+      {
+        "text": "hiyui_terminal_props_t",
+        "link": "/bindings/c/hiyui_terminal_props_t"
+      },
+      {
+        "text": "hiyui_terminal_size_t",
+        "link": "/bindings/c/hiyui_terminal_size_t"
+      },
+      {
+        "text": "hiyui_text_arg_t",
+        "link": "/bindings/c/hiyui_text_arg_t"
+      },
+      {
+        "text": "hiyui_time_picker_props_t",
+        "link": "/bindings/c/hiyui_time_picker_props_t"
+      },
+      {
+        "text": "hiyui_time_picker_value_t",
+        "link": "/bindings/c/hiyui_time_picker_value_t"
+      },
+      {
+        "text": "hiyui_time_value_t",
+        "link": "/bindings/c/hiyui_time_value_t"
+      },
+      {
+        "text": "hiyui_title_bar_props_t",
+        "link": "/bindings/c/hiyui_title_bar_props_t"
+      },
+      {
+        "text": "hiyui_toast_props_t",
+        "link": "/bindings/c/hiyui_toast_props_t"
+      },
+      {
+        "text": "hiyui_tool_bar_props_t",
+        "link": "/bindings/c/hiyui_tool_bar_props_t"
+      },
+      {
+        "text": "hiyui_tool_button_props_t",
+        "link": "/bindings/c/hiyui_tool_button_props_t"
+      },
+      {
+        "text": "hiyui_tool_event_t",
+        "link": "/bindings/c/hiyui_tool_event_t"
+      },
+      {
+        "text": "hiyui_tool_group_props_t",
+        "link": "/bindings/c/hiyui_tool_group_props_t"
+      },
+      {
+        "text": "hiyui_tool_menu_item_s",
+        "link": "/bindings/c/hiyui_tool_menu_item_s"
+      },
+      {
+        "text": "hiyui_tool_separator_props_t",
+        "link": "/bindings/c/hiyui_tool_separator_props_t"
+      },
+      {
+        "text": "hiyui_tooltip_config_t",
+        "link": "/bindings/c/hiyui_tooltip_config_t"
+      },
+      {
+        "text": "hiyui_tree_node_t",
+        "link": "/bindings/c/hiyui_tree_node_t"
+      },
+      {
+        "text": "hiyui_tree_node_view_t",
+        "link": "/bindings/c/hiyui_tree_node_view_t"
+      },
+      {
+        "text": "hiyui_tree_props_t",
+        "link": "/bindings/c/hiyui_tree_props_t"
+      },
+      {
+        "text": "hiyui_vbox_props_t",
+        "link": "/bindings/c/hiyui_vbox_props_t"
+      },
+      {
+        "text": "hiyui_vec2_t",
+        "link": "/bindings/c/hiyui_vec2_t"
+      },
+      {
+        "text": "hiyui_video_props_t",
+        "link": "/bindings/c/hiyui_video_props_t"
+      },
+      {
+        "text": "hiyui_video_statistics_t",
+        "link": "/bindings/c/hiyui_video_statistics_t"
+      },
+      {
+        "text": "hiyui_viewport_metrics_t",
+        "link": "/bindings/c/hiyui_viewport_metrics_t"
+      },
+      {
+        "text": "hiyui_waveform_chart_props_t",
+        "link": "/bindings/c/hiyui_waveform_chart_props_t"
+      },
+      {
+        "text": "hiyui_widget_state_t",
+        "link": "/bindings/c/hiyui_widget_state_t"
+      },
+      {
+        "text": "hiyui_win_anim_t",
+        "link": "/bindings/c/hiyui_win_anim_t"
+      },
+      {
+        "text": "hiyui_win_background_t",
+        "link": "/bindings/c/hiyui_win_background_t"
+      },
+      {
+        "text": "hiyui_win_props_t",
+        "link": "/bindings/c/hiyui_win_props_t"
+      },
+      {
+        "text": "hiyui_window_area_t",
+        "link": "/bindings/c/hiyui_window_area_t"
+      },
+      {
+        "text": "hiyui_window_frame_props_t",
+        "link": "/bindings/c/hiyui_window_frame_props_t"
+      },
+      {
+        "text": "hiyui_xml_attr_t",
+        "link": "/bindings/c/hiyui_xml_attr_t"
+      },
+      {
+        "text": "hiyui_xml_attribute_metadata_t",
+        "link": "/bindings/c/hiyui_xml_attribute_metadata_t"
+      },
+      {
+        "text": "hiyui_xml_attribute_spec_t",
+        "link": "/bindings/c/hiyui_xml_attribute_spec_t"
+      },
+      {
+        "text": "hiyui_xml_collection_field_t",
+        "link": "/bindings/c/hiyui_xml_collection_field_t"
+      },
+      {
+        "text": "hiyui_xml_collection_item_t",
+        "link": "/bindings/c/hiyui_xml_collection_item_t"
+      },
+      {
+        "text": "hiyui_xml_command_event_t",
+        "link": "/bindings/c/hiyui_xml_command_event_t"
+      },
+      {
+        "text": "hiyui_xml_context_registration_t",
+        "link": "/bindings/c/hiyui_xml_context_registration_t"
+      },
+      {
+        "text": "hiyui_xml_diagnostic_t",
+        "link": "/bindings/c/hiyui_xml_diagnostic_t"
+      },
+      {
+        "text": "hiyui_xml_enum_value_metadata_t",
+        "link": "/bindings/c/hiyui_xml_enum_value_metadata_t"
+      },
+      {
+        "text": "hiyui_xml_enum_value_t",
+        "link": "/bindings/c/hiyui_xml_enum_value_t"
+      },
+      {
+        "text": "hiyui_xml_item_result_t",
+        "link": "/bindings/c/hiyui_xml_item_result_t"
+      },
+      {
+        "text": "hiyui_xml_item_t",
+        "link": "/bindings/c/hiyui_xml_item_t"
+      },
+      {
+        "text": "hiyui_xml_load_options_t",
+        "link": "/bindings/c/hiyui_xml_load_options_t"
+      },
+      {
+        "text": "hiyui_xml_module_metadata_t",
+        "link": "/bindings/c/hiyui_xml_module_metadata_t"
+      },
+      {
+        "text": "hiyui_xml_module_spec_t",
+        "link": "/bindings/c/hiyui_xml_module_spec_t"
+      },
+      {
+        "text": "hiyui_xml_registration_t",
+        "link": "/bindings/c/hiyui_xml_registration_t"
+      },
+      {
+        "text": "hiyui_xml_source_t",
+        "link": "/bindings/c/hiyui_xml_source_t"
+      },
+      {
+        "text": "hiyui_xml_tree_item_s",
+        "link": "/bindings/c/hiyui_xml_tree_item_s"
+      },
+      {
+        "text": "hiyui_xml_value_t",
+        "link": "/bindings/c/hiyui_xml_value_t"
+      },
+      {
+        "text": "hiyui_xml_widget_metadata_t",
+        "link": "/bindings/c/hiyui_xml_widget_metadata_t"
+      },
+      {
+        "text": "hiyui_xml_widget_result_t",
+        "link": "/bindings/c/hiyui_xml_widget_result_t"
+      },
+      {
+        "text": "hiyui_xml_widget_spec_t",
+        "link": "/bindings/c/hiyui_xml_widget_spec_t"
+      },
+      {
+        "text": "i18n.h",
+        "link": "/bindings/c/i18n.h"
+      },
+      {
+        "text": "image_buffer.h",
+        "link": "/bindings/c/image_buffer.h"
+      },
+      {
+        "text": "item_list.h",
+        "link": "/bindings/c/item_list.h"
+      },
+      {
+        "text": "layout.h",
+        "link": "/bindings/c/layout.h"
+      },
+      {
+        "text": "list.h",
+        "link": "/bindings/c/list.h"
+      },
+      {
+        "text": "misc.h",
+        "link": "/bindings/c/misc.h"
+      },
+      {
+        "text": "nav.h",
+        "link": "/bindings/c/nav.h"
+      },
+      {
+        "text": "popup_panel.h",
+        "link": "/bindings/c/popup_panel.h"
+      },
+      {
+        "text": "property_grid.h",
+        "link": "/bindings/c/property_grid.h"
+      },
+      {
+        "text": "ref.h",
+        "link": "/bindings/c/ref.h"
+      },
+      {
+        "text": "rich_input.h",
+        "link": "/bindings/c/rich_input.h"
+      },
+      {
+        "text": "rich_node.h",
+        "link": "/bindings/c/rich_node.h"
+      },
+      {
+        "text": "shader_surface.h",
+        "link": "/bindings/c/shader_surface.h"
+      },
+      {
+        "text": "shape.h",
+        "link": "/bindings/c/shape.h"
+      },
+      {
+        "text": "style.h",
+        "link": "/bindings/c/style.h"
+      },
+      {
+        "text": "svg.h",
+        "link": "/bindings/c/svg.h"
+      },
+      {
+        "text": "system_tray.h",
+        "link": "/bindings/c/system_tray.h"
+      },
+      {
+        "text": "table.h",
+        "link": "/bindings/c/table.h"
+      },
+      {
+        "text": "tabs_ex.h",
+        "link": "/bindings/c/tabs_ex.h"
+      },
+      {
+        "text": "terminal.h",
+        "link": "/bindings/c/terminal.h"
+      },
+      {
+        "text": "theme.h",
+        "link": "/bindings/c/theme.h"
+      },
+      {
+        "text": "time_picker.h",
+        "link": "/bindings/c/time_picker.h"
+      },
+      {
+        "text": "title_bar.h",
+        "link": "/bindings/c/title_bar.h"
+      },
+      {
+        "text": "tool_bar.h",
+        "link": "/bindings/c/tool_bar.h"
+      },
+      {
+        "text": "tree.h",
+        "link": "/bindings/c/tree.h"
+      },
+      {
+        "text": "types.h",
+        "link": "/bindings/c/types.h"
+      },
+      {
+        "text": "video.h",
+        "link": "/bindings/c/video.h"
+      },
+      {
+        "text": "widget.h",
+        "link": "/bindings/c/widget.h"
+      },
+      {
+        "text": "xml.h",
+        "link": "/bindings/c/xml.h"
+      }
+    ]
+  }
+]
