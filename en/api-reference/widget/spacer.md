@@ -8,9 +8,9 @@ title: "Spacer"
 
 **Namespace:** `hiyui`
 
-Elastic spacer with flex-grow = 1
+Flexible spacer with flex-grow = 1
 
-Automatically takes up remaining space in VBox/HBox, commonly used to push components to opposite ends.
+Automatically occupies remaining space in VBox/HBox, typically pushing components to opposite ends.
 
 
 
@@ -37,7 +37,7 @@ Wraps an existing LVGL object
 Spacer()
 ```
 
-Default constructor, creates a spacer object with flex-grow=1
+Default constructor; creates a spacer with flex-grow=1
 
 ### init
 
@@ -45,7 +45,7 @@ Default constructor, creates a spacer object with flex-grow=1
 Spacer & init(lv_obj_t *parent) &
 ```
 
-Creates the LVGL object on a parent object
+Creates the LVGL object on a parent
 
 ### init
 
@@ -53,4 +53,4 @@ Creates the LVGL object on a parent object
 Spacer & init(Widget &parent) &
 ```
 
-Creates the LVGL object on a parent object
+Creates the LVGL object on a parent

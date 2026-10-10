@@ -34,7 +34,7 @@ List height, HIYUI_AUTO = fit content
 int maxHeight
 ```
 
-Maximum height, effective when height=HIYUI_AUTO; 0 = unlimited
+Maximum height, effective when height=HIYUI_AUTO, 0 = unlimited
 
 ### padding
 
@@ -50,7 +50,7 @@ Container padding
 int gap
 ```
 
-Item spacing; used as vertical spacing in List mode
+Item spacing, used as vertical spacing in List mode
 
 ### bg
 
@@ -82,7 +82,7 @@ Initial selected index, -1 = no selection
 int columnCount
 ```
 
-Grid mode fixed column count; &lt;=0 means auto-fit
+Fixed column count in Grid mode, &lt;=0 means adaptive
 
 ### minItemWidth
 
@@ -90,7 +90,7 @@ Grid mode fixed column count; &lt;=0 means auto-fit
 int minItemWidth
 ```
 
-Grid mode auto-fit minimum column width
+Adaptive minimum column width in Grid mode
 
 ### rowGap
 

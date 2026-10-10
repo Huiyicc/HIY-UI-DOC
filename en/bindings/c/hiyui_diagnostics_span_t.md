@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_span_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Times are zeroed at the start of this capture; nested spans must not be added directly.
+Times are relative to the start of the current collection. Nested spans cannot be added directly.
 
 ## Public Members
 
@@ -82,4 +82,4 @@ char name
 int profiler
 ```
 
-Comes from the LVGL profiler; display_id is the refresh context and 0 means unknown.
+Comes from the LVGL profiler. display_id is the refresh context; 0 means unknown.

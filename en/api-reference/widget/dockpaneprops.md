@@ -8,7 +8,7 @@ title: "DockPaneProps"
 
 **Namespace:** `hiyui`
 
-Creation properties for a dock pane.
+Dock pane creation properties.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Creation properties for a dock pane.
 const char * title
 ```
 
-Title; shows "Pane" when empty, copied internally.
+Title, shows "Pane" when empty, copied internally.
 
 ### name
 
@@ -26,7 +26,7 @@ Title; shows "Pane" when empty, copied internally.
 const char * name
 ```
 
-Unique name for lookup and serialization; falls back to title when empty.
+Unique name for lookup and serialization, defaults to title when empty.
 
 ### iconCodepoint
 
@@ -50,7 +50,7 @@ Icon axis parameters.
 DockEdge edge
 ```
 
-Initial docking edge.
+Initial dock edge.
 
 ### width
 
@@ -114,4 +114,4 @@ Whether dragging out to float is allowed.
 bool animated
 ```
 
-Whether dock animations involving this pane are enabled.
+Whether docking animations involving this pane are enabled.

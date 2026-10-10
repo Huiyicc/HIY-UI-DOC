@@ -24,7 +24,7 @@ void record(const std::string &text, uint32_t cursorPos, UndoActionType actionTy
 |---|---|
 | `actionType` | 影响合并策略 |
 
-合并规则，  - Typing: 500ms 内的连续输入合并为一条记录
+合并规则，- Typing: 500ms 内的连续输入合并为一条记录
 - Edit/Program: 每次独立记录
 
 ### undo

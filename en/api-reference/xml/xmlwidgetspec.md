@@ -18,7 +18,7 @@ Complete registration description of a custom XML component.
 const char * localName
 ```
 
-Local name within the module, without the namespace prefix.
+Local name within the module, without namespace prefix.
 
 ### itemAllowsChildren
 
@@ -26,7 +26,7 @@ Local name within the module, without the namespace prefix.
 bool itemAllowsChildren
 ```
 
-Whether an ItemList item may contain a component subtree.
+Whether ItemList items may contain component subtrees.
 
 ### resourceOnly
 
@@ -42,7 +42,7 @@ Declarative resource flag; the loader creates no UI object and the resource pre-
 const XmlAttributeSpec * topItemAttributes
 ```
 
-Attribute whitelist for ItemTree top-level items; when empty, top-level items use itemAttributes.
+Attribute whitelist for ItemTree top-level items; when empty, top-level uses itemAttributes.
 
 ### valueKind
 

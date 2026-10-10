@@ -10,7 +10,7 @@ title: "DockPane"
 
 Dock pane hosting user content.
 
-operator() configures content before mounting and hands the pane rvalue to Dock::operator() for mounting with the container. Mounted panes enter the layout through Dock::addPane(). A pane can be added and removed repeatedly. After removePane the content object stays under the Dock and hidden, and is shown again on the next addPane.
+operator() configures content before mounting and hands the pane rvalue to Dock::operator() to mount with the container. Mounted panes enter the layout through Dock::addPane(). A pane can go through addPane / removePane repeatedly, after removePane the content object stays under the Dock hidden and is shown again on the next addPane.
 
 **Inherits:** `hiyui::Container< DockPane >`
 
@@ -54,7 +54,7 @@ Creates the pane content container on a parent object.
 const DockPaneProps & props() const
 ```
 
-Returns the construction properties when not registered.
+Reads the construction properties when not registered.
 
 ### title
 
@@ -62,9 +62,9 @@ Returns the construction properties when not registered.
 DockPane & title(const char *text) &
 ```
 
-Sets the title, copying the text during the call.
+Sets the title, the text is copied during the call.
 
-This component; when unregistered only the pending properties are updated.
+This component, when unregistered only the pending properties are updated.
 
 ### closable
 
@@ -104,7 +104,7 @@ Returns the pane unique name, or the construction property value when unregister
 bool isFloating() const
 ```
 
-Returns whether the pane is floating; false when unregistered.
+Returns whether the pane is floating, false when unregistered.
 
 ### isShown
 
@@ -112,4 +112,4 @@ Returns whether the pane is floating; false when unregistered.
 bool isShown() const
 ```
 
-Returns whether the pane is shown; true when unregistered.
+Returns whether the pane is shown, true when unregistered.

@@ -8,7 +8,7 @@ title: "FlowBox"
 
 **Namespace:** `hiyui`
 
-Flow wrap layout container
+Wrapping flow layout container
 
 Uses the LVGL Flex Row Wrap layout and supports child width constraints.
 
@@ -32,7 +32,7 @@ Uses the LVGL Flex Row Wrap layout and supports child width constraints.
 FlowBox(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### FlowBox
 
@@ -40,7 +40,7 @@ Wrap an existing LVGL object
 FlowBox(FlowBoxProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -48,7 +48,7 @@ Construct from aggregated properties
 FlowBox & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL Flex Row Wrap container under a parent
+Creates the LVGL Flex Row Wrap container on a parent
 
 Uses the layout properties saved at construction.
 
@@ -58,7 +58,7 @@ Uses the layout properties saved at construction.
 FlowBox & init(lv_obj_t *parent, const FlowBoxProps &props) &
 ```
 
-Create the LVGL Flex Row Wrap container under a parent
+Creates the LVGL Flex Row Wrap container on a parent
 
 ### init
 
@@ -66,7 +66,7 @@ Create the LVGL Flex Row Wrap container under a parent
 FlowBox & init(Widget &parent) &
 ```
 
-Create the LVGL Flex Row Wrap container under a parent
+Creates the LVGL Flex Row Wrap container on a parent
 
 Uses the layout properties saved at construction.
 
@@ -76,7 +76,7 @@ Uses the layout properties saved at construction.
 FlowBox & init(Widget &parent, const FlowBoxProps &props) &
 ```
 
-Create the LVGL Flex Row Wrap container under a parent
+Creates the LVGL Flex Row Wrap container on a parent
 
 ### init
 
@@ -84,9 +84,9 @@ Create the LVGL Flex Row Wrap container under a parent
 FlowBox & init(Window &window) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
 
 ### init
 
@@ -94,6 +94,6 @@ Frameless windows mount into the content area below the title bar and menu bar. 
 FlowBox & init(Window &window, const FlowBoxProps &props) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.

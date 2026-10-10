@@ -10,7 +10,7 @@ title: "StyleSet"
 
 Multi-state style set
 
-Aggregates the Style of each interaction state; unset fields do not override existing styles.
+Aggregates Style objects for each interaction state, unset fields do not override existing styles.
 
 
 
@@ -35,7 +35,7 @@ Default state style
 Style hovered
 ```
 
-Hovered state style
+Hover state style
 
 ### pressed
 
@@ -51,7 +51,7 @@ Pressed state style
 Style focused
 ```
 
-Focused state style
+Focus state style
 
 ### checked
 
@@ -103,7 +103,7 @@ void applyTo(_lv_obj_t *obj) const
 
 Applies each state style to an LVGL object
 
-Each state style is bound to the corresponding LVGL state flag.
+Each state style binds to the corresponding LVGL state flag.
 
 
 Target LVGL object pointer
@@ -114,9 +114,9 @@ Target LVGL object pointer
 void applyColorsOnly(_lv_obj_t *obj, bool skipTextColor=false, bool skipBgColor=false) const
 ```
 
-Refreshes only color properties, bg_color / text_color / border_color
+Refreshes color properties only, bg_color / text_color / border_color
 
-Does not modify structural properties such as opacity, radius, padding and fontSize. Refreshes safely on theme switch without breaking custom styles such as variant or custom drawing.
+Does not modify structural properties such as opacity, radius, padding and fontSize. Used to refresh safely on theme switching without breaking custom styles such as variant or custom drawing.
 
 
-Target LVGL object When true, skips the text_color refresh; the user has explicitly overridden it When true, skips the bg_color refresh; the user has explicitly overridden it
+Target LVGL object When true, skips text_color refresh, the user has explicitly overridden it When true, skips bg_color refresh, the user has explicitly overridden it

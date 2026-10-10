@@ -8,7 +8,7 @@ title: "MenuProps"
 
 **Namespace:** `hiyui`
 
-Menu creation properties.
+Menu creation properties
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Menu creation properties.
 int width
 ```
 
-Menu width.
+Menu width
 
 ### height
 
@@ -26,7 +26,7 @@ Menu width.
 int height
 ```
 
-Menu height, HIYUI_AUTO = fit content.
+Menu height, HIYUI_AUTO = fit content
 
 ### itemHeight
 
@@ -34,7 +34,7 @@ Menu height, HIYUI_AUTO = fit content.
 int itemHeight
 ```
 
-Height of each item.
+Height of each item
 
 ### selectedIndex
 
@@ -42,7 +42,7 @@ Height of each item.
 int selectedIndex
 ```
 
-Initial selected leaf index.
+Initial selected leaf index
 
 ### indentPerLevel
 
@@ -50,7 +50,7 @@ Initial selected leaf index.
 int indentPerLevel
 ```
 
-Indent per submenu level.
+Indent per submenu level
 
 ### accordion
 
@@ -58,7 +58,7 @@ Indent per submenu level.
 bool accordion
 ```
 
-Accordion mode, collapses sibling items on expand.
+Accordion mode, expanding an item collapses its siblings
 
 ### iconFillOnSelected
 
@@ -66,7 +66,7 @@ Accordion mode, collapses sibling items on expand.
 bool iconFillOnSelected
 ```
 
-Icon fill changes from 0 to 1 when selected.
+Icon fill changes from 0 to 1 when selected
 
 ### bg
 
@@ -74,7 +74,7 @@ Icon fill changes from 0 to 1 when selected.
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme.
+Background color, HIYUI_DEFAULT = follow theme
 
 ### activeColor
 
@@ -82,7 +82,7 @@ Background color, HIYUI_DEFAULT = follow theme.
 uint32_t activeColor
 ```
 
-Selection indicator background color.
+Selection indicator background color
 
 ### activeTextColor
 
@@ -90,7 +90,7 @@ Selection indicator background color.
 uint32_t activeTextColor
 ```
 
-Selected item text color.
+Selected item text color
 
 ### hoverColor
 
@@ -98,7 +98,7 @@ Selected item text color.
 uint32_t hoverColor
 ```
 
-Hover highlight color.
+Hover highlight color
 
 ### textColor
 
@@ -106,7 +106,7 @@ Hover highlight color.
 uint32_t textColor
 ```
 
-Unselected item text color.
+Unselected item text color
 
 ### fontSize
 
@@ -114,7 +114,7 @@ Unselected item text color.
 int fontSize
 ```
 
-Font size, 0 = use the theme default.
+Font size, 0 = use the theme default
 
 ### iconSize
 
@@ -122,7 +122,7 @@ Font size, 0 = use the theme default.
 int iconSize
 ```
 
-Icon size.
+Icon size
 
 ### padding
 
@@ -130,7 +130,7 @@ Icon size.
 int padding
 ```
 
-Inner padding.
+Inner padding
 
 ### mode
 
@@ -138,7 +138,7 @@ Inner padding.
 MenuMode mode
 ```
 
-Initial display mode.
+Initial display mode
 
 ### collapsedWidth
 
@@ -146,7 +146,7 @@ Initial display mode.
 int collapsedWidth
 ```
 
-Narrow mode width, NarrowIcon.
+Narrow mode width, NarrowIcon
 
 ### narrowIconTextWidth
 
@@ -154,7 +154,7 @@ Narrow mode width, NarrowIcon.
 int narrowIconTextWidth
 ```
 
-NarrowIconText mode width.
+Medium mode width, NarrowIconText
 
 ### showToggleBtn
 
@@ -162,7 +162,7 @@ NarrowIconText mode width.
 bool showToggleBtn
 ```
 
-Whether to show the collapse/expand toggle button.
+Whether to show the collapse/expand toggle button
 
 ### toggleBtnPos
 
@@ -170,7 +170,7 @@ Whether to show the collapse/expand toggle button.
 ToggleBtnPos toggleBtnPos
 ```
 
-Toggle button position.
+Toggle button position
 
 ### toggleIcon
 
@@ -178,4 +178,4 @@ Toggle button position.
 uint32_t toggleIcon
 ```
 
-Toggle button icon codepoint, 0 = default arrow.
+Toggle button icon codepoint, 0 = default arrow

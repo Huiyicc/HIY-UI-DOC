@@ -8,4 +8,4 @@ title: "LayoutMetrics"
 
 **Namespace:** `hiyui`
 
-Current layout constraints, lengths in physical pixels; width/height are HIYUI_AUTO for content size, percentages for percent values.
+Current layout constraints; lengths are physical pixels; width/height are HIYUI_AUTO for content size and percentages for percent sizes.

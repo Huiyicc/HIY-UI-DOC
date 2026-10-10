@@ -8,7 +8,7 @@ title: "PopupPanelProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a PopupPanel
+Creation properties of the popup panel
 
 ## Public Members
 
@@ -82,7 +82,7 @@ Vertical offset, in theme logical pixels
 int padding
 ```
 
-Padding, in theme logical pixels
+Inner padding, in theme logical pixels
 
 ### bg
 
@@ -146,7 +146,7 @@ Whether to close on ancestor scroll
 bool animated
 ```
 
-Whether to enable the expand animation
+Whether the expand animation is enabled
 
 ### mode
 
@@ -154,4 +154,4 @@ Whether to enable the expand animation
 PopupMode mode
 ```
 
-Window uses Inline when no window manager is available or when close-on-outside-click is disabled.
+Window mode uses Inline when no window manager is available or close-on-outside-click is disabled.

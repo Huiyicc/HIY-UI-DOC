@@ -10,7 +10,7 @@ title: "TableRow"
 
 Table row data
 
-cells stores cell text content in column order. Rows with disabled=true cannot be selected.
+cells stores cell text in column order. Rows with disabled=true cannot be selected.
 
 ## Public Members
 
@@ -76,4 +76,4 @@ Nesting depth, computed internally
 std::function< int(Widget &, int)> expandedContent
 ```
 
-Expanded row embedded content callback. Returns the height of the created child objects
+Expanded content callback. Returns the height of the created child object

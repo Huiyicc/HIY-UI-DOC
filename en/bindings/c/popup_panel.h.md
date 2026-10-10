@@ -8,7 +8,7 @@ title: "popup_panel.h"
 
 Floating panel positioned relative to an anchor
 
-open takes an anchor and a content build callback, and handles positioning, outside-click close, ESC close, ancestor-scroll close, and the open animation. Child widgets created inside builder attach to the panel container and are destroyed on close.
+open takes an anchor and a content build callback and handles positioning, outside-click close, ESC close, ancestor-scroll close, and the open animation. Child components created inside builder attach to the panel container and are destroyed on close.
 
 ## Enums
 
@@ -47,7 +47,7 @@ Content build callback; panel is the panel content container
 HIYUI_API hiyui_popup_panel_t *HIYUI_CALL hiyui_popup_panel_create(const hiyui_popup_panel_props_t *props)
 ```
 
-Creates a floating panel; NULL props uses all defaults
+Creates a floating panel; a NULL props uses all defaults
 
 ### hiyui_popup_panel_open
 
@@ -55,7 +55,7 @@ Creates a floating panel; NULL props uses all defaults
 HIYUI_API void HIYUI_CALL hiyui_popup_panel_open(hiyui_popup_panel_t *pp, hiyui_widget_t *anchor, hiyui_popup_panel_build_fn builder, void *ud)
 ```
 
-Opens the panel; anchor is the positioning anchor
+Opens the popup; anchor is the positioning anchor
 
 ### hiyui_popup_panel_close
 
@@ -81,4 +81,4 @@ HIYUI_API void HIYUI_CALL hiyui_popup_panel_on_close(hiyui_popup_panel_t *pp, vo
 HIYUI_API void HIYUI_CALL hiyui_popup_panel_destroy(hiyui_popup_panel_t *pp)
 ```
 
-Destroys the panel; the handle is invalid afterwards
+Destroys the floating panel; the handle is unusable afterwards

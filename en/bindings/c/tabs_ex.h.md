@@ -8,7 +8,7 @@ title: "tabs_ex.h"
 
 Session tab card
 
-Session tab bar with connection state, close, rename, pin, horizontal scrolling, and drag reorder.
+A session tab bar with connection state, close, rename, pin, horizontal scrolling, and drag-to-reorder.
 
 ## Enums
 

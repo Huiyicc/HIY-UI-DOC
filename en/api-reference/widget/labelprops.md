@@ -18,7 +18,7 @@ Text label creation properties
 const char * text
 ```
 
-Display text, UTF-8 encoded
+Displayed text in UTF-8
 
 ### fontSize
 
@@ -26,7 +26,7 @@ Display text, UTF-8 encoded
 int fontSize
 ```
 
-Font size, 0 = use the theme default
+Font size. 0 = use the theme default
 
 ### textColor
 
@@ -34,7 +34,7 @@ Font size, 0 = use the theme default
 uint32_t textColor
 ```
 
-Text color, HIYUI_DEFAULT = follow theme
+Text color. HIYUI_DEFAULT = follow theme
 
 ### width
 
@@ -42,7 +42,7 @@ Text color, HIYUI_DEFAULT = follow theme
 int width
 ```
 
-Label width, HIYUI_AUTO = fit the text content
+Label width. HIYUI_AUTO = fit text content
 
 ### selectable
 
@@ -50,7 +50,7 @@ Label width, HIYUI_AUTO = fit the text content
 bool selectable
 ```
 
-Whether text selection and copy are allowed, off by default, effective only on the SDL desktop
+Whether text selection and copy is allowed. Off by default. Only effective on SDL desktop
 
 ### ellipsis
 
@@ -58,4 +58,4 @@ Whether text selection and copy are allowed, off by default, effective only on t
 bool ellipsis
 ```
 
-Truncates overflow to a single line with an ellipsis, requires a constrained width such as a fixed width, a percentage or flex fill
+Truncates a single line with an ellipsis when too long. Requires a constrained width such as fixed width, percentage or flex fill

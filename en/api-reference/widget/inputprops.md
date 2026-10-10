@@ -8,7 +8,7 @@ title: "InputProps"
 
 **Namespace:** `hiyui`
 
-Text input creation properties.
+Text input creation properties
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Text input creation properties.
 const char * text
 ```
 
-Initial text content, UTF-8 encoded.
+Initial text content, UTF-8 encoded
 
 ### placeholder
 
@@ -26,7 +26,7 @@ Initial text content, UTF-8 encoded.
 const char * placeholder
 ```
 
-Placeholder hint text.
+Placeholder hint text
 
 ### password
 
@@ -34,7 +34,7 @@ Placeholder hint text.
 bool password
 ```
 
-Password mode, displayed as •.
+Whether password mode is on, displayed as •
 
 ### maxLength
 
@@ -42,7 +42,7 @@ Password mode, displayed as •.
 int maxLength
 ```
 
-Maximum input length, 0 = unlimited.
+Maximum input length, 0 = unlimited
 
 ### width
 
@@ -50,7 +50,7 @@ Maximum input length, 0 = unlimited.
 int width
 ```
 
-Input width.
+Input width
 
 ### height
 
@@ -58,7 +58,7 @@ Input width.
 int height
 ```
 
-Input height, HIYUI_AUTO = fit content.
+Input height, HIYUI_AUTO = fit content
 
 ### multiline
 
@@ -66,7 +66,7 @@ Input height, HIYUI_AUTO = fit content.
 bool multiline
 ```
 
-Multi-line mode, false = single-line (default).
+Multi-line mode, false = single-line (default)
 
 ### horizontalScroll
 
@@ -74,7 +74,7 @@ Multi-line mode, false = single-line (default).
 bool horizontalScroll
 ```
 
-Enables the horizontal scrollbar in multi-line mode and disables automatic wrapping.
+Enables the horizontal scrollbar in multi-line mode, disables automatic wrapping
 
 ### bg
 
@@ -82,7 +82,7 @@ Enables the horizontal scrollbar in multi-line mode and disables automatic wrapp
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme.
+Background color, HIYUI_DEFAULT = follow theme
 
 ### textColor
 
@@ -90,7 +90,7 @@ Background color, HIYUI_DEFAULT = follow theme.
 uint32_t textColor
 ```
 
-Text color, HIYUI_DEFAULT = follow theme.
+Text color, HIYUI_DEFAULT = follow theme
 
 ### placeholderColor
 
@@ -98,7 +98,7 @@ Text color, HIYUI_DEFAULT = follow theme.
 uint32_t placeholderColor
 ```
 
-Placeholder text color.
+Placeholder text color
 
 ### fontSize
 
@@ -106,7 +106,7 @@ Placeholder text color.
 int fontSize
 ```
 
-Font size, 0 = use the theme default.
+Font size, 0 = use the theme default
 
 ### radius
 
@@ -114,7 +114,7 @@ Font size, 0 = use the theme default.
 uint32_t radius
 ```
 
-Corner radius, HIYUI_DEFAULT = follow theme.
+Corner radius, HIYUI_DEFAULT = follow theme
 
 ### borderless
 
@@ -122,7 +122,7 @@ Corner radius, HIYUI_DEFAULT = follow theme.
 bool borderless
 ```
 
-Borderless mode, transparent background without border including the focused state, blending into the parent container.
+Borderless mode, transparent background without border including the focused state, blends into the parent container
 
 ### maxUndoSteps
 
@@ -130,7 +130,7 @@ Borderless mode, transparent background without border including the focused sta
 int maxUndoSteps
 ```
 
-Maximum undo/redo steps, 0 = disable undo.
+Maximum undo/redo steps, 0 = disable undo
 
 ### multiCursor
 
@@ -138,7 +138,7 @@ Maximum undo/redo steps, 0 = disable undo.
 bool multiCursor
 ```
 
-Allows additional selections and multi-cursor input, desktop backends only.
+Allows additional selections and multi-cursor input, desktop backends only
 
 ### readOnly
 
@@ -146,4 +146,4 @@ Allows additional selections and multi-cursor input, desktop backends only.
 bool readOnly
 ```
 
-Disables user editing; selection and copy remain available.
+Disables user editing, selection and copy remain available.

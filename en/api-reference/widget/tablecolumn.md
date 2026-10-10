@@ -34,7 +34,7 @@ Data field identifier
 int width
 ```
 
-Column width, 0 = proportional
+Column width. 0 = distributed proportionally
 
 ### minWidth
 
@@ -66,7 +66,7 @@ Header icon codepoint
 ColumnFixed fixed
 ```
 
-Fixed column side
+Fixed column direction
 
 ### sorter
 
@@ -74,7 +74,7 @@ Fixed column side
 std::function< int(int, int)> sorter
 ```
 
-Sort comparison: (rowIndexA, rowIndexB) -&gt; int (&lt;0, 0, &gt;0)
+Sort comparison function: (rowIndexA, rowIndexB) -&gt; int (&lt;0, 0, &gt;0)
 
 ### colSpan
 
@@ -82,7 +82,7 @@ Sort comparison: (rowIndexA, rowIndexB) -&gt; int (&lt;0, 0, &gt;0)
 int colSpan
 ```
 
-Header column span
+Header column span count
 
 ### editorType
 
@@ -98,7 +98,7 @@ Editor type
 std::vector< std::string > dropdownOptions
 ```
 
-Dropdown option list, used when editorType=Dropdown.
+Dropdown option list. Used when editorType=Dropdown.
 
 ### resizable
 
@@ -114,7 +114,7 @@ Column width adjustable by dragging
 TableEditorFactory editorFactory
 ```
 
-Custom editor factory. Builds widgets inside the host and updates values through the session.
+Custom editor factory. Builds components inside host and updates values through the session.
 
 ### customRender
 
@@ -130,4 +130,4 @@ Custom cell render callback
 std::optional< LocalizedText > localizedTitle
 ```
 
-When set it overrides the original text and updates on language switch. The description is copied when passed to the widget.
+Overrides the original text and updates on language switch. The description is copied when passed to the widget.

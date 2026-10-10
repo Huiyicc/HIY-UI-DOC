@@ -10,7 +10,7 @@ title: "TabsExItem"
 
 Session tab item configuration.
 
-When `title` is empty, `host` is used. A nonzero `iconCodepoint` takes precedence over `iconSrc`. `data` binds an external session object index.
+When `title` is empty `host` is used, a non-zero `iconCodepoint` takes precedence over `iconSrc`. `data` binds an external session object index.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ When `title` is empty, `host` is used. A nonzero `iconCodepoint` takes precedenc
 const char * title
 ```
 
-Custom title; host is used when empty.
+Custom title, host is used when null.
 
 ### host
 
@@ -44,7 +44,7 @@ Material Symbols icon codepoint, 0 = no icon.
 const void * iconSrc
 ```
 
-Image path is copied on set; the descriptor and pixels are borrowed until the tab item is removed or replaced.
+Image path is copied when set, the descriptor and its pixels are borrowed until the tab item is removed or replaced.
 
 ### iconStyle
 
@@ -76,7 +76,7 @@ Whether to show the connection status dot.
 bool closable
 ```
 
-Whether closing is allowed; the close control is shown only on hover/active.
+Whether closing is allowed, the close control is shown only on hover/active.
 
 ### pinned
 
@@ -100,4 +100,4 @@ Whether activation and dragging are disabled.
 int data
 ```
 
-User data.
+User bound data.

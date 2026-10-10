@@ -8,9 +8,9 @@ title: "XmlReloadHost"
 
 **Namespace:** `hiyui`
 
-Manages a reloadable XML layout under a fixed parent as whole-tree transactions.
+Manages reloadable XML layouts as whole-tree transactions under a fixed parent.
 
-The host owns the currently committed XML root tree. Every load is forced into strict mode; on failure the candidate tree is destroyed and the current tree is kept, on success the old tree is destroyed. All loads share the `XmlContext` passed at construction, and all operations must be called on the LVGL/Hiy-UI UI thread.
+The host owns the currently committed XML root tree. Every load uses strict mode; on failure the candidate tree is destroyed and the current tree kept, on success the old tree is destroyed. All loads share the `XmlContext` passed at construction, and all operations must run on the LVGL/Hiy-UI UI thread.
 
 ## Public Methods
 
@@ -20,7 +20,7 @@ The host owns the currently committed XML root tree. Every load is forced into s
 bool reloadFromFile(const char *path, XmlLoadOptions options={})
 ```
 
-Builds a candidate tree from a file synchronously; returns true when committed successfully.
+Builds a candidate tree from a file synchronously; returns true when the commit succeeds.
 
 ### reloadFromString
 
@@ -28,7 +28,7 @@ Builds a candidate tree from a file synchronously; returns true when committed s
 bool reloadFromString(std::string_view xml, XmlLoadOptions options={})
 ```
 
-Builds a candidate tree from an in-memory string synchronously; returns true when committed successfully.
+Builds a candidate tree from an in-memory string synchronously; returns true when the commit succeeds.
 
 ### reloadFromReader
 
@@ -36,9 +36,9 @@ Builds a candidate tree from an in-memory string synchronously; returns true whe
 bool reloadFromReader(XmlReadCallback reader, void *userData=nullptr, XmlLoadOptions options={})
 ```
 
-Builds a candidate tree from a reader synchronously; returns true when committed successfully.
+Builds a candidate tree from a reader synchronously; returns true when the commit succeeds.
 
-reader and userData are used only during the call; opening and closing the resource is managed by the caller.
+reader and userData are used only during the call; the caller manages opening and closing the resource.
 
 ### layout
 
@@ -46,7 +46,7 @@ reader and userData are used only during the call; opening and closing the resou
 const XmlLayout & layout() const noexcept
 ```
 
-Returns the currently committed layout; an empty layout when no successful layout exists.
+Returns the currently committed layout; an empty layout when none was committed.
 
 ### get
 
@@ -54,7 +54,7 @@ Returns the currently committed layout; an empty layout when no successful layou
 Ref< T > get(const char *id) const
 ```
 
-Gets a component reference in the current layout by ID; old references become invalid after a successful replacement or reset.
+Gets a component reference by ID in the current layout; old references become invalid after a successful replacement or reset.
 
 ### getRaw
 
@@ -62,7 +62,7 @@ Gets a component reference in the current layout by ID; old references become in
 lv_obj_t * getRaw(const char *id) const
 ```
 
-Gets the underlying object of the current layout by ID; old pointers become invalid after a successful replacement or reset.
+Gets the underlying object by ID in the current layout; old pointers become invalid after a successful replacement or reset.
 
 ### status
 
@@ -78,7 +78,7 @@ Returns the status of the most recent load attempt.
 const std::vector< XmlDiagnostic > & diagnostics() const
 ```
 
-Returns the diagnostics of the most recent load; the reference becomes invalid after the next load or reset.
+Returns the most recent load diagnostics; the reference becomes invalid after the next load or reset.
 
 ### sourceId
 
@@ -110,7 +110,7 @@ Returns the context shared by all loads.
 void reset() noexcept
 ```
 
-Destroys the current root tree and clears the most recent load result; the parent and context are kept.
+Destroys the current root tree and clears the most recent load result, keeping the parent and context.
 
 ### operator bool
 
@@ -118,4 +118,4 @@ Destroys the current root tree and clears the most recent load result; the paren
 operator bool() const
 ```
 
-Returns whether a valid committed layout exists.
+Whether a valid committed layout exists.

@@ -10,7 +10,7 @@ title: "RichDocument"
 
 Rich text document
 
-Internal coordinates are UTF-8 byte offsets. `\n` is the block separator, and an inline object occupies 3 bytes (U+FFFC). All edit operations enter the undo history.
+Internal coordinates are UTF-8 byte offsets. `\n` is the block separator and an inline object occupies 3 bytes (U+FFFC). All edit operations enter the undo history.
 
 ## Public Methods
 
@@ -36,7 +36,7 @@ Number of code points; each inline object counts as 1
 std::string plainText() const
 ```
 
-Plain text with inline objects removed; block separators are output as `\n`
+Plain text; inline objects are removed and block separators are output as `\n`
 
 ### textBytes
 
@@ -52,7 +52,7 @@ Document byte buffer; the pointer is valid until the next edit
 void insertText(int pos, const char *utf8, const RichCharFormat &fmt)
 ```
 
-Inserts text; `\n` in the text creates block separators, and U+FFFC is ignored
+Inserts text; `\n` in the text creates a block separator and U+FFFC is ignored
 
 ### insertObject
 
@@ -68,7 +68,7 @@ Inserts an inline object; ownership of the payload's owned image transfers to th
 RichCharFormat charFormatAt(int pos) const
 ```
 
-Format of the character to the left of the position, i.e. the format inherited by new input; returns the default format for an empty document
+Format of the character to the left of the position, which new input inherits; returns the default format for an empty document
 
 ### setBlockFormat
 
@@ -76,7 +76,7 @@ Format of the character to the left of the position, i.e. the format inherited b
 void setBlockFormat(int pos, int len, const RichBlockFormat &fmt)
 ```
 
-Sets the format of blocks intersecting [pos, pos+len); when len is 0, applies to the block containing pos
+Sets the format of blocks intersecting [pos, pos+len); with len 0 it applies to the block containing pos
 
 ### fragmentIndexAtByte
 
@@ -84,7 +84,7 @@ Sets the format of blocks intersecting [pos, pos+len); when len is 0, applies to
 int fragmentIndexAtByte(int pos) const
 ```
 
-Index of the fragment covering byte pos; returns the last fragment when pos equals the document length, and -1 for an empty document
+Index of the fragment covering byte pos; when pos equals the document length returns the last fragment, and -1 for an empty document
 
 ### beginEditBlock
 
@@ -108,7 +108,7 @@ When false, this edit block does not merge into adjacent typing undo steps
 bool undo(int *cursorPos)
 ```
 
-Outputs the suggested cursor byte position after undo, may be null
+Outputs the suggested cursor byte position after undo; may be null
 
 ### redo
 
@@ -116,4 +116,4 @@ Outputs the suggested cursor byte position after undo, may be null
 bool redo(int *cursorPos)
 ```
 
-Outputs the suggested cursor byte position after redo, may be null
+Outputs the suggested cursor byte position after redo; may be null

@@ -48,7 +48,7 @@ Bound event code
 uint32_t dispatchDepth
 ```
 
-invoke nesting depth; greater than 0 means dispatching
+Nested invoke depth; greater than 0 while dispatching
 
 ### pendingDelete
 
@@ -68,4 +68,4 @@ static bool hasBinding(lv_obj_t *obj, lv_event_code_t code)
 
 Queries whether a binding with the given event code exists on the object
 
-Descriptors already unbound but still being visited during dispatch are not counted.
+Descriptors already unbound but still iterated during dispatch are not counted.

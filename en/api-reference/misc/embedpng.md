@@ -10,7 +10,7 @@ title: "EmbedPng"
 
 Embedded PNG resource descriptor
 
-The image descriptor references the embed array. The array lifetime must cover components referencing this image.
+The image descriptor references the embed array. The array lifetime must cover the component referencing the image.
 
 ## Public Methods
 

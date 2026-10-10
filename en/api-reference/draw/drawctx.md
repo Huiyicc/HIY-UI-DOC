@@ -8,9 +8,9 @@ title: "DrawCtx"
 
 **Namespace:** `hiyui`
 
-Drawing context wrapping drawing operations on an LVGL layer
+Draw context wrapping drawing operations on an LVGL layer
 
-Holds a _lv_layer_t pointer and wraps LVGL low-level drawing APIs into an object-oriented interface. Typically used inside custom draw callbacks.
+Holds a _lv_layer_t pointer and wraps the low-level LVGL drawing API as an object-oriented interface. Typically used inside custom draw callbacks.
 
 ## 基础图形
 
@@ -92,7 +92,7 @@ Line width in pixels
 void drawLine(Point p1, Point p2, Color c, int width, bool roundStart, bool roundEnd)
 ```
 
-Draws a straight line with independently rounded endpoints.
+Draws a straight line with independently rounded or flat ends.
 
 ### drawLine
 
@@ -100,7 +100,7 @@ Draws a straight line with independently rounded endpoints.
 void drawLine(float x1, float y1, float x2, float y2, Color c, int width, bool roundStart, bool roundEnd)
 ```
 
-Draws a line using floating-point physical pixel coordinates, preserving sub-pixel endpoints.
+Draws a straight line from floating point coordinates in physical pixels, preserving subpixel endpoints.
 
 ## 圆弧
 
@@ -112,7 +112,7 @@ void drawArc(Point center, int r, int startAngle, int endAngle, Color c, int wid
 
 Draws an arc
 
-Radius in pixels Start angle in degrees; 0 = the horizontal direction to the right End angle in degrees, clockwise Arc line width in pixels
+Radius in pixels Start angle in degrees; 0 = horizontal right End angle in degrees, clockwise Arc stroke width in pixels
 
 ### drawArcRounded
 
@@ -156,7 +156,7 @@ void setOpacity(uint8_t opa)
 
 Sets the global opacity for subsequent drawing
 
-Opacity [0, 255]; 0 = fully transparent, 255 = fully opaque
+Opacity in [0, 255]; 0 = fully transparent, 255 = fully opaque
 
 ## 文字
 
@@ -168,7 +168,7 @@ void drawText(const char *text, Point pos)
 
 Draws text
 
-UTF-8 encoded text content Coordinate of the text top-left corner
+UTF-8 encoded text Top-left coordinate of the text
 
 ### drawText
 
@@ -188,7 +188,7 @@ Size measureText(const char *text, int fontSize, int maxWidth=0) const
 
 Measures UTF-8 text and returns the size in physical pixels.
 
-Font size in physical pixels, must be greater than 0. Wrap width in physical pixels; 0 means unlimited. Returns a zero size for a null pointer, non-positive font size, or negative width.
+Font size in physical pixels, must be greater than 0. Wrap width in physical pixels; 0 means no limit. Returns a zero size for a null pointer, a non-positive font size, or a negative width.
 
 ## 图像
 
@@ -200,7 +200,7 @@ void drawImage(const lv_image_dsc_t *src, Rect area, Color recolor)
 
 Draws an lv_image_dsc_t bitmap with recoloring
 
-Image descriptor pointer, such as the return value of FontIcon::render Drawing area; the image is centered within it Recolor color
+Image descriptor pointer, such as the return value of FontIcon::render Draw area; the image is centered within it Recolor color
 
 ### drawImage
 
@@ -208,7 +208,7 @@ Image descriptor pointer, such as the return value of FontIcon::render Drawing a
 void drawImage(const ImageBuffer &src, Rect area)
 ```
 
-Draws the image centered in the area at its original pixel size. Use inside a display refresh callback; copies a snapshot of the resource, so the source resource may be released after the call returns.
+Draws an image centered in the area at its original pixel size. For use inside a display refresh callback; copies a snapshot of the resource, so the source resource may be freed after the call returns.
 
 ### drawIcon
 
@@ -216,7 +216,7 @@ Draws the image centered in the area at its original pixel size. Use inside a di
 void drawIcon(uint32_t codepoint, Rect area, Color color, int size, const FontIconStyle &style={})
 ```
 
-Draws a font icon; size is in physical pixels; nothing is drawn when the font is uninitialized or the codepoint does not exist.
+Draws a font icon; size is in physical pixels. Nothing is drawn when the font is uninitialized or the codepoint is missing.
 
 ## Public Methods
 
@@ -234,7 +234,7 @@ Restores the clip area from when the draw callback was entered; the context must
 DrawCtx(_lv_layer_t *layer)
 ```
 
-Constructs a drawing context
+Constructs a draw context
 
 LVGL layer pointer, provided by the draw event callback
 
@@ -244,6 +244,6 @@ LVGL layer pointer, provided by the draw event callback
 DrawCtx(_lv_layer_t *layer, int offsetX, int offsetY)
 ```
 
-Constructs a drawing context with a coordinate offset
+Constructs a draw context with a coordinate offset
 
 Absolute X coordinate of the object Absolute Y coordinate of the object

@@ -10,6 +10,6 @@ title: "EventCallback"
 
 Callback wrapper taking an Event&amp; parameter
 
-Callable type with signature void(Event&amp;) Parameterless version of Callback
+Callable type with signature void(Event&amp;)
 
 **Inherits:** `hiyui::EventBinding`

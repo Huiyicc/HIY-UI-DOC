@@ -8,7 +8,7 @@ title: "PaginationState"
 
 **Namespace:** `hiyui`
 
-Pagination runtime state, lifetime follows the LVGL object
+Pagination runtime state, lifetime bound to the LVGL object
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Points to the host lv_obj_t
 lv_obj_t * scrollArea
 ```
 
-Clip area, the display window
+Clip area, the visible window
 
 ### strip
 
@@ -34,7 +34,7 @@ Clip area, the display window
 lv_obj_t * strip
 ```
 
-Number strip, parent of all page buttons
+Number strip, parent container of all page number buttons
 
 ### highlight
 
@@ -42,7 +42,7 @@ Number strip, parent of all page buttons
 lv_obj_t * highlight
 ```
 
-FLOATING highlight frame, fixed at the center
+FLOATING highlight box, fixed at the center
 
 ### animScroll
 
@@ -58,7 +58,7 @@ Strip scroll animation
 int scrollX
 ```
 
-Current strip X offset
+Current X offset of the strip
 
 ### maxVisible
 
@@ -66,4 +66,4 @@ Current strip X offset
 int maxVisible
 ```
 
-Button count inside the visible window
+Number of buttons in the visible window

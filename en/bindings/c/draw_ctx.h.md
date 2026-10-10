@@ -6,7 +6,7 @@ title: "draw_ctx.h"
 
 **Header:** `#include <hiyui/c/draw_ctx.h>`
 
-Custom draw context facade mirroring the public methods of hiyui::DrawCtx
+Custom draw context facade mirroring the hiyui::DrawCtx public methods
 
 hiyui_draw_ctx_t is an opaque handle passed through by the wrapper only inside custom draw callbacks such as Table customRender. It cannot be constructed on the C side. Colors are uniformly uint32_t in 0xRRGGBB.
 
@@ -50,7 +50,7 @@ Strokes a rounded rectangle.
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_fill_gradient(hiyui_draw_ctx_t *ctx, hiyui_rect_t r, uint32_t from, uint32_t to, int vertical)
 ```
 
-Fills a rectangle with a linear gradient, non-zero vertical means vertical direction.
+Fills a rectangle with a linear gradient. A non-zero vertical selects the vertical direction.
 
 ### hiyui_draw_ctx_fill_gradient_round_rect
 
@@ -90,7 +90,7 @@ Draws a line with independently rounded ends.
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_line_precise(hiyui_draw_ctx_t *ctx, float x1, float y1, float x2, float y2, uint32_t color, int width, int round_start, int round_end)
 ```
 
-Draws a line using floating-point physical pixel coordinates, preserving sub-pixel endpoints.
+Draws a line using floating-point physical pixel coordinates, preserving subpixel endpoints.
 
 ### hiyui_draw_ctx_draw_arc
 
@@ -98,7 +98,7 @@ Draws a line using floating-point physical pixel coordinates, preserving sub-pix
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_arc(hiyui_draw_ctx_t *ctx, hiyui_point_t center, int r, int start_angle, int end_angle, uint32_t color, int width)
 ```
 
-Draws an arc, angles are in degrees.
+Draws an arc; angles are in degrees.
 
 ### hiyui_draw_ctx_draw_arc_rounded
 
@@ -106,7 +106,7 @@ Draws an arc, angles are in degrees.
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_arc_rounded(hiyui_draw_ctx_t *ctx, hiyui_point_t center, int r, int start_angle, int end_angle, uint32_t color, int width)
 ```
 
-Draws an arc with rounded ends.
+Draws an arc with rounded endpoints.
 
 ### hiyui_draw_ctx_push_clip
 
@@ -122,7 +122,7 @@ Pushes a clip region.
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_pop_clip(hiyui_draw_ctx_t *ctx)
 ```
 
-Pops a clip region.
+Pops the clip region.
 
 ### hiyui_draw_ctx_set_opacity
 
@@ -146,7 +146,7 @@ Draws text.
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_text_ex(hiyui_draw_ctx_t *ctx, const char *text, hiyui_rect_t area, uint32_t color, int font_size, int center_h, int center_v)
 ```
 
-Draws styled text, non-zero center_h/center_v centers horizontally and vertically.
+Draws styled text. Non-zero center_h/center_v centers horizontally/vertically.
 
 ### hiyui_draw_ctx_draw_image
 
@@ -154,7 +154,7 @@ Draws styled text, non-zero center_h/center_v centers horizontally and verticall
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_image(hiyui_draw_ctx_t *ctx, const void *src, hiyui_rect_t area, uint32_t recolor)
 ```
 
-Draws an image, recolor is the tint color.
+Draws an image; recolor is the tint color.
 
 ### hiyui_draw_ctx_measure_text
 
@@ -162,9 +162,9 @@ Draws an image, recolor is the tint color.
 HIYUI_API int HIYUI_CALL hiyui_draw_ctx_measure_text(hiyui_draw_ctx_t *ctx, const char *text, int font_size, int max_width, hiyui_size_t *out)
 ```
 
-Measures UTF-8 text, font size and width are physical pixels, and max_width 0 means unlimited width.
+Measures UTF-8 text. Font size and width are physical pixels. A max_width of 0 imposes no width limit.
 
-Returns 1 on success. Returns 0 for NULL arguments, non-positive font size or negative width, and clears non-null output.
+Returns 1 on success. Returns 0 on NULL arguments, non-positive font size, or negative width, with non-NULL output zeroed.
 
 ### hiyui_draw_ctx_draw_image_buffer
 
@@ -172,7 +172,7 @@ Returns 1 on success. Returns 0 for NULL arguments, non-positive font size or ne
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_image_buffer(hiyui_draw_ctx_t *ctx, const hiyui_image_buffer_t *image, hiyui_rect_t area)
 ```
 
-Draws an image snapshot centered, image may be freed after the call returns. Only for use in display refresh callbacks.
+Draws an image snapshot centered. image may be released after the call returns. For use only in display refresh callbacks.
 
 ### hiyui_draw_ctx_draw_icon
 
@@ -180,4 +180,4 @@ Draws an image snapshot centered, image may be freed after the call returns. Onl
 HIYUI_API void HIYUI_CALL hiyui_draw_ctx_draw_icon(hiyui_draw_ctx_t *ctx, uint32_t codepoint, hiyui_rect_t area, uint32_t color, int size, const hiyui_font_icon_style_t *style)
 ```
 
-Draws a font icon, size is in physical pixels, and a NULL style uses the default icon style.
+Draws a font icon. size is in physical pixels. A NULL style uses the default icon style.

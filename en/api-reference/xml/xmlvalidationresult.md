@@ -8,4 +8,4 @@ title: "XmlValidationResult"
 
 **Namespace:** `hiyui`
 
-Result of XML validation that creates no UI objects.
+XML validation result that creates no UI objects.

@@ -8,9 +8,9 @@ title: "pal::DisplayBackend"
 
 **Namespace:** `hiyui`
 
-Display backend interface encapsulating platform window creation, destruction, and property setting.
+Display backend interface encapsulating platform-specific window creation, destruction, and property setting
 
-Implemented by each platform. Obtain the current platform instance through pal::display().
+Implemented by each platform; obtain the current platform instance through pal::display().
 
 ## Public Members
 
@@ -20,7 +20,7 @@ Implemented by each platform. Obtain the current platform instance through pal::
 _lv_display_t *(* create
 ```
 
-Creates a display object of the given size.
+Creates a display object of the given size
 
 ### destroy
 
@@ -28,7 +28,7 @@ Creates a display object of the given size.
 void(* destroy
 ```
 
-Destroys the display object and releases resources.
+Destroys the display object and releases resources
 
 ### setTitle
 
@@ -36,4 +36,4 @@ Destroys the display object and releases resources.
 void(* setTitle
 ```
 
-Sets the window title, UTF-8.
+Sets the window title, UTF-8

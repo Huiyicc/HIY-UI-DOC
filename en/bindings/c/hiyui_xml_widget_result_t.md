@@ -22,4 +22,4 @@ The single direct child widget created by the factory.
 hiyui_widget_t * child_host
 ```
 
-Optional content host. Must be obj or a descendant of it.
+Optional content host; must be obj or a descendant of obj.

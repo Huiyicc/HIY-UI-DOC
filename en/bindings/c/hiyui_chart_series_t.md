@@ -62,4 +62,4 @@ uint8_t area_opacity
 const hiyui_localized_text_t * localized_name
 ```
 
-Copies the translation description on call and overrides the plain text. Null or invalid descriptions use the plain text.
+The translation description is copied when called and overrides the plain text; a null or invalid description falls back to the plain text.

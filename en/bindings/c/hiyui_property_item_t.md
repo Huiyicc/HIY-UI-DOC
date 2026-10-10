@@ -6,7 +6,7 @@ title: "hiyui_property_item_t"
 
 **Header:** `#include <hiyui/c/property_grid.h>`
 
-Initialize with item_init; the tree must be acyclic and IDs non-zero and unique across the whole tree. user_data is owned by the caller and must stay alive until the property is removed and related callbacks finish. When has_default_value is TRUE, default_value is copied, including an EMPTY default. TUPLE uses a non-empty sequence of scalar leaf items, does not support nested TUPLE or empty tuple values, and structural changes require update on the parent property. A TUPLE with an EMPTY value aggregates from the children, and an explicit tuple value overrides child values. Defaults work the same way, and aggregation requires every item to have a default. A mixed tuple still requires a representative value satisfying each child constraint. TUPLE children share draft, pending, and conflict states; commit, change, and status callbacks use the parent ID and the full tuple.
+Initialize with item_init. The tree must be acyclic, and IDs must be non-zero and unique across the tree. user_data is owned by the caller and must stay alive until the property is removed and related callbacks finish. When has_default_value is TRUE, default_value is copied, including an EMPTY default. TUPLE uses a non-empty sequence of scalar leaf items. Nested TUPLE and empty tuple values are not supported; structural changes must update the parent property. A TUPLE EMPTY value is aggregated from its children; an explicit tuple value overrides the child values. The same applies to defaults, and aggregation requires every child to have a default. A mixed tuple still requires a representative value satisfying each child constraint. TUPLE children share draft, pending, and conflict states. Commit, change, and status callbacks use the parent ID and the full tuple.
 
 ## Public Members
 
@@ -136,7 +136,7 @@ hiyui_bool_t modified
 const hiyui_localized_text_t * localized_name
 ```
 
-When non-NULL, the description is copied and overrides name, used for display, filtering, and sorting.
+When non-NULL, copies the description and overrides name for display, filtering, and sorting.
 
 ### localized_description
 
@@ -144,4 +144,4 @@ When non-NULL, the description is copied and overrides name, used for display, f
 const hiyui_localized_text_t * localized_description
 ```
 
-When non-NULL, the description is copied and overrides description, used for the description text and filtering.
+When non-NULL, copies the description and overrides description for the description text and filtering.

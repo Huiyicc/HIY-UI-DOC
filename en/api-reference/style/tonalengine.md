@@ -10,7 +10,7 @@ title: "TonalEngine"
 
 Tonal mapping engine base class
 
-Subclasses implement extracting hue parameters from a seed color and generating RGB at a given tone and chroma.
+Subclasses implement extracting hue parameters from a seed color and generating RGB for a given tone/chroma.
 
 ## Public Methods
 
@@ -30,9 +30,9 @@ Seed color in 0xRRGGBB format
 virtual uint32_t tonalColor(double chroma, int tone) const =0
 ```
 
-Generates a color at the given tone under the current hue
+Generates a color of the given tone at the current hue
 
-Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100] A 0xRRGGBB value
+Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100]
 
 ### tonalColorWithHueShift
 
@@ -40,6 +40,6 @@ Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100] A 0x
 virtual uint32_t tonalColorWithHueShift(int hueDelta, double chroma, int tone) const =0
 ```
 
-Generates a color after shifting the hue, used for Tertiary and similar
+Generates a color after shifting the hue, for Tertiary and similar
 
-Hue shift in degrees Chroma ratio [0.0, 1.0] Tone [0, 100] A 0xRRGGBB value
+Hue shift in degrees Chroma ratio [0.0, 1.0] Tone [0, 100]

@@ -112,7 +112,7 @@ typedef struct hiyui_diagnostics_snapshot_s hiyui_diagnostics_snapshot_t
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_config_init(hiyui_diagnostics_config_t *config)
 ```
 
-NULL is a no-op; fills in the same defaults as the C++ Config.
+NULL is a no-op. Fills in the same defaults as the C++ Config.
 
 ### hiyui_diagnostics_available
 
@@ -132,7 +132,7 @@ HIYUI_API int HIYUI_CALL hiyui_diagnostics_recording(void)
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_start(const hiyui_diagnostics_config_t *config)
 ```
 
-Starts a new capture on the UI thread; NULL uses the default config, capturing returns BUSY, and failure keeps the old recording.
+Starts a new collection on the UI thread. NULL uses the default configuration, an ongoing collection returns BUSY, and a failure keeps the previous records.
 
 ### hiyui_diagnostics_stop
 
@@ -140,7 +140,7 @@ Starts a new capture on the UI thread; NULL uses the default config, capturing r
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_stop(void)
 ```
 
-Stops spans, frames, and system sampling on the UI thread and keeps the results; the resource snapshot still reflects current state, and repeated calls are no-ops.
+Stops spans, frames, and system sampling on the UI thread and keeps the results. The resource snapshot still reflects the current state; repeated calls are no-ops.
 
 ### hiyui_diagnostics_clear
 
@@ -148,7 +148,7 @@ Stops spans, frames, and system sampling on the UI thread and keeps the results;
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_clear(void)
 ```
 
-Stops and clears the recording on the UI thread without destroying observed objects.
+Stops on the UI thread and clears records without destroying observed objects.
 
 ### hiyui_diagnostics_show_panel
 
@@ -156,7 +156,7 @@ Stops and clears the recording on the UI thread without destroying observed obje
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_show_panel(hiyui_widget_t *owner)
 ```
 
-Opens the singleton panel on the UI thread; owner must not be NULL, and closing the panel does not stop the capture.
+Opens the singleton panel on the UI thread. owner must not be NULL, and closing the panel does not stop collection.
 
 ### hiyui_diagnostics_hide_panel
 
@@ -164,7 +164,7 @@ Opens the singleton panel on the UI thread; owner must not be NULL, and closing 
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_hide_panel(void)
 ```
 
-Closes the panel on the UI thread; repeated calls are no-ops and the capture is not stopped.
+Closes the panel on the UI thread. Repeated calls are no-ops and collection is not stopped.
 
 ### hiyui_diagnostics_snapshot_create
 
@@ -172,7 +172,7 @@ Closes the panel on the UI thread; repeated calls are no-ops and the capture is 
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_snapshot_create(int include_objects, hiyui_diagnostics_snapshot_t **out)
 ```
 
-Creates a self-contained snapshot on the UI thread; a non-zero include_objects reads resources at call time, and failure sets *out to NULL. On success the caller owns it and must free it with snapshot_destroy; it must not run concurrently with destroy or JSON reads of the same snapshot.
+Creates a self-contained snapshot on the UI thread. A non-zero include_objects reads resources at call time. On failure, *out is set to NULL. The caller owns it on success and must release it with snapshot_destroy. Must not run concurrently with destroying or reading the JSON of the same snapshot.
 
 ### hiyui_diagnostics_snapshot_destroy
 
@@ -180,7 +180,7 @@ Creates a self-contained snapshot on the UI thread; a non-zero include_objects r
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_snapshot_destroy(hiyui_diagnostics_snapshot_t *snapshot)
 ```
 
-Frees the snapshot and its borrowed text; NULL is a no-op.
+Releases the snapshot and its borrowed text. NULL is a no-op.
 
 ### hiyui_diagnostics_snapshot_json
 
@@ -188,7 +188,7 @@ Frees the snapshot and its borrowed text; NULL is a no-op.
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_snapshot_json(hiyui_diagnostics_snapshot_t *snapshot, const char **text, size_t *size)
 ```
 
-Returns the snapshot-owned UTF-8 JSON; size excludes the terminator, the text stays valid until the snapshot is destroyed, and failure clears the outputs.
+Returns the UTF-8 JSON owned by the snapshot. size excludes the terminator, and the text stays valid until the snapshot is destroyed. On failure the outputs are cleared.
 
 ### hiyui_diagnostics_snapshot_export
 
@@ -196,7 +196,7 @@ Returns the snapshot-owned UTF-8 JSON; size excludes the terminator, the text st
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_snapshot_export(const hiyui_diagnostics_snapshot_t *snapshot, const char *path)
 ```
 
-Writes to a UTF-8 path and overwrites an existing file; NULL arguments or a write failure returns IO_ERROR.
+Writes to a UTF-8 path and overwrites an existing file. Returns IO_ERROR on NULL arguments or a failed write.
 
 ### hiyui_diagnostics_scope_begin
 
@@ -204,7 +204,7 @@ Writes to a UTF-8 path and overwrites an existing file; NULL arguments or a writ
 HIYUI_API hiyui_diagnostics_status_t HIYUI_CALL hiyui_diagnostics_scope_begin(hiyui_diagnostics_scope_t *scope, const char *name, hiyui_diagnostics_phase_t phase, uint64_t display_id, uint64_t object_id)
 ```
 
-Begins a span and copies the UTF-8 name up to 63 bytes; scope must not be NULL or still active, and the name may be NULL. When not capturing it must still be paired with end; returns UNAVAILABLE when disabled at compile time.
+Begins a span and copies the UTF-8 name, up to 63 bytes. scope must not be NULL or still active; name may be NULL. Must still be paired with end when not collecting. Returns UNAVAILABLE when disabled at compile time.
 
 ### hiyui_diagnostics_scope_end
 
@@ -212,4 +212,4 @@ Begins a span and copies the UTF-8 name up to 63 bytes; scope must not be NULL o
 HIYUI_API void HIYUI_CALL hiyui_diagnostics_scope_end(hiyui_diagnostics_scope_t *scope)
 ```
 
-Ends the span; NULL, a zero-initialized scope, or a repeated end is a no-op.
+Ends the span. NULL, a zero-initialized scope, or a repeated end is a no-op.

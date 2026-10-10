@@ -10,7 +10,7 @@ title: "ResampledImage"
 
 Resampling result holding pixels and an lv_image_dsc_t descriptor
 
-Move only; dsc.data points into the pixels buffer and stays valid after moving. Its lifetime must cover all widgets referencing it.
+Move-only; dsc.data points into the pixels buffer and remains valid after moving. The lifetime must cover every widget referencing it.
 
 ## Public Methods
 

@@ -10,7 +10,7 @@ title: "HotkeyManager"
 
 Cross-platform hotkey manager, SDL mode
 
-Singleton; default hotkeys are registered automatically at Application initialization. registerHotkey dispatches through focus events; registerShortcut uses direct callbacks and matches with higher priority than focus dispatch.
+Singleton that registers default hotkeys automatically when Application initializes. registerHotkey uses focus event dispatch; registerShortcut uses direct callbacks, which match with higher priority than focus dispatch.
 
 ## Types
 
@@ -20,7 +20,7 @@ Singleton; default hotkeys are registered automatically at Application initializ
 using hiyui::HotkeyManager::ShortcutId = uint32_t
 ```
 
-Direct-callback shortcut identifier, returned by registerShortcut
+Direct-callback shortcut identifier returned by registerShortcut
 
 ## Static Methods
 
@@ -40,7 +40,7 @@ static EventCode eventCode(HotkeyId id)
 
 Returns the LVGL event code for a hotkey
 
-Event code, usable with widget.on()
+Event code usable with widget.on()
 
 ## Public Methods
 
@@ -52,7 +52,7 @@ void registerHotkey(HotkeyDef def)
 
 Registers a hotkey dispatched through focus events
 
-A hotkey with the same id is overwritten.
+A hotkey with the same id replaces the previous one.
 
 ### registerShortcut
 
@@ -62,7 +62,7 @@ ShortcutId registerShortcut(const HotkeySpec &def, std::function< void()> cb)
 
 Registers a direct-callback shortcut
 
-Trigger callback, invoked when the combination matches Shortcut identifier, for unregisterShortcut
+Trigger callback invoked when the combination matches Shortcut identifier for unregisterShortcut
 
 ### unregisterShortcut
 
@@ -82,4 +82,4 @@ bool handleSDLEvent(const SDL_Event &event)
 
 Handles an SDL event, called by Application
 
-Event handled; the caller should stop further processing
+The event was handled and the caller should block further processing

@@ -42,7 +42,7 @@ Tab bar height
 int width
 ```
 
-Widget width; HIYUI_AUTO = fill the parent
+Component width; HIYUI_AUTO = fill the parent
 
 ### height
 
@@ -50,7 +50,7 @@ Widget width; HIYUI_AUTO = fill the parent
 int height
 ```
 
-Widget height; HIYUI_AUTO = fit content
+Component height; HIYUI_AUTO = fit content
 
 ### activeColor
 
@@ -90,4 +90,4 @@ Font size; 0 = use the theme default
 int maxVisibleTabs
 ```
 
-Maximum visible tabs; beyond this the bar scrolls horizontally. 0 = compute automatically from the width
+Maximum number of visible tabs before horizontal scrolling. 0 = computed automatically from the width

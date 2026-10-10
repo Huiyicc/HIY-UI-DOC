@@ -8,7 +8,7 @@ title: "Terminal"
 
 **Namespace:** `hiyui`
 
-Interactive terminal accepting UTF-8 and VT control sequences; owns no shell or transport connection. All methods are called on the UI thread. Settings, writes, and event bindings made before mounting take effect on mount. After destruction, writes and runtime settings do nothing and queries return empty; input and protocol responses are sent through onData.
+Interactive terminal accepting UTF-8 and VT control sequences; it owns no shell or transport connection. All methods must be called on the UI thread. Settings, writes, and event bindings made before mounting take effect on mount. After destruction, writes and runtime settings are no-ops and queries return empty values; user input and protocol responses are sent through onData.
 
 **Inherits:** `hiyui::Chainable< Terminal >`
 
@@ -20,7 +20,7 @@ Interactive terminal accepting UTF-8 and VT control sequences; owns no shell or 
 Terminal & write(std::string_view bytes) &
 ```
 
-Receive output bytes; UTF-8 and control sequences may be fed in segments; new output clears the selection.
+Receives output bytes; UTF-8 and control sequences may be supplied in segments. New output clears the selection.
 
 ### paste
 
@@ -28,7 +28,7 @@ Receive output bytes; UTF-8 and control sequences may be fed in segments; new ou
 Terminal & paste(std::string_view text) &
 ```
 
-Send text as paste input, honoring bracketed paste mode; line breaks are normalized to carriage return.
+Sends text as paste input, honoring bracketed paste mode, with newlines normalized to carriage return.
 
 ### clearScrollback
 
@@ -36,7 +36,7 @@ Send text as paste input, honoring bracketed paste mode; line breaks are normali
 Terminal & clearScrollback() &
 ```
 
-Clear the history without changing the current screen or shell state.
+Clears the scrollback history without changing the current screen or shell state.
 
 ### scrollLines
 
@@ -44,7 +44,7 @@ Clear the history without changing the current screen or shell state.
 Terminal & scrollLines(int lines) &
 ```
 
-Scroll the history relatively; positive values move toward older content; scrolling clears the selection.
+Scrolls the history relatively; positive values move toward older content. Scrolling clears the selection.
 
 ### fontSize
 
@@ -52,7 +52,7 @@ Scroll the history relatively; positive values move toward older content; scroll
 Terminal & fontSize(int size) &
 ```
 
-Change the logical font size to a positive value; the auto grid updates with available space, a fixed grid keeps its rows and columns.
+Changes the logical font size, which must be a positive integer. An automatic grid updates with the available space; a fixed grid keeps its rows and columns.
 
 ### terminalSize
 
@@ -60,7 +60,7 @@ Change the logical font size to a positive value; the auto grid updates with ava
 TerminalSize terminalSize() const
 ```
 
-Get the current rows and columns; changes are reported by onResize.
+Returns the current rows and columns; changes are reported by onResize.
 
 ### terminalSize
 
@@ -68,7 +68,7 @@ Get the current rows and columns; changes are reported by onResize.
 Terminal & terminalSize(TerminalSize size) &
 ```
 
-Fix the grid and shrink the font to fit the available space; a non-positive value in either dimension restores the auto grid.
+Fixes the grid and shrinks the font to fit the available space. Any non-positive dimension restores the automatic grid.
 
 ### readOnly
 
@@ -76,7 +76,7 @@ Fix the grid and shrink the font to fit the available space; a non-positive valu
 Terminal & readOnly(bool value) &
 ```
 
-Toggle read-only; does not block protocol responses produced by write.
+Toggles the read-only state; protocol responses produced by write are not blocked.
 
 ### text
 
@@ -84,7 +84,7 @@ Toggle read-only; does not block protocol responses produced by write.
 std::string text() const
 ```
 
-Get the current screen text without history, with trailing spaces per line and trailing blank lines removed.
+Returns the current screen text without history; trailing spaces per line and trailing blank lines are removed.
 
 ### title
 
@@ -92,7 +92,7 @@ Get the current screen text without history, with trailing spaces per line and t
 std::string title() const
 ```
 
-Get the title set by the application through control sequences; empty when not set.
+Returns the title set by the application through control sequences, or empty when not set.
 
 ### selectionText
 
@@ -100,7 +100,7 @@ Get the title set by the application through control sequences; empty when not s
 std::string selectionText() const
 ```
 
-Get the UTF-8 text of the selection; empty when there is no selection.
+Returns the UTF-8 text of the selection, or empty when there is no selection.
 
 ### copySelection
 
@@ -108,7 +108,7 @@ Get the UTF-8 text of the selection; empty when there is no selection.
 Terminal & copySelection() &
 ```
 
-Copy a non-empty selection to the system clipboard; no-op on platforms without clipboard support.
+Copies a non-empty selection to the system clipboard; no-op on platforms without clipboard support.
 
 ### onData
 
@@ -116,7 +116,7 @@ Copy a non-empty selection to the system clipboard; no-op on platforms without c
 Terminal & onData(F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Bind bytes to send; the callback receives a string_view valid only during the call; embedded zero bytes are allowed.
+Binds bytes to send; the callback receives a string_view valid only during the call, which may contain embedded zero bytes.
 
 ### onInput
 
@@ -124,7 +124,7 @@ Bind bytes to send; the callback receives a string_view valid only during the ca
 Terminal & onInput(F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Bind raw user input, excluding protocol responses; does not cancel existing onData notifications. With an external TerminalModel, only this event is forwarded to the model to avoid sending encoded data twice.
+Binds raw user input, excluding protocol responses; existing onData notifications are not canceled. With an external TerminalModel, hand only this event to the model to avoid sending encoded data twice.
 
 ### onResize
 
@@ -132,7 +132,7 @@ Bind raw user input, excluding protocol responses; does not cancel existing onDa
 Terminal & onResize(F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Bind grid size changes; the callback receives TerminalSize; registration itself does not trigger a notification.
+Binds grid size changes; the callback receives a TerminalSize. Registration itself does not emit a notification.
 
 ### onTitleChange
 
@@ -140,4 +140,4 @@ Bind grid size changes; the callback receives TerminalSize; registration itself 
 Terminal & onTitleChange(F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Bind title changes; the callback receives a UTF-8 string_view valid only during the call.
+Binds title changes; the callback receives a UTF-8 string_view valid only during the call.

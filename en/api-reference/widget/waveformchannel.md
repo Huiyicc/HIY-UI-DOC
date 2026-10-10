@@ -18,7 +18,7 @@ Waveform channel configuration
 const char * name
 ```
 
-Channel name, used for the legend
+Channel name, used in the legend
 
 ### color
 
@@ -26,7 +26,7 @@ Channel name, used for the legend
 uint32_t color
 ```
 
-Channel color, HIYUI_DEFAULT = automatic assignment
+Channel color; HIYUI_DEFAULT assigns automatically
 
 ### localizedName
 

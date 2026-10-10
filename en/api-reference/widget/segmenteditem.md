@@ -42,7 +42,7 @@ Image source
 FontIconStyle iconStyle
 ```
 
-Icon style, fill/weight/grade/opticalSize
+Icon style: fill/weight/grade/opticalSize
 
 ### disabled
 
@@ -58,4 +58,4 @@ Whether the item is disabled
 int data
 ```
 
-User data bound to this item, read by itemData()
+User data bound to the item, read via itemData()

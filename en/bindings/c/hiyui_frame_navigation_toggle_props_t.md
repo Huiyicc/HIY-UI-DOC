@@ -16,7 +16,7 @@ Creation properties of the navigation toggle button.
 uint32_t icon_codepoint
 ```
 
-Icon codepoint, 0 uses HIYUI_ICON_MENU.
+Icon codepoint. 0 uses HIYUI_ICON_MENU.
 
 ### icon_size
 
@@ -24,7 +24,7 @@ Icon codepoint, 0 uses HIYUI_ICON_MENU.
 uint32_t icon_size
 ```
 
-Icon logical size, 0 uses 20.
+Icon logical size. 0 uses 20.
 
 ### size
 
@@ -32,7 +32,7 @@ Icon logical size, 0 uses 20.
 int size
 ```
 
-Button logical size, 0 uses 40.
+Button logical size. 0 uses 40.
 
 ### bg
 
@@ -40,7 +40,7 @@ Button logical size, 0 uses 40.
 uint32_t bg
 ```
 
-Button background color, 0 follows the theme.
+Button background color. 0 follows the theme.
 
 ### text_color
 
@@ -48,4 +48,4 @@ Button background color, 0 follows the theme.
 uint32_t text_color
 ```
 
-Icon color, 0 follows the theme.
+Icon color. 0 follows the theme.

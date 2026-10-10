@@ -8,4 +8,4 @@ title: "XmlSchemaMergeResult"
 
 **Namespace:** `hiyui`
 
-Result of a strict merge of multiple Schemas.
+Strict merge result of multiple schemas.

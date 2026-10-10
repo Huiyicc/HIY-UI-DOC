@@ -42,7 +42,7 @@ Maximum value
 int width
 ```
 
-Slider track width
+Track width
 
 ### height
 
@@ -50,7 +50,7 @@ Slider track width
 int height
 ```
 
-Slider track height
+Track height
 
 ### activeColor
 
@@ -58,7 +58,7 @@ Slider track height
 uint32_t activeColor
 ```
 
-Filled area color, HIYUI_DEFAULT = follow theme Primary
+Filled area color. HIYUI_DEFAULT = follow theme Primary
 
 ### trackColor
 
@@ -66,7 +66,7 @@ Filled area color, HIYUI_DEFAULT = follow theme Primary
 uint32_t trackColor
 ```
 
-Track background color, HIYUI_DEFAULT = follow theme
+Track background color. HIYUI_DEFAULT = follow theme
 
 ### knobColor
 
@@ -74,7 +74,7 @@ Track background color, HIYUI_DEFAULT = follow theme
 uint32_t knobColor
 ```
 
-Knob color, HIYUI_DEFAULT = theme adapted, white on light themes and light gray on dark themes
+Knob color. HIYUI_DEFAULT = theme adapted, white in light theme and light gray in dark theme
 
 ### knobSize
 

@@ -8,7 +8,7 @@ title: "TreeState"
 
 **Namespace:** `hiyui`
 
-Tree widget runtime state, heap allocated and attached to user_data
+Tree widget runtime state. Heap allocated and attached to user_data
 
 ## Public Members
 
@@ -58,7 +58,7 @@ Shift multi-select anchor
 int keyFocusVisibleIdx
 ```
 
-Keyboard focus row, an index into visibleIndices
+Keyboard focus row as a visibleIndices index
 
 ### dragIndicator
 

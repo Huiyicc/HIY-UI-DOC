@@ -10,7 +10,7 @@ title: "EmbedGif"
 
 Embedded GIF resource descriptor
 
-The image descriptor references the embed array. The array lifetime must cover components referencing this GIF.
+The image descriptor references the embed array. The array lifetime must cover the component referencing the GIF.
 
 ## Public Methods
 

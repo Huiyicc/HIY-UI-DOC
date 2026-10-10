@@ -8,4 +8,4 @@ title: "IconProps"
 
 **Namespace:** `hiyui`
 
-Icon widget properties
+Properties of the icon widget

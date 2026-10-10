@@ -8,7 +8,7 @@ title: "PropertyGrid"
 
 **Namespace:** `hiyui`
 
-Property grid supporting custom editors and synchronous or asynchronous commit. All operations run on the UI thread; programmatic updates do not notify by default. Chained configuration and events can be set before mounting. Data queries and edits require mounting; when invalid they return an empty value, false or an invalid session.
+Property grid supporting custom editors and synchronous or asynchronous commit. All operations run on the UI thread, programmatic updates do not notify by default, chained configuration and events can be set before mounting. Data queries and edit operations require mounting, stale objects return empty values, false or an invalid session.
 
 **Inherits:** `hiyui::Chainable< PropertyGrid >`
 
@@ -20,7 +20,7 @@ Property grid supporting custom editors and synchronous or asynchronous commit. 
 PropertyGrid & properties(std::vector< PropertyItem > items) &
 ```
 
-Atomically replaces the property tree and cancels old drafts and requests; an invalid description keeps the original tree. See lastError for the failure.
+Atomically replaces the property tree and cancels old drafts and requests, invalid descriptors keep the original tree, see lastError for the error.
 
 ### insert
 
@@ -28,7 +28,7 @@ Atomically replaces the property tree and cancels old drafts and requests; an in
 bool insert(PropertyItem item, PropertyId parent=HIYUI_NO_PROPERTY)
 ```
 
-Appends a property subtree; parent equal to HIYUI_NO_PROPERTY appends a root node. Failure does not modify data.
+Appends a property subtree, a parent of HIYUI_NO_PROPERTY appends a root node, failure leaves the data unchanged.
 
 ### update
 
@@ -36,7 +36,7 @@ Appends a property subtree; parent equal to HIYUI_NO_PROPERTY appends a root nod
 bool update(PropertyItem item)
 ```
 
-Replaces an existing property description and subtree, cancelling drafts and requests in that subtree. Failure does not modify data.
+Replaces an existing property descriptor and subtree and cancels drafts and requests in that subtree, failure leaves the data unchanged.
 
 ### remove
 
@@ -44,7 +44,7 @@ Replaces an existing property description and subtree, cancelling drafts and req
 bool remove(PropertyId id)
 ```
 
-Removes a subtree; returns false when the property does not exist.
+Removes a subtree, returns false when the property does not exist.
 
 ### property
 
@@ -52,7 +52,7 @@ Removes a subtree; returns false when the property does not exist.
 std::optional< PropertyItem > property(PropertyId id) const
 ```
 
-Returns a copy of the description including child properties; an empty value when the property does not exist.
+Returns a copy of the descriptor including child properties, an empty value when the property does not exist.
 
 ### value
 
@@ -60,7 +60,7 @@ Returns a copy of the description including child properties; an empty value whe
 bool value(PropertyId id, PropertyValue value, Notify notify=Notify::No)
 ```
 
-Updates the committed value and invalidates old replies; uncommitted input keeps the draft and marks a conflict.
+Updates the committed value and invalidates older responses, uncommitted input keeps the draft and marks a conflict.
 
 ### value
 
@@ -68,7 +68,7 @@ Updates the committed value and invalidates old replies; uncommitted input keeps
 std::optional< PropertyValue > value(PropertyId id) const
 ```
 
-Returns an empty value when the property does not exist; the property's own empty value is contained in the optional.
+Returns an empty value when the property does not exist, an empty property value is contained in the optional.
 
 ### lastError
 
@@ -76,7 +76,7 @@ Returns an empty value when the property does not exist; the property's own empt
 std::string lastError() const
 ```
 
-Returns the reason for the most recent structural or programmatic assignment failure; a successful operation clears the error.
+Returns the reason of the latest structural or programmatic assignment failure, successful operations clear the error.
 
 ### status
 
@@ -92,7 +92,7 @@ Returns Idle when the property does not exist.
 PropertyGrid & filter(std::string text) &
 ```
 
-Filters by name and description; ASCII is case-insensitive. Matched ancestors and uncommitted drafts are kept.
+Filters by name and description, ASCII case-insensitive, matching ancestors and uncommitted drafts are kept.
 
 ### select
 
@@ -100,7 +100,7 @@ Filters by name and description; ASCII is case-insensitive. Matched ancestors an
 bool select(PropertyId id, Notify notify=Notify::No)
 ```
 
-Selects a visible property; HIYUI_NO_PROPERTY clears the selection. Returns false when the current edit has not passed commit.
+Selects a visible property, HIYUI_NO_PROPERTY clears the selection, returns false when the current edit has not been committed.
 
 ### edit
 
@@ -108,7 +108,7 @@ Selects a visible property; HIYUI_NO_PROPERTY clears the selection. Returns fals
 bool edit(PropertyId id)
 ```
 
-Starts editing; returns false when not editable or the current draft has not passed commit. A Tuple without a dedicated editor expands and edits its first editable child.
+Starts editing, returns false when not editable or the current draft fails to commit. A Tuple without a registered editor expands and edits its first editable child.
 
 ### reset
 
@@ -116,7 +116,7 @@ Starts editing; returns false when not editable or the current draft has not pas
 bool reset(PropertyId id)
 ```
 
-Commits the default value through the same validation and reply flow; returns false when there is no default value.
+Commits the default value through the same validation and response flow, returns false when no default exists.
 
 ### cancelRequest
 
@@ -124,7 +124,7 @@ Commits the default value through the same validation and reply flow; returns fa
 bool cancelRequest(PropertyId id)
 ```
 
-Cancels the pending request for this property and keeps the candidate draft; external operations already performed by the caller are not undone.
+Cancels the pending request of this property and keeps the candidate draft, external operations already performed by the caller are not undone.
 
 ### registerEditor
 
@@ -132,7 +132,7 @@ Cancels the pending request for this property and keeps the candidate draft; ext
 PropertyGrid & registerEditor(std::string key, PropertyEditorFactory factory, PropertyFormatter formatter={}) &
 ```
 
-Registers or replaces an editor for this instance; an empty factory unregisters and invalidates sessions of that editor.
+Registers or replaces an editor for this instance, an empty factory unregisters and invalidates sessions of that editor.
 
 ### commitHandler
 
@@ -140,7 +140,7 @@ Registers or replaces an editor for this instance; an empty factory unregisters 
 PropertyGrid & commitHandler(PropertyCommitHandler handler) &
 ```
 
-Replaces the single commit handler and cancels pending requests; an empty handler restores direct commit after local validation.
+Replaces the single commit handler and cancels pending requests, an empty handler restores commit after local validation.
 
 ### onChange
 
@@ -148,7 +148,7 @@ Replaces the single commit handler and cancels pending requests; an empty handle
 PropertyGrid & onChange(F &&fn, EventHandle *handle=nullptr) &
 ```
 
-Appends a committed value change subscription; unchanged non-Mixed values do not notify again.
+Subscribes to committed value changes, unchanged non-Mixed values do not notify again.
 
 ### onSelect
 
@@ -156,7 +156,7 @@ Appends a committed value change subscription; unchanged non-Mixed values do not
 PropertyGrid & onSelect(F &&fn, EventHandle *handle=nullptr) &
 ```
 
-Appends a selection subscription; clearing the selection delivers HIYUI_NO_PROPERTY.
+Subscribes to selection changes, HIYUI_NO_PROPERTY is received when the selection is cleared.
 
 ### onStateChange
 
@@ -164,4 +164,4 @@ Appends a selection subscription; clearing the selection delivers HIYUI_NO_PROPE
 PropertyGrid & onStateChange(F &&fn, EventHandle *handle=nullptr) &
 ```
 
-Appends an edit state subscription, delivering the ID of the property that changed. Shared state of a Tuple and its children is reported with the parent Tuple ID.
+Subscribes to edit-state changes, receives the ID of the changed property. Shared state of a Tuple and its children is reported with the parent Tuple ID.

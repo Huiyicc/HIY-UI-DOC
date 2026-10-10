@@ -6,7 +6,7 @@ title: "hiyui_tool_button_props_t"
 
 **Header:** `#include <hiyui/c/tool_bar.h>`
 
-Strings and image paths are copied at creation; image descriptors are borrowed until the widget is destroyed.
+Strings and image paths are copied at creation. The image descriptor is borrowed until the widget is destroyed.
 
 ## Public Members
 

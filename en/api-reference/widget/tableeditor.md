@@ -8,7 +8,7 @@ title: "TableEditor"
 
 **Namespace:** `hiyui`
 
-A non-owning table editing session that can be captured by value. All operations must run on the UI thread. It becomes invalid after editing ends, when the edit area is deleted, or when the table data structure changes. Invalid sessions cannot modify data.
+Non-owning table edit session. Can be captured by value. All operations must run on the UI thread. Invalidated when editing ends, the edit area is deleted, or the table data structure changes. An invalidated session cannot modify data.
 
 ## Public Methods
 
@@ -26,7 +26,7 @@ Whether the session and its edit area are still valid.
 int row() const
 ```
 
-Get the flattened data row index. Returns -1 when invalid.
+Returns the flattened data row index. Returns -1 when invalid.
 
 ### column
 
@@ -34,7 +34,7 @@ Get the flattened data row index. Returns -1 when invalid.
 int column() const
 ```
 
-Get the column index. Returns -1 when invalid.
+Returns the column index. Returns -1 when invalid.
 
 ### inlineEditing
 
@@ -42,7 +42,7 @@ Get the column index. Returns -1 when invalid.
 bool inlineEditing() const
 ```
 
-Whether it is inline editing with immediate write-back. Returns false when invalid.
+Whether this is inline editing that writes back immediately. Returns false when invalid.
 
 ### value
 
@@ -50,7 +50,7 @@ Whether it is inline editing with immediate write-back. Returns false when inval
 std::string value() const
 ```
 
-Get a copy of the current draft. Returns an empty string when invalid.
+Returns a copy of the current draft. Returns an empty string when invalid.
 
 ### setValue
 
@@ -58,9 +58,9 @@ Get a copy of the current draft. Returns an empty string when invalid.
 bool setValue(std::string value) const
 ```
 
-Update the edit value. Inline editing writes back immediately, explicit editing saves a draft.
+Updates the edit value. Inline editing writes back immediately; explicit editing saves a draft.
 
-Returns false when invalid. Returns true without notifying again when the value is unchanged.
+Returns false when invalid. Returns true without re-notifying when the value is unchanged.
 
 ### commit
 
@@ -68,7 +68,7 @@ Returns false when invalid. Returns true without notifying again when the value 
 bool commit() const
 ```
 
-Commit the current cell or whole-row edit. Inline editing stays open. Returns false when invalid.
+Commits the current cell or whole-row edit. Inline editing stays enabled. Returns false when invalid.
 
 ### cancel
 
@@ -76,4 +76,4 @@ Commit the current cell or whole-row edit. Inline editing stays open. Returns fa
 bool cancel() const
 ```
 
-Discard the current cell or whole-row draft. Inline editing does not roll back already written data. Returns false when invalid.
+Discards the current cell or whole-row draft. Inline editing does not roll back data already written back. Returns false when invalid.

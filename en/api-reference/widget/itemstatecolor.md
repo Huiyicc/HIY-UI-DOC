@@ -8,7 +8,7 @@ title: "ItemStateColor"
 
 **Namespace:** `hiyui`
 
-Unified color type, supporting ThemeRole or a constant color
+Unified color type supporting ThemeRole or a constant color
 
 ## Public Methods
 
@@ -18,7 +18,7 @@ Unified color type, supporting ThemeRole or a constant color
 uint32_t resolve() const
 ```
 
-Resolve to the actual color value
+Resolves to the actual color value
 
 ### isSet
 

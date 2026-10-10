@@ -8,7 +8,7 @@ title: "MessageBoxProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a MessageBox
+Creation properties of the message box
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Dialog title
 const char * content
 ```
 
-Dialog body text
+Dialog content
 
 ### confirmText
 
@@ -34,7 +34,7 @@ Dialog body text
 const char * confirmText
 ```
 
-nullptr uses the locale-dependent confirm text.
+When nullptr, a language-following confirm label is used.
 
 ### width
 
@@ -58,4 +58,4 @@ Background color, HIYUI_DEFAULT = follow theme
 PopupMode popupMode
 ```
 
-Popup mode, default is in-window overlay
+Popup mode, default is an in-window overlay

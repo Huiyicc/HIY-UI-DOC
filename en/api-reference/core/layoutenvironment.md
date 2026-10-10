@@ -8,7 +8,7 @@ title: "LayoutEnvironment"
 
 **Namespace:** `hiyui`
 
-Layout snapshot of the widget's content space and its owning window environment.
+Layout snapshot of this component's content space and its window environment.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Layout snapshot of the widget's content space and its owning window environment.
 int contentWidth
 ```
 
-Logical pixels, border and padding excluded, scroll offset not excluded.
+Logical pixels; borders and padding are subtracted, scroll offset is not.
 
 ### contentHeight
 
@@ -26,7 +26,7 @@ Logical pixels, border and padding excluded, scroll offset not excluded.
 int contentHeight
 ```
 
-Logical pixels, border and padding excluded, scroll offset not excluded.
+Logical pixels; borders and padding are subtracted, scroll offset is not.
 
 ### scale
 
@@ -34,4 +34,4 @@ Logical pixels, border and padding excluded, scroll offset not excluded.
 float scale
 ```
 
-Logical to physical pixel scale, widget transformations not included.
+Logical to physical pixel scale, excluding widget transforms.

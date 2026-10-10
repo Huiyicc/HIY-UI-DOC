@@ -8,7 +8,7 @@ title: "GaugeChartProps"
 
 **Namespace:** `hiyui`
 
-Gauge creation properties
+Gauge chart creation properties
 
 **Inherits:** `hiyui::ChartBaseProps`
 
@@ -44,7 +44,7 @@ Current value
 int startAngle
 ```
 
-Start angle in degrees, 0 = 3 o'clock direction, clockwise
+Start angle in degrees; 0 is the 3 o'clock direction, clockwise
 
 ### sweepAngle
 
@@ -68,7 +68,7 @@ Track arc width in theme logical pixels
 bool rounded
 ```
 
-Rounded arc ends
+Rounded arc endpoints
 
 ### showValue
 
@@ -92,7 +92,7 @@ Unit text such as "%" or "°C"
 uint32_t activeColor
 ```
 
-Active arc color, HIYUI_DEFAULT = follow the theme primary color
+Active arc color; HIYUI_DEFAULT follows the theme primary color
 
 ### trackColor
 
@@ -100,4 +100,4 @@ Active arc color, HIYUI_DEFAULT = follow the theme primary color
 uint32_t trackColor
 ```
 
-Track arc color, HIYUI_DEFAULT = follow theme
+Track arc color; HIYUI_DEFAULT follows theme

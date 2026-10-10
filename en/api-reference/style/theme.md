@@ -10,7 +10,7 @@ title: "Theme"
 
 Theme definition managing the design token value table
 
-Internally stores token values in a fixed 256-slot array with O(1) lookup by enum index. Default construction yields a light theme.
+Internally stores token values in a fixed 256-slot array, looked up in O(1) by enum index. Default constructs to a light theme.
 
 
 
@@ -29,7 +29,7 @@ static lv_opa_t kHoverOpa
 
 Hover background opacity constant.
 
-This opacity is applied over the primary color for a uniform hover effect.
+This opacity is layered over the primary color for a unified hover effect.
 
 ### darken
 
@@ -37,9 +37,9 @@ This opacity is applied over the primary color for a uniform hover effect.
 static uint32_t darken(uint32_t color, int percent)
 ```
 
-Darkens a color by the given percentage
+Darkens a color by a given percentage
 
-Input color in 0xRRGGBB format Darkening percentage [0, 100], 0 = unchanged, 100 = fully black The darkened color
+Input color in 0xRRGGBB format Darkening percentage [0, 100], 0 = unchanged, 100 = fully black Darkened color
 
 ### lighten
 
@@ -47,9 +47,9 @@ Input color in 0xRRGGBB format Darkening percentage [0, 100], 0 = unchanged, 100
 static uint32_t lighten(uint32_t color, int percent)
 ```
 
-Lightens a color by the given percentage
+Lightens a color by a given percentage
 
-Input color in 0xRRGGBB format Lightening percentage [0, 100], 0 = unchanged, 100 = fully white The lightened color
+Input color in 0xRRGGBB format Lightening percentage [0, 100], 0 = unchanged, 100 = fully white Lightened color
 
 ## Token 查询 / 设置
 
@@ -59,9 +59,9 @@ Input color in 0xRRGGBB format Lightening percentage [0, 100], 0 = unchanged, 10
 uint32_t get(Token t) const
 ```
 
-Returns the token value
+Gets the token value
 
-The value of the token, HIYUI_NONE when unset
+Value of the token, HIYUI_NONE when unset
 
 ### set
 
@@ -71,7 +71,7 @@ Theme & set(Token t, uint32_t value)
 
 Sets the token value
 
-Theme reference for chaining
+Theme reference, supports chaining
 
 ### setFont
 
@@ -79,9 +79,9 @@ Theme reference for chaining
 Theme & setFont(const FontScale &f)
 ```
 
-Sets the font size tokens in batch
+Sets font size tokens in batch
 
-Theme reference for chaining
+Theme reference, supports chaining
 
 ## 便捷访问器
 
@@ -173,7 +173,7 @@ uint32_t borderFallback() const
 
 Border color, falls back to a neutral light gray when borderColor is HIYUI_NONE
 
-A 0xRRGGBB value; returned as is when borderColor is set
+0xRRGGBB, returned as is when borderColor is set
 
 ### divider
 
@@ -189,9 +189,9 @@ Divider color
 uint32_t sliderKnobColor() const
 ```
 
-Theme-adapted color for slider-class component knobs
+Theme-adapted color for slider-type component knobs
 
-Returns white when the background luminance is high, otherwise inverseSurface. Used as the default knob color of Slider and Switch.
+Returns white when the background tone is high, otherwise inverseSurface. Used as the default knob color for Slider and Switch.
 
 ### spacingXS
 
@@ -271,7 +271,7 @@ Corner radius 16px
 int radiusFull() const
 ```
 
-Full round, 9999px
+Full corner radius 9999px
 
 ### fontMD
 
@@ -335,7 +335,7 @@ Title bar text color
 uint32_t titleBarIcon() const
 ```
 
-Title bar icon default color
+Default title bar icon color
 
 ### titleBarIconHover
 
@@ -375,9 +375,9 @@ Shadow opacity scale percentage
 uint8_t shadowOpa(uint8_t base) const
 ```
 
-Scales a shadow opacity by the theme
+Scales shadow opacity by theme
 
-Base opacity [0, 255] The scaled opacity, capped at 255
+Base opacity [0, 255] Scaled opacity, capped at 255
 
 ### resolveAnimDuration
 
@@ -385,12 +385,12 @@ Base opacity [0, 255] The scaled opacity, capped at 255
 uint32_t resolveAnimDuration(uint32_t ms=0) const
 ```
 
-Returns an animation duration, honoring the global switch
+Gets animation duration, honoring the global switch
 
-Returns 0 when animations are disabled; otherwise the passed duration or the default duration.
+Returns 0 when animation is disabled, otherwise the given duration or the default duration.
 
 
-Desired duration in milliseconds, 0 uses the default value The actual duration, 0 when animations are disabled
+Desired duration in milliseconds, 0 means use the default Actual duration, 0 when animation is disabled
 
 ### resolveAnimDurationFast
 
@@ -398,9 +398,9 @@ Desired duration in milliseconds, 0 uses the default value The actual duration, 
 uint32_t resolveAnimDurationFast(uint32_t ms=0) const
 ```
 
-Returns the fast animation duration, honoring the global switch
+Gets the fast animation duration, honoring the global switch
 
-Desired duration in milliseconds, 0 uses the default fast duration The actual duration, 0 when animations are disabled
+Desired duration in milliseconds, 0 means use the default fast duration Actual duration, 0 when animation is disabled
 
 ## 组件默认样式
 
@@ -420,7 +420,7 @@ uint32_t resolve(ThemeRole role) const
 
 Resolves a semantic role to the current theme color value
 
-A 0xRRGGBB color value
+0xRRGGBB color value
 
 ### button
 
@@ -452,7 +452,7 @@ Checkbox default style
 StyleSet radio() const
 ```
 
-Radio default style
+Radio button default style
 
 ### switchStyle
 
@@ -516,7 +516,7 @@ Frosted glass card default style
 Style surfaceStyle(SurfaceRole role) const
 ```
 
-Returns the surface material; sizes are in logical pixels and exclude text and layout settings.
+Returns the surface material, sizes in logical pixels, excludes text and layout settings.
 
 ### surfaceOpacity
 
@@ -524,7 +524,7 @@ Returns the surface material; sizes are in logical pixels and exclude text and l
 uint8_t surfaceOpacity(SurfaceRole role) const
 ```
 
-Returns the surface fill opacity in [0,255]; returns 255 on non-glass themes.
+Returns the surface fill opacity in range [0,255]. Returns 255 on non-frosted-glass themes.
 
 ### glassEnabled
 
@@ -540,9 +540,9 @@ Queries whether the theme enables frosted glass surfaces.
 Style gradientPrimary() const
 ```
 
-Primary gradient style
+Primary color gradient style
 
-A gradient from Primary to Secondary
+Gradient from Primary to Secondary
 
 ## MD3 种子主题工厂
 
@@ -554,7 +554,7 @@ static Theme fromSeed(uint32_t seedColor, MD3Variant variant=MD3Variant::Content
 
 Creates a Light theme from a seed color
 
-Seed color in 0xRRGGBB Color variant, defaults to Content Custom parameters, effective only for the Custom variant The generated Light theme, not constexpr
+Seed color in 0xRRGGBB Color variant, default Content Custom parameters, effective only for the Custom variant The generated Light theme, not constexpr
 
 ### fromSeedDark
 
@@ -564,7 +564,7 @@ static Theme fromSeedDark(uint32_t seedColor, MD3Variant variant=MD3Variant::Con
 
 Creates a Dark theme from a seed color
 
-Seed color in 0xRRGGBB Color variant, defaults to Content Custom parameters, effective only for the Custom variant The generated Dark theme, not constexpr
+Seed color in 0xRRGGBB Color variant, default Content Custom parameters, effective only for the Custom variant The generated Dark theme, not constexpr
 
 ## Public Members
 
@@ -574,7 +574,7 @@ Seed color in 0xRRGGBB Color variant, defaults to Content Custom parameters, eff
 uint32_t tokens_
 ```
 
-Token value table, the index equals the Token enum value
+Token value table, index is the Token enum value
 
 ## Public Methods
 
@@ -584,4 +584,4 @@ Token value table, the index equals the Token enum value
 constexpr Theme()
 ```
 
-Default constructor, initializes the token values of the light theme
+Default constructor, initializes token values of the light theme

@@ -16,4 +16,4 @@ title: "LanguagePackResult"
 uint64_t id
 ```
 
-0 on registration failure; used by removeLanguagePack.
+0 when registration fails; used by removeLanguagePack.

@@ -20,7 +20,7 @@ TemplateList common base class.
 void initBase(lv_obj_t *parent)
 ```
 
-Creates the LVGL container and applies the base style
+Creates the LVGL container and applies base styles
 
 ## protected-static-func
 
@@ -30,7 +30,7 @@ Creates the LVGL container and applies the base style
 static void applyVisual(lv_obj_t *row, const ItemVisual &v, bool propagateText)
 ```
 
-Applies an ItemVisual to an item row
+Applies the given ItemVisual to an item row
 
 ### propagateTextColor
 
@@ -38,7 +38,7 @@ Applies an ItemVisual to an item row
 static void propagateTextColor(lv_obj_t *row, uint32_t color)
 ```
 
-Recursively sets the text color of all labels in an item row
+Recursively sets the text color of all labels inside an item row
 
 ### makeChildrenPassthrough
 

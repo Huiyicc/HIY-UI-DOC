@@ -10,7 +10,7 @@ title: "XmlLayout"
 
 Creates a Hiy-UI component tree from an XML document synchronously.
 
-All operations must be called on the LVGL/Hiy-UI UI thread. The layout only observes the mounted component tree; destroying the layout does not destroy components. After a component is destroyed, ID lookups for it return an empty reference.
+All operations must run on the LVGL/Hiy-UI UI thread. The layout only observes the mounted component tree; destroying the layout does not destroy components. After a component is destroyed, its ID lookup returns an empty reference.
 
 ## Public Methods
 
@@ -46,7 +46,7 @@ Returns all structured diagnostics produced by the load.
 bool hasErrors() const
 ```
 
-Returns whether the current result contains error diagnostics.
+Whether the current result contains error diagnostics.
 
 ### context
 
@@ -88,7 +88,7 @@ Returns true only when the root object is valid and there are no error diagnosti
 static XmlLayout fromFile(Widget &parent, const char *path, XmlContext context={}, XmlLoadOptions options={})
 ```
 
-Loads through the host file system convenience interface; the return value always keeps failure diagnostics.
+Loads through the host filesystem convenience interface; the return value always retains failure diagnostics.
 
 ### fromReader
 
@@ -98,7 +98,7 @@ static XmlLayout fromReader(Widget &parent, XmlReadCallback reader, void *userDa
 
 Reads and loads synchronously; the reader return value must not exceed capacity.
 
-reader and userData are used only during the call; opening and closing the resource is managed by the caller.
+reader and userData are used only during the call; the caller manages opening and closing the resource.
 
 ### fromString
 
@@ -106,4 +106,4 @@ reader and userData are used only during the call; opening and closing the resou
 static XmlLayout fromString(Widget &parent, std::string_view xml, XmlContext context={}, XmlLoadOptions options={})
 ```
 
-Loads from an in-memory string; parsing and component creation complete before return.
+Loads from an in-memory string; parsing and component creation finish before return.

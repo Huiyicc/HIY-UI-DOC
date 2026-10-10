@@ -8,9 +8,9 @@ title: "ConfirmDialog"
 
 **Namespace:** `hiyui`
 
-Confirm dialog widget
+Confirmation dialog component
 
-Modal dialog showing title, body text, and confirm/cancel buttons.
+Modal dialog showing a title, body text, and confirm/cancel buttons.
 
 
 
@@ -26,7 +26,7 @@ Modal dialog showing title, body text, and confirm/cancel buttons.
 ConfirmDialog(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### ConfirmDialog
 
@@ -34,7 +34,7 @@ Wrap an existing LVGL object
 ConfirmDialog(ConfirmDialogProps props={})
 ```
 
-Aggregate construct from properties
+Aggregate construction from properties
 
 Dialog properties
 
@@ -44,7 +44,7 @@ Dialog properties
 ConfirmDialog & title(const char *value) &
 ```
 
-Set the title; after show() only already created text areas are updated; plain text removes the language binding.
+Sets the title; after show() only already created text areas are updated, and plain text clears the language binding.
 
 ### title
 
@@ -52,7 +52,7 @@ Set the title; after show() only already created text areas are updated; plain t
 ConfirmDialog & title(LocalizedText value) &
 ```
 
-Bind owning text and update it with language changes.
+Binds owning text that updates on language change.
 
 ### content
 
@@ -60,7 +60,7 @@ Bind owning text and update it with language changes.
 ConfirmDialog & content(const char *value) &
 ```
 
-Set the body text; after show() only already created text areas are updated; plain text removes the language binding.
+Sets the body text; after show() only already created text areas are updated, and plain text clears the language binding.
 
 ### content
 
@@ -68,7 +68,7 @@ Set the body text; after show() only already created text areas are updated; pla
 ConfirmDialog & content(LocalizedText value) &
 ```
 
-Bind owning text and update it with language changes.
+Binds owning text that updates on language change.
 
 ### confirmText
 
@@ -76,7 +76,7 @@ Bind owning text and update it with language changes.
 ConfirmDialog & confirmText(const char *value) &
 ```
 
-Set the confirm button text; after show() only already created text areas are updated; plain text removes the language binding.
+Sets the confirm button text; after show() only already created text areas are updated, and plain text clears the language binding.
 
 ### confirmText
 
@@ -84,7 +84,7 @@ Set the confirm button text; after show() only already created text areas are up
 ConfirmDialog & confirmText(LocalizedText value) &
 ```
 
-Bind owning text and update it with language changes.
+Binds owning text that updates on language change.
 
 ### cancelText
 
@@ -92,7 +92,7 @@ Bind owning text and update it with language changes.
 ConfirmDialog & cancelText(const char *value) &
 ```
 
-Set the cancel button text; after show() only already created text areas are updated; plain text removes the language binding.
+Sets the cancel button text; after show() only already created text areas are updated, and plain text clears the language binding.
 
 ### cancelText
 
@@ -100,7 +100,7 @@ Set the cancel button text; after show() only already created text areas are upd
 ConfirmDialog & cancelText(LocalizedText value) &
 ```
 
-Bind owning text and update it with language changes.
+Binds owning text that updates on language change.
 
 ### show
 
@@ -108,7 +108,7 @@ Bind owning text and update it with language changes.
 ConfirmDialog & show(lv_obj_t *parent=nullptr) &
 ```
 
-Show the dialog
+Shows the dialog
 
 Parent to mount on; nullptr = the current active screen This component
 
@@ -118,12 +118,12 @@ Parent to mount on; nullptr = the current active screen This component
 ConfirmDialog & onConfirm(F &&f) &
 ```
 
-Bind the confirm button callback
+Binds the confirm button callback
 
 Callbacks bound before show() take effect once the dialog is shown.
 
 
-Callable type, signature void() Callback function This component
+Callable type with signature void() Callback function This component
 
 ### onCancel
 
@@ -131,12 +131,12 @@ Callable type, signature void() Callback function This component
 ConfirmDialog & onCancel(F &&f) &
 ```
 
-Bind the cancel button callback
+Binds the cancel button callback
 
 Callbacks bound before show() take effect once the dialog is shown.
 
 
-Callable type, signature void() Callback function This component
+Callable type with signature void() Callback function This component
 
 ### close
 
@@ -144,7 +144,7 @@ Callable type, signature void() Callback function This component
 ConfirmDialog & close() &
 ```
 
-Close the dialog Releases current bindings; show() can be called again; callbacks must be re-bound.
+Closes the dialog. Releases the current bindings; the dialog can be shown again afterwards. Callbacks must be bound again.
 
 This component
 
@@ -156,9 +156,9 @@ This component
 static void ask(const char *title, const char *content, F &&callback, lv_obj_t *parent=nullptr, PopupMode mode=PopupMode::Inline)
 ```
 
-Static call in the style of the Win32 MessageBox.
+Static call in the style of a Win32 MessageBox.
 
-Shows a confirm dialog in one call; the callback receives true = confirm, false = cancel.
+Pops up a confirmation dialog in one call; the callback argument is true for confirm and false for cancel.
 
 
-Callable type, signature void(bool confirmed) Title Content Result callback; true = confirm, false = cancel Parent object; nullptr = the current active screen
+Callable type with signature void(bool confirmed) Title Content Result callback; true = confirm, false = cancel Parent object; nullptr = the current active screen

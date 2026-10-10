@@ -18,7 +18,7 @@ Card creation properties
 const char * title
 ```
 
-Card title, nullptr = no title
+Card title. nullptr = no title
 
 ### width
 
@@ -26,7 +26,7 @@ Card title, nullptr = no title
 int width
 ```
 
-Width, HIYUI_AUTO = fit content
+Width. HIYUI_AUTO = fit content
 
 ### height
 
@@ -34,7 +34,7 @@ Width, HIYUI_AUTO = fit content
 int height
 ```
 
-Height, HIYUI_AUTO = fit content
+Height. HIYUI_AUTO = fit content
 
 ### padding
 
@@ -42,7 +42,7 @@ Height, HIYUI_AUTO = fit content
 int padding
 ```
 
-Padding
+Inner padding
 
 ### gap
 
@@ -50,7 +50,7 @@ Padding
 int gap
 ```
 
-Gap between child widgets
+Gap between children
 
 ### margin
 
@@ -58,7 +58,7 @@ Gap between child widgets
 int margin
 ```
 
-Outer margin of the container in the parent layout
+Outer margin of the container within its parent layout
 
 ### bg
 
@@ -66,7 +66,7 @@ Outer margin of the container in the parent layout
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme Surface
+Background color. HIYUI_DEFAULT = follow theme Surface
 
 ### radius
 
@@ -74,7 +74,7 @@ Background color, HIYUI_DEFAULT = follow theme Surface
 uint32_t radius
 ```
 
-Corner radius, HIYUI_DEFAULT = follow theme
+Corner radius. HIYUI_DEFAULT = follow theme
 
 ### shadow
 
@@ -82,7 +82,7 @@ Corner radius, HIYUI_DEFAULT = follow theme
 bool shadow
 ```
 
-Whether to show the shadow
+Whether to show a shadow
 
 ### titleColor
 
@@ -90,7 +90,7 @@ Whether to show the shadow
 uint32_t titleColor
 ```
 
-Title color, HIYUI_DEFAULT = follow theme
+Title color. HIYUI_DEFAULT = follow theme
 
 ### titleFontSize
 
@@ -98,4 +98,4 @@ Title color, HIYUI_DEFAULT = follow theme
 int titleFontSize
 ```
 
-Title font size, 0 = use the theme default
+Title font size. 0 = use the theme default

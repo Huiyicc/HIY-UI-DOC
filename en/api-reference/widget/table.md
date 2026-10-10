@@ -16,13 +16,13 @@ Virtualized table widget that renders only visible rows
 
 ### TableEventType
 
-Internal table event types
+Table internal event types
 
 | Value | Description |
 |---|---|
 | `RowClick` | Row clicked |
 | `Select` | Selection changed |
-| `SortChange` | Sort changed |
+| `SortChange` | Sorting changed |
 | `CellEdit` | Cell edit committed |
 
 ## Public Methods
@@ -33,7 +33,7 @@ Internal table event types
 Table & part(TablePart part, Part customization) &
 ```
 
-Replace the customization of the given part. Can be called before initialization. A default-constructed Part restores the default. Style overrides are kept until the widget is destroyed and stay in effect across theme changes, DPI changes and part rebuilds. For the Header click callback, column is the column index and the selection column is HIYUI_NO_SELECTION. For the Row activate callback, index is the flattened data row index, column is the focus column on keyboard activation and HIYUI_NO_SELECTION otherwise. The Footer supports styling only.
+Replaces the customization of the given part. Callable before init; a default-constructed Part restores the default. Style overrides persist until the widget is destroyed and remain effective across theme and DPI changes and part rebuilds. In the Header click callback, column is the column index and the selection column is HIYUI_NO_SELECTION. In the Row activation callback, index is the flattened data row index; on keyboard activation column is the focused column, otherwise HIYUI_NO_SELECTION. Footer supports styles only.
 
 ### footer
 
@@ -41,7 +41,7 @@ Replace the customization of the given part. Can be called before initialization
 Table & footer(const char *text) &
 ```
 
-Set the footer text, copying the input. Before initialization the footer is created. After initialization only an existing footer is updated. A null pointer clears the text and unbinds the translation.
+Sets the footer text and copies the input. Creates the footer before init; after init only updates an existing footer. A null pointer clears the text and unbinds the translation.
 
 ### footer
 
@@ -49,7 +49,7 @@ Set the footer text, copying the input. Before initialization the footer is crea
 Table & footer(const LocalizedText &text) &
 ```
 
-Bind the footer translation, copying the description. Before initialization the footer is created. After initialization only an existing footer is updated.
+Binds the footer translation and copies the description. Creates the footer before init; after init only updates an existing footer.
 
 ### bordered
 
@@ -57,7 +57,7 @@ Bind the footer translation, copying the description. Before initialization the 
 Table & bordered(bool b) &
 ```
 
-Toggle borders at runtime
+Toggles the border at runtime
 
 ### striped
 
@@ -65,7 +65,7 @@ Toggle borders at runtime
 Table & striped(bool b) &
 ```
 
-Toggle zebra stripes at runtime
+Toggles striped rows at runtime
 
 ### tableSize
 
@@ -73,7 +73,7 @@ Toggle zebra stripes at runtime
 Table & tableSize(TableSize s) &
 ```
 
-Toggle the size density at runtime
+Toggles the size density at runtime
 
 ### multiSort
 
@@ -81,7 +81,7 @@ Toggle the size density at runtime
 Table & multiSort(const std::vector< std::pair< int, SortDirection > > &keys) &
 ```
 
-Run a multi-column sort in key array order
+Performs multi-column sorting in key array order
 
 ### selectedRowIndices
 
@@ -89,7 +89,7 @@ Run a multi-column sort in key array order
 std::vector< int > selectedRowIndices() const
 ```
 
-Get the original indices of the selected rows
+Returns the raw indices of selected rows
 
 ### onRowClick
 
@@ -131,4 +131,4 @@ Cell edit callback: void(int flatRow, int col, oldVal, newVal). Repeated binding
 static lv_event_code_t eventCode(TableEventType type)
 ```
 
-Get the internal table event code.
+Gets the table internal event code.

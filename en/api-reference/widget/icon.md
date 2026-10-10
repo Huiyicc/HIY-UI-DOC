@@ -10,7 +10,7 @@ title: "Icon"
 
 Material Symbols icon widget.
 
-Uses an lv_image internally to display the bitmap rendered by FontIcon, recolored through the image_recolor mechanism and compatible with the theme system.
+Internally uses an lv_image to show the bitmap rendered by FontIcon. Coloring uses the image_recolor mechanism and works with the theme system.
 
 **Inherits:** `hiyui::Chainable< Icon >`
 
@@ -22,7 +22,7 @@ Uses an lv_image internally to display the bitmap rendered by FontIcon, recolore
 Icon(lv_obj_t *obj)
 ```
 
-Ref delegate constructor, internal use.
+Ref proxy constructor, internal use.
 
 ### init
 
@@ -30,7 +30,7 @@ Ref delegate constructor, internal use.
 Icon & init(Widget &parent) &
 ```
 
-Initialize under a Widget parent
+Initializes inside a Widget parent container
 
 ### init
 
@@ -38,7 +38,7 @@ Initialize under a Widget parent
 Icon & init(lv_obj_t *parent) &
 ```
 
-Initialize under an lv_obj_t parent
+Initializes under an lv_obj_t parent
 
 ### codepoint
 
@@ -46,7 +46,7 @@ Initialize under an lv_obj_t parent
 Icon & codepoint(uint32_t cp) &
 ```
 
-Set the icon codepoint
+Sets the icon codepoint
 
 ### iconSize
 
@@ -54,7 +54,7 @@ Set the icon codepoint
 Icon & iconSize(uint32_t sz) &
 ```
 
-Set the icon size in pixels
+Sets the icon pixel size
 
 ### iconStyle
 
@@ -62,7 +62,7 @@ Set the icon size in pixels
 Icon & iconStyle(const FontIconStyle &s) &
 ```
 
-Set Variable Font axis parameters
+Sets the Variable Font axis parameters
 
 ### color
 
@@ -70,7 +70,7 @@ Set Variable Font axis parameters
 Icon & color(uint32_t c) &
 ```
 
-Set the icon color to a fixed value
+Sets the icon color to a fixed value
 
 ### color
 
@@ -78,7 +78,7 @@ Set the icon color to a fixed value
 Icon & color(ThemeRole role) &
 ```
 
-Bind the icon color to a theme role, reactive
+Binds the icon color to a theme role, reactive
 
 ### colorFrom
 
@@ -86,7 +86,7 @@ Bind the icon color to a theme role, reactive
 Icon & colorFrom(Widget &source) &
 ```
 
-Follows the current text color of a mounted widget, reacting to state and theme. Repeated calls replace the source. The last color is kept after the source is removed. A stale source is a no-op.
+Follows the current text color of the mounted source widget, reacting to state and theme. A repeated call replaces the source. The last color is kept after the source is deleted. An invalid source is a no-op.
 
 ### rendered
 
@@ -94,7 +94,7 @@ Follows the current text color of a mounted widget, reacting to state and theme.
 bool rendered() const
 ```
 
-Whether a displayable icon image is available. Returns false when unmounted or rendering is unavailable.
+Whether a displayable icon image is available; returns false when unmounted or when rendering is unavailable.
 
 ### opacity
 
@@ -102,4 +102,4 @@ Whether a displayable icon image is available. Returns false when unmounted or r
 Icon & opacity(uint8_t opa) &
 ```
 
-Set the icon opacity, 0 = fully transparent, 255 = opaque, default 255
+Sets the icon opacity, 0 = fully transparent, 255 = opaque, default 255

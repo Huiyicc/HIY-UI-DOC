@@ -10,7 +10,7 @@ title: "MenuContext"
 
 Menu action context
 
-Constructed by the menu engine when an action fires and passed to the callback; the context and the owner wrapper are borrowed. Valid only inside the callback and must not be stored beyond it.
+Constructed by the menu engine when an action triggers and passed to the callback. Both the context and the owner wrapper are borrowed, valid only inside the callback, and must not be stored beyond it.
 
 ## Public Methods
 
@@ -20,7 +20,7 @@ Constructed by the menu engine when an action fires and passed to the callback; 
 MenuContext(Widget owner)
 ```
 
-Construct a menu action context
+Constructs a menu action context
 
 Wrapper of the triggering object; may be an uninitialized wrapper
 
@@ -32,7 +32,7 @@ bool hasOwner() const
 
 Whether a triggering object exists
 
-Returns false when triggered from a native application menu or system tray menu
+Returns false when triggered from a native application menu or a system tray menu
 
 ### owner
 

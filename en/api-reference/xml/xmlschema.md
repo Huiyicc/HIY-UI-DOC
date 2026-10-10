@@ -8,4 +8,4 @@ title: "XmlSchema"
 
 **Namespace:** `hiyui`
 
-Lossless XML Schema model composed of the registry and document-level rules.
+Lossless XML schema model composed of the Registry and document-level rules.

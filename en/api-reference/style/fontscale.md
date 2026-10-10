@@ -58,4 +58,4 @@ Extra large font
 int xxl
 ```
 
-Largest font
+Extra extra large font

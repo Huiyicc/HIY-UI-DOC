@@ -26,7 +26,7 @@ HIYUI_API hiyui_svg_t *HIYUI_CALL hiyui_svg_from_file(const char *path, int w, i
 
 Loads an SVG from a file and rasterizes it.
 
-LVGL fs path, must include the drive letter, such as "D:res/x.svg" Render width, HIYUI_AUTO means the intrinsic SVG size Render height, HIYUI_AUTO means the intrinsic SVG size Accent color overlay, HIYUI_NONE means no overlay Handle, NULL on failure, the caller is responsible for hiyui_svg_destroy
+LVGL fs path with a drive letter, such as "D:res/x.svg". Render width; HIYUI_AUTO uses the SVG intrinsic size. Render height; HIYUI_AUTO uses the SVG intrinsic size. Accent color overlay; HIYUI_NONE means no overlay. Handle; NULL on failure. The caller is responsible for hiyui_svg_destroy.
 
 ### hiyui_svg_from_data
 
@@ -36,7 +36,7 @@ HIYUI_API hiyui_svg_t *HIYUI_CALL hiyui_svg_from_data(const void *data, unsigned
 
 Loads an SVG from memory data and rasterizes it.
 
-SVG text Number of bytes in data Render width, HIYUI_AUTO means the intrinsic SVG size Render height, HIYUI_AUTO means the intrinsic SVG size Accent color overlay, HIYUI_NONE means no overlay Handle, NULL on failure, the caller is responsible for hiyui_svg_destroy
+SVG text. Number of bytes in data. Render width; HIYUI_AUTO uses the SVG intrinsic size. Render height; HIYUI_AUTO uses the SVG intrinsic size. Accent color overlay; HIYUI_NONE means no overlay. Handle; NULL on failure. The caller is responsible for hiyui_svg_destroy.
 
 ### hiyui_svg_src
 
@@ -44,9 +44,9 @@ SVG text Number of bytes in data Render width, HIYUI_AUTO means the intrinsic SV
 HIYUI_API const void *HIYUI_CALL hiyui_svg_src(hiyui_svg_t *svg)
 ```
 
-Gets the bitmap descriptor to pass to hiyui_avatar_props_t::src or hiyui_image_props_t::src.
+Returns the bitmap descriptor to pass to hiyui_avatar_props_t::src or hiyui_image_props_t::src.
 
-lv_image_dsc_t pointer, valid while the handle is alive
+lv_image_dsc_t pointer, valid while the handle is alive.
 
 ### hiyui_svg_destroy
 
@@ -54,4 +54,4 @@ lv_image_dsc_t pointer, valid while the handle is alive
 HIYUI_API void HIYUI_CALL hiyui_svg_destroy(hiyui_svg_t *svg)
 ```
 
-Frees the handle, its src must not be used afterwards.
+Releases the handle; its src must not be used afterwards.

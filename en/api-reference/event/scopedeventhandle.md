@@ -18,7 +18,7 @@ Scoped owner of a single event; unbinds the original event on destruction, rebin
 EventHandle * out()
 ```
 
-Unbinds the original event and returns the handle output parameter for the next on call; do not store the returned pointer.
+Unbinds the original event and returns the handle out parameter for the next on call. The returned pointer must not be stored.
 
 ### off
 
@@ -34,4 +34,4 @@ Unbinds the event; repeated calls and calls after component deletion are safe.
 bool connected() const
 ```
 
-Whether the event can still be received.
+Whether events can still be received.

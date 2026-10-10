@@ -81,7 +81,7 @@ typedef uint64_t hiyui_property_id_t
 typedef struct hiyui_property_value_t hiyui_property_value_t
 ```
 
-Borrowed value view; input strings and bytes are valid for the duration of the call and are copied before the function returns. text may be NULL meaning an empty string; when custom.size is non-zero, bytes must be non-NULL. tuple stores values in child property declaration order; when count is non-zero, values must be non-NULL and the value tree must be acyclic.
+A borrowed value view. Input strings and bytes are valid during the call and copied before the function returns. text may be NULL and means an empty string. When custom.size is non-zero, bytes must be non-NULL. tuple keeps children in declaration order. When count is non-zero, values must be non-NULL, and the value tree must be acyclic.
 
 ### hiyui_property_item_t
 
@@ -89,7 +89,7 @@ Borrowed value view; input strings and bytes are valid for the duration of the c
 typedef struct hiyui_property_item_t hiyui_property_item_t
 ```
 
-Initialize with item_init; the tree must be acyclic and IDs non-zero and unique across the whole tree. user_data is owned by the caller and must stay alive until the property is removed and related callbacks finish. When has_default_value is TRUE, default_value is copied, including an EMPTY default. TUPLE uses a non-empty sequence of scalar leaf items, does not support nested TUPLE or empty tuple values, and structural changes require update on the parent property. A TUPLE with an EMPTY value aggregates from the children, and an explicit tuple value overrides child values. Defaults work the same way, and aggregation requires every item to have a default. A mixed tuple still requires a representative value satisfying each child constraint. TUPLE children share draft, pending, and conflict states; commit, change, and status callbacks use the parent ID and the full tuple.
+Initialize with item_init. The tree must be acyclic, and IDs must be non-zero and unique across the tree. user_data is owned by the caller and must stay alive until the property is removed and related callbacks finish. When has_default_value is TRUE, default_value is copied, including an EMPTY default. TUPLE uses a non-empty sequence of scalar leaf items. Nested TUPLE and empty tuple values are not supported; structural changes must update the parent property. A TUPLE EMPTY value is aggregated from its children; an explicit tuple value overrides the child values. The same applies to defaults, and aggregation requires every child to have a default. A mixed tuple still requires a representative value satisfying each child constraint. TUPLE children share draft, pending, and conflict states. Commit, change, and status callbacks use the parent ID and the full tuple.
 
 ### hiyui_property_snapshot_t
 
@@ -127,7 +127,7 @@ typedef struct hiyui_property_request_t hiyui_property_request_t
 typedef void(* hiyui_property_commit_fn) (hiyui_property_request_t *request, void *user_data)
 ```
 
-Callback parameters are valid only during the callback; for async handling, save the reply handle via request_defer.
+Callback arguments are valid only during the callback. For async handling, save the reply handle with request_defer.
 
 ### hiyui_property_editor_factory_fn
 
@@ -135,7 +135,7 @@ Callback parameters are valid only during the callback; for async handling, save
 typedef void(* hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hiyui_property_editor_t *editor, void *user_data)
 ```
 
-Builds only the host subtree; must not modify the designer or change host ownership. Clone the editor before keeping it.
+Builds only the host subtree. Must not modify the designer or change host ownership. Clone the editor before keeping it.
 
 ### hiyui_property_formatter_fn
 
@@ -143,7 +143,7 @@ Builds only the host subtree; must not modify the designer or change host owners
 typedef const char *(* hiyui_property_formatter_fn) (const hiyui_property_item_t *item, const hiyui_property_value_t *value, void *user_data)
 ```
 
-The returned string is copied when the callback returns; the designer must not be modified during the callback.
+The returned string is copied when the callback returns. The designer must not be modified during the callback.
 
 ### hiyui_property_change_fn
 
@@ -165,7 +165,7 @@ typedef void(* hiyui_property_id_fn) (hiyui_property_id_t id, void *user_data)
 HIYUI_API void HIYUI_CALL hiyui_property_grid_props_init(hiyui_property_grid_props_t *props)
 ```
 
-All widget, session, and reply operations must run on the UI thread; write operations on a NULL handle return 0. Widget handles are owned by the parent widget and unusable after destruction; weak sessions and replies can still be queried and released.
+All widget, session, and reply operations must run on the UI thread. Write operations on a NULL handle return 0. Widget handles are owned by the parent and unusable after destruction. Weak sessions and replies can still be queried and released.
 
 ### hiyui_property_item_init
 
@@ -209,7 +209,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_grid_remove(hiyui_widget_t *grid, hiyui_
 HIYUI_API hiyui_property_snapshot_t *HIYUI_CALL hiyui_property_grid_get_property(hiyui_widget_t *grid, hiyui_property_id_t id)
 ```
 
-Returns an independently owned snapshot, or NULL when the property does not exist; free it with the corresponding snapshot_destroy.
+Returns an independently owned snapshot. Returns NULL when the property does not exist. Release it with the corresponding snapshot_destroy.
 
 ### hiyui_property_grid_get_value
 
@@ -229,7 +229,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_grid_set_value(hiyui_widget_t *grid, hiy
 HIYUI_API size_t HIYUI_CALL hiyui_property_grid_get_error(hiyui_widget_t *grid, hiyui_property_id_t id, char *buffer, size_t capacity)
 ```
 
-Returns the required byte count including the trailing zero; buffer may be NULL, and insufficient capacity truncates and zero-terminates.
+Returns the required byte count including the terminating zero. buffer may be NULL; when the capacity is insufficient, the text is truncated and zero-terminated.
 
 ### hiyui_property_grid_last_error
 
@@ -327,7 +327,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_grid_cancel_request(hiyui_widget_t *grid
 HIYUI_API int HIYUI_CALL hiyui_property_grid_register_editor(hiyui_widget_t *grid, const char *key, hiyui_property_editor_factory_fn factory, hiyui_property_formatter_fn formatter, void *user_data, hiyui_destroy_fn destroy)
 ```
 
-Ownership of the callback state transfers to the widget; destroy is called on failure too, and after replacement it is released when the last callback finishes. A NULL factory unregisters the editor; a NULL handler restores auto-accept and cancels old pending requests.
+Ownership of the callback state moves to the widget. destroy is called on failure too, and release happens when the last callback after replacement finishes. A NULL factory unregisters the editor. A NULL handler restores automatic acceptance and cancels old pending requests.
 
 ### hiyui_property_grid_set_commit_handler
 
@@ -341,7 +341,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_grid_set_commit_handler(hiyui_widget_t *
 HIYUI_API int HIYUI_CALL hiyui_property_grid_on_change(hiyui_widget_t *grid, hiyui_property_change_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out)
 ```
 
-Appends a subscription; out may be NULL, otherwise *out must be NULL, and unbinding uses the existing event handle.
+Appends a subscription. out may be NULL; otherwise *out must be NULL, and unbinding uses the existing event handle.
 
 ### hiyui_property_grid_on_select
 
@@ -361,7 +361,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_grid_on_state_change(hiyui_widget_t *gri
 HIYUI_API const hiyui_property_item_t *HIYUI_CALL hiyui_property_snapshot_view(const hiyui_property_snapshot_t *snapshot)
 ```
 
-The view is borrowed until the snapshot is destroyed; all snapshot and clone return values are freed by the caller, and destroy accepts NULL.
+The view is borrowed until the snapshot is destroyed. All snapshot and clone return values are released by the caller. destroy accepts NULL.
 
 ### hiyui_property_snapshot_destroy
 
@@ -501,7 +501,7 @@ HIYUI_API int HIYUI_CALL hiyui_property_request_reject(hiyui_property_request_t 
 HIYUI_API hiyui_property_reply_t *HIYUI_CALL hiyui_property_request_defer(hiyui_property_request_t *request)
 ```
 
-Defers the reply and returns an owned handle; the async result must be posted to the UI thread to complete, with reply_destroy called last.
+Defers the reply and returns an owned handle. The async result must be posted to the UI thread before completion, and reply_destroy is called last.
 
 ### hiyui_property_reply_clone
 

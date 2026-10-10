@@ -8,9 +8,9 @@ title: "XmlWindowLayout"
 
 **Namespace:** `hiyui`
 
-Synchronously creates a window and its content component tree from a \&lt;Window\&gt; root element.
+Creates a window and its content component tree from a &lt;Window&gt; root element synchronously.
 
-The window lifetime is managed by the Application; this object holds a non-owning pointer. All operations must be called on the LVGL/Hiy-UI UI thread. Window content loading always rolls back as a transaction; partial content is never kept.
+The window lifetime is managed by Application; this object holds a non-owning pointer. All operations must run on the LVGL/Hiy-UI UI thread. Window content loading always rolls back as a transaction; partial content is never kept.
 
 ## Public Methods
 
@@ -22,7 +22,7 @@ Window * window() const
 
 Returns the created window.
 
-Returns nullptr when the window was not created or has been closed.
+Returns nullptr when the window was not created or is closed.
 
 ### diagnostics
 
@@ -38,7 +38,7 @@ Returns all structured diagnostics produced by the load.
 bool hasErrors() const
 ```
 
-Returns whether the current result contains error diagnostics.
+Whether the current result contains error diagnostics.
 
 ### sourceId
 
@@ -62,7 +62,7 @@ Returns the deduplicated Include source IDs resolved by this load.
 operator bool() const
 ```
 
-Returns true only when the window has been created and there are no error diagnostics.
+Returns true only when the window is created and there are no error diagnostics.
 
 ## Static Methods
 
@@ -72,7 +72,7 @@ Returns true only when the window has been created and there are no error diagno
 static XmlWindowLayout fromFile(const char *path, XmlContext context={}, XmlLoadOptions options={})
 ```
 
-Loads through the host file system; the return value always keeps failure diagnostics.
+Loads through the host filesystem; the return value always retains failure diagnostics.
 
 ### fromString
 
@@ -80,4 +80,4 @@ Loads through the host file system; the return value always keeps failure diagno
 static XmlWindowLayout fromString(std::string_view xml, XmlContext context={}, XmlLoadOptions options={})
 ```
 
-Loads from an in-memory string; parsing and window creation complete before return.
+Loads from an in-memory string; parsing and window creation finish before return.

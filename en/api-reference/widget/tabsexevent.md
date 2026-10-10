@@ -8,9 +8,9 @@ title: "TabsExEvent"
 
 **Namespace:** `hiyui`
 
-TabsEx event payload.
+TabsEx event content.
 
-`index` is the current tab index when the event occurred; for reorder events `previousIndex` is the index at drag start. `text` is valid only during the callback, and `data` is the tab item user data.
+`index` is the current tab index when the event occurred, for reorder events `previousIndex` is the index when the drag started. `text` is valid only during the callback, `data` is the user data of the tab item.
 
 ## Public Members
 
@@ -28,7 +28,7 @@ Event type.
 int index
 ```
 
-Tab index when the event occurred; -1 for new-session events.
+Tab index when the event occurred, -1 for the new session event.
 
 ### previousIndex
 
@@ -36,7 +36,7 @@ Tab index when the event occurred; -1 for new-session events.
 int previousIndex
 ```
 
-Tab index before reorder or activation.
+Tab index before the reorder or activation.
 
 ### data
 
@@ -44,7 +44,7 @@ Tab index before reorder or activation.
 int data
 ```
 
-Tab item user data.
+User data of the tab item.
 
 ### text
 

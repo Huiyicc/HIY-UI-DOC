@@ -8,7 +8,7 @@ title: "WindowArea"
 
 **Namespace:** `hiyui`
 
-Logical area relative to the window client area origin, not child container local coordinates.
+Logical area relative to the window client area origin, not child-container local coordinates.
 
 ## Public Members
 
@@ -26,7 +26,7 @@ false when there is no window host.
 LogicalRect safeArea
 ```
 
-Decorations and known system reserved areas are excluded.
+Excludes decorations and known system-reserved areas.
 
 ### availableArea
 
@@ -34,7 +34,7 @@ Decorations and known system reserved areas are excluded.
 LogicalRect availableArea
 ```
 
-Largest rectangle after excluding known keyboard occlusion; among equal areas the upper one wins, then the left one.
+Largest rectangle after excluding known keyboard occlusion; with equal area, the upper one is chosen, then the left one.
 
 ### keyboardArea
 
@@ -42,7 +42,7 @@ Largest rectangle after excluding known keyboard occlusion; among equal areas th
 LogicalRect keyboardArea
 ```
 
-Empty when unknown or confirmed closed, distinguished by keyboardAreaKnown.
+Empty when unknown or confirmed closed; keyboardAreaKnown distinguishes the two.
 
 ### safeAreaKnown
 
@@ -50,4 +50,4 @@ Empty when unknown or confirmed closed, distinguished by keyboardAreaKnown.
 bool safeAreaKnown
 ```
 
-When false, safeArea only covers the currently known content range.
+When false, safeArea only covers the currently known content extent.

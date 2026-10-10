@@ -8,9 +8,9 @@ title: "Painter"
 
 **Namespace:** `hiyui`
 
-Custom paint strategy base class
+Custom paint strategy base
 
-The instance is moved to CustomDraw via std::unique_ptr and its lifetime is bound to the LVGL object. this can be used safely inside callbacks.
+The instance is handed to CustomDraw through std::unique_ptr, its lifetime is bound to the LVGL object, and this is safe to use in callbacks.
 
 ## Public Methods
 
@@ -20,7 +20,7 @@ The instance is moved to CustomDraw via std::unique_ptr and its lifetime is boun
 virtual void paint(DrawCtx &ctx, const PaintCtx &pc)=0
 ```
 
-Repainting uses local physical coordinates; only submit drawing and do not modify the widget tree, theme or size inside this callback.
+Repainting uses local physical coordinates. Only submit drawing; do not modify the widget tree, theme, or size inside this callback.
 
 ### tick
 
@@ -28,7 +28,7 @@ Repainting uses local physical coordinates; only submit drawing and do not modif
 virtual void tick(float)
 ```
 
-Animation frame; called periodically only when CustomDraw has fps &gt; 0. dt is in seconds.
+Animation frame; called periodically only when CustomDraw fps &gt; 0. dt is in seconds.
 
 ### onTheme
 
@@ -36,7 +36,7 @@ Animation frame; called periodically only when CustomDraw has fps &gt; 0. dt is 
 virtual void onTheme(const Theme &)
 ```
 
-Theme switch notification; the library guarantees the call before the next paint.
+Theme change notification, called by the library before the next paint.
 
 ### onEvent
 
@@ -44,7 +44,7 @@ Theme switch notification; the library guarantees the call before the next paint
 virtual void onEvent(Event &, const PaintCtx &)
 ```
 
-Handles input and state events; a repaint is requested automatically after return. The Event must not be stored beyond the callback.
+Handles input and state events. A repaint is requested automatically after return; the Event must not be stored beyond the callback.
 
 ### onResize
 

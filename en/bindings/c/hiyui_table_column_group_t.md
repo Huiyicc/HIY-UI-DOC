@@ -32,4 +32,4 @@ int column_index_count
 const hiyui_localized_text_t * localized_title
 ```
 
-Copies the translation description at call time and overrides the plain text; a null or invalid description falls back to the plain text.
+Copies the translation description at call time and overrides the plain text. An empty or invalid description falls back to the plain text.

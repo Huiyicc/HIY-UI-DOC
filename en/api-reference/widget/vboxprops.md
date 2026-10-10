@@ -18,7 +18,7 @@ Vertical layout container creation properties
 int padding
 ```
 
-Padding
+Inner padding
 
 ### gap
 
@@ -26,7 +26,7 @@ Padding
 int gap
 ```
 
-Gap between child widgets
+Gap between children
 
 ### margin
 
@@ -34,7 +34,7 @@ Gap between child widgets
 int margin
 ```
 
-Outer margin of the container in the parent layout
+Outer margin of the container within its parent layout
 
 ### bg
 
@@ -42,7 +42,7 @@ Outer margin of the container in the parent layout
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color. HIYUI_DEFAULT = follow theme
 
 ### radius
 
@@ -50,7 +50,7 @@ Background color, HIYUI_DEFAULT = follow theme
 uint32_t radius
 ```
 
-Corner radius, HIYUI_DEFAULT = follow theme
+Corner radius. HIYUI_DEFAULT = follow theme
 
 ### align
 

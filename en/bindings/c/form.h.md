@@ -73,7 +73,7 @@ HIYUI_API void HIYUI_CALL hiyui_input_clear(hiyui_widget_t *input, hiyui_notify_
 HIYUI_API void HIYUI_CALL hiyui_input_set_read_only(hiyui_widget_t *input, int read_only)
 ```
 
-Non-zero makes the input read-only; selection and copying stay allowed.
+A non-zero value disables editing while selection and copy remain allowed.
 
 ### hiyui_slider_create
 
@@ -153,9 +153,9 @@ HIYUI_API int HIYUI_CALL hiyui_radio_is_checked(hiyui_widget_t *r)
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_dropdown_create(hiyui_widget_t *parent, const hiyui_dropdown_props_t *props)
 ```
 
-Creates a dropdown widget.
+Creates a dropdown select widget.
 
-NULL equals zero initialization. A zero popup_mode and HIYUI_POPUP_MODE_WINDOW both pop up in a window. The library falls back to inline embedding when popup windows are unavailable.
+NULL is equivalent to zero initialization. A popup_mode of zero and HIYUI_POPUP_MODE_WINDOW both open a floating popup; without floating-window capability the library falls back to inline.
 
 ### hiyui_dropdown_set_items
 
@@ -181,7 +181,7 @@ HIYUI_API int HIYUI_CALL hiyui_dropdown_get_selected(hiyui_widget_t *dd)
 HIYUI_API void HIYUI_CALL hiyui_dropdown_set_part(hiyui_widget_t *dd, hiyui_dropdown_part_t part, const hiyui_part_styles_t *styles, hiyui_part_event_fn on_activate, void *ud, hiyui_destroy_fn destroy)
 ```
 
-Overrides a Dropdown part style and binds an activate callback that runs before the default behavior. A NULL styles binds only the callback. A NULL on_activate releases user_data immediately.
+Overrides Dropdown part styles and binds the activation callback invoked before default behavior. A NULL styles binds only the callback. A NULL on_activate releases user_data immediately.
 
 ### hiyui_dropdown_set_search_matcher
 
@@ -189,4 +189,4 @@ Overrides a Dropdown part style and binds an activate callback that runs before 
 HIYUI_API void HIYUI_CALL hiyui_dropdown_set_search_matcher(hiyui_widget_t *dd, int(*matcher)(const char *item_text, const char *query, void *ud), void *ud, hiyui_destroy_fn destroy)
 ```
 
-Custom search matching; a non-zero return means a match. A NULL matcher restores the default substring matching.
+Custom search matcher; a non-zero return means a match. A NULL matcher restores the default substring match.

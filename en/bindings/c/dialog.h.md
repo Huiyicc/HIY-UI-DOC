@@ -90,6 +90,6 @@ HIYUI_API void HIYUI_CALL hiyui_confirm_dialog_close(hiyui_widget_t *w)
 HIYUI_API void HIYUI_CALL hiyui_confirm_dialog_ask(const char *title, const char *content, hiyui_widget_t *parent, hiyui_int_fn cb, void *ud)
 ```
 
-One-call static confirm dialog that manages its own lifetime
+One-shot confirmation dialog that manages its own lifecycle
 
-nullptr means the current active screen. void(int ok, void *ud). ok is 1 for confirm and 0 for cancel, fired only once.
+nullptr = the current active screen void(int ok, void *ud); ok=1 confirm, ok=0 cancel; fired exactly once

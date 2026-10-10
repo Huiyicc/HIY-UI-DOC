@@ -6,7 +6,7 @@ title: "shader_surface.h"
 
 **Header:** `#include <hiyui/c/shader_surface.h>`
 
-Generic GLSL fragment shader widget
+General GLSL fragment shader widget
 
 ## Functions
 
@@ -16,9 +16,9 @@ Generic GLSL fragment shader widget
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_shader_surface_create(hiyui_widget_t *parent, const hiyui_shader_surface_props_t *props)
 ```
 
-Creates a generic shader widget
+Creates the general shader widget.
 
-Runs GLSL on the GPU when a GPU backend is available, otherwise clears the buffer. set_source must follow to set the GLSL. All defaults when NULL, layout size, scale=1.0, fps=60, running=true
+Runs GLSL on the GPU when a GPU backend is available, otherwise clears the buffer. set_source must follow to provide the GLSL. When NULL, all defaults apply: layout size, scale=1.0, fps=60, running=true.
 
 ### hiyui_shader_surface_set_source
 
@@ -26,9 +26,9 @@ Runs GLSL on the GPU when a GPU backend is available, otherwise clears the buffe
 HIYUI_API void HIYUI_CALL hiyui_shader_surface_set_source(hiyui_widget_t *w, const char *glsl)
 ```
 
-Sets the GLSL fragment shader source
+Sets the GLSL fragment shader source.
 
-GLSL source, lifetime guaranteed by the caller, NULL clears the shader
+GLSL source; the caller guarantees its lifetime. NULL clears the shader.
 
 ### hiyui_shader_surface_start
 
@@ -36,7 +36,7 @@ GLSL source, lifetime guaranteed by the caller, NULL clears the shader
 HIYUI_API void HIYUI_CALL hiyui_shader_surface_start(hiyui_widget_t *w)
 ```
 
-Starts time-driven execution.
+Starts time-driven rendering.
 
 ### hiyui_shader_surface_stop
 
@@ -44,7 +44,7 @@ Starts time-driven execution.
 HIYUI_API void HIYUI_CALL hiyui_shader_surface_stop(hiyui_widget_t *w)
 ```
 
-Stops time-driven execution.
+Stops time-driven rendering.
 
 ### hiyui_shader_surface_set_running
 
@@ -52,9 +52,9 @@ Stops time-driven execution.
 HIYUI_API void HIYUI_CALL hiyui_shader_surface_set_running(hiyui_widget_t *w, int on)
 ```
 
-Sets the time-driven switch
+Sets the time-driven switch.
 
-1=start, 0=stop
+1=start, 0=stop.
 
 ### hiyui_shader_gpu_active
 
@@ -62,6 +62,6 @@ Sets the time-driven switch
 HIYUI_API hiyui_bool_t HIYUI_CALL hiyui_shader_gpu_active(void)
 ```
 
-Queries whether the GPU shader backend is working
+Queries whether the GPU shader backend is active.
 
-HIYUI_BOOL_TRUE means hardware rendering, otherwise software rendering
+HIYUI_BOOL_TRUE means hardware decoding, otherwise software decoding.

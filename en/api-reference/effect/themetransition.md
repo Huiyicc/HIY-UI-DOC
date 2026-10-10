@@ -10,7 +10,7 @@ title: "ThemeTransition"
 
 Theme switch transition animation scheduler
 
-Static-only interface; call play() to run the full screenshot, switch, and animation flow. Uses SlideRevealEffect by default, replaceable via setEffect().
+Purely static interface; play() runs the full snapshot, switch, and animation flow. Uses SlideRevealEffect by default, replaceable through setEffect().
 
 ## Static Methods
 
@@ -20,9 +20,9 @@ Static-only interface; call play() to run the full screenshot, switch, and anima
 static void play(const Theme &newTheme, TransitionDirection dir)
 ```
 
-Performs the theme switch transition animation
+Runs the theme switch transition animation
 
-Flow, screenshot -&gt; setTheme -&gt; overlay cover -&gt; animated reveal of the new content. In non-animated mode switches directly without an overlay.
+Flow: screenshot, setTheme, overlay cover, then animated reveal of the new content. In non-animated mode it switches directly with no overlay.
 
 
 Target theme Animation direction
@@ -43,9 +43,9 @@ Effect instance, ownership transferred
 static void setExclusionZone(const ExclusionZone &zone)
 ```
 
-Sets the exclusion zone, rectangle or circle
+Sets the exclusion area, rectangle or circle
 
-Exclusion zone configuration
+Exclusion area configuration
 
 ### setExclusionObj
 
@@ -53,7 +53,7 @@ Exclusion zone configuration
 static void setExclusionObj(_lv_obj_t *obj)
 ```
 
-Sets a rectangular exclusion zone automatically from LVGL object coordinates
+Sets the rectangular exclusion area automatically from LVGL object coordinates
 
 Target LVGL object
 
@@ -63,4 +63,4 @@ Target LVGL object
 static void clearExclusionZone()
 ```
 
-Clears the exclusion zone
+Clears the exclusion area

@@ -18,7 +18,7 @@ Tab item configuration
 const char * text
 ```
 
-Tab text
+Tab label text
 
 ### iconCodepoint
 
@@ -42,7 +42,7 @@ Image source
 FontIconStyle iconStyle
 ```
 
-Icon style, fill/weight/grade/opticalSize
+Icon style: fill/weight/grade/opticalSize
 
 ### data
 
@@ -50,4 +50,4 @@ Icon style, fill/weight/grade/opticalSize
 int data
 ```
 
-User data bound to this item, read by itemData()
+User data bound to the item, read via itemData()

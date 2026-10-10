@@ -10,7 +10,7 @@ title: "WaveformChart"
 
 Waveform chart widget
 
-Waveform visualization for high-frequency data streams with multi-channel support, viewport control and thread-safe data pushing.
+Waveform visualization for high-frequency data streams, with multiple channels, viewport control and thread-safe data pushing.
 
 
 
@@ -32,7 +32,7 @@ Waveform visualization for high-frequency data streams with multi-channel suppor
 WaveformChart(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### WaveformChart
 
@@ -40,7 +40,7 @@ Wrap an existing LVGL object
 WaveformChart(WaveformChartProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 Waveform chart properties
 
@@ -50,7 +50,7 @@ Waveform chart properties
 WaveformChart & init(lv_obj_t *parent) &
 ```
 
-Create the waveform chart under a parent object
+Creates the waveform chart on a parent object
 
 Parent LVGL object pointer
 
@@ -60,7 +60,7 @@ Parent LVGL object pointer
 WaveformChart & init(Widget &parent) &
 ```
 
-Create the waveform chart under a parent object
+Creates the waveform chart on a parent object
 
 Parent LVGL object pointer
 
@@ -70,9 +70,9 @@ Parent LVGL object pointer
 int addChannel(WaveformChannel config={})
 ```
 
-Add a channel
+Adds a channel
 
-Channel configuration Index of the added channel, incrementing from 0
+Channel configuration Index of the new channel, incrementing from 0
 
 ### pushValue
 
@@ -80,9 +80,9 @@ Channel configuration Index of the added channel, incrementing from 0
 WaveformChart & pushValue(int channelIdx, float value) &
 ```
 
-Push a single sample to a channel
+Pushes a single sample to a channel
 
-Thread safe, can be called from a data acquisition thread.
+Thread-safe; callable from a data acquisition thread.
 
 
 Channel index Sample value This component
@@ -93,12 +93,12 @@ Channel index Sample value This component
 WaveformChart & pushValues(int channelIdx, const float *values, size_t count) &
 ```
 
-Push a batch of samples to a channel
+Pushes a batch of samples to a channel
 
-Thread safe, can be called from a data acquisition thread.
+Thread-safe; callable from a data acquisition thread.
 
 
-Channel index Array of sample values Number of samples This component
+Channel index Sample value array Number of samples This component
 
 ### viewport
 
@@ -106,7 +106,7 @@ Channel index Array of sample values Number of samples This component
 WaveformChart & viewport(size_t startIdx, size_t endIdx) &
 ```
 
-Set the visible viewport range
+Sets the visible viewport range
 
 Start data index End data index This component
 
@@ -116,7 +116,7 @@ Start data index End data index This component
 WaveformChart & viewAll() &
 ```
 
-Show all data
+Shows all data
 
 This component
 
@@ -126,7 +126,7 @@ This component
 WaveformChart & viewLatest(size_t windowSize) &
 ```
 
-Follow the latest data automatically
+Follows the latest data automatically
 
 Number of samples in the visible window This component
 
@@ -136,7 +136,7 @@ Number of samples in the visible window This component
 WaveformChart & yRange(float min, float max) &
 ```
 
-Set the Y axis range
+Sets the Y axis range
 
 Minimum value Maximum value This component
 
@@ -146,7 +146,7 @@ Minimum value Maximum value This component
 size_t channelSize(int channelIdx) const
 ```
 
-Get the number of data points in a channel
+Returns the number of data points in a channel
 
 Channel index Number of data points
 
@@ -156,9 +156,9 @@ Channel index Number of data points
 WaveformChart & refresh() &
 ```
 
-Refresh the display
+Refreshes the display
 
-Call after data updates, or periodically, to redraw the waveform.
+Call after data updates or periodically to redraw the waveform.
 
 
 This component
@@ -169,6 +169,6 @@ This component
 lv_obj_t * chartObj() const
 ```
 
-Get the underlying waveform chart draw object
+Returns the underlying waveform chart draw object
 
-Pointer to the waveform chart LVGL object for advanced custom drawing
+Waveform chart LVGL object pointer for advanced custom drawing

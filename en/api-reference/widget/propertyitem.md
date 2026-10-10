@@ -8,7 +8,7 @@ title: "PropertyItem"
 
 **Namespace:** `hiyui`
 
-Owning property description. It is copied or moved when passed to the designer. id must be nonzero and unique across the tree. Tuple children must be a non-empty sequence of scalar leaf properties. Nested tuples and empty tuple values are not supported. When a Tuple provides no value it is aggregated from the children. When provided it overrides each child value. The same applies to defaults, and aggregation requires every item to have a default. A mixed tuple must still provide a representative value that satisfies each child constraint. Tuple children share the draft, pending and conflict states of the whole group. Changing the child structure requires updating the parent Tuple.
+Owning property description, copied or moved when passed to a designer; id must be nonzero and unique across the tree. Tuple children must be a non-empty sequence of scalar leaf properties; nested Tuples and empty tuple values are not supported. When a Tuple provides no value it is aggregated from children; when provided it overrides each child value. The same applies to default values, and aggregation requires every item to have a default value. A mixed tuple still requires a representative value satisfying each child constraint. Tuple children share the draft, pending and conflict state of the whole group; changing the child structure requires updating the parent Tuple.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Owning property description. It is copied or moved when passed to the designer. 
 std::string editor
 ```
 
-When non-empty the matching registered factory is used. Not editable when unregistered.
+When non-empty, uses the corresponding registered factory. Cannot be edited when unregistered.
 
 ### userData
 
@@ -26,7 +26,7 @@ When non-empty the matching registered factory is used. Not editable when unregi
 void * userData
 ```
 
-Borrowed data. It must outlive the property removal and the end of related callbacks.
+Borrowed data. Must stay alive until the property is removed and related callbacks finish.
 
 ### mixed
 
@@ -42,7 +42,7 @@ Values differ across objects. Unmodified drafts are not committed.
 bool modified
 ```
 
-When no default is set it is marked by the caller or by a successful commit.
+Marked by the caller or a successful commit when no default value is set.
 
 ### localizedName
 
@@ -50,7 +50,7 @@ When no default is set it is marked by the caller or by a successful commit.
 std::optional< LocalizedText > localizedName
 ```
 
-When set it overrides name, used for display, filtering and sorting.
+Overrides name when set. Used for display, filtering and sorting.
 
 ### localizedDescription
 
@@ -58,4 +58,4 @@ When set it overrides name, used for display, filtering and sorting.
 std::optional< LocalizedText > localizedDescription
 ```
 
-When set it overrides description, used for the description and filtering.
+Overrides description when set. Used for description and filtering.

@@ -8,7 +8,7 @@ title: "MenuItem"
 
 **Namespace:** `hiyui`
 
-Menu item configuration, supporting recursive submenus.
+Menu item configuration, supports recursive submenus
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Menu item configuration, supporting recursive submenus.
 const char * text
 ```
 
-Menu item text.
+Menu item text
 
 ### iconSrc
 
@@ -26,7 +26,7 @@ Menu item text.
 const void * iconSrc
 ```
 
-Icon source, file path or lv_image_dsc_t*.
+Icon source, file path or lv_image_dsc_t*
 
 ### iconCodepoint
 
@@ -34,7 +34,7 @@ Icon source, file path or lv_image_dsc_t*.
 uint32_t iconCodepoint
 ```
 
-Material Symbols codepoint; overrides iconSrc when nonzero.
+Material Symbols codepoint, overrides iconSrc when non-zero
 
 ### iconStyle
 
@@ -42,7 +42,7 @@ Material Symbols codepoint; overrides iconSrc when nonzero.
 FontIconStyle iconStyle
 ```
 
-Icon style, fill/weight/grade/opticalSize.
+Icon style, fill/weight/grade/opticalSize
 
 ### separator
 
@@ -50,7 +50,7 @@ Icon style, fill/weight/grade/opticalSize.
 bool separator
 ```
 
-Whether this item is a separator line.
+Whether this item is a separator
 
 ### groupTag
 
@@ -58,7 +58,7 @@ Whether this item is a separator line.
 const char * groupTag
 ```
 
-Group label above the separator line, valid only when separator=true.
+Group label above the separator, valid only when separator=true
 
 ### expanded
 
@@ -66,7 +66,7 @@ Group label above the separator line, valid only when separator=true.
 bool expanded
 ```
 
-Initial expanded state, valid only for parent items.
+Initial expanded state, valid only for parent items
 
 ### data
 
@@ -74,7 +74,7 @@ Initial expanded state, valid only for parent items.
 int data
 ```
 
-User data, read by itemData().
+User bound data, read by itemData()
 
 ### children
 
@@ -82,4 +82,4 @@ User data, read by itemData().
 std::vector< MenuItem > children
 ```
 
-Submenu items; non-empty makes this an expandable parent item.
+Child menu items, non-empty makes this an expandable parent item

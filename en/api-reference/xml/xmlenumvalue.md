@@ -8,4 +8,4 @@ title: "XmlEnumValue"
 
 **Namespace:** `hiyui`
 
-An enum name and value usable in XML.
+One enum name and value usable in XML.

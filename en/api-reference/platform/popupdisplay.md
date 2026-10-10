@@ -8,9 +8,9 @@ title: "PopupDisplay"
 
 **Namespace:** `hiyui`
 
-Offscreen popup display held by RAII.
+Offscreen popup display, RAII held
 
-On destruction, deletes the bound indev first, then lv_display_delete, whose driver destroys the popup window.
+Destruction first deletes the bound indevs, then lv_display_delete, whose driver destroys the popup window.
 
 ## Static Methods
 
@@ -20,9 +20,9 @@ On destruction, deletes the bound indev first, then lv_display_delete, whose dri
 static std::unique_ptr< PopupDisplay > create(lv_display_t *parentDisp, int offsetX, int offsetY, int initW, int initH, bool transparent)
 ```
 
-Creates an offscreen popup display.
+Creates an offscreen popup display
 
-Parent display, the popup becomes its child window. X offset from the parent window origin, SDL logical pixels. Y offset from the parent window origin, SDL logical pixels. Initial width in canvas pixels. Initial height in canvas pixels. Whether to enable per-pixel alpha. Returns nullptr on creation failure.
+Parent display, the popup becomes its child window X offset from the parent window origin, SDL logical pixels Y offset from the parent window origin, SDL logical pixels Initial width, canvas pixels Initial height, canvas pixels Whether to enable per-pixel alpha Returns nullptr when creation fails
 
 ### createStandalone
 
@@ -30,12 +30,12 @@ Parent display, the popup becomes its child window. X offset from the parent win
 static std::unique_ptr< PopupDisplay > createStandalone(lv_display_t *referenceDisp, int screenX, int screenY, int initW, int initH, bool transparent)
 ```
 
-Creates a standalone top-level window display without a parent window.
+Creates a standalone top-level window display without a parent window
 
-Used for popup scenarios detached from the main window such as the system tray. The window starts hidden and does not appear in the taskbar or window list. After adjusting to the content size, the caller performs SDL_ShowWindow itself.
+Used for popup scenarios detached from the main window such as the system tray. The window starts hidden and does not appear in taskbars or window lists; the caller resizes it to the content size and calls SDL_ShowWindow itself.
 
 
-Reference display for font and scaling. nullptr means the current default display. SDL desktop coordinate X. SDL desktop coordinate Y. Initial width in canvas pixels. Initial height in canvas pixels. Whether to enable per-pixel alpha. Returns nullptr on creation failure.
+Reference display for fonts and scaling; nullptr means the current default display SDL desktop coordinate X SDL desktop coordinate Y Initial width, canvas pixels Initial height, canvas pixels Whether to enable per-pixel alpha Returns nullptr when creation fails
 
 ### fromDisplay
 
@@ -43,7 +43,7 @@ Reference display for font and scaling. nullptr means the current default displa
 static PopupDisplay * fromDisplay(lv_display_t *display) noexcept
 ```
 
-Finds a live popup host. Returns nullptr for a non-popup display. The return value does not transfer ownership.
+Finds a live popup host; returns nullptr for non-popup displays, ownership is not transferred.
 
 ### resolveHostDisplay
 
@@ -51,7 +51,7 @@ Finds a live popup host. Returns nullptr for a non-popup display. The return val
 static lv_display_t * resolveHostDisplay(lv_display_t *disp) noexcept
 ```
 
-Resolves the display that global overlays should mount on. A popup display walks up the host chain and returns the first non-popup display. When the host chain is broken or is a standalone window, returns the first non-popup display. With no candidate, returns the input unchanged.
+Resolves the display where global overlays should mount. A popup display walks up the host chain and returns the first non-popup display. When the chain is broken or the window is standalone, returns the first non-popup display, or the input unchanged when no candidate exists.
 
 ## Public Methods
 
@@ -61,7 +61,7 @@ Resolves the display that global overlays should mount on. A popup display walks
 lv_display_t * display() const
 ```
 
-The underlying LVGL display.
+Underlying LVGL display
 
 ### screen
 
@@ -69,7 +69,7 @@ The underlying LVGL display.
 lv_obj_t * screen() const
 ```
 
-The active screen object, mount point for menu panels.
+Active screen object, mount point for menu panels
 
 ### sdlWindow
 
@@ -77,7 +77,7 @@ The active screen object, mount point for menu panels.
 SDL_Window * sdlWindow() const
 ```
 
-The underlying SDL window.
+Underlying SDL window
 
 ### setBackdrop
 
@@ -85,9 +85,9 @@ The underlying SDL window.
 bool setBackdrop(lv_obj_t *panel, bool enabled)
 ```
 
-Binds system blur to the first child panel of the screen, releasing native resources when disabled.
+Binds system blur to the first child panel of the screen; disabling releases native resources.
 
-Returns true when blur is enabled. Returns false when not enabled, unsupported, or enabling fails.
+Returns true when blur is enabled; false when not enabled, unsupported, or enabling failed.
 
 ### clearBackdrop
 
@@ -95,7 +95,7 @@ Returns true when blur is enabled. Returns false when not enabled, unsupported, 
 void clearBackdrop(lv_obj_t *panel) noexcept
 ```
 
-Unbinds blur from the given panel. No-op when the panel is not bound.
+Unbinds blur from the given panel; no-op when the panel is not bound.
 
 ### resizeCanvas
 
@@ -103,9 +103,9 @@ Unbinds blur from the given panel. No-op when the panel is not bound.
 void resizeCanvas(int width, int height) noexcept
 ```
 
-Resizes the window and display resolution together in canvas pixels.
+Resizes the window and display resolution together by canvas pixels
 
-During the resize, SDL size events are suppressed from feeding back the display resolution. This prevents the resolution from being rewritten when zoom and input_scale disagree. Target canvas width in pixels. Target canvas height in pixels.
+During the resize, SDL size events are suppressed from feeding back into the display resolution, so the resolution is not rewritten when zoom and input_scale disagree. Target canvas width in pixels Target canvas height in pixels
 
 ### releaseFromDisplayDelete
 
@@ -113,7 +113,7 @@ During the resize, SDL size events are suppressed from feeding back the display 
 void releaseFromDisplayDelete()
 ```
 
-Releases the display and associated input devices taken over by an external delete flow.
+Releases the display and associated input devices taken over by an external delete flow
 
 ### releaseFromWindowDestroy
 
@@ -121,4 +121,4 @@ Releases the display and associated input devices taken over by an external dele
 void releaseFromWindowDestroy() noexcept
 ```
 
-Marks the SDL window as destroyed externally, keeping the display for deferred reclaim.
+Marks the SDL window as destroyed externally, keeping the display for deferred reclamation.

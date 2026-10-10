@@ -6,4 +6,4 @@ title: "hiyui.h"
 
 **Header:** `#include <hiyui/c/hiyui.h>`
 
-Unified entry point for the Hiy-UI C API.
+Unified entry point of the Hiy-UI C API.

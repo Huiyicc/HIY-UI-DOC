@@ -8,7 +8,7 @@ title: "date_value.h"
 
 Date and time values and shared picker callback types
 
-Shared by TimePicker and DatePicker. year 0 means no selection.
+Shared by TimePicker / DatePicker. A year of 0 means no selection.
 
 ## Type Aliases
 
@@ -18,4 +18,4 @@ Shared by TimePicker and DatePicker. year 0 means no selection.
 typedef void(* hiyui_picker_footer_fn) (hiyui_widget_t *panel, void *ud)
 ```
 
-Picker popup footer build callback. Builds custom child widgets inside the popup footer container.
+Popup footer build callback; builds custom child widgets inside the popup bottom container

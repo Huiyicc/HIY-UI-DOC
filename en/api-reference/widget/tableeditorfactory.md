@@ -8,4 +8,4 @@ title: "TableEditorFactory"
 
 **Namespace:** `hiyui`
 
-A copyable editor factory that accepts a void(Widget &amp;, TableEditor) callable. The host is positioned and destroyed by the table, borrowed only during the factory call. Child widgets created in it belong to the host. The host must not be destroyed or reparented. The factory only configures the host subtree and must not modify or destroy the table or its ancestors. Interaction is handled through child widget events. The factory can be empty. After a column config is copied, the copy shares the factory and its captured state.
+Copyable editor factory accepting a void(Widget &amp;, TableEditor) callable. host is positioned and destroyed by the table and can only be borrowed during the factory call. Created child components are owned by host. Do not destroy host or change its parent. The factory only configures the host subtree and must not modify or destroy the table or its ancestors. Interaction is handled through child component events. The factory can be empty. After a column configuration is copied, the copy shares the factory and its captured state.

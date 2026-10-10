@@ -8,9 +8,9 @@ title: "FileDialog"
 
 **Namespace:** `hiyui`
 
-Cross-platform file dialog, static-only interface
+Cross-platform file dialog, static interface only
 
-Calls the platform native file picker and returns the result through a callback. Call on the UI thread running the Application main loop; calls after the loop stops are no-ops. All text and filters are copied immediately; the callback is held by value, and move-only closures are supported. The picker does not block the HIY-UI main loop; the result is delivered at most once in a later UI main-loop iteration, including cancellation and Error when the platform is unsupported; the result callback is not invoked before open() returns. Undelivered callbacks are released at application exit; an already-shown native picker is not guaranteed to be closed.
+Opens the platform native file picker and returns the result through a callback. Call on the UI thread that runs the Application main loop; calls after the main loop stops are no-ops. All text and filters are copied at call time; the callback is held by value and move-only closures are supported. The picker does not block the HIY-UI main loop; the result is delivered at most once in a later UI loop iteration, including cancellation and Error when the platform is unsupported. The result callback is not invoked before open() returns. Undelivered callbacks are released at application exit; an already open native picker is not guaranteed to be closed.
 
 ## Static Methods
 
@@ -20,7 +20,7 @@ Calls the platform native file picker and returns the result through a callback.
 static void open(FileDialogProps props, F &&callback)
 ```
 
-Open the file dialog
+Opens the file dialog
 
 Callback type, signature void(const FileDialogResult&amp;)
 
@@ -30,7 +30,7 @@ Callback type, signature void(const FileDialogResult&amp;)
 static void open(const Ref< T > &owner, FileDialogProps props, F &&callback)
 ```
 
-Opens the file dialog with the callback lifetime bound to the target widget. No-op when the target is unmounted or invalid; if the target becomes invalid while waiting, the callback is released and the result discarded. owner only controls the callback lifetime and does not set a native parent window.
+Opens the file dialog and binds the callback lifetime to the target widget. No-op when the target is unmounted or invalid; if the target becomes invalid while waiting, the callback is released and the result is discarded. owner only controls the callback lifetime and does not set the native parent window.
 
 ### openFile
 
@@ -38,7 +38,7 @@ Opens the file dialog with the callback lifetime bound to the target widget. No-
 static void openFile(F &&cb, const FileFilter *filters=nullptr, int filterCount=0, const char *defaultPath=nullptr)
 ```
 
-Open a single file, convenience method
+Opens a single file, convenience method
 
 ### saveFile
 
@@ -46,7 +46,7 @@ Open a single file, convenience method
 static void saveFile(F &&cb, const char *defaultFilename=nullptr, const FileFilter *filters=nullptr, int filterCount=0, const char *defaultPath=nullptr)
 ```
 
-Save a file, convenience method
+Saves a file, convenience method
 
 ### selectFolder
 
@@ -54,4 +54,4 @@ Save a file, convenience method
 static void selectFolder(F &&cb, const char *defaultPath=nullptr)
 ```
 
-Select a directory, convenience method
+Selects a directory, convenience method

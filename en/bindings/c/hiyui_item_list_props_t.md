@@ -38,7 +38,7 @@ int max_height
 int selected_index
 ```
 
-0 means the first item; HIYUI_NO_SELECTION means no selection.
+0 selects the first item, HIYUI_NO_SELECTION means no selection.
 
 ### bg
 

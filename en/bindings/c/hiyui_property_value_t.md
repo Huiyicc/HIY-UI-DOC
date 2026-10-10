@@ -6,7 +6,7 @@ title: "hiyui_property_value_t"
 
 **Header:** `#include <hiyui/c/property_grid.h>`
 
-Borrowed value view; input strings and bytes are valid for the duration of the call and are copied before the function returns. text may be NULL meaning an empty string; when custom.size is non-zero, bytes must be non-NULL. tuple stores values in child property declaration order; when count is non-zero, values must be non-NULL and the value tree must be acyclic.
+A borrowed value view. Input strings and bytes are valid during the call and copied before the function returns. text may be NULL and means an empty string. When custom.size is non-zero, bytes must be non-NULL. tuple keeps children in declaration order. When count is non-zero, values must be non-NULL, and the value tree must be acyclic.
 
 ## Public Members
 

@@ -8,4 +8,4 @@ title: "detail::ContextMenuItemStorage"
 
 **Namespace:** `hiyui`
 
-Menu item runtime storage; deep-copies and owns strings and callbacks
+Runtime storage of a menu item; the deep copy owns strings and callbacks

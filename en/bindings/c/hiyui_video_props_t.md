@@ -6,7 +6,7 @@ title: "hiyui_video_props_t"
 
 **Header:** `#include <hiyui/c/video.h>`
 
-Can be zero-initialized; boolean defaults are all false.
+Can be zero-initialized. Boolean defaults are all false.
 
 ## Public Members
 
@@ -16,7 +16,7 @@ Can be zero-initialized; boolean defaults are all false.
 const char * src
 ```
 
-UTF-8 path or URL, copied at creation; NULL or an empty string means an empty source.
+UTF-8 path or URL, copied at creation. NULL or an empty string means an empty source.
 
 ### width
 
@@ -48,7 +48,7 @@ HIYUI_IMAGE_FIT_DEFAULT uses Contain.
 hiyui_bool_t autoplay
 ```
 
-false pauses after loading the first frame.
+With false, pauses after loading the first frame.
 
 ### loop
 
@@ -70,7 +70,7 @@ hiyui_bool_t muted
 int volume
 ```
 
-0 uses the default volume 100; other values clamp to 0-100, and muting uses muted.
+0 uses the default volume 100; other values are clamped to 0-100, and muting uses muted.
 
 ### io_timeout_ms
 
@@ -78,7 +78,7 @@ int volume
 int io_timeout_ms
 ```
 
-Timeout in milliseconds for open and probe, a single seek, or continuous packet-read waiting; non-positive values use 10000.
+Timeout in milliseconds for opening and probing, a single seek, or continuously waiting for packets. Non-positive values use 10000.
 
 ### reconnect_attempts
 
@@ -86,7 +86,7 @@ Timeout in milliseconds for open and probe, a single seek, or continuous packet-
 int reconnect_attempts
 ```
 
-Maximum reconnect attempts per interruption; non-positive values disable it, and the count resets after frames resume.
+Maximum reconnection attempts per interruption. Non-positive values disable reconnection, and the count restarts after frames resume.
 
 ### reconnect_delay_ms
 
@@ -94,4 +94,4 @@ Maximum reconnect attempts per interruption; non-positive values disable it, and
 int reconnect_delay_ms
 ```
 
-Milliseconds to wait before each reconnect; non-positive values use 1000.
+Delay in milliseconds before each reconnection attempt. Non-positive values use 1000.

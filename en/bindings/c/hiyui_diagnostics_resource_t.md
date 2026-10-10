@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_resource_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Native resources with id 0 have no lifecycle identity; all addresses are informational only, and type is borrowed from the snapshot.
+Native resources with id 0 have no lifecycle identity. All addresses are for inspection only, and type is borrowed from the snapshot.
 
 ## Public Members
 

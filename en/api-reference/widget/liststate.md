@@ -10,7 +10,7 @@ title: "ListState"
 
 List runtime state, lifetime follows the LVGL object
 
-Heap allocated and attached to the lv_obj_t user_data, freed automatically through the LV_EVENT_DELETE callback.
+Heap-allocated and attached to the lv_obj_t user_data, released automatically through the LV_EVENT_DELETE callback.
 
 ## Public Members
 
@@ -20,4 +20,4 @@ Heap allocated and attached to the lv_obj_t user_data, freed automatically throu
 bool updating
 ```
 
-true during beginUpdate, pausing view refresh
+true during beginUpdate, pauses view refresh

@@ -6,7 +6,7 @@ title: "hiyui_tool_menu_item_s"
 
 **Header:** `#include <hiyui/c/tool_bar.h>`
 
-Menu input is copied recursively during the set_menu call; non-separator ids are non-zero and unique across the whole menu.
+The menu input is copied recursively during the set_menu call. Non-separator ids must be non-zero and unique across the whole menu.
 
 ## Public Members
 

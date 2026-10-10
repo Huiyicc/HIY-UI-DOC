@@ -10,7 +10,7 @@ title: "XmlRegistry"
 
 Global XML component registry.
 
-All operations must be called on the LVGL/Hiy-UI UI thread.
+All operations must run on the LVGL/Hiy-UI UI thread.
 
 ## Public Methods
 
@@ -36,9 +36,9 @@ Unregisters a module and all its components; new loads no longer resolve that na
 XmlRegistration registerWidget(uint64_t moduleToken, const XmlWidgetSpec &spec)
 ```
 
-Registers a component in a module and deep-copies the local name, fields, and attributes in the description.
+Registers a component with the module and deep-copies the local name, fields, and attributes from the description.
 
-On success the registry takes ownership of `userData` and calls `destroyUserData` after unregistration and after all load references are released. On failure ownership stays with the caller.
+On success the registry takes ownership of `userData` and calls `destroyUserData` after unregistration and after all load references are released. On failure ownership remains with the caller.
 
 ### unregisterWidget
 

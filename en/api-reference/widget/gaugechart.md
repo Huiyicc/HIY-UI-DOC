@@ -8,9 +8,9 @@ title: "GaugeChart"
 
 **Namespace:** `hiyui`
 
-Gauge widget
+Gauge chart widget
 
-Draws itself with lv_draw_arc and presents a single value as a half circle or a 3/4 circle.
+Self-drawn with lv_draw_arc, showing a single value as a half or three-quarter circle.
 
 
 
@@ -29,9 +29,9 @@ Draws itself with lv_draw_arc and presents a single value as a half circle or a 
 GaugeChart(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
-Restores the C++ wrapper from a created gauge object and automatically reattaches the persistent draw state.
+Restores the C++ wrapper from a created gauge object and reassociates the persisted draw state.
 
 
 Pointer to the created lv_obj_t
@@ -42,9 +42,9 @@ Pointer to the created lv_obj_t
 GaugeChart(GaugeChartProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-Gauge properties
+Gauge chart properties
 
 ### init
 
@@ -52,7 +52,7 @@ Gauge properties
 GaugeChart & init(lv_obj_t *parent) &
 ```
 
-Create the gauge under a parent object
+Creates the gauge chart on a parent object
 
 Parent LVGL object pointer
 
@@ -62,7 +62,7 @@ Parent LVGL object pointer
 GaugeChart & init(Widget &parent) &
 ```
 
-Create the gauge under a parent object
+Creates the gauge chart on a parent object
 
 Parent LVGL object pointer
 
@@ -72,9 +72,9 @@ Parent LVGL object pointer
 GaugeChart & value(float v, Notify notify=Notify::No) &
 ```
 
-Set the current value
+Sets the current value
 
-New value, clamped automatically when outside [min, max] This component
+New value, clamped to [min, max] This component
 
 ### value
 
@@ -82,7 +82,7 @@ New value, clamped automatically when outside [min, max] This component
 float value() const
 ```
 
-Get the currently displayed value
+Returns the current displayed value
 
 Current value
 
@@ -92,7 +92,7 @@ Current value
 GaugeChart & range(float min, float max, Notify notify=Notify::No) &
 ```
 
-Set the measurement range
+Sets the measurement range
 
 Minimum value Maximum value This component
 
@@ -102,6 +102,6 @@ Minimum value Maximum value This component
 lv_obj_t * gaugeObj() const
 ```
 
-Get the underlying gauge draw object
+Returns the underlying gauge draw object
 
-Pointer to the gauge LVGL object for advanced custom drawing
+Gauge LVGL object pointer for advanced custom drawing

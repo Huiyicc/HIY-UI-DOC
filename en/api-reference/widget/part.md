@@ -8,7 +8,7 @@ title: "Part"
 
 **Namespace:** `hiyui`
 
-Holds part customization by value; copies share the callback; owns no part or widget.
+Holds part customization by value; copies share the callback; owns neither the part nor the widget.
 
 ## Public Methods
 
@@ -18,4 +18,4 @@ Holds part customization by value; copies share the callback; owns no part or wi
 Part & onActivate(F &&callback) &
 ```
 
-Sets the activation callback that runs before the default behavior; setting again replaces the previous callback.
+Sets the activation callback that runs before the default behavior; a repeated call replaces the previous callback.

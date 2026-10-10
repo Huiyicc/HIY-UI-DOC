@@ -8,7 +8,7 @@ title: "FlowBoxProps"
 
 **Namespace:** `hiyui`
 
-Flow wrap layout container creation properties
+Flow layout container creation properties
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Flow wrap layout container creation properties
 int padding
 ```
 
-Padding
+Inner padding
 
 ### gap
 
@@ -26,7 +26,7 @@ Padding
 int gap
 ```
 
-Gap between child widgets
+Gap between children
 
 ### margin
 
@@ -34,7 +34,7 @@ Gap between child widgets
 int margin
 ```
 
-Outer margin of the container in the parent layout
+Outer margin of the container within its parent layout
 
 ### bg
 
@@ -42,7 +42,7 @@ Outer margin of the container in the parent layout
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color. HIYUI_DEFAULT = follow theme
 
 ### radius
 
@@ -50,7 +50,7 @@ Background color, HIYUI_DEFAULT = follow theme
 uint32_t radius
 ```
 
-Corner radius, HIYUI_DEFAULT = follow theme
+Corner radius. HIYUI_DEFAULT = follow theme
 
 ### align
 
@@ -66,7 +66,7 @@ Main axis alignment, horizontal within a row
 Align crossAlign
 ```
 
-Cross axis alignment, vertical across rows
+Cross axis alignment, vertical between rows
 
 ### minChildWidth
 
@@ -74,7 +74,7 @@ Cross axis alignment, vertical across rows
 int minChildWidth
 ```
 
-Minimum child width, 0 = unlimited
+Minimum child width. 0 = unlimited
 
 ### maxChildWidth
 
@@ -82,7 +82,7 @@ Minimum child width, 0 = unlimited
 int maxChildWidth
 ```
 
-Maximum child width, 0 = unlimited
+Maximum child width. 0 = unlimited
 
 ### childGrow
 
@@ -90,7 +90,7 @@ Maximum child width, 0 = unlimited
 bool childGrow
 ```
 
-Whether children flex-grow to fill the remaining space in a row
+Whether children flex-grow to fill remaining row space
 
 ### scroll
 

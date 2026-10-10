@@ -34,7 +34,7 @@ Icon path, used only in Custom mode
 const uint8_t * iconBytes
 ```
 
-Encoded image bytes (PNG etc.), Bytes mode only; must stay valid for the title bar lifetime
+Encoded image bytes (PNG etc.), used only in Bytes mode. Must stay valid for the title bar lifetime.
 
 ### iconByteSize
 
@@ -42,7 +42,7 @@ Encoded image bytes (PNG etc.), Bytes mode only; must stay valid for the title b
 size_t iconByteSize
 ```
 
-Length of iconBytes, Bytes mode only
+Length of iconBytes, used only in Bytes mode
 
 ### iconMode
 
@@ -50,7 +50,7 @@ Length of iconBytes, Bytes mode only
 TitleBarIcon iconMode
 ```
 
-Icon source; by default the program's own icon is used
+Icon source; defaults to the program's own icon
 
 ### iconSize
 
@@ -122,7 +122,7 @@ Window control button size in pixels
 int transitionMs
 ```
 
-Button hover fade duration in milliseconds
+Button hover transition duration in milliseconds
 
 ### bottomShadow
 

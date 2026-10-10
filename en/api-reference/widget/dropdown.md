@@ -23,7 +23,7 @@ using hiyui::Dropdown::SearchMatcher = std::function<bool(const std::string &ite
                                           const std::string &query)>
 ```
 
-Search matcher slot; returning true keeps the option
+Search matcher slot, returning true keeps the option
 
 ## Public Methods
 
@@ -33,7 +33,7 @@ Search matcher slot; returning true keeps the option
 Dropdown & placeholder(const char *value) &
 ```
 
-Sets the placeholder text; nullptr restores the default. Plain text unbinds the language binding and keeps the current value.
+Sets the placeholder text, nullptr restores the default. Plain text unbinds localization and keeps the current value.
 
 ### placeholder
 
@@ -41,7 +41,7 @@ Sets the placeholder text; nullptr restores the default. Plain text unbinds the 
 Dropdown & placeholder(LocalizedText value) &
 ```
 
-Binds the placeholder text, copying the text and arguments and updating with the language.
+Binds the placeholder text, the text and parameters are copied and update with the language.
 
 ### itemText
 
@@ -49,7 +49,7 @@ Binds the placeholder text, copying the text and arguments and updating with the
 Dropdown & itemText(int index, const char *value) &
 ```
 
-Updates the text of one item without firing the selection event. Out-of-range index does nothing; nullptr shows empty text. index is zero based. Replacing the whole collection clears the binding.
+Updates the text of the given item without firing selection events, out-of-range indices are ignored and nullptr shows empty text. index is 0-based. The binding is cleared when the whole item set is replaced.
 
 ### itemText
 
@@ -57,7 +57,7 @@ Updates the text of one item without firing the selection event. Out-of-range in
 Dropdown & itemText(int index, LocalizedText value) &
 ```
 
-Binds item text; switching the language keeps the collection content and selection state.
+Binds item text, the set contents and selection state are kept across language changes.
 
 ### part
 
@@ -65,7 +65,7 @@ Binds item text; switching the language keeps the collection content and selecti
 Dropdown & part(DropdownPart part, Part customization) &
 ```
 
-Replaces the customization of one part; callable before init; an empty Part restores defaults. Style overrides last until the widget is destroyed and keep working after theme and DPI changes and part rebuilds. For Item the activation callback runs before selection and index is the option index; other parts support style only.
+Replaces the customization of the given part, callable before initialization, a default Part value restores defaults. Style overrides last until the component is destroyed and keep effect across theme and DPI changes and part rebuilds. The Item activation callback runs before selection, index is the option index. Other parts support style only.
 
 ### Dropdown
 
@@ -81,9 +81,9 @@ Wraps an existing LVGL object
 Dropdown(DropdownProps props={})
 ```
 
-Aggregate construction from properties
+Constructs through aggregate property initialization
 
-Dropdown properties, supports aggregate initialization
+Dropdown selection properties, aggregate initialization supported
 
 ### init
 
@@ -91,7 +91,7 @@ Dropdown properties, supports aggregate initialization
 Dropdown & init(lv_obj_t *parent) &
 ```
 
-Creates the LVGL object under a parent
+Creates the LVGL object on the parent
 
 Parent LVGL object pointer This component
 
@@ -101,7 +101,7 @@ Parent LVGL object pointer This component
 Dropdown & init(Widget &parent) &
 ```
 
-Creates the LVGL object under a parent
+Creates the LVGL object on the parent
 
 Parent LVGL object pointer This component
 
@@ -113,7 +113,7 @@ Dropdown & items(const std::vector< DropdownItem > &items, Notify notify=Notify:
 
 Sets the option list
 
-Option list This component By default the replacement is silent. An out-of-range previous selection is cleared. An open list closes first. The no-selection state is HIYUI_NO_SELECTION and the closed state shows the placeholder.
+Option list This component By default replacement is silent, the selection is cleared when the previous index is out of range, and an open list is closed first. The no-selection state is HIYUI_NO_SELECTION, the closed state shows the placeholder.
 
 ### selectedIndex
 
@@ -133,7 +133,7 @@ int selectedIndex() const
 
 Returns the current selected index
 
-Index of the selected item
+Index of the currently selected item
 
 ### itemData
 
@@ -141,9 +141,9 @@ Index of the selected item
 int itemData(int index) const
 ```
 
-Returns the user bound data of one option.
+Returns the user-bound data of the given option.
 
-Option index, same semantics as selectedIndex(). The item data value; returns 0 when the index is out of range.
+Option index, consistent with selectedIndex(). The data value of the item, 0 when the index is out of range.
 
 ### open
 
@@ -173,7 +173,7 @@ Dropdown & editable(bool enabled) &
 
 Sets editable mode
 
-true = the closed state accepts free-text input This component
+true = free text can be typed while closed This component
 
 ### editable
 
@@ -191,7 +191,7 @@ Whether editable mode is active
 Dropdown & searchEnabled(bool enabled) &
 ```
 
-Sets the search filter toggle; an open list closes immediately
+Sets the search filter toggle, an open list is closed immediately
 
 true = enable search This component
 
@@ -213,7 +213,7 @@ Dropdown & searchMatcher(SearchMatcher matcher) &
 
 Sets the search matcher slot
 
-Returning true keeps the option; passing empty restores the default matcher This component
+Return true to keep the option, passing empty restores the default matcher This component
 
 ### text
 
@@ -223,7 +223,7 @@ std::string text() const
 
 Returns the current text
 
-Editable mode returns the input text; non-editable returns the selected item text, or an empty string with no selection
+Editable mode returns the typed text, non-editable mode returns the selected item text, and an empty string when nothing is selected
 
 ### text
 
@@ -231,6 +231,6 @@ Editable mode returns the input text; non-editable returns the selected item tex
 Dropdown & text(const std::string &t, Notify notify=Notify::No) &
 ```
 
-Sets the text; only effective in editable mode
+Sets the text, effective only in editable mode
 
-New text This component By default the set is silent. Text exactly equal to an option restores the matching selected index.
+New text This component By default the set is silent, text exactly matching an option restores the corresponding selected index.

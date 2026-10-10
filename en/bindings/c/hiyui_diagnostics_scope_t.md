@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_scope_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Caller-owned timing storage; an active span must not be copied, and begin/end must be paired on the same thread.
+Timing storage owned by the caller. Active spans must not be copied, and begin/end must be paired on the same thread.
 
 ## Public Members
 

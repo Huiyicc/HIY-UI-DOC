@@ -20,4 +20,4 @@ Overlays a semi-transparent color block above the background layers.
 RGBA color
 ```
 
-Overlay color, opacity controlled by the RGBA alpha
+Overlay color, opacity controlled by RGBA alpha

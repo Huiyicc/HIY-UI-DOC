@@ -8,4 +8,4 @@ title: "SpinState"
 
 **Namespace:** `hiyui`
 
-Internal Spin state, heap allocated and attached to the lv_obj user_data.
+Spin widget internal state. Heap allocated and attached to the lv_obj user_data.

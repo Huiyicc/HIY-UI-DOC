@@ -16,7 +16,7 @@ title: "TableState"
 std::vector< TableRow > rows
 ```
 
-Original row data, tree roots
+Raw row data, tree roots
 
 ### sortedIndices
 
@@ -56,7 +56,7 @@ children present in the data
 int sortColumnIdx
 ```
 
-Current sort column index, -1 = no sorting
+Current sort column index. -1 = no sorting
 
 ### sortKeys
 
@@ -72,7 +72,7 @@ Multi-column sort keys, applied in array order
 std::vector< bool > selectedFlags
 ```
 
-Per-row selection flags, indexed by flatRows
+Per-row selected flags, indexed by flatRows
 
 ### hoverRowIdx
 
@@ -80,7 +80,7 @@ Per-row selection flags, indexed by flatRows
 int hoverRowIdx
 ```
 
-Current hovered row, a virtual table visible row index
+Currently hovered row as a virtual table visible row index
 
 ### keyFocusSortedIdx
 
@@ -88,7 +88,7 @@ Current hovered row, a virtual table visible row index
 int keyFocusSortedIdx
 ```
 
-Keyboard focus row, an index into sortedIndices, -1 = none
+Keyboard focus row as a sortedIndices index. -1 = none
 
 ### keyFocusColIdx
 
@@ -96,7 +96,7 @@ Keyboard focus row, an index into sortedIndices, -1 = none
 int keyFocusColIdx
 ```
 
-Keyboard focus column, -1 = none
+Keyboard focus column. -1 = none
 
 ### tipPendingSorted
 
@@ -104,7 +104,7 @@ Keyboard focus column, -1 = none
 int tipPendingSorted
 ```
 
-Row of the currently tracked cell, sortedIdx, -1 = none
+Row of the currently tracked cell, sortedIdx. -1 = none
 
 ### tipPendingCol
 
@@ -112,7 +112,7 @@ Row of the currently tracked cell, sortedIdx, -1 = none
 int tipPendingCol
 ```
 
-Column index of the currently tracked cell, -1 = none
+Column index of the currently tracked cell. -1 = none
 
 ### textSelAnchorSorted
 
@@ -120,7 +120,7 @@ Column index of the currently tracked cell, -1 = none
 int textSelAnchorSorted
 ```
 
-Rubber-band selection anchor row, sortedIdx, -1 = no selection
+Text selection anchor row, sortedIdx. -1 = no selection
 
 ### textSelAnchorCol
 
@@ -128,7 +128,7 @@ Rubber-band selection anchor row, sortedIdx, -1 = no selection
 int textSelAnchorCol
 ```
 
-Rubber-band selection anchor column
+Text selection anchor column
 
 ### textSelActiveSorted
 
@@ -136,7 +136,7 @@ Rubber-band selection anchor column
 int textSelActiveSorted
 ```
 
-Rubber-band selection current row, sortedIdx
+Text selection current row, sortedIdx
 
 ### textSelActiveCol
 
@@ -144,7 +144,7 @@ Rubber-band selection current row, sortedIdx
 int textSelActiveCol
 ```
 
-Rubber-band selection current column
+Text selection current column
 
 ### textSelArmed
 
@@ -152,7 +152,7 @@ Rubber-band selection current column
 bool textSelArmed
 ```
 
-Pressed, movement below the threshold
+Pressed, movement below threshold
 
 ### textSelDragging
 
@@ -160,7 +160,7 @@ Pressed, movement below the threshold
 bool textSelDragging
 ```
 
-Rubber-band drag in progress
+Text selection drag in progress
 
 ### textSelConsumedClick
 
@@ -168,7 +168,7 @@ Rubber-band drag in progress
 bool textSelConsumedClick
 ```
 
-The drag already consumed the click
+This drag consumed the click
 
 ### textSelPressPt
 
@@ -192,7 +192,7 @@ Current horizontal scroll offset
 int editingFlatIdx
 ```
 
-Row being edited, an index into flatRows
+Row being edited as a flatRows index
 
 ### editingColIdx
 
@@ -208,7 +208,7 @@ Column being edited
 lv_obj_t * editorOverlay
 ```
 
-Editor overlay widget
+Editor overlay control
 
 ### editingRow
 
@@ -256,7 +256,7 @@ Column width before the drag
 int hoverResizeColIdx
 ```
 
-Column index of the hovered draggable edge
+Column index of the hovered resizable edge
 
 ### totalColumnsWidth
 
@@ -272,7 +272,7 @@ Total width of all columns
 int fixedLeftWidth
 ```
 
-Total width of left fixed columns
+Total width of left-fixed columns
 
 ### fixedRightWidth
 
@@ -280,7 +280,7 @@ Total width of left fixed columns
 int fixedRightWidth
 ```
 
-Total width of right fixed columns
+Total width of right-fixed columns
 
 ### rightFixedStartX
 
@@ -288,7 +288,7 @@ Total width of right fixed columns
 int rightFixedStartX
 ```
 
-Start x of the right fixed column group in colLayouts
+Start x of the right-fixed column group in colLayouts
 
 ### scrollContentWidth
 
@@ -296,7 +296,7 @@ Start x of the right fixed column group in colLayouts
 int scrollContentWidth
 ```
 
-Uniform width of the bodyObj children, including rows and the spacer
+Uniform width of bodyObj children, including rows and the spacer
 
 ### groupHeaderHeight
 
@@ -304,7 +304,7 @@ Uniform width of the bodyObj children, including rows and the spacer
 int groupHeaderHeight
 ```
 
-Group header row height, 0 = no grouping
+Group header row height. 0 = no grouping
 
 ### expandedFlatIdx
 
@@ -312,7 +312,7 @@ Group header row height, 0 = no grouping
 int expandedFlatIdx
 ```
 
-Row currently showing expanded embedded content
+Row with expanded embedded content
 
 ### expandedPanel
 
@@ -328,7 +328,7 @@ Expanded content panel
 int expandedSortedIdx
 ```
 
-Position of the expanded row in the sort indices
+Position of the expanded row in the sorted indices
 
 ### expandedPanelHeight
 
@@ -400,4 +400,4 @@ Floating scrollbar initialized
 lv_dir_t lastBodyScrollDir
 ```
 
-Last scroll direction set on bodyObj
+Last set bodyObj scroll direction

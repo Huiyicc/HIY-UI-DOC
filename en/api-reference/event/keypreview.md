@@ -8,4 +8,4 @@ title: "KeyPreview"
 
 **Namespace:** `hiyui`
 
-Synchronous parameter of KeyPreview; key uses KeyCode values, and input is consumed when handled is true.
+Synchronous parameter of KeyPreview; key holds a KeyCode value, and handled set to true consumes the input.

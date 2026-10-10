@@ -8,4 +8,4 @@ title: "XmlWidgetResult"
 
 **Namespace:** `hiyui`
 
-Object created by an XML factory and the mount location for its child components.
+The object created by an XML factory and where its child components mount.

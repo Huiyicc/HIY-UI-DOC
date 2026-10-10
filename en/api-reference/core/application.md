@@ -8,7 +8,7 @@ title: "Application"
 
 **Namespace:** `hiyui`
 
-Application entry point that manages window lifecycle and the main loop
+Application entry point managing window lifecycle and the main loop
 
 Derived classes build the UI through setup(). Only one Application instance should be created per process.
 
@@ -20,7 +20,7 @@ Derived classes build the UI through setup(). Only one Application instance shou
 
 ### detail::resolveContentScaleForDisplay
 
-Lets the DPI path forward to resolveContentScale, a protected virtual function
+Lets the DPI path call resolveContentScale, a protected virtual function
 
 ## Public Methods
 
@@ -35,7 +35,7 @@ Starts the application main loop
 Calls setup() internally, then enters the LVGL event loop. Returns when quit() is called or all windows are closed.
 
 
-Returns 0 on normal exit, or 1 when FBDEV startup or event handling fails.
+0 on normal exit; 1 when FBDEV startup or event handling fails.
 
 ### quit
 
@@ -45,7 +45,7 @@ void quit()
 
 Quits the application and stops the main loop
 
-Windows are consulted first; if any window cancels, this quit does not close windows. When all windows allow it, the function waits for exit animations to finish. Creating a new window during confirmation cancels this quit. Repeated quit requests are ignored.
+Windows are consulted first; if any cancels, this quit does not close windows. After all allow, waits for exit animations to finish. Creating a new window during confirmation cancels this quit. Repeated quit requests are ignored.
 
 ## Protected Methods
 
@@ -65,9 +65,9 @@ Called inside run() before the main loop starts. Call createWindow() here and mo
 virtual float resolveContentScale(const ScreenInfo &)
 ```
 
-Returns the screen adaptation factor
+Returns the screen fitting factor
 
-Called early in run() before fonts load and on every DPI or screen change, with the target display information passed in. The return value is clamped by setUiScale to [1.0, 2.0] and drives the screen adaptation dimensions of scaled(), where dpiScale = dpr × uiScale. A typical implementation derives it from the fraction of screen width the window should occupy.
+Called early in run(), before fonts load and on every DPI or screen change, with the target display information. The return value is clamped by setUiScale to [1.0, 2.0] and drives the screen fitting dimension of scaled(); dpiScale = dpr × uiScale. A typical implementation derives it from the fraction of screen width the window should occupy.
 
 ### createWindow
 
@@ -77,7 +77,7 @@ Window & createWindow(const char *title, Size size)
 
 Creates a new window
 
-Window title, UTF-8 string, copied internally Window size in pixels Window reference; lifetime managed by Application
+Window title, UTF-8 string, copied internally Window size in pixels Window reference whose lifetime is managed by Application
 
 ### navigate
 
@@ -85,9 +85,9 @@ Window title, UTF-8 string, copied internally Window size in pixels Window refer
 void navigate(Window &target, Transition t=Transition::SlideLeft)
 ```
 
-Page navigation; window on desktop, page switch on mobile
+Page navigation; presents a window on desktop and switches pages on mobile
 
-Navigation history is recorded; navigating again to the current target adds no history entry. Navigating to a history page truncates the history after it. The first created window is the root page; truncating history does not destroy pages. Reentrant calls during navigation are ignored. A window created by this Application and not yet closed. Page transition for single-display hosts; desktop uses the enter and exit animations from WindowProps.
+Navigation history is recorded; navigating to the current target again adds no history. Navigating to a history page truncates the history after it. The first created window is the root page; truncating history does not destroy pages. Reentrant calls during navigation are ignored. A window created by this Application and not yet closed. Page transition for single-display hosts; desktop uses the WindowProps enter and exit animations.
 
 ### goBack
 
@@ -95,6 +95,6 @@ Navigation history is recorded; navigating again to the current target adds no h
 void goBack(Transition t=Transition::SlideRight)
 ```
 
-Closes the current navigation page and restores the previous page; the previous page keeps its content.
+Requests closing the current navigation page and restores the previous page, whose content is kept.
 
-No effect on the root page; when the close is canceled, the current page and navigation history are kept. Back transition for single-display hosts; switches immediately when animations are disabled.
+No effect on the root page; if closing is canceled, the current page and navigation history are kept. Back transition for single-display hosts; switches immediately when animation is off.

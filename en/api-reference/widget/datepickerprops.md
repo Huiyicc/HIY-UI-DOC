@@ -8,7 +8,7 @@ title: "DatePickerProps"
 
 **Namespace:** `hiyui`
 
-Date picker creation properties.
+Date picker creation properties
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Date picker creation properties.
 DatePickerType picker
 ```
 
-Picker type.
+Picker type
 
 ### width
 
@@ -26,7 +26,7 @@ Picker type.
 int width
 ```
 
-Input width.
+Input width
 
 ### height
 
@@ -34,7 +34,7 @@ Input width.
 int height
 ```
 
-Input height.
+Input height
 
 ### borderless
 
@@ -42,7 +42,7 @@ Input height.
 bool borderless
 ```
 
-Borderless mode.
+Borderless mode
 
 ### format
 
@@ -50,7 +50,7 @@ Borderless mode.
 const char * format
 ```
 
-Custom format string.
+Custom format string
 
 ### placeholder
 
@@ -58,7 +58,7 @@ Custom format string.
 const char * placeholder
 ```
 
-Placeholder text.
+Placeholder text
 
 ### enabled
 
@@ -66,7 +66,7 @@ Placeholder text.
 bool enabled
 ```
 
-Whether user interaction is allowed.
+Whether user interaction is allowed
 
 ### range
 
@@ -74,7 +74,7 @@ Whether user interaction is allowed.
 bool range
 ```
 
-Range selection mode.
+Range selection mode
 
 ### showTime
 
@@ -82,7 +82,7 @@ Range selection mode.
 bool showTime
 ```
 
-Whether to show time selection.
+Whether to show time selection
 
 ### timeFormat
 
@@ -90,7 +90,7 @@ Whether to show time selection.
 const char * timeFormat
 ```
 
-Time format string, e.g. "HH:mm:ss".
+Time format string, for example "HH:mm:ss"
 
 ### size
 
@@ -98,7 +98,7 @@ Time format string, e.g. "HH:mm:ss".
 DatePickerSize size
 ```
 
-Size.
+Size
 
 ### status
 
@@ -106,7 +106,7 @@ Size.
 DatePickerStatus status
 ```
 
-Status.
+Status
 
 ### placement
 
@@ -114,7 +114,7 @@ Status.
 DatePickerPlacement placement
 ```
 
-Popup placement.
+Popup placement
 
 ### presentation
 
@@ -122,7 +122,7 @@ Popup placement.
 PickerPresentation presentation
 ```
 
-Panel presentation; placement is ignored in BottomSheet mode.
+Panel presentation, BottomSheet mode ignores placement
 
 ### suffixIcon
 
@@ -130,7 +130,7 @@ Panel presentation; placement is ignored in BottomSheet mode.
 uint32_t suffixIcon
 ```
 
-Suffix icon codepoint, 0 = default calendar icon.
+Suffix icon codepoint, 0 = default calendar icon
 
 ### bg
 
@@ -138,7 +138,7 @@ Suffix icon codepoint, 0 = default calendar icon.
 uint32_t bg
 ```
 
-Background color.
+Background color
 
 ### textColor
 
@@ -146,7 +146,7 @@ Background color.
 uint32_t textColor
 ```
 
-Text color.
+Text color
 
 ### radius
 
@@ -154,4 +154,4 @@ Text color.
 uint32_t radius
 ```
 
-Corner radius.
+Corner radius

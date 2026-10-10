@@ -8,4 +8,4 @@ title: "RichBlockView"
 
 **Namespace:** `hiyui`
 
-Read-only block view; byteLen includes the trailing newline, and the last block may be 0
+Read-only block view; byteLen includes the trailing newline and the last block may be 0

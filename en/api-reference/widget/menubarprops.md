@@ -26,7 +26,7 @@ Bar height in theme logical pixels
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color. HIYUI_DEFAULT = follow theme
 
 ### textColor
 
@@ -34,7 +34,7 @@ Background color, HIYUI_DEFAULT = follow theme
 uint32_t textColor
 ```
 
-Text color, HIYUI_DEFAULT = follow theme
+Text color. HIYUI_DEFAULT = follow theme
 
 ### hoverColor
 
@@ -58,7 +58,7 @@ Top-level item highlight color while the dropdown is open
 int fontSize
 ```
 
-Font size, 0 = theme default
+Font size. 0 = theme default
 
 ### itemPaddingX
 

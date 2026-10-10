@@ -8,7 +8,7 @@ title: "TreeNodeConfig"
 
 **Namespace:** `hiyui`
 
-Tree node configuration, provided by the user
+Tree node configuration provided by the user
 
 ## Public Members
 
@@ -50,7 +50,7 @@ Disabled
 bool checkable
 ```
 
-Whether checking is allowed. Effective when the global checkable is true
+Whether checking is allowed. Takes effect when the tree-level checkable is true
 
 ### userData
 
@@ -66,7 +66,7 @@ User-defined data
 std::function< void(TreeNodeId)> lazyLoad
 ```
 
-Asynchronous load callback, triggered on first expand
+Async load callback. Triggered on first expansion
 
 ### localizedText
 
@@ -74,4 +74,4 @@ Asynchronous load callback, triggered on first expand
 std::optional< LocalizedText > localizedText
 ```
 
-When set it overrides the original text and updates on language switch. The description is copied when passed to the widget.
+Overrides the original text and updates on language switch. The description is copied when passed to the widget.

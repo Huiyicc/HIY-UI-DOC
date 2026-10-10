@@ -10,7 +10,7 @@ title: "List"
 
 List widget with virtual table rendering
 
-Based on the VirtualTableBase row object pool, creating lv_obj_t only for rows visible in the viewport. While scrolling, row objects are reused and rebound to new data.
+Built on the VirtualTableBase row object pool, only visible rows inside the viewport create lv_obj_t, row objects are reused and rebound while scrolling.
 
 
 
@@ -30,7 +30,7 @@ List internal event types
 | Value | Description |
 |---|---|
 | `Activate` |  |
-| `Select` | Selection changed |
+| `Select` | Selection change |
 
 ## Public Methods
 
@@ -48,7 +48,7 @@ Wraps an existing LVGL object
 List(ListProps props={})
 ```
 
-Aggregate construction from properties
+Constructs through aggregate property initialization
 
 ### init
 
@@ -56,7 +56,7 @@ Aggregate construction from properties
 List & init(lv_obj_t *parent) &
 ```
 
-Creates the LVGL object under a parent
+Creates the LVGL object on the parent
 
 ### init
 
@@ -64,7 +64,7 @@ Creates the LVGL object under a parent
 List & init(Widget &parent) &
 ```
 
-Creates the LVGL object under a parent
+Creates the LVGL object on the parent
 
 ### items
 
@@ -72,7 +72,7 @@ Creates the LVGL object under a parent
 List & items(const std::vector< ListItem > &listItems, Notify notify=Notify::No) &
 ```
 
-Sets the list items in batch
+Sets list items in batch
 
 ### selectedIndex
 
@@ -82,7 +82,7 @@ List & selectedIndex(int idx, Notify notify=Notify::No) &
 
 Sets the selected item
 
-User-side logical index, excluding separators
+User-side logical index, separators excluded
 
 ### selectedIndex
 
@@ -100,9 +100,9 @@ Selected item index, -1 = no selection
 int itemData(int logicalIdx) const
 ```
 
-Returns the user bound data of one item.
+Returns the user-bound data of the given item.
 
-Logical index matching the onSelect callback index, excluding separators. The item data value; returns 0 when the index is out of range.
+Logical index, consistent with the onSelect callback index, separators excluded. The data value of the item, 0 when the index is out of range.
 
 ### onActivate
 
@@ -110,9 +110,9 @@ Logical index matching the onSelect callback index, excluding separators. The it
 List & onActivate(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the item activation event callback; repeated binds append
+Binds the item activation callback, repeated binds append
 
-Callable type with signature void(int) Receives the logical index of the activated item Optional out parameter receiving the unbind handle of this binding
+Callable type, signature void(int) Receives the logical index of the activated item Optional out parameter receiving the unbind handle of this binding
 
 ### hoverBg
 
@@ -152,7 +152,7 @@ Binds the selected item text color to a theme semantic role, updated automatical
 int itemCount() const
 ```
 
-Returns the total data item count, excluding separators
+Returns the number of data items, separators excluded
 
 ### appendItem
 
@@ -162,7 +162,7 @@ List & appendItem(const ListItem &item, Notify notify=Notify::No) &
 
 Appends one data item
 
-During beginUpdate only the data changes; endUpdate refreshes once. Outside beginUpdate each append refreshes immediately.
+During beginUpdate only the data changes and refresh happens at endUpdate. Outside beginUpdate each append refreshes immediately.
 
 ### beginUpdate
 

@@ -10,7 +10,7 @@ title: "Backdrop"
 
 Backdrop blur configuration
 
-Applies a Gaussian blur post-process to the composited layers below, producing a frosted glass effect.
+Applies Gaussian blur post-processing to the composited layers below, creating a frosted glass effect.
 
 
 
@@ -24,7 +24,7 @@ Applies a Gaussian blur post-process to the composited layers below, producing a
 int blurRadius
 ```
 
-Blur radius; HIYUI_NONE_INT = not set, 0 = disabled, valid range [2,254]
+Blur radius, HIYUI_NONE_INT = not set, 0 = disabled, valid range [2,254]
 
 ### opacity
 
@@ -40,7 +40,7 @@ Draw opacity of the blur layer [0,255]
 RGBA tint
 ```
 
-Tint overlaid on top
+Tint color overlaid on top
 
 ### tintOpacity
 

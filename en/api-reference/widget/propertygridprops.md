@@ -8,7 +8,7 @@ title: "PropertyGridProps"
 
 **Namespace:** `hiyui`
 
-Static configuration of the property grid; sizes use logical pixels.
+Static configuration of the property grid, sizes use logical pixels.
 
 ## Public Members
 
@@ -26,7 +26,7 @@ HIYUI_AUTO fills the parent width.
 int height
 ```
 
-HIYUI_AUTO fills the parent height; the parent must have a definite height.
+HIYUI_AUTO fills the parent height, the parent must have a definite height.
 
 ### rowHeight
 
@@ -34,7 +34,7 @@ HIYUI_AUTO fills the parent height; the parent must have a definite height.
 int rowHeight
 ```
 
-Logical height of one row, minimum 32. Narrow properties use two rows; groups keep one row.
+Logical height of one row, minimum 32, narrow-screen properties use two rows while groups keep one.
 
 ### nameWidth
 
@@ -42,7 +42,7 @@ Logical height of one row, minimum 32. Narrow properties use two rows; groups ke
 int nameWidth
 ```
 
-Name column logical width, automatically limited to the available content width.
+Logical width of the name column, automatically limited to the available content width.
 
 ### narrowWidth
 
@@ -50,4 +50,4 @@ Name column logical width, automatically limited to the available content width.
 int narrowWidth
 ```
 
-Below this content width the name and value split into two lines; 0 disables.
+Name and value split into two lines below this content width, 0 disables.

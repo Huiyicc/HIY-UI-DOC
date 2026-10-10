@@ -8,9 +8,9 @@ title: "Event"
 
 **Namespace:** `hiyui`
 
-C++ wrapper for LVGL events providing type-safe event access.
+C++ wrapper over an LVGL event with type-safe access.
 
-Wraps an lv_event_t pointer and is passed as the parameter to parameterized callbacks.
+Wraps an lv_event_t pointer and is passed as the argument to callbacks that take a parameter.
 
 
 
@@ -29,7 +29,7 @@ Event(lv_event_t *e)
 
 Constructs an Event wrapper
 
-LVGL event pointer, passed in by the event system
+LVGL event pointer, provided by the event system
 
 ### userData
 
@@ -39,7 +39,7 @@ void * userData() const
 
 Returns the user data carried by the event
 
-User data pointer, passed in via the user_data parameter of lv_obj_add_event_cb
+User data pointer, passed in through the user_data argument of lv_obj_add_event_cb
 
 ### data
 
@@ -47,7 +47,7 @@ User data pointer, passed in via the user_data parameter of lv_obj_add_event_cb
 void * data() const
 ```
 
-Synchronous event parameter, valid only during the callback, may be null.
+Synchronous event parameter, valid only during the callback and may be null.
 
 ### key
 
@@ -55,7 +55,7 @@ Synchronous event parameter, valid only during the callback, may be null.
 uint32_t key() const
 ```
 
-Returns the key code of a keyboard event, valid only for keyboard callbacks such as EventCode::Key
+Returns the key code of a keyboard event, valid only in keyboard callbacks such as EventCode::Key
 
 LVGL key code, such as LV_KEY_UP / LV_KEY_ENTER
 
@@ -65,7 +65,7 @@ LVGL key code, such as LV_KEY_UP / LV_KEY_ENTER
 lv_obj_t * target() const
 ```
 
-Returns the event target object, the object that actually triggered the event, which may be a child.
+Returns the event target, the object that actually triggered the event, which may be a child object.
 
 ### currentTarget
 
@@ -73,7 +73,7 @@ Returns the event target object, the object that actually triggered the event, w
 lv_obj_t * currentTarget() const
 ```
 
-Returns the current event propagation object, the object the callback is attached to.
+Returns the current propagation target, the object the callback is attached to.
 
 ### targetWidget
 
@@ -81,9 +81,9 @@ Returns the current event propagation object, the object the callback is attache
 Widget targetWidget() const
 ```
 
-Returns a borrowing wrapper for the event target
+Returns a borrowed wrapper for the event target
 
-Non-owning wrapper, for use within the callback only, must not be kept beyond it
+Non-owning wrapper, valid only inside the callback and must not be kept beyond it
 
 ### currentTargetWidget
 
@@ -91,7 +91,7 @@ Non-owning wrapper, for use within the callback only, must not be kept beyond it
 Widget currentTargetWidget() const
 ```
 
-Returns a borrowing wrapper for the object the current callback is attached to, usable only within the current callback.
+Returns a borrowed wrapper for the object the callback is attached to, valid only within the current callback.
 
 ### keyCode
 
@@ -99,7 +99,7 @@ Returns a borrowing wrapper for the object the current callback is attached to, 
 KeyCode keyCode() const
 ```
 
-Returns the navigation key; returns KeyCode::None for non-key events.
+Returns the navigation key; KeyCode::None for non-key events.
 
 ### pointerPositionPx
 
@@ -107,9 +107,9 @@ Returns the navigation key; returns KeyCode::None for non-key events.
 bool pointerPositionPx(Point &point) const
 ```
 
-Returns the pointer position relative to the top-left of the current propagation object, in physical pixels.
+Returns the pointer position relative to the top-left of the current propagation target, in physical pixels.
 
-Returns false when there is no pointer input, and zeroes point.
+Returns false and zeroes point when there is no pointer input.
 
 ### stopBubbling
 
@@ -125,4 +125,4 @@ Stops propagation of the current event to ancestors.
 void stopProcessing()
 ```
 
-Stops later handlers; the Delete event does not allow stopping lifecycle cleanup, so the call is a no-op for it.
+Stops later handlers. Lifecycle cleanup on Delete events cannot be stopped, so the call is a no-op there.

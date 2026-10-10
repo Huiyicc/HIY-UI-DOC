@@ -6,7 +6,7 @@ title: "theme.h"
 
 **Header:** `#include <hiyui/c/theme.h>`
 
-Theme system, the ThemeRole enum, preset themes and switching functions
+Theme system: ThemeRole enum, preset themes, and switching functions
 
 ## Enums
 
@@ -153,7 +153,7 @@ Built-in theme style types.
 
 ### hiyui_token_t
 
-Theme tokens, user slots are [128,255].
+Theme tokens; user slots are [128,255].
 
 | Value | Description |
 |---|---|
@@ -233,7 +233,7 @@ Theme tokens, user slots are [128,255].
 HIYUI_API int HIYUI_CALL hiyui_theme_style_for(hiyui_widget_type_t type, hiyui_style_spec_set_t *out)
 ```
 
-Gets the current theme style, returns 0 when out is NULL or the type is invalid. Image sources in the output are borrowed until the theme changes and must not be used across a theme switch.
+Gets the current theme style. Returns 0 when out is NULL or the type is invalid. Image sources in the output are borrowed until the theme changes. Do not use them across a theme switch.
 
 ### hiyui_theme_get_token
 
@@ -241,7 +241,7 @@ Gets the current theme style, returns 0 when out is NULL or the type is invalid.
 HIYUI_API uint32_t HIYUI_CALL hiyui_theme_get_token(hiyui_token_t token)
 ```
 
-Gets the current theme token, returns HIYUI_NONE for an invalid slot.
+Gets the current theme token. Returns HIYUI_NONE when the slot is invalid.
 
 ### hiyui_theme_anim_duration_fast
 
@@ -249,7 +249,7 @@ Gets the current theme token, returns HIYUI_NONE for an invalid slot.
 HIYUI_API uint32_t HIYUI_CALL hiyui_theme_anim_duration_fast(void)
 ```
 
-Fast animation duration in milliseconds, returns 0 when animations are disabled.
+Fast animation duration in milliseconds. Returns 0 when animations are disabled.
 
 ### hiyui_theme_hover_opacity
 
@@ -265,7 +265,7 @@ Default hover opacity of themed controls, in the range [0,255].
 HIYUI_API uint32_t HIYUI_CALL hiyui_color_darken(uint32_t color, int percent)
 ```
 
-Darkens or lightens a color, percent is in the range [0,100].
+Darkens a color; percent is in the range [0,100].
 
 ### hiyui_color_lighten
 
@@ -287,7 +287,7 @@ Switches to a preset theme.
 HIYUI_API void HIYUI_CALL hiyui_set_theme_from_seed(uint32_t seed_color, int dark)
 ```
 
-Generates a theme from a seed color, dark=1 means dark mode.
+Builds a theme from a seed color. dark=1 selects dark mode.
 
 ### hiyui_theme_resolve
 
@@ -303,7 +303,7 @@ Resolves a semantic color role to 0xRRGGBB.
 HIYUI_API void HIYUI_CALL hiyui_theme_glass_card(hiyui_style_set_t *out)
 ```
 
-Exports the theme glass card style set, unset fields are zero.
+Exports the theme glass card style set. Unset fields are zero-valued.
 
 ### hiyui_theme_gradient_primary
 
@@ -311,7 +311,7 @@ Exports the theme glass card style set, unset fields are zero.
 HIYUI_API void HIYUI_CALL hiyui_theme_gradient_primary(hiyui_style_t *out)
 ```
 
-Exports the theme primary gradient button style, unset fields are zero.
+Exports the theme primary gradient button style. Unset fields are zero-valued.
 
 ### hiyui_theme_glass_tint
 
@@ -351,7 +351,7 @@ Switches to a preset theme with a transition animation.
 HIYUI_API void HIYUI_CALL hiyui_theme_transition_play_seed(uint32_t seed_color, int dark, hiyui_transition_direction_t dir)
 ```
 
-Switches to a seed theme with a transition animation, dark=1 means dark mode.
+Switches to a seed theme with a transition animation. dark=1 selects dark mode.
 
 ### hiyui_theme_transition_set_exclusion_obj
 
@@ -367,7 +367,7 @@ Sets the object excluded from the transition animation.
 HIYUI_API void HIYUI_CALL hiyui_theme_transition_clear_exclusion(void)
 ```
 
-Clears the object excluded from the transition animation.
+Clears the transition animation exclusion object.
 
 ### hiyui_icon_font_init
 

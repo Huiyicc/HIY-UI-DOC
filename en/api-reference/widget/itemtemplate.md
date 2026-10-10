@@ -10,7 +10,7 @@ title: "ItemTemplate"
 
 Data-driven item template
 
-The data model type Consumed by components such as TemplateList / Grid.
+Data model type Consumed by components such as TemplateList and Grid.
 
 ## Public Methods
 
@@ -20,7 +20,7 @@ The data model type Consumed by components such as TemplateList / Grid.
 ItemTemplate & height(int h)
 ```
 
-Set the item height
+Sets the item height
 
 ### stateStyle
 
@@ -28,7 +28,7 @@ Set the item height
 ItemTemplate & stateStyle(const ItemStateStyle &s)
 ```
 
-Set the four-state style
+Sets the four-state style
 
 ### builder
 
@@ -36,7 +36,7 @@ Set the four-state style
 ItemTemplate & builder(BuilderFn fn)
 ```
 
-Set the UI builder function
+Sets the UI builder function
 
 Called for each data item on first render to build child widgets inside the item row container.
 
@@ -46,9 +46,9 @@ Called for each data item on first render to build child widgets inside the item
 ItemTemplate & updater(UpdaterFn fn)
 ```
 
-Set the data refresh function, optional
+Sets the optional data refresh function
 
-Called on data updates, keeping the existing UI tree. When unset, the default is to destroy and rebuild.
+Called on data updates and keeps the existing UI tree. When unset, the default behavior destroys and rebuilds.
 
 ### onItemClick
 
@@ -56,7 +56,7 @@ Called on data updates, keeping the existing UI tree. When unset, the default is
 ItemTemplate & onItemClick(ClickFn fn)
 ```
 
-Set the item click callback
+Sets the item click callback
 
 ### onItemDoubleClick
 
@@ -64,7 +64,7 @@ Set the item click callback
 ItemTemplate & onItemDoubleClick(ClickFn fn)
 ```
 
-Set the item double-click callback
+Sets the item double-click callback
 
 ### expandedHeight
 
@@ -72,7 +72,7 @@ Set the item double-click callback
 ItemTemplate & expandedHeight(int h)
 ```
 
-Set the expanded row height, 0 = expansion mode disabled
+Sets the expanded row height, 0 = expansion mode disabled
 
 ### detailBuilder
 
@@ -80,4 +80,4 @@ Set the expanded row height, 0 = expansion mode disabled
 ItemTemplate & detailBuilder(BuilderFn fn)
 ```
 
-Set the UI builder for the expanded state
+Sets the UI builder function for the expanded state

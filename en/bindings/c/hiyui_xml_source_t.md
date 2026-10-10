@@ -26,7 +26,7 @@ uint32_t abi_version
 const char * source_id
 ```
 
-On success must be set to a non-empty canonical ID. The string only needs to stay valid during the callback.
+Must be set to a non-empty canonical ID on success; the string only needs to be valid during the callback.
 
 ### content
 
@@ -34,7 +34,7 @@ On success must be set to a non-empty canonical ID. The string only needs to sta
 const char * content
 ```
 
-The content only needs to stay valid during the callback. Must not be NULL when content_size is non-zero.
+Content only needs to be valid during the callback; must not be NULL when content_size is non-zero.
 
 ### content_size
 

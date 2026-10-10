@@ -6,7 +6,7 @@ title: "hiyui_tool_bar_props_t"
 
 **Header:** `#include <hiyui/c/tool_bar.h>`
 
-Initialize with props_init and then modify fields; sizes and spacing use theme logical pixels.
+Initialize with props_init, then modify fields. Sizes and spacing use theme logical pixels.
 
 ## Public Members
 

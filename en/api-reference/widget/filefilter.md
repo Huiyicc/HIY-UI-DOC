@@ -18,7 +18,7 @@ File type filter
 const char * name
 ```
 
-Filter display name
+Display name of the filter
 
 ### patterns
 

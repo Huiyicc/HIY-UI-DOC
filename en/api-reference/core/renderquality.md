@@ -8,4 +8,4 @@ title: "RenderQuality"
 
 **Namespace:** `hiyui`
 
-Global render quality configuration (pure POD, all fields have defaults)
+Global render quality configuration; pure POD, all fields have defaults

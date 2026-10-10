@@ -8,9 +8,9 @@ title: "DropdownState"
 
 **Namespace:** `hiyui`
 
-Dropdown runtime state, lifetime follows the LVGL object
+Dropdown selection runtime state, lifetime follows the LVGL object
 
-Heap allocated and attached to the lv_obj_t user_data, freed automatically through the LV_EVENT_DELETE callback.
+Heap-allocated and attached to the lv_obj_t user_data. Released automatically through the LV_EVENT_DELETE callback.
 
 ## Public Members
 
@@ -28,7 +28,7 @@ Parsed option list
 std::vector< int > itemDataList
 ```
 
-User bound data per option
+Per-option user-bound data
 
 ### selectedIdx
 
@@ -52,7 +52,7 @@ Whether the popup list is open
 lv_obj_t * labelObj
 ```
 
-Label showing the current selection text
+Label showing the currently selected text
 
 ### listPanel
 
@@ -68,7 +68,7 @@ Popup list container, attached to the screen or a floating window
 lv_obj_t * overlay
 ```
 
-Transparent overlay that closes the list on outside clicks
+Transparent blocker layer, closes the list on outside clicks
 
 ### ddObj
 
@@ -76,7 +76,7 @@ Transparent overlay that closes the list on outside clicks
 lv_obj_t * ddObj
 ```
 
-Back reference to the dropdown object
+Back-reference to the dropdown object
 
 ### valueCb
 
@@ -116,7 +116,7 @@ Search filter toggle
 bool setTextInternal
 ```
 
-Programmatic set-text flag that skips input triggered auto open
+Set-text-in-progress flag, skips input-triggered auto open
 
 ### matchFn
 
@@ -124,7 +124,7 @@ Programmatic set-text flag that skips input triggered auto open
 std::function< bool(const std::string &, const std::string &)> matchFn
 ```
 
-Search matcher slot; empty = default case-insensitive substring match
+Search matcher slot, empty = default case-insensitive substring match
 
 ### query
 
@@ -156,7 +156,7 @@ Search input box at the top of the popup list
 lv_obj_t * itemsBox
 ```
 
-Option button container, present when a search box exists
+Option button container, present when the search box exists
 
 ### noMatchLabel
 
@@ -172,7 +172,7 @@ No-match hint
 lv_obj_t * scrollCarrier
 ```
 
-Actual scroll container, listPanel or itemsBox
+Actual scrolling container, listPanel or itemsBox
 
 ### scrollListeners
 
@@ -180,7 +180,7 @@ Actual scroll container, listPanel or itemsBox
 std::vector< std::pair< lv_obj_t *, lv_event_dsc_t * > > scrollListeners
 ```
 
-Scroll listeners as (ancestor object, event descriptor) pairs, removed on close
+Scroll listeners as a list of (ancestor object, event descriptor) pairs, removed on close
 
 ### listAnim
 
@@ -196,7 +196,7 @@ Expand/collapse geometry animation slot
 lv_anim_t listAnimOpa
 ```
 
-Collapse fade-out animation slot with its own duration
+Collapse fade-out animation slot (independent duration)
 
 ### closePending
 
@@ -204,7 +204,7 @@ Collapse fade-out animation slot with its own duration
 bool closePending
 ```
 
-Collapse animation in progress, guards reentry
+Collapse animation in progress (re-entry guard)
 
 ### openDownward
 
@@ -244,7 +244,7 @@ Panel bottom padding
 int32_t ddTargetY
 ```
 
-Anchor item final screen center y, flush with the ddObj edge
+Anchor item end screen center y, flush with the ddObj edge
 
 ### expandPanelH
 
@@ -252,7 +252,7 @@ Anchor item final screen center y, flush with the ddObj edge
 int32_t expandPanelH
 ```
 
-Expand final height
+Expand end height
 
 ### expandContentH
 
@@ -276,7 +276,7 @@ Content coordinate the panel bottom aligns to when expanding upward
 int32_t anchorTopY
 ```
 
-Expand downward panel top anchor y
+Expand downward, panel top anchor y
 
 ### anchorBottomY
 
@@ -284,7 +284,7 @@ Expand downward panel top anchor y
 int32_t anchorBottomY
 ```
 
-Expand upward panel bottom anchor y
+Expand upward, panel bottom anchor y
 
 ### panelH0
 
@@ -332,4 +332,4 @@ Anchor item content coordinate center y
 int32_t hEnd
 ```
 
-Collapse end height, single row
+Collapse end height (single line)

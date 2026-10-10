@@ -8,4 +8,4 @@ title: "ScrollMetrics"
 
 **Namespace:** `hiyui`
 
-Scroll offset in physical pixels and remaining distance on the four edges; distances can be negative during elastic overscroll.
+Scroll amount and remaining distance on each side in physical pixels; distances can be negative during elastic overscroll.

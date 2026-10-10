@@ -8,7 +8,7 @@ title: "diagnostics::Frame"
 
 **Namespace:** `hiyui`
 
-One content refresh; durationUs ends at CPU submit return or refresh end, renderUs includes flush.
+One content refresh; durationUs ends at CPU submit return or refresh end, and renderUs includes flush.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ One content refresh; durationUs ends at CPU submit return or refresh end, render
 uint64_t submitUs
 ```
 
-Software SDL: accumulated flush callback time; GL: swap call time.
+For software SDL the accumulated flush callback time; for GL the swap call time.
 
 ### requestUs
 
@@ -26,7 +26,7 @@ Software SDL: accumulated flush callback time; GL: swap call time.
 uint64_t requestUs
 ```
 
-Time of this frame's first refresh request, valid only when requestAssociated is true.
+Time of the first refresh request for this frame; valid only when requestAssociated is true.
 
 ### continuous
 
@@ -34,7 +34,7 @@ Time of this frame's first refresh request, valid only when requestAssociated is
 bool continuous
 ```
 
-This frame's first refresh request arrived within one frame budget after the previous submit; a request-continuity criterion, not a dropped-frame count.
+The first refresh request of this frame falls within one frame budget after the previous submit; a request continuity criterion, not a dropped-frame count.
 
 ### submitted
 
@@ -42,7 +42,7 @@ This frame's first refresh request arrived within one frame budget after the pre
 bool submitted
 ```
 
-CPU submit return observed; does not mean GPU completion or actual present.
+The CPU submit return was observed; does not imply GPU completion or actual present.
 
 ### inputAssociated
 
@@ -50,4 +50,4 @@ CPU submit return observed; does not mean GPU completion or actual present.
 bool inputAssociated
 ```
 
-Interval from the last input handling to the next submit; does not guarantee that input caused this frame.
+The interval from the last input processing to the next submit; the input is not guaranteed to have caused this frame.

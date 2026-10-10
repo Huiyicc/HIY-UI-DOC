@@ -10,7 +10,7 @@ title: "Radio"
 
 Radio button widget
 
-Only one Radio with the same group can be checked.
+Only one Radio in the same group can be checked.
 
 
 
@@ -26,7 +26,7 @@ Only one Radio with the same group can be checked.
 Radio(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Radio
 
@@ -34,7 +34,7 @@ Wrap an existing LVGL object
 Radio(RadioProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -42,7 +42,7 @@ Construct from aggregated properties
 Radio & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 ### init
 
@@ -50,7 +50,7 @@ Create the LVGL object under a parent
 Radio & init(Widget &parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 ### checked
 
@@ -58,9 +58,9 @@ Create the LVGL object under a parent
 Radio & checked(bool c, Notify notify=Notify::No) &
 ```
 
-Set the checked state at runtime
+Sets the checked state at runtime
 
-Setting the same value has no side effect.
+Setting the same value has no side effects.
 
 ### onChange
 
@@ -68,7 +68,7 @@ Setting the same value has no side effect.
 Radio & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Append a state change subscription. The callback can take a bool, an Event&amp; or no parameter.
+Appends a state-change subscription. The callback can take bool, Event&amp; or no parameters.
 
 ### isChecked
 
@@ -76,7 +76,7 @@ Append a state change subscription. The callback can take a bool, an Event&amp; 
 bool isChecked() const
 ```
 
-Query whether currently checked
+Queries whether currently checked
 
 ### text
 
@@ -84,7 +84,7 @@ Query whether currently checked
 Radio & text(const char *t) &
 ```
 
-Change the label text at runtime
+Changes the label text at runtime
 
 UTF-8 encoded
 
@@ -94,7 +94,7 @@ UTF-8 encoded
 Radio & text(const LocalizedText &text) &
 ```
 
-Bind text that updates with the language, copying the description. A plain string call replaces this binding.
+Binds text that updates with the language. Copies the description. A plain string call replaces this binding.
 
 ### checkedColor
 
@@ -102,4 +102,4 @@ Bind text that updates with the language, copying the description. A plain strin
 Radio & checkedColor(ThemeRole role) &
 ```
 
-Bind the checked color to a theme semantic role, updated automatically on theme change
+Binds the checked color to a theme semantic role. Updates automatically on theme switch

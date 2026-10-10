@@ -10,7 +10,7 @@ title: "MessageBox"
 
 Message box widget
 
-A modal dialog showing a title, body text and a confirm button. Closes on confirm button click or on mask click.
+A modal dialog showing a title, body text, and a confirm button. Closes when the confirm button or the mask layer is clicked.
 
 
 
@@ -26,7 +26,7 @@ A modal dialog showing a title, body text and a confirm button. Closes on confir
 MessageBox(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### MessageBox
 
@@ -34,7 +34,7 @@ Wrap an existing LVGL object
 MessageBox(MessageBoxProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### title
 
@@ -42,7 +42,7 @@ Construct from aggregated properties
 MessageBox & title(const char *value) &
 ```
 
-Sets the title; after show only already created text areas are updated, and a plain string cancels the language binding.
+Sets the title; after showing, only created text areas are updated, and a plain string cancels the language binding.
 
 ### title
 
@@ -50,7 +50,7 @@ Sets the title; after show only already created text areas are updated, and a pl
 MessageBox & title(LocalizedText value) &
 ```
 
-Binds owned text that updates on language change.
+Binds owned text that updates when the language changes.
 
 ### content
 
@@ -58,7 +58,7 @@ Binds owned text that updates on language change.
 MessageBox & content(const char *value) &
 ```
 
-Sets the body text; after show only already created text areas are updated, and a plain string cancels the language binding.
+Sets the body text; after showing, only created text areas are updated, and a plain string cancels the language binding.
 
 ### content
 
@@ -66,7 +66,7 @@ Sets the body text; after show only already created text areas are updated, and 
 MessageBox & content(LocalizedText value) &
 ```
 
-Binds owned text that updates on language change.
+Binds owned text that updates when the language changes.
 
 ### confirmText
 
@@ -74,7 +74,7 @@ Binds owned text that updates on language change.
 MessageBox & confirmText(const char *value) &
 ```
 
-Sets the confirm button text; after show only already created text areas are updated, and a plain string cancels the language binding.
+Sets the confirm button text; after showing, only created text areas are updated, and a plain string cancels the language binding.
 
 ### confirmText
 
@@ -82,7 +82,7 @@ Sets the confirm button text; after show only already created text areas are upd
 MessageBox & confirmText(LocalizedText value) &
 ```
 
-Binds owned text that updates on language change.
+Binds owned text that updates when the language changes.
 
 ### show
 
@@ -90,9 +90,9 @@ Binds owned text that updates on language change.
 MessageBox & show(lv_obj_t *parent=nullptr) &
 ```
 
-Show the dialog
+Shows the dialog
 
-Parent to attach to, nullptr = the current active screen
+Parent object to attach to, nullptr = current active screen
 
 ### onConfirm
 
@@ -100,9 +100,9 @@ Parent to attach to, nullptr = the current active screen
 MessageBox & onConfirm(F &&f) &
 ```
 
-Bind the confirm button callback
+Binds the confirm button callback
 
-Callbacks bound before show() take effect after the dialog is shown.
+Callbacks bound before show() take effect once the dialog is shown.
 
 
 Callable type, signature void()
@@ -113,4 +113,4 @@ Callable type, signature void()
 MessageBox & close() &
 ```
 
-Close the dialog Releases the current bindings; show() can be called again and callbacks must be re-bound.
+Closes the dialog Releases current bindings; show() can be called again and callbacks must be rebound.

@@ -42,7 +42,7 @@ Switch height
 uint32_t onColor
 ```
 
-Background color when on, HIYUI_DEFAULT = follow theme Primary
+Background color when on. HIYUI_DEFAULT = follow theme Primary
 
 ### offColor
 
@@ -50,7 +50,7 @@ Background color when on, HIYUI_DEFAULT = follow theme Primary
 uint32_t offColor
 ```
 
-Background color when off, HIYUI_DEFAULT = follow theme SurfaceVariant
+Background color when off. HIYUI_DEFAULT = follow theme SurfaceVariant
 
 ### knobColor
 
@@ -58,4 +58,4 @@ Background color when off, HIYUI_DEFAULT = follow theme SurfaceVariant
 uint32_t knobColor
 ```
 
-Knob color, HIYUI_DEFAULT = theme adapted, white on light themes and light gray on dark themes
+Knob color. HIYUI_DEFAULT = theme adapted, white in light theme and light gray in dark theme

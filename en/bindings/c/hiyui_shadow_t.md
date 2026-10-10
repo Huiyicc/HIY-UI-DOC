@@ -44,7 +44,7 @@ uint8_t opacity
 uint8_t sides
 ```
 
-Bitmask of hiyui_shadow_side_t values.
+Bitmask of hiyui_shadow_side_t
 
 ### placement
 
@@ -52,4 +52,4 @@ Bitmask of hiyui_shadow_side_t values.
 hiyui_shadow_placement_t placement
 ```
 
-Shadow placement.
+Shadow placement

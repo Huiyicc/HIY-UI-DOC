@@ -8,4 +8,4 @@ title: "ToolEvent"
 
 **Namespace:** `hiyui`
 
-Command snapshot taken when activation completes; menu commands use the menu item id.
+Command snapshot taken when activation completes, menu commands use the menu item id.

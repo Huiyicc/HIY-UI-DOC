@@ -8,7 +8,7 @@ title: "TabsState"
 
 **Namespace:** `hiyui`
 
-Tabs runtime state; lifetime follows the LVGL object
+Runtime state of the tabs component; its lifetime follows the LVGL object
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Bottom indicator line, cigar shaped
 lv_obj_t * hoverLine
 ```
 
-Hover indicator line, low contrast
+Hover indicator line with low contrast
 
 ### animX
 
@@ -34,7 +34,7 @@ Hover indicator line, low contrast
 lv_anim_t animX
 ```
 
-Indicator line X position animation
+Indicator X position animation
 
 ### animW
 
@@ -42,7 +42,7 @@ Indicator line X position animation
 lv_anim_t animW
 ```
 
-Indicator line width animation
+Indicator width animation
 
 ### indicatorX
 
@@ -50,7 +50,7 @@ Indicator line width animation
 int indicatorX
 ```
 
-Current indicator line X
+Current indicator X
 
 ### indicatorWidth
 
@@ -58,7 +58,7 @@ Current indicator line X
 int indicatorWidth
 ```
 
-Current indicator line width
+Current indicator width
 
 ### indicatorY
 
@@ -66,7 +66,7 @@ Current indicator line width
 int indicatorY
 ```
 
-Current indicator line Y in vertical tab bars
+Current indicator Y for a vertical tab bar
 
 ### indicatorHeight
 
@@ -74,7 +74,7 @@ Current indicator line Y in vertical tab bars
 int indicatorHeight
 ```
 
-Current indicator line height in vertical tab bars
+Current indicator height for a vertical tab bar
 
 ### activeIdx
 
@@ -90,7 +90,7 @@ Current active tab index
 std::vector< int > itemDataList
 ```
 
-Per-tab user data
+User data bound to each tab
 
 ### tabBar
 
@@ -186,7 +186,7 @@ Right arrow icon object
 lv_obj_t * scrollClip
 ```
 
-Clip container
+Clipping container
 
 ### overflowing
 
@@ -194,7 +194,7 @@ Clip container
 bool overflowing
 ```
 
-Whether the bar is in overflow state
+Whether the tab bar is overflowing
 
 ### destroying
 
@@ -202,7 +202,7 @@ Whether the bar is in overflow state
 bool destroying
 ```
 
-Destruction in progress; callbacks should skip work
+Destruction in progress; callbacks should skip handling
 
 ### scrollOffset
 
@@ -234,4 +234,4 @@ One-shot timer for initial positioning
 lv_timer_t * resizeTimer
 ```
 
-One-shot timer for delayed positioning after resize
+One-shot timer for deferred positioning after resize

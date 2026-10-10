@@ -10,7 +10,7 @@ title: "UserStyleRegistry"
 
 User widget type registry, Meyer singleton
 
-registerType assigns monotonically increasing ids starting at 100 with a limit of 255; repeated registration with the same name is idempotent. Theme::styleFor automatically delegates types whose isUserType is true to this table.
+registerType allocates monotonically increasing ids from 100 up to a limit of 255, repeated registration with the same name is idempotent. Theme::styleFor automatically delegates types where isUserType is true to this registry.
 
 ## Static Methods
 
@@ -20,7 +20,7 @@ registerType assigns monotonically increasing ids starting at 100 with a limit o
 static bool isUserType(WidgetType t)
 ```
 
-An id of at least 100 means a user widget type
+An id of 100 or above is a user widget type
 
 ## Public Methods
 
@@ -32,7 +32,7 @@ WidgetType registerType(const char *name, UserStyleFactory factory)
 
 Registers a named user widget type
 
-Type name, the caller guarantees it stays valid during registration Default style factory, may be nullptr meaning no theme default style The assigned WidgetType, at least 100; returns WidgetType::Base when ids are exhausted or name is empty
+Type name, the caller guarantees stability during registration Default style factory, may be nullptr, meaning no theme default style The assigned WidgetType, 100 or above, WidgetType::Base when ids are exhausted or name is empty
 
 ### styleFor
 
@@ -42,7 +42,7 @@ StyleSet styleFor(WidgetType type, const Theme &theme) const
 
 Looks up the default StyleSet by id
 
-An empty StyleSet when unregistered or when factory is null
+Returns an empty StyleSet when unregistered or factory is null
 
 ### find
 

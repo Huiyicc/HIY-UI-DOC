@@ -8,7 +8,7 @@ title: "VideoProps"
 
 **Namespace:** `hiyui`
 
-Initial video configuration.
+Initial configuration of a video.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Initial video configuration.
 const char * src
 ```
 
-UTF-8 file path or network URL, copied at construction.
+UTF-8 file path or network address, copied at construction.
 
 ### width
 
@@ -26,7 +26,7 @@ UTF-8 file path or network URL, copied at construction.
 int width
 ```
 
-Logical pixels; HIYUI_AUTO fills the parent width.
+Logical pixels, HIYUI_AUTO fills the parent container width.
 
 ### height
 
@@ -34,7 +34,7 @@ Logical pixels; HIYUI_AUTO fills the parent width.
 int height
 ```
 
-Logical pixels; HIYUI_AUTO fills the parent height.
+Logical pixels, HIYUI_AUTO fills the parent container height.
 
 ### autoplay
 
@@ -58,7 +58,7 @@ Restart from the beginning when seekable media ends; ignored for live streams.
 int volume
 ```
 
-Range 0-100; muting does not change the saved volume.
+Range 0-100; muting does not change the stored volume.
 
 ### ioTimeoutMs
 
@@ -66,7 +66,7 @@ Range 0-100; muting does not change the saved volume.
 int ioTimeoutMs
 ```
 
-Timeout in milliseconds for open and probe, for a single seek, and for continuous packet-read waiting; non-positive uses 10000.
+Timeout in milliseconds for open and probe, a single seek, or continuous packet-read waiting; non-positive values use 10000.
 
 ### reconnectAttempts
 
@@ -74,7 +74,7 @@ Timeout in milliseconds for open and probe, for a single seek, and for continuou
 int reconnectAttempts
 ```
 
-Maximum reconnect attempts per interruption; non-positive disables it, and the count restarts once frames resume.
+Maximum reconnection attempts per interruption; non-positive disables it, and the count resets after frames recover.
 
 ### reconnectDelayMs
 
@@ -82,4 +82,4 @@ Maximum reconnect attempts per interruption; non-positive disables it, and the c
 int reconnectDelayMs
 ```
 
-Milliseconds to wait before each reconnect; non-positive uses 1000.
+Milliseconds to wait before each reconnection; non-positive values use 1000.

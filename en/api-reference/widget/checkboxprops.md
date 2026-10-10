@@ -18,7 +18,7 @@ Checkbox creation properties
 const char * text
 ```
 
-Label text, UTF-8 encoded
+Label text in UTF-8
 
 ### checked
 
@@ -34,7 +34,7 @@ Initial checked state
 int width
 ```
 
-Width, HIYUI_AUTO = fit content
+Width. HIYUI_AUTO = fit content
 
 ### checkedColor
 
@@ -42,7 +42,7 @@ Width, HIYUI_AUTO = fit content
 uint32_t checkedColor
 ```
 
-Indicator color when checked, HIYUI_DEFAULT = follow theme Primary
+Check box color when checked. HIYUI_DEFAULT = follow theme Primary
 
 ### textColor
 
@@ -50,7 +50,7 @@ Indicator color when checked, HIYUI_DEFAULT = follow theme Primary
 uint32_t textColor
 ```
 
-Text color, HIYUI_DEFAULT = follow theme
+Text color. HIYUI_DEFAULT = follow theme
 
 ### fontSize
 
@@ -58,7 +58,7 @@ Text color, HIYUI_DEFAULT = follow theme
 int fontSize
 ```
 
-Font size, 0 = use the theme default
+Font size. 0 = use the theme default
 
 ### indicatorSide
 
@@ -66,7 +66,7 @@ Font size, 0 = use the theme default
 IndicatorSide indicatorSide
 ```
 
-Indicator side, left by default
+Indicator position, left side by default
 
 ### textAlign
 

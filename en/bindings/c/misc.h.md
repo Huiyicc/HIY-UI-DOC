@@ -6,7 +6,7 @@ title: "misc.h"
 
 **Header:** `#include <hiyui/c/misc.h>`
 
-Timers, delayed callbacks, UI thread posting and hotkeys
+Timers, delayed callbacks, UI thread posting, and hotkeys
 
 ## Enums
 
@@ -34,9 +34,9 @@ typedef struct hiyui_timer_s hiyui_timer_t
 HIYUI_API void HIYUI_CALL hiyui_once(uint32_t delay_ms, hiyui_callback_fn cb, void *ud)
 ```
 
-One-shot delayed callback that runs once on the UI thread after delay_ms milliseconds and frees itself.
+One-shot delayed callback. Runs once on the UI thread after delay_ms milliseconds and releases itself automatically.
 
-Delay in milliseconds Callback with signature void(void*) User data passed through to the callback, lifetime managed by the caller
+Delay in milliseconds. Callback with signature void(void*). User data passed to the callback; its lifetime is managed by the caller.
 
 ### hiyui_timer_create
 
@@ -46,7 +46,7 @@ HIYUI_API hiyui_timer_t *HIYUI_CALL hiyui_timer_create(uint32_t period_ms, hiyui
 
 Creates a periodic timer that fires cb every period_ms milliseconds.
 
-Timer handle, NULL when cb is null or period_ms is 0. The handle must be destroyed by hiyui_timer_destroy.
+Returns a timer handle. NULL when cb is NULL or period_ms is 0. The handle must be destroyed with hiyui_timer_destroy.
 
 ### hiyui_timer_destroy
 
@@ -54,7 +54,7 @@ Timer handle, NULL when cb is null or period_ms is 0. The handle must be destroy
 HIYUI_API void HIYUI_CALL hiyui_timer_destroy(hiyui_timer_t *t)
 ```
 
-Destroys the timer and frees the handle, passing NULL is safe.
+Destroys the timer and frees the handle; NULL is safe.
 
 ### hiyui_timer_pause
 
@@ -86,9 +86,9 @@ Changes the timer period.
 HIYUI_API hiyui_post_status_t HIYUI_CALL hiyui_post_ui(hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-Posts a callback to the UI thread, callable from ordinary threads. The callback runs at most once. When queued, the callback and destroy run and are freed on the UI thread. When rejected, destroy is freed on the posting thread. Does not block waiting for the callback to run.
+Posts a callback to the UI thread; callable from ordinary threads. The callback runs at most once. After enqueueing, the callback and destroy run and are released on the UI thread. When rejected, destroy is released on the posting thread. Does not block waiting for the callback to run.
 
-Posting result, a NULL cb is treated as rejected and returns HIYUI_POST_STOPPED.
+Posting result. A NULL cb counts as rejected and returns HIYUI_POST_STOPPED.
 
 ### hiyui_hotkey_text
 
@@ -96,9 +96,9 @@ Posting result, a NULL cb is treated as rejected and returns HIYUI_POST_STOPPED.
 HIYUI_API const char *HIYUI_CALL hiyui_hotkey_text(hiyui_hotkey_t spec, char *buffer, size_t capacity)
 ```
 
-Builds the hotkey hint text for the current platform, such as "Ctrl+N". Writes an empty string when unbound. Returns an empty string when buffer is NULL or capacity is 0.
+Builds hotkey hint text for the current platform, such as "Ctrl+N". Writes an empty string when unbound. Returns an empty string when buffer is NULL or capacity is 0.
 
-buffer.
+Returns buffer.
 
 ### hiyui_hotkey_same
 
@@ -106,7 +106,7 @@ buffer.
 HIYUI_API int HIYUI_CALL hiyui_hotkey_same(hiyui_hotkey_t left, hiyui_hotkey_t right)
 ```
 
-Compares hotkeys after expanding Primary per platform, returns 0 on non-desktop platforms.
+Compares hotkeys after expanding Primary per platform. Returns 0 on non-desktop platforms.
 
 ### hiyui_shortcut_register
 
@@ -114,7 +114,7 @@ Compares hotkeys after expanding Primary per platform, returns 0 on non-desktop 
 HIYUI_API uint32_t HIYUI_CALL hiyui_shortcut_register(hiyui_hotkey_t spec, hiyui_callback_fn callback, void *user_data, hiyui_destroy_fn destroy)
 ```
 
-Registers a desktop hotkey whose callback runs on the UI thread, returns 0 for invalid arguments or an unsupported platform. When destroy is not NULL it takes ownership of user_data, freed on failed registration or on unregister. If unregistered while executing, freed after the callback returns. The id returned on success must be unregistered via hiyui_shortcut_unregister.
+Registers a desktop hotkey. The callback runs on the UI thread. Returns 0 when arguments are invalid or the platform is unsupported. When destroy is non-NULL it takes ownership of user_data. destroy runs on failed registration or on unregistration. If unregistered while the callback is executing, destroy runs after the callback returns. The returned id must be unregistered via hiyui_shortcut_unregister.
 
 ### hiyui_shortcut_unregister
 
@@ -122,7 +122,7 @@ Registers a desktop hotkey whose callback runs on the UI thread, returns 0 for i
 HIYUI_API void HIYUI_CALL hiyui_shortcut_unregister(uint32_t id)
 ```
 
-Unregisters a hotkey, 0 or repeated unregister is a no-op.
+Unregisters a hotkey. 0 or repeated unregistration is a no-op.
 
 ### hiyui_format_markup
 
@@ -130,9 +130,9 @@ Unregisters a hotkey, 0 or repeated unregister is a no-op.
 HIYUI_API const char *HIYUI_CALL hiyui_format_markup(const char *markup, char *buffer, size_t capacity)
 ```
 
-Formats HTML or markup text into an indented multi-line form.
+Formats HTML/markup text into indented multi-line form.
 
-The buffer holding the result, writes an empty string and returns buffer on invalid arguments or insufficient capacity.
+Returns buffer with the result written. Writes an empty string and returns buffer on invalid arguments or insufficient capacity.
 
 ### hiyui_scaled
 
@@ -140,7 +140,7 @@ The buffer holding the result, writes an empty string and returns buffer on inva
 HIYUI_API int HIYUI_CALL hiyui_scaled(int px)
 ```
 
-Converts logical pixels using the current DPI.
+Scales a logical pixel value by the current DPI.
 
 ### hiyui_scaled_line
 
@@ -148,4 +148,4 @@ Converts logical pixels using the current DPI.
 HIYUI_API int HIYUI_CALL hiyui_scaled_line(int px)
 ```
 
-Converts line width using the current DPI, a positive value is at least one physical pixel and non-positive returns 0.
+Scales a line width by the current DPI. A positive value is at least one physical pixel. Non-positive values return 0.

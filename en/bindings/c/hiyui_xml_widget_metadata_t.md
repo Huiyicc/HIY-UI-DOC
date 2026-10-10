@@ -6,7 +6,7 @@ title: "hiyui_xml_widget_metadata_t"
 
 **Header:** `#include <hiyui/c/xml.h>`
 
-Registration metadata output. Strings are borrowed from the snapshot and stay valid until it is destroyed.
+Registration metadata output; strings borrow from the snapshot and are valid until it is destroyed.
 
 ## Public Members
 
@@ -46,7 +46,7 @@ const char * item_tag
 int item_allows_children
 ```
 
-When non-zero, ItemList items may contain widget subtrees.
+When non-zero, an ItemList item may contain a widget subtree.
 
 ### resource_only
 

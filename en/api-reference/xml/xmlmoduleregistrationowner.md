@@ -8,4 +8,4 @@ title: "XmlModuleRegistrationOwner"
 
 **Namespace:** `hiyui`
 
-Move-only owner of an XML module registration; unregisters the module still held on destruction.
+Move-only XML module registration owner; unregisters the module still held on destruction.

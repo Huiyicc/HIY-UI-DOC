@@ -8,9 +8,9 @@ title: "CustomDraw"
 
 **Namespace:** `hiyui`
 
-Custom draw container widget
+Custom draw container component
 
-A Painter is injected through painter() and decides all drawing. Supports aggregate initialization, chained calls, and runtime Painter replacement.
+A Painter is injected through painter() and decides all drawn content. Supports aggregate initialization, chained calls, and replacing the Painter at runtime.
 
 
 
@@ -26,7 +26,7 @@ A Painter is injected through painter() and decides all drawing. Supports aggreg
 CustomDraw & painter(std::unique_ptr< Painter > p) &
 ```
 
-Transfers Painter ownership; nullptr clears it. On replace or delete, the old Painter is released after in-flight callbacks return.
+Transfers Painter ownership; nullptr clears it. On replacement or removal the old Painter is released after an in-flight callback returns.
 
 ### start
 
@@ -34,7 +34,7 @@ Transfers Painter ownership; nullptr clears it. On replace or delete, the old Pa
 CustomDraw & start() &
 ```
 
-Start animation; creates a timer when fps&gt;0; idempotent.
+Starts the animation; creates a timer when fps&gt;0. Idempotent.
 
 ### stop
 
@@ -42,7 +42,7 @@ Start animation; creates a timer when fps&gt;0; idempotent.
 CustomDraw & stop() &
 ```
 
-Stop animation, delete the timer, and freeze immediately.
+Stops the animation, deletes the timer, and becomes static immediately.
 
 ### fps
 
@@ -50,7 +50,7 @@ Stop animation, delete the timer, and freeze immediately.
 CustomDraw & fps(int f) &
 ```
 
-Change the frame rate at runtime; 0 = stop; a running timer is rebuilt at the new rate.
+Changes the frame rate at runtime; 0 = stop. While running, the timer is rebuilt at the new rate.
 
 ### redraw
 
@@ -58,4 +58,4 @@ Change the frame rate at runtime; 0 = stop; a running timer is rebuilt at the ne
 CustomDraw & redraw() &
 ```
 
-Trigger a redraw manually
+Triggers a redraw manually

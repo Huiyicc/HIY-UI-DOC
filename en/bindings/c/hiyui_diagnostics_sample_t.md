@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_sample_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Memory figures overlap; process CPU is 100% at single-core saturation and can exceed 100%.
+Memory figures overlap. Process CPU is 100% per fully loaded core and can exceed 100%.
 
 ## Public Members
 

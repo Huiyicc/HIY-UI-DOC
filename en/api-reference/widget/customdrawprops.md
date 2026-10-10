@@ -18,7 +18,7 @@ CustomDraw creation properties.
 int width
 ```
 
-Width; HIYUI_AUTO is decided by layout
+Width; HIYUI_AUTO = decided by layout
 
 ### height
 
@@ -26,7 +26,7 @@ Width; HIYUI_AUTO is decided by layout
 int height
 ```
 
-Height; HIYUI_AUTO is decided by layout
+Height; HIYUI_AUTO = decided by layout
 
 ### fps
 
@@ -50,4 +50,4 @@ Whether the background is transparent
 WidgetType type
 ```
 
-Associated widget type; non-Base uses the matching theme StyleSet; the default custom background is controlled by the Painter
+Associated widget type; when not Base the matching theme StyleSet applies, and the default self-drawn background is controlled by the Painter

@@ -6,7 +6,7 @@ title: "hiyui_style_spec_t"
 
 **Header:** `#include <hiyui/c/style.h>`
 
-Style that keeps unset values, zeros, and alpha. Initialize with hiyui_style_spec_default. A color is not set when rgb is HIYUI_NONE. Integer sizes, opacity, and transition_ms are not set when HIYUI_NONE_INT. line_height is not set when negative. Sizes are logical pixels, opacity is in [0,255], transition_ms is in ms. line_height is a multiple of the font size. bg_image.src is borrowed image data or a path. The apply_style_spec functions copy the path, and the caller keeps image data valid.
+Style that can keep unset values, zeros, and alpha; initialize with hiyui_style_spec_default. A color rgb of HIYUI_NONE leaves the value unset; integer sizes, opacity, and transition_ms are left unset when HIYUI_NONE_INT, and line_height when negative. Sizes are in logical pixels, opacity ranges over [0,255], transition_ms is in milliseconds, and line_height is a font size multiplier. bg_image.src borrows image data or a path; the apply_style_spec functions copy the path, and the caller keeps image data valid.
 
 ## Public Members
 

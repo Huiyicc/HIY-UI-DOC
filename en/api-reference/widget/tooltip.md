@@ -10,7 +10,7 @@ title: "Tooltip"
 
 Tooltip, managed internally, not instantiated directly
 
-Bound to any widget via Widget::tooltip with a string or an initializer list. Shows automatically after about 500 ms of hover and closes immediately when the pointer leaves.
+Bound to any widget through Widget::tooltip with a text or a config object. Shown automatically after about 500ms of hovering and closed immediately when the pointer leaves.
 
 ## Static Methods
 
@@ -20,7 +20,7 @@ Bound to any widget via Widget::tooltip with a string or an initializer list. Sh
 static void showAt(lv_obj_t *target, const TooltipConfig &config)
 ```
 
-Show a tooltip near the target object
+Shows the tooltip near the target object
 
 ### showAtArea
 
@@ -28,9 +28,9 @@ Show a tooltip near the target object
 static void showAtArea(const lv_area_t &area, const TooltipConfig &config)
 ```
 
-Show a tooltip near a screen rectangle
+Shows the tooltip near a screen rectangle
 
-Target area, in absolute screen coordinates
+Target area, absolute screen coordinates
 
 ### dismiss
 
@@ -38,4 +38,4 @@ Target area, in absolute screen coordinates
 static void dismiss()
 ```
 
-Dismiss the currently shown tooltip
+Closes the currently shown tooltip

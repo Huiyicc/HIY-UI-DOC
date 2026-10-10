@@ -8,7 +8,7 @@ title: "PropertyOption"
 
 **Namespace:** `hiyui`
 
-Option display text and a non-empty, unique business value. Disabled options cannot be committed through editing. Flags use non-overlapping unsigned single-bit values. Disabled bits keep their formal values.
+Display text and a non-empty, unique business value for an option. Disabled options cannot be committed through editing. Flags use non-overlapping unsigned single-bit values; disabled bits keep their formal value.
 
 ## Public Members
 
@@ -18,4 +18,4 @@ Option display text and a non-empty, unique business value. Disabled options can
 std::optional< LocalizedText > localizedLabel
 ```
 
-When set it overrides label and updates the display on language switch.
+Overrides label when set. Display updates on language switch.

@@ -10,7 +10,7 @@ title: "RGBA"
 
 Color type with an alpha channel, used for color fields in style properties
 
-Stores RGB (uint32_t) and Alpha (uint8_t) internally. Supports implicit construction from uint32_t. rgb_ == 0xFFFFFFFF means unset, with HIYUI_NONE semantics.
+Stores RGB (uint32_t) and Alpha (uint8_t) separately. Implicitly constructible from uint32_t. rgb_ == 0xFFFFFFFF means unset, HIYUI_NONE semantics.
 
 
 
@@ -43,7 +43,7 @@ Alpha channel [0, 255]; 255 = fully opaque
 bool hasAlpha_
 ```
 
-Whether an explicit alpha value was set
+Whether an alpha value was explicitly given
 
 ## Public Methods
 
@@ -61,7 +61,7 @@ Default constructor, rgb_ is HIYUI_NONE, unset
 constexpr RGBA(uint32_t hex)
 ```
 
-Implicit construction from a hexadecimal value, without alpha
+Implicit construction from a hex value without alpha
 
 Color value in 0xRRGGBB format
 
@@ -71,7 +71,7 @@ Color value in 0xRRGGBB format
 constexpr RGBA(uint32_t hex, uint8_t a)
 ```
 
-Constructs from a hexadecimal value and alpha
+Constructs from a hex value and an alpha value
 
 Color value in 0xRRGGBB format
 
@@ -81,6 +81,6 @@ Color value in 0xRRGGBB format
 bool hasAlpha() const
 ```
 
-Whether alpha was set explicitly
+Whether alpha was explicitly set
 
-True when created via the two-parameter constructor or rgba()
+True when created through the two-parameter constructor or rgba()

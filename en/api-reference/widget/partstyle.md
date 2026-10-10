@@ -18,4 +18,4 @@ Color and font size overrides for a part; default values keep the component styl
 int fontSize
 ```
 
-Logical pixels, 0 keeps the component font size.
+Logical pixels; 0 keeps the component font size.

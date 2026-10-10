@@ -8,4 +8,4 @@ title: "TextArg"
 
 **Namespace:** `hiyui`
 
-Named message argument; the name and value are held by the argument object.
+Named message argument; the name and value are stored by the argument object.

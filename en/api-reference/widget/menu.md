@@ -8,7 +8,7 @@ title: "Menu"
 
 **Namespace:** `hiyui`
 
-Menu and navigation list widget.
+Menu and navigation list widget
 
 Supports multi-level nested submenus, accordion expand/collapse, and a sliding selection indicator animation.
 
@@ -18,13 +18,13 @@ Supports multi-level nested submenus, accordion expand/collapse, and a sliding s
 
 ### MenuEventType
 
-Menu internal event types.
+Internal menu event types
 
 | Value | Description |
 |---|---|
-| `Activate` | A leaf node was selected. |
-| `Expand` | A node was expanded or collapsed. |
-| `Collapse` | The whole menu was collapsed or expanded. |
+| `Activate` | A leaf node was selected |
+| `Expand` | A node was expanded or collapsed |
+| `Collapse` | The whole menu was collapsed or expanded |
 
 ## Public Methods
 
@@ -34,7 +34,7 @@ Menu internal event types.
 Menu & itemText(int index, const char *value) &
 ```
 
-Updates the text of the given item without firing the selected event; out of range does nothing, nullptr shows empty text. index is the preorder node index including parent items and separators; separators update the existing group label. Replacing the whole set clears the binding.
+Updates the text of the given item without triggering the selection event, out-of-range does nothing, nullptr shows empty text. index is the preorder node index including parents and separators, a separator updates its existing group label. Replacing the whole set clears bindings.
 
 ### itemText
 
@@ -42,7 +42,7 @@ Updates the text of the given item without firing the selected event; out of ran
 Menu & itemText(int index, LocalizedText value) &
 ```
 
-Binds item text; switching the language keeps the collection content and selection state.
+Binds item text, the collection content and selection state are kept across language switches.
 
 ### Menu
 
@@ -50,7 +50,7 @@ Binds item text; switching the language keeps the collection content and selecti
 Menu(lv_obj_t *raw)
 ```
 
-Wraps an existing LVGL object.
+Wraps an existing LVGL object
 
 ### Menu
 
@@ -58,7 +58,7 @@ Wraps an existing LVGL object.
 Menu(MenuProps props={})
 ```
 
-Aggregate construction from properties.
+Aggregate construction from properties
 
 ### init
 
@@ -66,7 +66,7 @@ Aggregate construction from properties.
 Menu & init(lv_obj_t *parent) &
 ```
 
-Creates the LVGL object on a parent object.
+Creates the LVGL object on a parent object
 
 ### init
 
@@ -74,7 +74,7 @@ Creates the LVGL object on a parent object.
 Menu & init(Widget &parent) &
 ```
 
-Creates the LVGL object on a parent object.
+Creates the LVGL object on a parent object
 
 ### items
 
@@ -82,9 +82,9 @@ Creates the LVGL object on a parent object.
 Menu & items(const std::vector< MenuItem > &menuItems, Notify notify=Notify::No) &
 ```
 
-Sets menu items in batch, rebuilding the whole tree.
+Sets menu items in batch and rebuilds the whole tree
 
-Supports recursive submenus.
+Supports recursive submenus
 
 ### selectedIndex
 
@@ -92,7 +92,7 @@ Supports recursive submenus.
 Menu & selectedIndex(int leafIdx, Notify notify=Notify::No) &
 ```
 
-Sets the selected leaf node.
+Sets the selected leaf node
 
 ### selectedIndex
 
@@ -100,7 +100,7 @@ Sets the selected leaf node.
 int selectedIndex() const
 ```
 
-Returns the current selected leaf index.
+Returns the current selected leaf index
 
 ### itemData
 
@@ -108,9 +108,9 @@ Returns the current selected leaf index.
 int itemData(int leafIdx) const
 ```
 
-Returns the user data of the given leaf node.
+Returns the user bound data of the given leaf node.
 
-Leaf index, matching the onActivate callback index. The item data value; returns 0 when the index is out of range.
+Leaf index, same as the onActivate callback index. The item data value, 0 when the index is out of range.
 
 ### expandItem
 
@@ -118,9 +118,9 @@ Leaf index, matching the onActivate callback index. The item data value; returns
 Menu & expandItem(int nodeIdx, bool expanded=true) &
 ```
 
-Expands or collapses the given parent node.
+Expands or collapses the given parent node
 
-Node index in the nodes array.
+Node index in the nodes array
 
 ### collapseAll
 
@@ -128,7 +128,7 @@ Node index in the nodes array.
 Menu & collapseAll() &
 ```
 
-Collapses all expanded parent nodes.
+Collapses all expanded parent nodes
 
 ### onChange
 
@@ -136,9 +136,9 @@ Collapses all expanded parent nodes.
 Menu & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the selection event callback; repeated binding appends.
+Binds the selection event callback, repeated binds append
 
-Callable type, signature void(int). Receives the selected leaf index. Optional out parameter receiving the unbind handle of this binding.
+Callable type, signature void(int) Receives the selected leaf index Optional output parameter receiving the unbind handle of this binding
 
 ### onExpand
 
@@ -146,9 +146,9 @@ Callable type, signature void(int). Receives the selected leaf index. Optional o
 Menu & onExpand(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the expand/collapse event callback; repeated binding appends.
+Binds the expand/collapse event callback, repeated binds append
 
-Callable type, signature void(int nodeIdx, bool expanded). Optional out parameter receiving the unbind handle of this binding.
+Callable type, signature void(int nodeIdx, bool expanded) Optional output parameter receiving the unbind handle of this binding
 
 ### onCollapse
 
@@ -156,9 +156,9 @@ Callable type, signature void(int nodeIdx, bool expanded). Optional out paramete
 Menu & onCollapse(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the collapse/expand event callback; repeated binding appends.
+Binds the collapse/expand event callback, repeated binds append
 
-Callable type, signature void(bool collapsed). Receives whether the menu is collapsed. Optional out parameter receiving the unbind handle of this binding.
+Callable type, signature void(bool collapsed) Receives whether the menu is collapsed Optional output parameter receiving the unbind handle of this binding
 
 ### collapsed
 
@@ -166,9 +166,9 @@ Callable type, signature void(bool collapsed). Receives whether the menu is coll
 Menu & collapsed(bool collapsed) &
 ```
 
-Switches the collapsed state with animation.
+Toggles the collapsed state with animation
 
-true = collapse to narrow mode, false = expand to wide mode.
+true = collapse to narrow mode, false = expand to wide mode
 
 ### isCollapsed
 
@@ -176,7 +176,7 @@ true = collapse to narrow mode, false = expand to wide mode.
 bool isCollapsed() const
 ```
 
-Returns whether the menu is currently collapsed, narrow mode.
+Returns whether the menu is currently collapsed in narrow mode
 
 ### mode
 
@@ -184,7 +184,7 @@ Returns whether the menu is currently collapsed, narrow mode.
 Menu & mode(MenuMode m) &
 ```
 
-Sets the display mode directly, with animation.
+Sets the display mode directly with animation
 
 ### mode
 
@@ -192,7 +192,7 @@ Sets the display mode directly, with animation.
 MenuMode mode() const
 ```
 
-Returns the current display mode.
+Returns the current display mode
 
 ## Static Methods
 
@@ -202,7 +202,7 @@ Returns the current display mode.
 static lv_event_code_t eventCode(MenuEventType type)
 ```
 
-Returns the internal Menu event code.
+Returns the internal menu event code.
 
 ### updateSelection
 
@@ -210,7 +210,7 @@ Returns the internal Menu event code.
 static void updateSelection(MenuState *st, int leafIdx)
 ```
 
-Updates the selected item highlight.
+Updates the selection highlight
 
 ### toggleExpand
 
@@ -218,7 +218,7 @@ Updates the selected item highlight.
 static void toggleExpand(MenuState *st, int nodeIdx, bool animate)
 ```
 
-Expands or collapses a node.
+Expands or collapses a node
 
 ### applyHover
 
@@ -226,7 +226,7 @@ Expands or collapses a node.
 static void applyHover(MenuState *st, int nodeIdx, bool hovered)
 ```
 
-Applies or removes hover highlight.
+Applies or removes the hover highlight
 
 ### computeAbsoluteY
 
@@ -234,7 +234,7 @@ Applies or removes hover highlight.
 static int computeAbsoluteY(lv_obj_t *itemRow, lv_obj_t *menuContainer)
 ```
 
-Computes the absolute Y coordinate of a node relative to the menu container.
+Computes the absolute Y coordinate of a node relative to the menu container
 
 ### reapplyThemeStatic
 
@@ -242,7 +242,7 @@ Computes the absolute Y coordinate of a node relative to the menu container.
 static void reapplyThemeStatic(lv_obj_t *obj)
 ```
 
-Static theme refresh, independent of this, reading data from MenuState.
+Static theme refresh, does not depend on this, reads data from MenuState
 
 ### reapplyForDpi
 
@@ -250,7 +250,7 @@ Static theme refresh, independent of this, reading data from MenuState.
 static void reapplyForDpi(lv_obj_t *obj)
 ```
 
-Recomputes on DPI change, recalculating cached physical values, re-rendering icons, and repositioning the indicator.
+DPI change recompute, recalculates cached physical values, re-renders icons, and repositions the indicator.
 
 ### correctAfterLayout
 
@@ -258,7 +258,7 @@ Recomputes on DPI change, recalculating cached physical values, re-rendering ico
 static void correctAfterLayout(MenuState *st)
 ```
 
-Geometry correction after theme or size changes.
+Geometry correction after theme or size changes
 
 ### applyMode
 
@@ -266,7 +266,7 @@ Geometry correction after theme or size changes.
 static void applyMode(MenuState *st, MenuMode newMode, bool animate)
 ```
 
-Applies the display mode switch, wide/narrow.
+Applies the display mode switch, wide/narrow
 
 ### showHoverPopup
 
@@ -274,7 +274,7 @@ Applies the display mode switch, wide/narrow.
 static void showHoverPopup(MenuState *st, int nodeIdx)
 ```
 
-Shows the narrow mode hover popup panel.
+Shows the narrow mode hover popup panel
 
 ### hideHoverPopup
 
@@ -282,4 +282,4 @@ Shows the narrow mode hover popup panel.
 static void hideHoverPopup(MenuState *st)
 ```
 
-Hides the narrow mode hover popup panel.
+Hides the narrow mode hover popup panel

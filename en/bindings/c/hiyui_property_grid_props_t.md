@@ -6,7 +6,7 @@ title: "hiyui_property_grid_props_t"
 
 **Header:** `#include <hiyui/c/property_grid.h>`
 
-Initialize with props_init; props NULL in create uses all defaults.
+Initialize with props_init. A NULL props in create uses all defaults.
 
 ## Public Members
 

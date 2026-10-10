@@ -8,7 +8,7 @@ title: "ItemVisual"
 
 **Namespace:** `hiyui`
 
-Item single-state visual definition.
+Single-state visual definition of an item.
 
 Unset fields do not override existing styles.
 
@@ -44,7 +44,7 @@ Text color, propagated to child labels
 int radius
 ```
 
-Corner radius, HIYUI_NONE_INT = unset
+Corner radius, HIYUI_NONE_INT = not set
 
 ### borderWidth
 

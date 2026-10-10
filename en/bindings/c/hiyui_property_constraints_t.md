@@ -56,4 +56,4 @@ hiyui_bool_t nullable
 const hiyui_localized_text_t * localized_unit
 ```
 
-When non-NULL, the description is copied and overrides unit; affects display only.
+When non-NULL, copies the description and overrides unit; display only.

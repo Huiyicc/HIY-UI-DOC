@@ -8,4 +8,4 @@ title: "XmlRegistrySnapshot"
 
 **Namespace:** `hiyui`
 
-Deep-copy snapshot of the registry at one query moment.
+Deep-copy snapshot of the registry at one query point in time.

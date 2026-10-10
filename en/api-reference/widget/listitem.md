@@ -50,7 +50,7 @@ Icon style
 bool separator
 ```
 
-Whether this item is a separator
+Whether this is a separator
 
 ### data
 
@@ -58,7 +58,7 @@ Whether this item is a separator
 int data
 ```
 
-User bound data, read by itemData()
+User-bound data, read by itemData()
 
 ### localizedText
 
@@ -66,4 +66,4 @@ User bound data, read by itemData()
 std::optional< LocalizedText > localizedText
 ```
 
-Overrides the plain text when set and updates on language switch; the description is copied into the widget.
+When set, overrides the original text and updates on language switch, the description is copied when passed to the component.

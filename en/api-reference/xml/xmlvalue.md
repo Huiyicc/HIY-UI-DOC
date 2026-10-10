@@ -8,4 +8,4 @@ title: "XmlValue"
 
 **Namespace:** `hiyui`
 
-Component value carried by an XML command event.
+Current component value carried by an XML command event.

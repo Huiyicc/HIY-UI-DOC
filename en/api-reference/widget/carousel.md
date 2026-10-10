@@ -18,7 +18,7 @@ Carousel internal event types
 
 | Value | Description |
 |---|---|
-| `Changed` | Page changed |
+| `Changed` | Page switched |
 
 ## Public Methods
 
@@ -28,7 +28,7 @@ Carousel internal event types
 Carousel & addPage(const std::function< void(Widget &page)> &builder, Notify notify=Notify::No) &
 ```
 
-Append a page; before the first navigation the nearest existing page per startIndex is selected; after navigation the current selection is kept.
+Appends a page. Before the first navigation, the nearest existing page selected by startIndex is chosen; after navigation, the current selection is kept.
 
 ### onChange
 
@@ -36,9 +36,9 @@ Append a page; before the first navigation the nearest existing page per startIn
 Carousel & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the page-changed callback; repeated binds append
+Binds a page switch callback; repeated bindings are appended
 
-Callback; its argument is the new page index Optional out parameter receiving the unbind handle of this binding This component
+Callback; the argument is the new page index Optional output parameter receiving the unbind handle for this binding This component
 
 ## Static Methods
 
@@ -48,4 +48,4 @@ Callback; its argument is the new page index Optional out parameter receiving th
 static lv_event_code_t eventCode(CarouselEventType type)
 ```
 
-Get the internal event code of the carousel.
+Returns the internal event code of the carousel.

@@ -10,7 +10,7 @@ title: "Box"
 
 Plain container without layout; children are positioned manually
 
-Unlike the Flex auto layout of VBox/HBox, children inside Box need positions set manually with pos() or align(). Suits absolute positioning scenarios.
+Unlike the Flex auto layout of VBox and HBox, children in a Box need manual positioning with pos() or align(). Suited to absolute positioning scenarios.
 
 
 
@@ -37,9 +37,9 @@ Wraps an existing LVGL object
 Box(BoxProps props={})
 ```
 
-Constructs from aggregated properties
+Aggregate construction from properties
 
-Container properties, aggregate initialization supported
+Container properties; supports aggregate initialization
 
 ### init
 
@@ -47,7 +47,7 @@ Container properties, aggregate initialization supported
 Box & init(lv_obj_t *parent) &
 ```
 
-Creates the LVGL object on a parent object
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -57,7 +57,7 @@ Parent LVGL object pointer This component
 Box & init(Widget &parent) &
 ```
 
-Creates the LVGL object on a parent object
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -69,7 +69,7 @@ Box & init(Window &window) &
 
 Creates the container in the window root content area
 
-Frameless windows mount to the content area below the title bar and menu bar; normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
 
 
 Target window This component

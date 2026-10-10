@@ -10,7 +10,7 @@ title: "FragmentShader"
 
 Fragment shader implementation base class
 
-Derived classes implement render(), writing the buffer pixel by pixel in LVGL ARGB8888 byte order, B, G, R, A. When fragmentSource() is overridden to provide GLSL, the wrapper layer runs it on the GPU when a GPU backend is available, and falls back to render() otherwise.
+Derived classes implement render(), writing the buffer pixel by pixel in LVGL ARGB8888 byte order, B, G, R, A. When fragmentSource() is overridden to provide GLSL, the wrapper layer runs it on the GPU when a GPU backend is available. Otherwise it falls back to render().
 
 ## Public Methods
 
@@ -38,4 +38,4 @@ Clones the current shader
 virtual const char * fragmentSource() const
 ```
 
-GLSL fragment shader source; nullptr means no GPU implementation and falls back to CPU render. When the source has no \#version, the library injects a version header per backend; when it has \#version, it is used as is.
+GLSL fragment shader source; nullptr means no GPU implementation and falls back to CPU render. When the source lacks \#version the library injects a version header per backend; when it contains \#version it is used as-is.

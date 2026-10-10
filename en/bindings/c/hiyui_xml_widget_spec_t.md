@@ -6,7 +6,7 @@ title: "hiyui_xml_widget_spec_t"
 
 **Header:** `#include <hiyui/c/xml.h>`
 
-Extensible widget registration description. Initialize with HIYUI_XML_WIDGET_SPEC_INIT before passing to a registration API.
+Extensible widget registration description; initialize with `HIYUI_XML_WIDGET_SPEC_INIT` before passing to a registration API.
 
 ## Public Members
 
@@ -64,7 +64,7 @@ hiyui_xml_tree_item_collector_fn tree_item_collector
 int item_allows_children
 ```
 
-When non-zero, ItemList items may contain widget subtrees.
+When non-zero, an ItemList item may contain a widget subtree.
 
 ### resource_only
 
@@ -104,7 +104,7 @@ size_t item_attribute_count
 const hiyui_xml_attribute_spec_t * top_item_attributes
 ```
 
-Attribute description for ItemTree top-level items. When empty, item_attributes is used.
+Attribute description for ItemTree top-level items; item_attributes is used when empty.
 
 ### top_item_attribute_count
 
@@ -148,4 +148,4 @@ void * user_data
 hiyui_xml_userdata_destroy_fn destroy_user_data
 ```
 
-Called by the registry after successful registration. Not called when registration fails.
+Called by the registry after successful registration; not called when registration fails.

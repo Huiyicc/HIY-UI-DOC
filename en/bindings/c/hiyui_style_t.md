@@ -14,7 +14,7 @@ title: "hiyui_style_t"
 uint32_t color
 ```
 
-Text color as 0xRRGGBB.
+Text color 0xRRGGBB
 
 ### font_size
 
@@ -22,7 +22,7 @@ Text color as 0xRRGGBB.
 int font_size
 ```
 
-Font size; 0 uses the theme default.
+Font size, 0 = theme default
 
 ### bg_fill
 
@@ -30,7 +30,7 @@ Font size; 0 uses the theme default.
 hiyui_bg_fill_t bg_fill
 ```
 
-Background.
+Background
 
 ### radius
 
@@ -38,7 +38,7 @@ Background.
 int radius
 ```
 
-Corner radius.
+Corner radius
 
 ### pad_h
 
@@ -46,7 +46,7 @@ Corner radius.
 int pad_h
 ```
 
-Horizontal padding.
+Horizontal padding
 
 ### pad_v
 
@@ -54,7 +54,7 @@ Horizontal padding.
 int pad_v
 ```
 
-Vertical padding.
+Vertical padding
 
 ### opacity
 
@@ -62,7 +62,7 @@ Vertical padding.
 uint8_t opacity
 ```
 
-Overall opacity in [0,255].
+Overall opacity [0,255]
 
 ### border
 
@@ -82,7 +82,7 @@ hiyui_shadow_t shadow
 int transition_ms
 ```
 
-Transition duration in ms; 0 means no animation.
+Transition duration in ms, 0 = no animation
 
 ### bg_image
 
@@ -108,4 +108,4 @@ uint32_t overlay
 uint8_t overlay_alpha
 ```
 
-Overlay opacity in [0,255]; 0 is opaque.
+Overlay opacity [0,255], 0 = opaque

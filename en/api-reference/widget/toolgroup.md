@@ -8,6 +8,6 @@ title: "ToolGroup"
 
 **Namespace:** `hiyui`
 
-Logical group participating in overflow as a whole; kept on the main bar when it contains ordinary widgets.
+Logical group participating in overflow as a whole, kept on the main bar when it contains plain widgets.
 
 **Inherits:** `hiyui::Container< ToolGroup >`

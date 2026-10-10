@@ -8,7 +8,7 @@ title: "HBox"
 
 **Namespace:** `hiyui`
 
-Horizontal layout container, children arranged left to right
+Horizontal layout container with children arranged left to right
 
 Uses the LVGL Flex Row layout internally.
 
@@ -29,7 +29,7 @@ Uses the LVGL Flex Row layout internally.
 HBox(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### HBox
 
@@ -37,7 +37,7 @@ Wrap an existing LVGL object
 HBox(HBoxProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -45,7 +45,7 @@ Construct from aggregated properties
 HBox & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL Flex Row container under a parent
+Creates the LVGL Flex Row container on a parent
 
 Uses the layout properties saved at construction.
 
@@ -55,7 +55,7 @@ Uses the layout properties saved at construction.
 HBox & init(lv_obj_t *parent, const HBoxProps &props) &
 ```
 
-Create the LVGL Flex Row container under a parent
+Creates the LVGL Flex Row container on a parent
 
 ### init
 
@@ -63,7 +63,7 @@ Create the LVGL Flex Row container under a parent
 HBox & init(Widget &parent) &
 ```
 
-Create the LVGL Flex Row container under a parent
+Creates the LVGL Flex Row container on a parent
 
 Uses the layout properties saved at construction.
 
@@ -73,7 +73,7 @@ Uses the layout properties saved at construction.
 HBox & init(Widget &parent, const HBoxProps &props) &
 ```
 
-Create the LVGL Flex Row container under a parent
+Creates the LVGL Flex Row container on a parent
 
 ### init
 
@@ -81,9 +81,9 @@ Create the LVGL Flex Row container under a parent
 HBox & init(Window &window) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
 
 ### init
 
@@ -91,6 +91,6 @@ Frameless windows mount into the content area below the title bar and menu bar. 
 HBox & init(Window &window, const HBoxProps &props) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.

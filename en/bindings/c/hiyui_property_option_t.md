@@ -32,4 +32,4 @@ hiyui_bool_t disabled
 const hiyui_localized_text_t * localized_label
 ```
 
-When non-NULL, the description is copied and overrides label.
+When non-NULL, copies the description and overrides label.

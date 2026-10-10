@@ -8,9 +8,9 @@ title: "detail::DialogOffScreenHandle"
 
 **Namespace:** `hiyui`
 
-Offscreen session open result
+Result of opening an offscreen session
 
-After building the card on screen, the caller calls fitDialogOffScreen to measure, center and show it.
+After building the card on screen, the caller invokes fitDialogOffScreen to measure, center and show it.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ After building the card on screen, the caller calls fitDialogOffScreen to measur
 lv_obj_t * screen
 ```
 
-Active screen of the offscreen window; the card mount point
+Active screen of the offscreen window, the card mount point
 
 ### display
 

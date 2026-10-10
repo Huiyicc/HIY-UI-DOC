@@ -6,7 +6,7 @@ title: "rich_node.h"
 
 **Header:** `#include <hiyui/c/rich_node.h>`
 
-Rich text node shared by RichInput and ChatList
+Rich text nodes shared by RichInput and ChatList
 
 ## Enums
 

@@ -8,9 +8,9 @@ title: "Input"
 
 **Namespace:** `hiyui`
 
-Text input widget.
+Text input widget
 
-Provides single-line or multi-line plain text editing; desktop builds can enable additional selections and multi-cursor input.
+Provides single-line or multi-line plain text editing, desktop builds can enable additional selections and multi-cursor input.
 
 
 
@@ -26,7 +26,7 @@ Provides single-line or multi-line plain text editing; desktop builds can enable
 Input(lv_obj_t *raw)
 ```
 
-Wraps an existing LVGL object.
+Wraps an existing LVGL object
 
 ### Input
 
@@ -34,7 +34,7 @@ Wraps an existing LVGL object.
 Input(InputProps props={})
 ```
 
-Aggregate construction from properties.
+Aggregate construction from properties
 
 ### init
 
@@ -42,7 +42,7 @@ Aggregate construction from properties.
 Input & init(lv_obj_t *parent) &
 ```
 
-Creates the input on a parent object.
+Creates the input on a parent object
 
 ### init
 
@@ -50,7 +50,7 @@ Creates the input on a parent object.
 Input & init(Widget &parent) &
 ```
 
-Creates the input on a parent object.
+Creates the input on a parent object
 
 ### text
 
@@ -58,7 +58,7 @@ Creates the input on a parent object.
 Input & text(const std::string &t, Notify notify=Notify::No) &
 ```
 
-Sets the text content at runtime.
+Sets the text content at runtime
 
 ### text
 
@@ -66,7 +66,7 @@ Sets the text content at runtime.
 Input & text(const char *t, Notify notify=Notify::No) &
 ```
 
-Sets the text content at runtime.
+Sets the text content at runtime
 
 ### text
 
@@ -74,7 +74,7 @@ Sets the text content at runtime.
 std::string text() const
 ```
 
-Returns the current text content.
+Returns the current text content
 
 ### placeholder
 
@@ -82,9 +82,9 @@ Returns the current text content.
 Input & placeholder(const char *p) &
 ```
 
-Sets the placeholder hint text.
+Sets the placeholder hint text
 
-UTF-8 encoded.
+UTF-8 encoded
 
 ### placeholder
 
@@ -92,7 +92,7 @@ UTF-8 encoded.
 Input & placeholder(const LocalizedText &p) &
 ```
 
-Binds a placeholder that updates with the language, keeping the input content; a plain placeholder call replaces this binding.
+Binds a placeholder that updates with the language and keeps the input content, a plain placeholder call replaces this binding.
 
 ### passwordMode
 
@@ -100,7 +100,7 @@ Binds a placeholder that updates with the language, keeping the input content; a
 Input & passwordMode(bool p) &
 ```
 
-Sets password mode.
+Sets password mode
 
 ### readOnly
 
@@ -108,9 +108,9 @@ Sets password mode.
 Input & readOnly(bool enabled) &
 ```
 
-Sets read-only state, keeping focus, selection, copy, and scrolling.
+Sets the read-only state, focus, selection, copy, and scrolling are preserved.
 
-In read-only mode undo, redo, canUndo, and canRedo return false; the history is kept. Programmatic calls to text, clear, and insertText still update the content. Entering read-only cancels the uncommitted IME composition.
+In read-only mode undo, redo, canUndo, and canRedo return false, history is preserved. Programmatic calls to text, clear, and insertText still update the content. Entering read-only cancels the uncommitted IME composition.
 
 ### isReadOnly
 
@@ -118,7 +118,7 @@ In read-only mode undo, redo, canUndo, and canRedo return false; the history is 
 bool isReadOnly() const
 ```
 
-Returns the read-only state; false when not initialized.
+Returns the read-only state, false when not initialized.
 
 ### multiline
 
@@ -126,7 +126,7 @@ Returns the read-only state; false when not initialized.
 Input & multiline(bool m, Notify notify=Notify::No) &
 ```
 
-Switches multi-line/single-line mode at runtime.
+Switches multi-line/single-line mode at runtime
 
 ### horizontalScroll
 
@@ -134,9 +134,9 @@ Switches multi-line/single-line mode at runtime.
 Input & horizontalScroll(bool h) &
 ```
 
-Sets the horizontal scrollbar at runtime, effective only in multi-line mode.
+Sets the horizontal scrollbar at runtime, effective only in multi-line mode
 
-true disables automatic wrapping.
+true disables automatic wrapping
 
 ### clear
 
@@ -144,7 +144,7 @@ true disables automatic wrapping.
 Input & clear(Notify notify=Notify::No) &
 ```
 
-Clears the input content.
+Clears the input content
 
 ### undo
 
@@ -152,9 +152,9 @@ Clears the input content.
 bool undo(Notify notify=Notify::No)
 ```
 
-Performs undo.
+Performs undo
 
-Always returns false in password mode.
+Always returns false in password mode
 
 ### redo
 
@@ -162,9 +162,9 @@ Always returns false in password mode.
 bool redo(Notify notify=Notify::No)
 ```
 
-Performs redo.
+Performs redo
 
-Always returns false in password mode.
+Always returns false in password mode
 
 ### canUndo
 
@@ -172,7 +172,7 @@ Always returns false in password mode.
 bool canUndo() const
 ```
 
-Returns whether undo is available.
+Returns whether undo is available
 
 ### canRedo
 
@@ -180,7 +180,7 @@ Returns whether undo is available.
 bool canRedo() const
 ```
 
-Returns whether redo is available.
+Returns whether redo is available
 
 ### multiCursor
 
@@ -188,7 +188,7 @@ Returns whether redo is available.
 Input & multiCursor(bool enabled) &
 ```
 
-Sets whether additional selections and multi-cursor input are allowed. By default Alt/Option click adds a cursor.
+Sets whether additional selections and multi-cursor input are allowed, clicking with Alt/Option adds a cursor by default.
 
 ### multiCursorModifier
 
@@ -196,7 +196,7 @@ Sets whether additional selections and multi-cursor input are allowed. By defaul
 Input & multiCursorModifier(InputMultiCursorModifier modifier) &
 ```
 
-Sets the mouse modifier for adding cursors; no effect on non-desktop backends.
+Sets the mouse modifier key for adding multi-cursors, no effect on non-desktop backends.
 
 ### selection
 
@@ -204,7 +204,7 @@ Sets the mouse modifier for adding cursors; no effect on non-desktop backends.
 InputSelection selection() const
 ```
 
-Returns the primary selection; positions are UTF-8 byte offsets.
+Returns the primary selection, positions are UTF-8 byte offsets.
 
 ### selections
 
@@ -212,7 +212,7 @@ Returns the primary selection; positions are UTF-8 byte offsets.
 std::vector< InputSelection > selections() const
 ```
 
-Returns all selections; non-desktop backends return the primary selection.
+Returns all selections, non-desktop backends return the primary selection.
 
 ### addSelection
 
@@ -222,7 +222,7 @@ Input & addSelection(InputSelection sel) &
 
 Adds a selection.
 
-Positions beyond the text or inside a UTF-8 character are corrected forward.
+Positions beyond the text or inside a UTF-8 character are adjusted forward.
 
 ### clearAdditionalSelections
 
@@ -280,4 +280,4 @@ Input & cursorPos(int32_t bytePos) &
 
 Sets the primary caret position as a UTF-8 byte offset and clears the selection.
 
-Positions beyond the text or inside a UTF-8 character are corrected forward.
+Positions beyond the text or inside a UTF-8 character are adjusted forward.

@@ -6,7 +6,7 @@ title: "hiyui_localized_text_s"
 
 **Header:** `#include <hiyui/c/i18n.h>`
 
-Translation input descriptor; binding and queries copy the referenced data at call time, and all operations run on the UI thread.
+Translation input description. Binding and queries copy the referenced data at call time. All operations run on the UI thread.
 
 ## Public Members
 

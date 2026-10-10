@@ -10,7 +10,7 @@ title: "Label"
 
 Text label widget
 
-Supports changing the text at runtime and multi-state styling.
+Supports runtime text changes and multi-state styles.
 
 
 
@@ -29,7 +29,7 @@ Supports changing the text at runtime and multi-state styling.
 virtual lv_obj_t * primaryTextObj() const override
 ```
 
-Returns the widget primary text object, the inner label or textarea, used by text capabilities such as selectableText
+Returns the component's primary text object, the inner label/textarea, used by text capabilities such as selectableText
 
 Derived classes override as needed to return their own primary text object; base text nodes return themselves by default.
 
@@ -41,7 +41,7 @@ Derived classes override as needed to return their own primary text object; base
 Label(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Label
 
@@ -49,9 +49,9 @@ Wrap an existing LVGL object
 Label(LabelProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-text is copied at construction, nullptr keeps the default text.
+text is copied at construction; nullptr keeps the default text.
 
 ### init
 
@@ -59,7 +59,7 @@ text is copied at construction, nullptr keeps the default text.
 Label & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL label object under a parent
+Creates the LVGL label object on a parent
 
 ### init
 
@@ -67,7 +67,7 @@ Create the LVGL label object under a parent
 Label & init(Widget &parent) &
 ```
 
-Create the LVGL label object under a parent
+Creates the LVGL label object on a parent
 
 ### text
 
@@ -75,7 +75,7 @@ Create the LVGL label object under a parent
 Label & text(const std::string &t) &
 ```
 
-Change the display text at runtime
+Changes the displayed text at runtime
 
 ### text
 
@@ -83,7 +83,7 @@ Change the display text at runtime
 Label & text(const char *t) &
 ```
 
-Change the display text at runtime
+Changes the displayed text at runtime
 
 UTF-8 encoded
 
@@ -93,4 +93,4 @@ UTF-8 encoded
 Label & text(const LocalizedText &t) &
 ```
 
-Bind text that updates with the language, copying the description. A plain text call replaces this binding.
+Binds text that updates with the language. Copies the description. A plain text call replaces this binding.

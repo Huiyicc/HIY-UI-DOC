@@ -6,7 +6,7 @@ title: "hiyui_layout_metrics_t"
 
 **Header:** `#include <hiyui/c/widget.h>`
 
-Layout constraints with lengths in physical pixels; content sizes use HIYUI_AUTO for width/height, and percent fields hold percentages.
+Layout constraints, lengths in physical pixels. For content sizes width/height hold HIYUI_AUTO, percentages hold percent values.
 
 ## Public Members
 

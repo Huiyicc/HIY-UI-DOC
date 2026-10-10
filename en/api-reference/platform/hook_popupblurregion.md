@@ -8,4 +8,4 @@ title: "hook::PopupBlurRegion"
 
 **Namespace:** `hiyui`
 
-Popup blur region in client area physical pixels. Hidden when width or height is not positive or visible is false.
+Popup blur region in client area physical pixels; hidden when width or height is non-positive or visible is false.

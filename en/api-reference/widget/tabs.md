@@ -8,7 +8,7 @@ title: "Tabs"
 
 **Namespace:** `hiyui`
 
-Tabs widget laying out a tab bar and content panels
+Tabs component laying out a tab bar and content panels
 
 **See also:** `TabsProps`
 
@@ -22,7 +22,7 @@ Tabs widget laying out a tab bar and content panels
 Tabs & itemText(int index, const char *value) &
 ```
 
-Update the text of one item without firing the selection event; out-of-range indexes do nothing; nullptr shows empty text. index is zero-based. Replacing the whole collection clears bindings.
+Updates the text of the given item without emitting a selection event. Out-of-range indexes do nothing; nullptr shows empty text. The index is zero-based. Replacing the whole set clears bindings.
 
 ### itemText
 
@@ -30,7 +30,7 @@ Update the text of one item without firing the selection event; out-of-range ind
 Tabs & itemText(int index, LocalizedText value) &
 ```
 
-Bind item text; switching language keeps the items and the selection.
+Binds item text; the set and the selection are preserved across language switches.
 
 ### Tabs
 
@@ -38,7 +38,7 @@ Bind item text; switching language keeps the items and the selection.
 Tabs(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Tabs
 
@@ -46,7 +46,7 @@ Wrap an existing LVGL object
 Tabs(TabsProps props={})
 ```
 
-Aggregate construct from properties
+Aggregate construction from properties
 
 ### init
 
@@ -54,7 +54,7 @@ Aggregate construct from properties
 Tabs & init(lv_obj_t *parent) &
 ```
 
-Create the tabs on a parent object
+Creates the tabs on a parent object
 
 ### init
 
@@ -62,7 +62,7 @@ Create the tabs on a parent object
 Tabs & init(Widget &parent) &
 ```
 
-Create the tabs on a parent object
+Creates the tabs on a parent object
 
 ### activeIndex
 
@@ -70,7 +70,7 @@ Create the tabs on a parent object
 Tabs & activeIndex(int idx, Notify notify=Notify::No) &
 ```
 
-Switch to the given tab
+Switches to the given tab
 
 ### activeIndex
 
@@ -78,9 +78,9 @@ Switch to the given tab
 int activeIndex() const
 ```
 
-Get the current active tab index
+Returns the current active tab index
 
-Returns HIYUI_NO_SELECTION for an empty collection.
+Returns HIYUI_NO_SELECTION when the set is empty.
 
 ### itemData
 
@@ -88,9 +88,9 @@ Returns HIYUI_NO_SELECTION for an empty collection.
 int itemData(int idx) const
 ```
 
-Get the user data bound to a tab.
+Returns the user data bound to the given tab.
 
-Tab index, matching the activeIndex() index. The item data value; 0 when the index is out of range.
+Tab index, matching the activeIndex() indexing. The item data value; 0 when the index is out of range.
 
 ### items
 
@@ -98,9 +98,9 @@ Tab index, matching the activeIndex() index. The item data value; 0 when the ind
 Tabs & items(const std::vector< TabItem > &items, Notify notify=Notify::No) &
 ```
 
-Replace all tabs and destroy the old pages and their content.
+Replaces all tabs and destroys the old pages and their content.
 
-Text is copied before return; Refs to old pages become invalid.
+Text is copied before returning; Refs to old pages become invalid.
 
 ### appendItems
 
@@ -108,7 +108,7 @@ Text is copied before return; Refs to old pages become invalid.
 Tabs & appendItems(const std::vector< TabItem > &items, Notify notify=Notify::No) &
 ```
 
-Append tabs; existing pages and their content are kept.
+Appends tabs; existing pages and their content are kept.
 
 ### position
 
@@ -116,7 +116,7 @@ Append tabs; existing pages and their content are kept.
 Tabs & position(TabPosition pos) &
 ```
 
-Change the tab bar position at runtime
+Switches the tab bar position at runtime
 
 ### tabPanel
 
@@ -124,9 +124,9 @@ Change the tab bar position at runtime
 Tabs & tabPanel(int idx, F &&builder) &
 ```
 
-Fill the tab panel content through a callback
+Fills the tab panel content through a callback
 
-Callable type, signature void(Widget&amp;); the argument is the Widget wrapper of the panel
+Callable type with signature void(Widget&amp;); the argument is the Widget wrapper of the panel
 
 ### tabContent
 
@@ -134,7 +134,7 @@ Callable type, signature void(Widget&amp;); the argument is the Widget wrapper o
 lv_obj_t * tabContent(int idx) const
 ```
 
-Get the content panel of a tab
+Returns the content panel of the given tab
 
 ### activeColor
 
@@ -142,7 +142,7 @@ Get the content panel of a tab
 Tabs & activeColor(ThemeRole role) &
 ```
 
-Bind the active tab color to a theme semantic role; updates automatically on theme change
+Binds the active tab color to a theme semantic role; updates automatically on theme switch.
 
 ### inactiveColor
 
@@ -150,4 +150,4 @@ Bind the active tab color to a theme semantic role; updates automatically on the
 Tabs & inactiveColor(ThemeRole role) &
 ```
 
-Bind the inactive tab color to a theme semantic role; updates automatically on theme change
+Binds the inactive tab color to a theme semantic role; updates automatically on theme switch.

@@ -10,7 +10,7 @@ title: "VirtualAnchor"
 
 Virtual table anchor information
 
-Records the anchor node before data changes and restores it to its original screen position after the change, keeping the user's view consistent.
+Records the anchor item before a data change and restores it to its original screen position afterwards, keeping the user's viewpoint stable.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ Records the anchor node before data changes and restores it to its original scre
 int itemId
 ```
 
-Anchor item id, meaning defined by the subclass; Tree uses TreeNodeId
+Anchor item identifier, meaning defined by the subclass, Tree uses TreeNodeId
 
 ### screenY
 
@@ -28,4 +28,4 @@ Anchor item id, meaning defined by the subclass; Tree uses TreeNodeId
 int screenY
 ```
 
-Y coordinate relative to the viewport top
+Y coordinate relative to the top of the viewport

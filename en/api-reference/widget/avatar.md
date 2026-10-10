@@ -22,7 +22,7 @@ Avatar widget
 Avatar(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Avatar
 
@@ -30,9 +30,9 @@ Wrap an existing LVGL object
 Avatar(AvatarProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-Avatar properties, aggregate initialization supported
+Avatar properties. Supports aggregate initialization
 
 ### init
 
@@ -40,7 +40,7 @@ Avatar properties, aggregate initialization supported
 Avatar & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -50,7 +50,7 @@ Parent LVGL object pointer This component
 Avatar & init(Widget &parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -60,7 +60,7 @@ Parent LVGL object pointer This component
 Avatar & src(const void *s) &
 ```
 
-Switch the image source at runtime
+Changes the image source at runtime
 
 Image source This component
 
@@ -70,7 +70,7 @@ Image source This component
 Avatar & src(const char *path) &
 ```
 
-Switch the image source at runtime
+Changes the image source at runtime
 
 Image file path This component
 
@@ -80,7 +80,7 @@ Image file path This component
 Avatar & textColor(ThemeRole role) &
 ```
 
-Bind the text color to a theme semantic role, updated automatically on theme change
+Binds the text color to a theme semantic role. Updates automatically on theme switch
 
 ### borderColor
 
@@ -88,4 +88,4 @@ Bind the text color to a theme semantic role, updated automatically on theme cha
 Avatar & borderColor(ThemeRole role) &
 ```
 
-Bind the border color to a theme semantic role, updated automatically on theme change
+Binds the border color to a theme semantic role. Updates automatically on theme switch

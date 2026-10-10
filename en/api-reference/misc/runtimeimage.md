@@ -8,9 +8,9 @@ title: "RuntimeImage"
 
 **Namespace:** `hiyui`
 
-Runtime-loaded image
+Image loaded at runtime
 
-Holds the raw image data and the matching lv_image_dsc_t; the data buffer lives with the object. The pointer returned by dsc() stays valid while the object is alive, pass it to Image, RichInput::insertImage and similar.
+Owns the raw image data and the matching lv_image_dsc_t; the data buffer lives with the object. The pointer returned by dsc() is valid while the object is alive and can be passed to Image, RichInput::insertImage and similar APIs.
 
 ## Public Methods
 
@@ -22,7 +22,7 @@ bool loadFromFile(const char *path)
 
 Loads an image from a file
 
-true on success; false when the file is missing, on read errors, or on non-SDL backends
+true on success; false when the file does not exist, reading fails, or the backend is not SDL
 
 ### dsc
 
@@ -32,4 +32,4 @@ const lv_image_dsc_t * dsc() const
 
 Returns the image descriptor
 
-nullptr when nothing is loaded
+nullptr when not loaded

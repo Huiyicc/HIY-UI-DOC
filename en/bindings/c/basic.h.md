@@ -6,7 +6,7 @@ title: "basic.h"
 
 **Header:** `#include <hiyui/c/basic.h>`
 
-Basic widgets, Label, Button, Image, Icon, Progress, Avatar and Spin
+Basic widgets: Label / Button / Image / Icon / Progress / Avatar / Spin
 
 ## Functions
 
@@ -46,7 +46,7 @@ HIYUI_API void HIYUI_CALL hiyui_button_set_icon(hiyui_widget_t *btn, uint32_t co
 HIYUI_API void HIYUI_CALL hiyui_button_set_icon_src(hiyui_widget_t *btn, const void *source)
 ```
 
-Replace the image icon, copying string sources; NULL clears the icon, image data is borrowed until replaced or destroyed.
+Replaces the image icon, copying string sources. NULL clears the icon. Image data is borrowed until replaced or destroyed.
 
 ### hiyui_button_set_state_src
 
@@ -54,7 +54,7 @@ Replace the image icon, copying string sources; NULL clears the icon, image data
 HIYUI_API void HIYUI_CALL hiyui_button_set_state_src(hiyui_widget_t *btn, hiyui_style_state_t state, const void *src)
 ```
 
-Replace a state image, copying path sources; only NORMAL/HOVERED/PRESSED/DISABLED take effect, NULL clears the image of that state, image data is borrowed until replaced or destroyed.
+Replaces a state background image, copying path sources. Only NORMAL/HOVERED/PRESSED/DISABLED take effect. NULL clears that state's background. Image data is borrowed until replaced or destroyed.
 
 ### hiyui_image_create
 
@@ -146,7 +146,7 @@ HIYUI_API void HIYUI_CALL hiyui_icon_set_opacity(hiyui_widget_t *icon, uint8_t o
 HIYUI_API void HIYUI_CALL hiyui_icon_color_from(hiyui_widget_t *icon, hiyui_widget_t *source)
 ```
 
-Follows the current text color of the source, a repeated call replaces the source. Keeps the last color after the source is destroyed, NULL arguments are a no-op.
+Follows the source's current text color. Repeated calls replace the source. The last color is kept after the source is destroyed. NULL arguments are a no-op.
 
 ### hiyui_icon_rendered
 
@@ -154,7 +154,7 @@ Follows the current text color of the source, a repeated call replaces the sourc
 HIYUI_API int HIYUI_CALL hiyui_icon_rendered(hiyui_widget_t *icon)
 ```
 
-Returns 1 when a displayable image exists, returns 0 for NULL or when the icon is unavailable.
+Returns 1 when a displayable image exists. Returns 0 for NULL or when the icon is unavailable.
 
 ### hiyui_progress_create
 

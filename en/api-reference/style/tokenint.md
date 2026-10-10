@@ -10,7 +10,7 @@ title: "TokenInt"
 
 Integer token wrapper, int
 
-Similar to TokenValue but for integer fields such as spacing, radius and font size. Supports implicit construction from int.
+Similar to TokenValue but for integer fields such as spacing, corner radius and font size. Supports implicit construction from int.
 
 
 
@@ -43,7 +43,7 @@ Referenced token, _Count means no reference
 int fallback_
 ```
 
-Fallback when the token is unset
+Fallback value when the token is unset
 
 ## Public Methods
 
@@ -53,7 +53,7 @@ Fallback when the token is unset
 constexpr TokenInt(int lit)
 ```
 
-Implicit construction from a literal value
+Implicitly constructs from a literal value
 
 Integer literal value
 
@@ -63,7 +63,7 @@ Integer literal value
 bool isRef() const
 ```
 
-Whether this is a token reference rather than a literal value
+Whether this is a token reference, not a literal value
 
 ### isNone
 
@@ -71,7 +71,7 @@ Whether this is a token reference rather than a literal value
 bool isNone() const
 ```
 
-Whether unset, neither a reference nor a literal value
+Whether unset, neither reference nor literal value
 
 ### resolve
 
@@ -81,10 +81,10 @@ int resolve(const struct Theme &theme) const
 
 Resolves the final integer value
 
-Looks up the Theme for token references, otherwise returns the literal value.
+Token references are looked up in the Theme, otherwise the literal value is returned.
 
 
-The resolved integer value
+Resolved integer value
 
 ## Static Methods
 
@@ -94,6 +94,6 @@ The resolved integer value
 static TokenInt var(Token t, int fb=HIYUI_NONE_INT)
 ```
 
-Constructs a token reference
+Constructs a reference from a Token
 
-Fallback value used when the token is HIYUI_NONE_INT in the Theme
+Fallback value, used when the token in Theme is HIYUI_NONE_INT

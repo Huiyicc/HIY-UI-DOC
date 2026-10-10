@@ -8,7 +8,7 @@ title: "LayoutBreakpoints"
 
 **Namespace:** `hiyui`
 
-Wide and narrow layout breakpoints.
+Breakpoints between narrow and wide layouts.
 
 ## Public Members
 

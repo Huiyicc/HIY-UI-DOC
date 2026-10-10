@@ -14,4 +14,4 @@ title: "hiyui_xml_item_result_t"
 hiyui_widget_t * child_host
 ```
 
-Optional content host. Must belong to the item collector widget.
+Optional content host; must belong to the item collector widget.

@@ -8,7 +8,7 @@ title: "pal::BufferConfig"
 
 **Namespace:** `hiyui`
 
-Buffer configuration.
+Buffer configuration
 
 The SDL backend manages buffers internally and ignores this configuration.
 
@@ -20,7 +20,7 @@ The SDL backend manages buffers internally and ignores this configuration.
 RenderMode mode
 ```
 
-Render mode.
+Render mode
 
 ### bufferCount
 
@@ -28,4 +28,4 @@ Render mode.
 int bufferCount
 ```
 
-Buffer count, 1 or 2, where 2 means Alt Buffer double buffering.
+Buffer count, 1 or 2, 2 means Alt Buffer double buffering

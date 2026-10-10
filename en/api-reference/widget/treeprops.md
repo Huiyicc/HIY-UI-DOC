@@ -18,7 +18,7 @@ Tree widget creation properties
 int maxHeight
 ```
 
-Maximum height when height=HIYUI_AUTO, 0 = unlimited
+Maximum height when height=HIYUI_AUTO. 0 = unlimited
 
 ### indent
 
@@ -26,7 +26,7 @@ Maximum height when height=HIYUI_AUTO, 0 = unlimited
 int indent
 ```
 
-Indentation in pixels
+Indent in pixels
 
 ### checkable
 
@@ -34,7 +34,7 @@ Indentation in pixels
 bool checkable
 ```
 
-Global checkboxes
+Tree-level checkboxes
 
 ### accordion
 
@@ -50,7 +50,7 @@ Accordion mode
 bool multiSelect
 ```
 
-Multi-selection for the tree
+Multi-select for the tree
 
 ### expandIcon
 
@@ -74,7 +74,7 @@ uint32_t collapseIcon
 uint32_t checkIcon
 ```
 
-Checked icon, 0 = default HIYUI_ICON_CHECK_BOX
+Checked icon. 0 = default HIYUI_ICON_CHECK_BOX
 
 ### uncheckIcon
 
@@ -82,7 +82,7 @@ Checked icon, 0 = default HIYUI_ICON_CHECK_BOX
 uint32_t uncheckIcon
 ```
 
-Unchecked icon, 0 = default HIYUI_ICON_CHECK_BOX_OUTLINE_BLANK
+Unchecked icon. 0 = default HIYUI_ICON_CHECK_BOX_OUTLINE_BLANK
 
 ### indeterminateIcon
 
@@ -90,4 +90,4 @@ Unchecked icon, 0 = default HIYUI_ICON_CHECK_BOX_OUTLINE_BLANK
 uint32_t indeterminateIcon
 ```
 
-Indeterminate icon, 0 = default HIYUI_ICON_DIALOGS
+Indeterminate icon. 0 = default HIYUI_ICON_DIALOGS

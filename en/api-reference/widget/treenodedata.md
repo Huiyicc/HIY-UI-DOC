@@ -8,7 +8,7 @@ title: "TreeNodeData"
 
 **Namespace:** `hiyui`
 
-Internal tree node data, stored flattened
+Tree widget internal node data, stored flat
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Internal tree node data, stored flattened
 int depth
 ```
 
-Nesting depth, root = 0
+Nesting depth. Root = 0
 
 ### parentIndex
 
@@ -34,7 +34,7 @@ Parent node index in allNodes
 bool indeterminate
 ```
 
-Indeterminate check state
+Indeterminate state
 
 ### lazyLoaded
 
@@ -42,7 +42,7 @@ Indeterminate check state
 bool lazyLoaded
 ```
 
-Whether asynchronous loading has finished
+Whether async loading has finished
 
 ### lazyLoading
 
@@ -50,7 +50,7 @@ Whether asynchronous loading has finished
 bool lazyLoading
 ```
 
-Loading in progress
+Currently loading
 
 ### matchesFilter
 

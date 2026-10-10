@@ -10,7 +10,7 @@ title: "TokenValue"
 
 Color token wrapper, uint32_t
 
-Style fields can store a literal color value or reference a token resolved from the Theme at run time. Supports implicit construction from uint32_t.
+Style fields can store a literal color value or reference a token resolved from the Theme at runtime. Supports implicit construction from uint32_t.
 
 
 
@@ -43,7 +43,7 @@ Referenced token, _Count means no reference
 uint32_t fallback_
 ```
 
-Fallback when the token is unset
+Fallback value when the token is unset
 
 ## Public Methods
 
@@ -53,7 +53,7 @@ Fallback when the token is unset
 constexpr TokenValue(uint32_t lit)
 ```
 
-Implicit construction from a literal value
+Implicitly constructs from a literal value
 
 Color value in 0xRRGGBB format
 
@@ -63,7 +63,7 @@ Color value in 0xRRGGBB format
 bool isRef() const
 ```
 
-Whether this is a token reference rather than a literal value
+Whether this is a token reference, not a literal value
 
 ### isNone
 
@@ -71,7 +71,7 @@ Whether this is a token reference rather than a literal value
 bool isNone() const
 ```
 
-Whether unset, neither a reference nor a literal value
+Whether unset, neither reference nor literal value
 
 ### resolve
 
@@ -81,10 +81,10 @@ uint32_t resolve(const struct Theme &theme) const
 
 Resolves the final color value
 
-Looks up the Theme for token references, otherwise returns the literal value.
+Token references are looked up in the Theme, otherwise the literal value is returned.
 
 
-The resolved 0xRRGGBB color value
+Resolved 0xRRGGBB color value
 
 ## Static Methods
 
@@ -94,6 +94,6 @@ The resolved 0xRRGGBB color value
 static TokenValue var(Token t, uint32_t fb=HIYUI_NONE)
 ```
 
-Constructs a token reference
+Constructs a reference from a Token
 
-Fallback value used when the token is HIYUI_NONE in the Theme
+Fallback value, used when the token in Theme is HIYUI_NONE

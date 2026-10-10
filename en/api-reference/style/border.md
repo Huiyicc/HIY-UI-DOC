@@ -18,7 +18,7 @@ Border configuration
 int width
 ```
 
-Border width; HIYUI_NONE_INT = not set, 0 = no border
+Border width, HIYUI_NONE_INT = not set, 0 = no border
 
 ### color
 

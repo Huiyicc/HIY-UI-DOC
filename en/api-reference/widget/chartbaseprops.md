@@ -20,7 +20,7 @@ Props of all chart subclasses inherit from this struct.
 const char * title
 ```
 
-Title text in UTF-8, nullptr = no title
+Title text in UTF-8; nullptr means no title
 
 ### width
 
@@ -28,7 +28,7 @@ Title text in UTF-8, nullptr = no title
 int width
 ```
 
-Width, HIYUI_AUTO = fill the parent container
+Width; HIYUI_AUTO fills the parent
 
 ### height
 
@@ -44,7 +44,7 @@ Height in theme logical pixels
 int padding
 ```
 
-Padding in theme logical pixels
+Inner padding in theme logical pixels
 
 ### bg
 
@@ -52,7 +52,7 @@ Padding in theme logical pixels
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color; HIYUI_DEFAULT follows theme
 
 ### legend
 
@@ -84,4 +84,4 @@ Y axis configuration
 InteractionConfig interaction
 ```
 
-Interaction configuration for crosshair, tooltip, zoom and pan
+Interaction configuration: crosshair, tooltip, zoom, pan

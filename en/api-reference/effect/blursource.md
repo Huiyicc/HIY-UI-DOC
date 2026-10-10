@@ -10,7 +10,7 @@ title: "BlurSource"
 
 Blur source configuration specifying the base image and color before blurring
 
-When bgFill / bgImage hold valid values, GlassEffect composites the base first and then blurs. When empty, blurs the already drawn area below the component, the backdrop-filter behavior.
+When bgFill / bgImage holds a valid value, GlassEffect composites the base first and then blurs. When empty, it blurs the already drawn area below the component, backdrop-filter behavior.
 
 ## Public Members
 
@@ -40,4 +40,4 @@ bool empty() const
 
 Whether any valid base image or color is present
 
-Returns true when there is no base image and no base color
+True when there is neither a base image nor a base color

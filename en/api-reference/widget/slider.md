@@ -22,7 +22,7 @@ Slider widget
 Slider(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Slider
 
@@ -30,7 +30,7 @@ Wrap an existing LVGL object
 Slider(SliderProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -38,7 +38,7 @@ Construct from aggregated properties
 Slider & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL slider object under a parent
+Creates the LVGL slider object on a parent
 
 ### init
 
@@ -46,7 +46,7 @@ Create the LVGL slider object under a parent
 Slider & init(Widget &parent) &
 ```
 
-Create the LVGL slider object under a parent
+Creates the LVGL slider object on a parent
 
 ### value
 
@@ -54,9 +54,9 @@ Create the LVGL slider object under a parent
 Slider & value(int v, Notify notify=Notify::No) &
 ```
 
-Set the value at runtime
+Sets the value at runtime
 
-New value, clamped to the range endpoints when out of bounds With theme animation on, the knob transitions to the new value. With animation off it arrives immediately. value() always returns the final value immediately.
+New value. Clamped to the range endpoints when out of bounds With theme animation on, the knob transitions to the new value; when off, it reaches it immediately. value() always returns the final value immediately.
 
 ### onChange
 
@@ -64,7 +64,7 @@ New value, clamped to the range endpoints when out of bounds With theme animatio
 Slider & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Append a value change subscription. The callback can take an int, an Event&amp; or no parameter.
+Appends a value-change subscription. The callback can take int, Event&amp; or no parameters.
 
 ### value
 
@@ -72,7 +72,7 @@ Append a value change subscription. The callback can take an int, an Event&amp; 
 int value() const
 ```
 
-Get the current value
+Gets the current value
 
 ### range
 
@@ -80,7 +80,7 @@ Get the current value
 Slider & range(int minVal, int maxVal, Notify notify=Notify::No) &
 ```
 
-Set the value range
+Sets the value range
 
 ### activeColor
 
@@ -88,7 +88,7 @@ Set the value range
 Slider & activeColor(ThemeRole role) &
 ```
 
-Bind the filled area color to a theme semantic role, updated automatically on theme change
+Binds the filled area color to a theme semantic role. Updates automatically on theme switch
 
 ### trackColor
 
@@ -96,7 +96,7 @@ Bind the filled area color to a theme semantic role, updated automatically on th
 Slider & trackColor(ThemeRole role) &
 ```
 
-Bind the track background color to a theme semantic role, updated automatically on theme change
+Binds the track background color to a theme semantic role. Updates automatically on theme switch
 
 ### knobColor
 
@@ -104,4 +104,4 @@ Bind the track background color to a theme semantic role, updated automatically 
 Slider & knobColor(ThemeRole role) &
 ```
 
-Bind the knob color to a theme semantic role, updated automatically on theme change
+Binds the knob color to a theme semantic role. Updates automatically on theme switch

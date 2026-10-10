@@ -6,7 +6,7 @@ title: "hiyui_rich_char_format_t"
 
 **Header:** `#include <hiyui/c/rich_node.h>`
 
-Character format. Colors are 0xRRGGBB; the default 0xFFFFFFFE inherits the widget default.
+Character format; colors are 0xRRGGBB and the default value 0xFFFFFFFE inherits the widget default
 
 ## Public Members
 

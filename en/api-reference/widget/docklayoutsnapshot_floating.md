@@ -26,4 +26,4 @@ Pane name.
 int x
 ```
 
-Offset from the Dock top-left corner in canvas pixels.
+Relative to the Dock top-left, in canvas pixels.

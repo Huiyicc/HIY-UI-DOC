@@ -10,7 +10,7 @@ title: "image_buffer.h"
 
 ### hiyui_pixel_format_t
 
-Four bytes per pixel in B, G, R, A order, alpha is straight alpha.
+Four bytes per pixel in B, G, R, A order. alpha is straight alpha.
 
 | Value | Description |
 |---|---|
@@ -33,9 +33,9 @@ typedef struct hiyui_image_buffer_s hiyui_image_buffer_t
 HIYUI_API hiyui_image_buffer_t *HIYUI_CALL hiyui_image_buffer_create(uint32_t width, uint32_t height, hiyui_pixel_format_t format, const uint8_t *pixels, size_t byte_count)
 ```
 
-Creates an image by copying pixels, rows are top-down with no row padding.
+Creates an image by copying pixels. Rows run top-down with no padding between rows.
 
-Must equal width × height × 4, and width and height must be greater than 0. Returns NULL for invalid arguments. A successful handle must be freed by hiyui_image_buffer_destroy.
+Must equal width × height × 4; width and height must be greater than 0. Returns NULL on invalid arguments. A successful handle must be released with hiyui_image_buffer_destroy.
 
 ### hiyui_image_buffer_width
 
@@ -43,7 +43,7 @@ Must equal width × height × 4, and width and height must be greater than 0. Re
 HIYUI_API uint32_t HIYUI_CALL hiyui_image_buffer_width(const hiyui_image_buffer_t *image)
 ```
 
-Returns the width in physical pixels, NULL returns 0.
+Returns the width in physical pixels; NULL returns 0.
 
 ### hiyui_image_buffer_height
 
@@ -51,7 +51,7 @@ Returns the width in physical pixels, NULL returns 0.
 HIYUI_API uint32_t HIYUI_CALL hiyui_image_buffer_height(const hiyui_image_buffer_t *image)
 ```
 
-Returns the height in physical pixels, NULL returns 0.
+Returns the height in physical pixels; NULL returns 0.
 
 ### hiyui_image_buffer_destroy
 
@@ -59,4 +59,4 @@ Returns the height in physical pixels, NULL returns 0.
 HIYUI_API void HIYUI_CALL hiyui_image_buffer_destroy(hiyui_image_buffer_t *image)
 ```
 
-Frees the resources, NULL is safe. A non-null handle can be freed only once.
+Releases the resources. NULL is safe; a non-NULL handle can be released only once.

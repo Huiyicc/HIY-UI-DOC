@@ -42,7 +42,7 @@ Borderless mode
 bool enabled
 ```
 
-Allow user interaction
+Allows user interaction
 
 ### format
 
@@ -50,7 +50,7 @@ Allow user interaction
 const char * format
 ```
 
-Format string, e.g. "HH:mm:ss" "h:mm:ss a" "HH:mm"
+Format string, such as "HH:mm:ss" "h:mm:ss a" "HH:mm"
 
 ### placeholder
 

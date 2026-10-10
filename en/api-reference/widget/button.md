@@ -8,7 +8,7 @@ title: "Button"
 
 **Namespace:** `hiyui`
 
-Button widget that can hold child widgets
+Button widget that can contain child components
 
 **See also:** `ButtonProps`
 
@@ -25,7 +25,7 @@ Button widget that can hold child widgets
 Button(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Button
 
@@ -33,9 +33,9 @@ Wrap an existing LVGL object
 Button(ButtonProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-Button properties, aggregate initialization supported
+Button properties. Supports aggregate initialization
 
 ### init
 
@@ -43,7 +43,7 @@ Button properties, aggregate initialization supported
 Button & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL button object under a parent
+Creates the LVGL button object on a parent
 
 Parent LVGL object pointer This component
 
@@ -53,7 +53,7 @@ Parent LVGL object pointer This component
 Button & init(Widget &parent) &
 ```
 
-Create the LVGL button object under a parent
+Creates the LVGL button object on a parent
 
 Parent LVGL object pointer This component
 
@@ -63,9 +63,9 @@ Parent LVGL object pointer This component
 Button & text(const char *t) &
 ```
 
-Change the button text at runtime
+Changes the button text at runtime
 
-New text content, UTF-8 encoded This component
+New text content in UTF-8 This component
 
 ### text
 
@@ -73,7 +73,7 @@ New text content, UTF-8 encoded This component
 Button & text(const LocalizedText &t) &
 ```
 
-Bind button text that follows locale updates, copying the text; a plain text() call replaces this binding.
+Binds button text that updates with the language. Copies the description. A plain text call replaces this binding.
 
 ### icon
 
@@ -81,9 +81,9 @@ Bind button text that follows locale updates, copying the text; a plain text() c
 Button & icon(uint32_t codepoint) &
 ```
 
-Set the icon by codepoint at runtime, clearing any image icon and rebuilding content
+Sets the icon codepoint at runtime, clearing the image source icon and rebuilding the content
 
-Material Symbols codepoint, 0 = remove the icon This component
+Material Symbols codepoint. 0 = remove the icon This component
 
 ### icon
 
@@ -91,9 +91,9 @@ Material Symbols codepoint, 0 = remove the icon This component
 Button & icon(const void *src) &
 ```
 
-Set the icon by image source at runtime, clearing any codepoint icon and rebuilding content
+Sets the image source icon at runtime, clearing the icon codepoint and rebuilding the content
 
-Image source, a file path or lv_image_dsc_t, nullptr = remove the icon This component
+Image source, file path or lv_image_dsc_t. nullptr = remove the icon This component
 
 ### stateImage
 
@@ -101,6 +101,6 @@ Image source, a file path or lv_image_dsc_t, nullptr = remove the icon This comp
 Button & stateImage(StyleState state, const void *src) &
 ```
 
-Replace a state image at runtime, copying path sources; descriptors are borrowed until replaced or destroyed
+Replaces a state base image at runtime. Path sources are copied; descriptors are borrowed until replaced or destroyed
 
-Only Normal/Hovered/Pressed/Disabled take effect, other states do nothing Image source, nullptr = clear the image of that state This component
+Only Normal, Hovered, Pressed and Disabled take effect; other states do nothing Image source. nullptr = clear the base image for that state This component

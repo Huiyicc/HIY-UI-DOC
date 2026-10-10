@@ -6,7 +6,7 @@ title: "hiyui_layout_rules_t"
 
 **Header:** `#include <hiyui/c/layout.h>`
 
-Starts from base, then applies the marked fields of all matching rules in array order.
+Starting from base, marked fields of all matching rules are overridden in array order.
 
 ## Public Members
 
@@ -30,4 +30,4 @@ Must point to a valid array when count is greater than 0.
 size_t count
 ```
 
-0 means only base is applied, rules is not read.
+0 applies only base and does not read rules.

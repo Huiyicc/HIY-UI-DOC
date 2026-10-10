@@ -42,4 +42,4 @@ Image source
 int data
 ```
 
-User bound data, read by itemData()
+User-bound data, read by itemData()

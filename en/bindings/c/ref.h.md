@@ -14,7 +14,7 @@ title: "ref.h"
 typedef struct hiyui_ref_s hiyui_ref_t
 ```
 
-Non-owning widget reference, all operations must run on the UI thread.
+Non-owning widget reference. All operations must run on the UI thread.
 
 ### hiyui_ref_fn
 
@@ -30,7 +30,7 @@ typedef void(* hiyui_ref_fn) (hiyui_widget_t *widget, void *user_data)
 HIYUI_API hiyui_ref_t *HIYUI_CALL hiyui_ref_create(hiyui_widget_t *widget)
 ```
 
-Creates a reference, widget may be NULL, and the returned handle must be freed by hiyui_ref_destroy.
+Creates a reference; widget may be NULL. The returned handle must be released with hiyui_ref_destroy.
 
 ### hiyui_ref_clone
 
@@ -38,7 +38,7 @@ Creates a reference, widget may be NULL, and the returned handle must be freed b
 HIYUI_API hiyui_ref_t *HIYUI_CALL hiyui_ref_clone(const hiyui_ref_t *ref)
 ```
 
-Clones the binding, later rebinding does not affect the other, NULL returns an empty reference.
+Clones the binding; later rebinds do not affect each other. NULL returns an empty reference.
 
 ### hiyui_ref_bind
 
@@ -46,7 +46,7 @@ Clones the binding, later rebinding does not affect the other, NULL returns an e
 HIYUI_API void HIYUI_CALL hiyui_ref_bind(hiyui_ref_t *ref, hiyui_widget_t *widget)
 ```
 
-Replaces the binding, a NULL widget clears it, and a NULL ref is a no-op.
+Replaces the binding. A NULL widget clears it; a NULL ref is a no-op.
 
 ### hiyui_ref_valid
 
@@ -62,7 +62,7 @@ Returns 0 when unbound, the widget is deleted, or ref is NULL.
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_ref_get(const hiyui_ref_t *ref)
 ```
 
-Returns the borrowed widget, NULL when unbound or after the widget is deleted. Address reuse does not restore the reference.
+Returns the borrowed widget. Returns NULL when unbound or after the widget is deleted. Address reuse does not restore the reference.
 
 ### hiyui_ref_with
 
@@ -78,7 +78,7 @@ Calls callback synchronously while the reference is valid, without extending the
 HIYUI_API void HIYUI_CALL hiyui_ref_destroy(hiyui_ref_t *ref)
 ```
 
-Frees the reference without deleting the widget, NULL is safe. A non-null handle can be freed only once.
+Releases the reference without deleting the widget. NULL is safe; a non-NULL handle can be released only once.
 
 ### hiyui_ref_destroy_target
 
@@ -86,4 +86,4 @@ Frees the reference without deleting the widget, NULL is safe. A non-null handle
 HIYUI_API void HIYUI_CALL hiyui_ref_destroy_target(const hiyui_ref_t *ref)
 ```
 
-Requests deletion of the target and its subtree, invalidating the reference immediately. The actual release completes in the UI main loop, NULL, empty references or repeated calls are no-ops.
+Requests deletion of the target and its subtree, invalidating the reference immediately. Actual release completes in the UI main loop. NULL, an empty reference, or repeated calls are no-ops.

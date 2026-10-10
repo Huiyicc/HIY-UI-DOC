@@ -8,7 +8,7 @@ title: "ConfirmDialogProps"
 
 **Namespace:** `hiyui`
 
-Confirm dialog creation properties
+Confirmation dialog creation properties
 
 ## Public Members
 
@@ -34,7 +34,7 @@ Dialog content
 const char * confirmText
 ```
 
-nullptr uses the language-dependent confirm text.
+nullptr uses confirm text that follows the language.
 
 ### cancelText
 
@@ -42,7 +42,7 @@ nullptr uses the language-dependent confirm text.
 const char * cancelText
 ```
 
-nullptr uses the language-dependent cancel text.
+nullptr uses cancel text that follows the language.
 
 ### width
 
@@ -74,4 +74,4 @@ Confirm button background color; HIYUI_DEFAULT = follow the primary color
 PopupMode popupMode
 ```
 
-Popup mode; default is an in-window overlay
+Popup mode; defaults to an in-window overlay

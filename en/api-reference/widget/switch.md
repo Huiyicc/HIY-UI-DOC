@@ -22,7 +22,7 @@ Switch widget
 Switch(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Switch
 
@@ -30,7 +30,7 @@ Wrap an existing LVGL object
 Switch(SwitchProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -38,7 +38,7 @@ Construct from aggregated properties
 Switch & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL switch object under a parent
+Creates the LVGL switch object on a parent
 
 ### init
 
@@ -46,7 +46,7 @@ Create the LVGL switch object under a parent
 Switch & init(Widget &parent) &
 ```
 
-Create the LVGL switch object under a parent
+Creates the LVGL switch object on a parent
 
 ### checked
 
@@ -54,7 +54,7 @@ Create the LVGL switch object under a parent
 Switch & checked(bool c, Notify notify=Notify::No) &
 ```
 
-Set the switch state at runtime
+Sets the switch state at runtime
 
 ### onChange
 
@@ -62,7 +62,7 @@ Set the switch state at runtime
 Switch & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Append a state change subscription. The callback can take a bool, an Event&amp; or no parameter.
+Appends a state-change subscription. The callback can take bool, Event&amp; or no parameters.
 
 ### isChecked
 
@@ -70,7 +70,7 @@ Append a state change subscription. The callback can take a bool, an Event&amp; 
 bool isChecked() const
 ```
 
-Query whether currently on
+Queries whether currently on
 
 ### onColor
 
@@ -78,7 +78,7 @@ Query whether currently on
 Switch & onColor(ThemeRole role) &
 ```
 
-Bind the on-state background color to a theme semantic role, updated automatically on theme change
+Binds the on-state background color to a theme semantic role. Updates automatically on theme switch
 
 ### offColor
 
@@ -86,7 +86,7 @@ Bind the on-state background color to a theme semantic role, updated automatical
 Switch & offColor(ThemeRole role) &
 ```
 
-Bind the off-state background color to a theme semantic role, updated automatically on theme change
+Binds the off-state background color to a theme semantic role. Updates automatically on theme switch
 
 ### knobColor
 
@@ -94,4 +94,4 @@ Bind the off-state background color to a theme semantic role, updated automatica
 Switch & knobColor(ThemeRole role) &
 ```
 
-Bind the knob color to a theme semantic role, updated automatically on theme change
+Binds the knob color to a theme semantic role. Updates automatically on theme switch

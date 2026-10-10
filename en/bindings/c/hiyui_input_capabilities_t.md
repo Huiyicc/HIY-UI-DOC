@@ -6,7 +6,7 @@ title: "hiyui_input_capabilities_t"
 
 **Header:** `#include <hiyui/c/types.h>`
 
-Currently attached input devices; pointer excludes touch emulation, and keyboard includes the on-screen keyboard.
+Currently connected input facilities. pointer excludes touch emulation, and keyboard includes the on-screen keyboard.
 
 ## Public Members
 

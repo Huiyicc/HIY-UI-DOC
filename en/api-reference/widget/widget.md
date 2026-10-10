@@ -8,9 +8,9 @@ title: "Widget"
 
 **Namespace:** `hiyui`
 
-Base class of all UI widgets
+Base class of all UI components
 
-Wraps lv_obj_t* and provides common interfaces for chained property setting, style application, event binding and reference binding. Widget does not own the underlying object and is not copyable; destruction does not delete the object. Child widgets are managed by the parent object; moving transfers the wrapper binding and pending configuration without invalidating bound Refs. Props borrow their input; construction and configuration calls copy text, paths and description arrays immediately. Image descriptors, pixel buffers and font resources remain owned by the caller and must outlive the widget's use. Properties, events, Refs and subtrees can be configured before init and take effect on mounting; callbacks are stored by value. Assignments before mounting set the initial state and dispatch no change events even when Notify::Yes is passed. init requires an unbound wrapper and a valid parent; repeated initialization asserts in debug builds and does nothing in release builds. Actions such as focus, scrolling, editing and popups require a mounted widget; violations assert in debug builds and do nothing in release builds. destroy immediately invalidates references to itself and its subtree; after destruction no configuration or re-initialization is accepted. Use Ref for access across callbacks and check its validity before operating.
+Wraps an lv_obj_t* and provides chained property setting, style application, event binding and reference binding. Widget does not own the widget object, is not copyable, and its destructor does not delete the object. Child objects are managed by the parent; moves transfer wrapper bindings and pending mount configuration without invalidating bound Refs. Props borrow their inputs; construction and configuration calls copy text, paths and description arrays immediately. Image descriptors, pixel buffers and font resources remain owned by the caller and must outlive use of the object. Properties, events, Refs and subtrees can be configured before init and take effect on mount; callbacks are stored by value. Assignments before mount set the initial state and dispatch no change events even with Notify::Yes. init requires an unbound widget and a valid parent; repeated initialization asserts in debug builds and does nothing in release. Actions such as focus, scrolling, editing and popups require mounting; violations assert in debug and do nothing in release. destroy immediately invalidates references to itself and its subtree; a destroyed widget accepts no configuration or re-initialization. Use Ref for access across callbacks and check its validity before operating.
 
 
 
@@ -38,7 +38,7 @@ Constructs from an existing LVGL object
 Widget(Widget &&other) noexcept
 ```
 
-Transfers the object binding; the source wrapper's raw() is nullptr after the move.
+Transfers the widget binding; the source wrapper's raw() is nullptr after the move.
 
 ### operator=
 
@@ -46,9 +46,9 @@ Transfers the object binding; the source wrapper's raw() is nullptr after the mo
 Widget & operator=(Widget &&other) noexcept
 ```
 
-Replaces the object binding without deleting the original object.
+Replaces the widget binding without deleting the original object.
 
-Its raw() is nullptr after the move; self-move leaves it unchanged.
+After the move raw() is nullptr; self-move leaves it unchanged.
 
 ### raw
 
@@ -58,7 +58,7 @@ lv_obj_t * raw() const
 
 Returns the underlying LVGL object pointer
 
-The underlying object; nullptr when unmounted, destroy requested or already deleted.
+Underlying object; nullptr when unmounted, delete requested, or already deleted.
 
 ### destroy
 
@@ -66,7 +66,7 @@ The underlying object; nullptr when unmounted, destroy requested or already dele
 void destroy()
 ```
 
-Requests deletion of this widget and its subtree, invalidating references immediately; actual release completes in the UI main loop. Call on the UI thread; calling from a callback of this widget is allowed; repeated calls do nothing.
+Requests deletion of this widget and its subtree, immediately invalidating references; actual release happens in the UI main loop. Call on the UI thread, including from callbacks of this widget; repeated calls do nothing.
 
 ### release
 
@@ -74,12 +74,12 @@ Requests deletion of this widget and its subtree, invalidating references immedi
 lv_obj_t * release()
 ```
 
-Unbinds this wrapper from the underlying object.
+Unbinds this wrapper from the widget object.
 
 After the call raw() is nullptr; the object is not deleted and its parent-child relation is unchanged.
 
 
-The previously bound object; nullptr when unbound or called repeatedly.
+Previously bound object; nullptr when unbound or called repeatedly.
 
 ### initPrimitive
 
@@ -87,7 +87,7 @@ The previously bound object; nullptr when unbound or called repeatedly.
 Widget & initPrimitive(Widget &parent, PrimitiveKind kind=PrimitiveKind::Object)
 ```
 
-Creates a base node without a component theme; follows the init parent and repeated-call restrictions.
+Creates a base node without the component theme; follows the same parent and repeated-call restrictions as init.
 
 ### themeStyle
 
@@ -103,7 +103,7 @@ Applies the built-in component theme; call once before setting explicit styles.
 Widget & themeStyle(F &&provider)
 ```
 
-Adds a default style provider, applied immediately and updated with theme and DPI; explicit styles override its result and the callback is released on destruction. The returned image source and path are borrowed and must stay valid until the image is replaced or the widget is destroyed.
+Appends a default style provider, applied immediately and refreshed with theme and DPI; explicit styles override its result, and the callback is released on destruction. The returned image source and path are borrowed and must stay valid until the image is replaced or the component is destroyed.
 
 ### textContent
 
@@ -111,7 +111,7 @@ Adds a default style provider, applied immediately and updated with theme and DP
 Widget & textContent(const char *text)
 ```
 
-Sets native text node content; nullptr refreshes the existing text; non-text nodes do nothing.
+Sets native text node content; nullptr refreshes the existing text, and non-text nodes do nothing.
 
 ### textContent
 
@@ -135,7 +135,7 @@ Sets the text overflow mode; single-line ellipsis height follows font and DPI; n
 uint32_t textColor() const
 ```
 
-Current effective text color; 0 for invalid objects.
+Currently effective text color; 0 for invalid objects.
 
 ### bindText
 
@@ -143,7 +143,7 @@ Current effective text color; 0 for invalid objects.
 Widget & bindText(const LocalizedText &text, F &&setter)
 ```
 
-Binds the text update function for widget copy; copies the description, rebinding replaces, plain text can be unbound with clearTextBinding.
+Binds an update function for component text; copies the description, a repeated bind replaces the previous one, and plain text can be unbound with clearTextBinding.
 
 ### clearTextBinding
 
@@ -151,7 +151,7 @@ Binds the text update function for widget copy; copies the description, rebindin
 Widget & clearTextBinding()
 ```
 
-Removes the bindText binding and keeps the currently displayed text; repeated calls do nothing.
+Removes the bindText binding and keeps the current displayed text; repeated calls do nothing.
 
 ### parent
 
@@ -159,7 +159,7 @@ Removes the bindText binding and keeps the currently displayed text; repeated ca
 Ref< Widget > parent() const
 ```
 
-Non-owning parent, child or screen reference; empty when absent, out of range or invalid.
+Non-owning parent, child or screen reference; empty reference when absent, out of range, or invalid.
 
 ### reparent
 
@@ -167,7 +167,7 @@ Non-owning parent, child or screen reference; empty when absent, out of range or
 Widget & reparent(const Widget &parent)
 ```
 
-Remounts a mounted node under a new parent; rejects invalid objects and ancestor cycles and does not transfer wrappers.
+Re-parents a mounted node to the given parent; rejects invalid objects and ancestor cycles and does not transfer the wrapper.
 
 ### contains
 
@@ -175,7 +175,7 @@ Remounts a mounted node under a new parent; rejects invalid objects and ancestor
 bool contains(const Widget &other) const
 ```
 
-Ancestor relation including self; false for invalid objects.
+Whether the ancestry contains the other widget, including itself; false for invalid objects.
 
 ### isHidden
 
@@ -191,7 +191,7 @@ Queries the own hidden flag or the effective visibility including ancestors; fal
 Widget & floating(bool value=true)
 ```
 
-Sets whether to leave the parent layout and whether to propagate events to the parent.
+Sets whether the widget is excluded from the parent layout and whether events propagate to the parent.
 
 ### state
 
@@ -207,7 +207,7 @@ Sets an individual interaction state; Normal does nothing.
 Widget & flow(FlexFlow value)
 ```
 
-Sets the Flex direction, gap or scroll axis; gap is in logical pixels.
+Sets the Flex direction, gap, or scroll axis; the gap is in logical pixels.
 
 ### scrollMode
 
@@ -215,7 +215,7 @@ Sets the Flex direction, gap or scroll axis; gap is in logical pixels.
 Widget & scrollMode(ScrollMode value)
 ```
 
-Sets the scrollable axes; Off disables scrolling and scrollbar display is unchanged.
+Sets the axes allowed to scroll; Off disables scrolling; does not change scrollbar visibility.
 
 ### scrollSnap
 
@@ -231,7 +231,7 @@ Sets the child snap mode on the given axis; children must enable snapChild.
 Widget & scrollOne(bool value=true)
 ```
 
-Each drag crosses at most one snap child.
+Limits each drag to crossing at most one snap child.
 
 ### scrollMetrics
 
@@ -263,7 +263,7 @@ Adds to the scroll offset in physical pixels; positive values move the viewport 
 Widget & scrollIntoView(bool animate=false)
 ```
 
-Scrolls ancestor containers at each level so this node becomes visible.
+Scrolls the ancestor containers to reveal this node.
 
 ### positionPx
 
@@ -279,7 +279,7 @@ Position in physical pixels relative to the parent content origin, excluding scr
 Widget & translatePx(int x, int y)
 ```
 
-Sets a physical pixel translation excluded from layout; no action on invalid objects and queries return zero values.
+Sets a physical pixel translation excluded from layout; no action on invalid objects and queries return zero.
 
 ### minimumSizePx
 
@@ -295,7 +295,7 @@ Sets the minimum size in physical pixels; 0 means no limit.
 Widget & clipCorner(bool value=true)
 ```
 
-Clips child nodes to the corner radius.
+Clips children to the corner radius.
 
 ### overflowVisible
 
@@ -303,7 +303,7 @@ Clips child nodes to the corner radius.
 Widget & overflowVisible(bool value=true)
 ```
 
-Allows child nodes to draw outside this widget's bounds.
+Allows children to draw outside this widget's bounds.
 
 ### topLayer
 
@@ -311,7 +311,7 @@ Allows child nodes to draw outside this widget's bounds.
 Ref< Widget > topLayer() const
 ```
 
-Top layer node of the owning display, borrowed until the display is destroyed; empty reference for invalid objects.
+Top-layer node of the owning display, borrowed until the display is destroyed; empty reference for invalid objects.
 
 ### textAlign
 
@@ -327,7 +327,7 @@ Horizontal text alignment; accepts only Start, Center and End.
 Widget & imageScale(int value)
 ```
 
-Scales the image node around its center; 256 is the original size; non-image nodes do nothing.
+Scales an image node around its center; 256 is the original size; non-image nodes do nothing.
 
 ### minimumSize
 
@@ -343,9 +343,9 @@ Sets the minimum size in logical pixels; 0 means no limit.
 Widget & maxWidth(int value)
 ```
 
-Sets the maximum logical width; supports pre-mount configuration and runtime DPI updates. When the minimum width exceeds the cap the widget lays out at the minimum width; no action after destroy is requested.
+Sets the maximum logical width; supports pre-mount configuration and runtime DPI updates. When the minimum width exceeds the limit, layout uses the minimum width; no action once destruction is requested.
 
-Non-negative logical pixels; 0 means a zero cap, HIYUI_AUTO removes the local cap, other negative values do nothing.
+Non-negative logical pixels; 0 means a zero limit, HIYUI_AUTO removes the local limit, other negative values do nothing.
 
 ### maxHeight
 
@@ -353,9 +353,9 @@ Non-negative logical pixels; 0 means a zero cap, HIYUI_AUTO removes the local ca
 Widget & maxHeight(int value)
 ```
 
-Sets the maximum logical height; supports pre-mount configuration and runtime DPI updates. When the minimum height exceeds the cap the widget lays out at the minimum height; no action after destroy is requested.
+Sets the maximum logical height; supports pre-mount configuration and runtime DPI updates. When the minimum height exceeds the limit, layout uses the minimum height; no action once destruction is requested.
 
-Non-negative logical pixels; 0 means a zero cap, HIYUI_AUTO removes the local cap, other negative values do nothing.
+Non-negative logical pixels; 0 means a zero limit, HIYUI_AUTO removes the local limit, other negative values do nothing.
 
 ### sizePx
 
@@ -363,7 +363,7 @@ Non-negative logical pixels; 0 means a zero cap, HIYUI_AUTO removes the local ca
 Widget & sizePx(int width, int height)
 ```
 
-Sets the size in physical pixels; use the width, height or fill methods for percent and content sizing.
+Sets the size in physical pixels; use width, height or fill for percentage and content sizes.
 
 ### maxWidthPx
 
@@ -379,7 +379,7 @@ Sets the maximum size in physical pixels; HIYUI_AUTO removes the limit.
 Widget & layoutRules(const LayoutRules &rules)
 ```
 
-Applies rules against the direct parent content area; follows the new parent after reparenting. One widget keeps a single rule set; a successful replacement first restores the base of still-controlled fields of the old set. Explicit layout setters and style padding assignment release control of the fields they write; other fields keep adapting. Theme, DPI and rule updates keep control; released fields are not overwritten by the old base. Host axes used by breakpoints must be sized by the parent layout or explicit sizes, not by controlled descendant content. The original rules are kept when host constraints are not met or the configuration is invalid; no action after destroy is requested. Can be called before mounting and copies the array immediately; call on the UI thread; layout updates do not rebuild the subtree or dispatch ValueChanged. A hidden subtree leaves hit testing and focus traversal; showing it again does not move existing valid focus.
+Applies rules against the direct parent's content area and follows a new parent after re-parenting. A component keeps one rule set; a successful replacement first restores the base of fields still controlled by the old set. Explicit layout setters and style padding assignments release control of the fields they write; other fields keep adapting. Theme, DPI and rule updates keep control; released fields are not overwritten by the old base. Host axes used by breakpoints must be sized by the parent layout or explicit sizes, not by controlled descendant content. The previous rules are kept when host constraints are violated or the configuration is invalid; no action once destruction is requested. Can be called before mounting and copies the array immediately; call on the UI thread; layout updates rebuild no subtree and dispatch no ValueChanged. A hidden subtree leaves hit testing and focus traversal; restoring visibility does not move existing valid focus.
 
 ### layoutRules
 
@@ -387,9 +387,9 @@ Applies rules against the direct parent content area; follows the new parent aft
 Widget & layoutRules(const Widget &host, const LayoutRules &rules)
 ```
 
-Uses the given ancestor content area; other behavior matches the default host overload.
+Uses the given ancestor's content area; other behavior matches the default-host overload.
 
-A mounted ancestor; self, descendants and invalid objects are not accepted; an unmounted target has its identity recorded and verified at mount time. When the host becomes invalid, stops being an ancestor or a breakpoint axis loses its size constraint, the base of still-controlled fields is restored and the rules are cleared.
+A mounted ancestor; rejects self, descendants and invalid objects; when the target is unmounted its identity is recorded and validated on mount. When the host becomes invalid, is no longer an ancestor, or a breakpoint axis loses its size constraint, the base of still-controlled fields is restored and the rules are cleared.
 
 ### clearLayoutRules
 
@@ -397,7 +397,7 @@ A mounted ancestor; self, descendants and invalid objects are not accepted; an u
 Widget & clearLayoutRules()
 ```
 
-Restores the base of still-controlled fields and removes the rules and subscriptions; pre-install pixel values are not restored. Can be called before mounting; repeated calls, missing rules or a requested destroy do nothing.
+Restores the base of still-controlled fields and removes the rules and subscriptions; pixel values from before installation are not restored. Can be called before mounting; no action on repeated calls, when no rules exist, or once destruction is requested.
 
 ### layoutMetrics
 
@@ -405,7 +405,7 @@ Restores the base of still-controlled fields and removes the rules and subscript
 LayoutMetrics layoutMetrics() const
 ```
 
-Current layout constraints; defaults when invalid.
+Current layout constraints; default values when invalid.
 
 ### updateLayout
 
@@ -429,7 +429,7 @@ Requests the next layout update; repeated requests are merged.
 bool sendEvent(EventCode code, void *data=nullptr)
 ```
 
-Sends an event synchronously; data is borrowed until the call returns; returns false for invalid objects; sending Delete is not allowed.
+Sends an event synchronously; data is borrowed until the call returns; false for invalid objects; sending Delete is not allowed.
 
 ### hasFocusGroup
 
@@ -445,7 +445,7 @@ Whether this node belongs to a focus navigation group.
 Widget & focusNext(bool previous=false)
 ```
 
-Moves focus within the owning input group, reversed when previous is true; no action without a group.
+Moves focus within the owning input group; reversed when previous is true; no action without a group.
 
 ### windowFocused
 
@@ -493,7 +493,7 @@ Whether the image source is a path or symbol string that needs copying; false fo
 static Ref< Widget > focusedWidget()
 ```
 
-Queries the focus of the default input group; empty reference when absent.
+Returns the focused widget of the default input group; empty reference when none exists.
 
 ## 尺寸与位置
 
@@ -503,9 +503,9 @@ Queries the focus of the default input group; empty reference when absent.
 Widget & pos(int x, int y)
 ```
 
-Sets the widget position
+Sets the component position
 
-Horizontal coordinate in pixels, relative to the parent top-left corner Vertical coordinate in pixels, relative to the parent top-left corner
+Horizontal coordinate in pixels relative to the parent's top-left corner Vertical coordinate in pixels relative to the parent's top-left corner
 
 ### x
 
@@ -513,7 +513,7 @@ Horizontal coordinate in pixels, relative to the parent top-left corner Vertical
 Widget & x(int x)
 ```
 
-Sets the X coordinate, modifiable individually at runtime
+Sets the X coordinate, changeable separately at runtime
 
 Horizontal coordinate in pixels
 
@@ -523,7 +523,7 @@ Horizontal coordinate in pixels
 Widget & y(int y)
 ```
 
-Sets the Y coordinate, modifiable individually at runtime
+Sets the Y coordinate, changeable separately at runtime
 
 Vertical coordinate in pixels
 
@@ -533,9 +533,9 @@ Vertical coordinate in pixels
 Widget & size(int w, int h)
 ```
 
-Sets the widget size
+Sets the component size
 
-Width in pixels, HIYUI_AUTO = fit content Height in pixels, HIYUI_AUTO = fit content
+Width in pixels; HIYUI_AUTO = fit content Height in pixels; HIYUI_AUTO = fit content
 
 ### width
 
@@ -545,7 +545,7 @@ Widget & width(int w)
 
 Sets the width
 
-Width in pixels, HIYUI_AUTO = fit content
+Width in pixels; HIYUI_AUTO = fit content
 
 ### height
 
@@ -555,7 +555,7 @@ Widget & height(int h)
 
 Sets the height
 
-Height in pixels, HIYUI_AUTO = fit content
+Height in pixels; HIYUI_AUTO = fit content
 
 ### center
 
@@ -563,7 +563,7 @@ Height in pixels, HIYUI_AUTO = fit content
 Widget & center()
 ```
 
-Centers the widget in its parent
+Centers the component in its parent
 
 ### fill
 
@@ -571,7 +571,7 @@ Centers the widget in its parent
 Widget & fill()
 ```
 
-Fills the parent; width and height are both 100%
+Fills the parent at 100% width and height
 
 ### fillWidth
 
@@ -579,7 +579,7 @@ Fills the parent; width and height are both 100%
 Widget & fillWidth()
 ```
 
-Fills the parent width, 100%
+Fills the parent width at 100%
 
 ### fillHeight
 
@@ -587,7 +587,7 @@ Fills the parent width, 100%
 Widget & fillHeight()
 ```
 
-Fills the parent height, 100%
+Fills the parent height at 100%
 
 ### flex
 
@@ -597,7 +597,7 @@ Widget & flex(int grow)
 
 Sets the flex-grow value
 
-flex-grow value; 0 = no stretch, 1+ = takes remaining space proportionally
+flex-grow value; 0 = no stretching, 1+ = takes remaining space proportionally
 
 ### flexAlign
 
@@ -605,9 +605,9 @@ flex-grow value; 0 = no stretch, 1+ = takes remaining space proportionally
 Widget & flexAlign(Align main, Align cross=Align::Start, Align track=Align::Start)
 ```
 
-Sets Flex main axis, cross axis and track alignment at runtime
+Sets Flex main-axis, cross-axis and track alignment at runtime
 
-Suits adding alignment to a container inside a builder; Props .align already covers common cases. Semantics match CSS Flexbox justify-content / align-items / align-content.
+Suited to adding alignment to containers inside a builder; the Props .align field covers common cases. Semantics match CSS Flexbox justify-content / align-items / align-content.
 
 ### hidden
 
@@ -615,7 +615,7 @@ Suits adding alignment to a container inside a builder; Props .align already cov
 Widget & hidden(bool h=true)
 ```
 
-Sets whether the widget is hidden
+Sets whether the component is hidden
 
 ### enabled
 
@@ -623,7 +623,7 @@ Sets whether the widget is hidden
 Widget & enabled(bool e=true)
 ```
 
-Sets whether the widget is interactive
+Sets whether the component accepts interaction
 
 ### accessibility
 
@@ -631,7 +631,7 @@ Sets whether the widget is interactive
 Widget & accessibility(const AccessibilityProps &props)
 ```
 
-Replaces the explicit accessibility configuration; strings are copied by the widget. Call on the UI thread; no action when unbound or the system accessibility backend is not enabled. The default configuration restores automatic semantics; the configuration becomes invalid when the widget is deleted.
+Replaces the explicit accessibility configuration; strings are copied by the component. Call on the UI thread; no action when unbound or the system accessibility backend is not enabled. The default configuration restores automatic semantics; the configuration becomes invalid when the component is deleted.
 
 ### accessibilityDescription
 
@@ -639,7 +639,7 @@ Replaces the explicit accessibility configuration; strings are copied by the wid
 Widget & accessibilityDescription(const char *value)
 ```
 
-Sets the accessibility description; nullptr clears the explicit value; plain text cancels the matching translation binding.
+Sets the accessibility description; nullptr clears the explicit value, and plain text cancels the matching translation binding.
 
 ### accessibilityDescription
 
@@ -647,7 +647,7 @@ Sets the accessibility description; nullptr clears the explicit value; plain tex
 Widget & accessibilityDescription(const LocalizedText &value)
 ```
 
-Binds the accessibility description with updates on language change; copies text and arguments.
+Binds the accessibility description with updates on language change; copies the text and arguments.
 
 ### accessibilityName
 
@@ -655,7 +655,7 @@ Binds the accessibility description with updates on language change; copies text
 Widget & accessibilityName(const char *value)
 ```
 
-Sets the accessibility name; nullptr clears the explicit value; plain text cancels the matching translation binding.
+Sets the accessibility name; nullptr clears the explicit value, and plain text cancels the matching translation binding.
 
 ### accessibilityName
 
@@ -663,7 +663,7 @@ Sets the accessibility name; nullptr clears the explicit value; plain text cance
 Widget & accessibilityName(const LocalizedText &value)
 ```
 
-Binds the accessibility name with updates on language change; copies text and arguments.
+Binds the accessibility name with updates on language change; copies the text and arguments.
 
 ### labelledBy
 
@@ -671,7 +671,7 @@ Binds the accessibility name with updates on language change; copies text and ar
 Widget & labelledBy(const Ref< T > &source)
 ```
 
-Uses the referenced target's text as the accessibility label. Call on the UI thread; does not extend the label lifetime. An empty reference or a deleted label restores the widget's own name. An explicit accessibility name overrides the linked label; no action when unbound or the system accessibility backend is not enabled.
+Uses the referenced target's text as the accessibility label. Call on the UI thread; does not extend the label's lifetime. An empty reference or a deleted label restores the component's own name. An explicit accessibility name overrides the associated label; no action when unbound or the system accessibility backend is not enabled.
 
 ### align
 
@@ -679,7 +679,7 @@ Uses the referenced target's text as the accessibility label. Call on the UI thr
 Widget & align(lv_align_t a, int x_ofs=0, int y_ofs=0)
 ```
 
-Sets the widget alignment
+Sets the component alignment
 
 ### align
 
@@ -687,7 +687,7 @@ Sets the widget alignment
 Widget & align(Anchor a, int x_ofs=0, int y_ofs=0)
 ```
 
-Sets the widget alignment with Anchor, equivalent to align(lv_align_t)
+Sets the component alignment with an Anchor, equivalent to align(lv_align_t)
 
 ## 子对象 / 滚动 / 焦点
 
@@ -699,7 +699,7 @@ Widget & clean()
 
 Removes all child objects without destroying itself
 
-Used to clear old content before rebuilding a subtree dynamically; child objects are recycled by LVGL.
+Used to clear old content before rebuilding a subtree; children are reclaimed by LVGL.
 
 ### scrollToY
 
@@ -707,7 +707,7 @@ Used to clear old content before rebuilding a subtree dynamically; child objects
 Widget & scrollToY(int y, bool animate=false)
 ```
 
-Scrolls to the given vertical offset
+Scrolls to a vertical offset
 
 Target vertical scroll offset in pixels; 0 = top
 
@@ -717,7 +717,7 @@ Target vertical scroll offset in pixels; 0 = top
 Widget & scrollToX(int x, bool animate=false)
 ```
 
-Scrolls to the given horizontal offset
+Scrolls to a horizontal offset
 
 Target horizontal scroll offset in pixels; 0 = left
 
@@ -743,7 +743,7 @@ Scrolls to the bottom
 Widget & focus()
 ```
 
-Focuses this widget; requires membership in an input group
+Focuses this component; it must already be in an input group
 
 Used for explicit focusing in keyboard navigation.
 
@@ -761,9 +761,9 @@ Joins the default input group for keyboard navigation; idempotent
 Widget & keyFocus()
 ```
 
-Enrolls in keyboard focus navigation
+Includes the widget in keyboard focus navigation
 
-Includes addToGroup() behavior. On focus the widget scrolls into view and shows a theme-colored focus ring. The ring refreshes automatically on theme and DPI switches. Arrow keys move focus when the widget has no key semantics of its own.
+Includes addToGroup() behavior; on focus it scrolls into view and shows a theme-colored focus ring. Theme and DPI switches refresh the focus ring automatically; arrow keys move focus when the component has no own key semantics.
 
 ## 样式
 
@@ -783,7 +783,7 @@ Widget & style(const StyleSet &ss)
 
 Applies a multi-state style set
 
-A StyleSet containing the four states normal/pressed/focused/disabled
+StyleSet holding the normal/pressed/focused/disabled states
 
 ### surface
 
@@ -791,7 +791,7 @@ A StyleSet containing the four states normal/pressed/focused/disabled
 Widget & surface(SurfaceRole role)
 ```
 
-Binds a surface material that updates with theme and DPI; text and layout stay unchanged. Calling again replaces the previous binding; a later explicit default-state background setting releases the material binding. Can be configured before mounting; unbinds automatically when the object is deleted.
+Binds a surface material that updates with theme and DPI; text and layout are unchanged. A repeated call replaces the previous binding; a later explicit default-state background releases the material binding. Can be configured before mounting; unbinds automatically when the object is deleted.
 
 ## 样式快捷方法
 
@@ -803,7 +803,7 @@ Widget & bg(uint32_t color)
 
 Sets the background color
 
-Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default, HIYUI_NONE leaves it unchanged, HIYUI_TRANSPARENT forces transparency
+Color in 0xRRGGBB; HIYUI_DEFAULT = restore the component theme default, HIYUI_NONE = no change, HIYUI_TRANSPARENT = force transparent
 
 ### bg
 
@@ -811,7 +811,7 @@ Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default,
 Widget & bg(ThemeRole role)
 ```
 
-Binds the background color to a theme semantic role; reactive, updates automatically on theme switch
+Binds the background color to a theme semantic role; reactive and updated automatically on theme switch
 
 ### textColor
 
@@ -821,7 +821,7 @@ Widget & textColor(uint32_t color)
 
 Sets the text color
 
-Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default, HIYUI_NONE leaves it unchanged, HIYUI_TRANSPARENT forces transparency
+Color in 0xRRGGBB; HIYUI_DEFAULT = restore the component theme default, HIYUI_NONE = no change, HIYUI_TRANSPARENT = force transparent
 
 ### textColor
 
@@ -829,7 +829,7 @@ Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default,
 Widget & textColor(ThemeRole role)
 ```
 
-Binds the text color to a theme semantic role; reactive, updates automatically on theme switch
+Binds the text color to a theme semantic role; reactive and updated automatically on theme switch
 
 ### fontSize
 
@@ -847,7 +847,7 @@ Font size in pixels; 0 = theme default size
 Widget & lineHeight(float ratio)
 ```
 
-Sets the line height as a font size ratio; bitmap fonts use the original line height. 0 restores the original line height; non-zero values outside 0.5 to 4 have no effect.
+Sets the line height as a font size ratio; bitmap fonts use the original line height; 0 restores the original line height and non-zero values outside 0.5 to 4 have no effect.
 
 ### radius
 
@@ -857,7 +857,7 @@ Widget & radius(int r)
 
 Sets the corner radius
 
-Corner radius in pixels; HIYUI_NONE_INT = unchanged
+Corner radius in pixels; HIYUI_NONE_INT = no change
 
 ### padding
 
@@ -885,12 +885,12 @@ Horizontal padding, left and right, in pixels Vertical padding, top and bottom, 
 Widget & padLeft(int v)
 ```
 
-Sets single-side padding
+Sets padding on one side
 
-Goes through DPI scaling like padding(); recalculated automatically on theme/DPI switches.
+Uses DPI scaling like padding(); recalculated automatically on theme or DPI switch.
 
 
-Single-side padding in pixels
+Padding for one side in pixels
 
 ### padRight
 
@@ -924,10 +924,10 @@ Widget & margin(int all)
 
 Sets equal margins on all four sides
 
-Margins act on the outer space the widget occupies in its parent container, matching CSS margin semantics. Goes through DPI scaling; recalculated automatically on theme/DPI switches.
+The margin is the outer space the component occupies in its parent, including within Flex; semantics match CSS margin. Uses DPI scaling; recalculated automatically on theme or DPI switch.
 
 
-Margins for all four sides in pixels
+Margin for all four sides in pixels
 
 ### margin
 
@@ -945,9 +945,9 @@ Horizontal margin, left and right, in pixels Vertical margin, top and bottom, in
 Widget & marginLeft(int v)
 ```
 
-Sets single-side margin
+Sets the margin on one side
 
-Single-side margin in pixels
+Margin for one side in pixels
 
 ### marginRight
 
@@ -981,7 +981,7 @@ Widget & opacity(uint8_t opa)
 
 Sets the overall opacity
 
-Opacity [0,255]; 0 = fully transparent, 255 = opaque
+Opacity in [0,255]; 0 = fully transparent, 255 = opaque
 
 ### borderWidth
 
@@ -1001,7 +1001,7 @@ Widget & borderColor(uint32_t color)
 
 Sets the border color
 
-Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default, HIYUI_NONE leaves it unchanged, HIYUI_TRANSPARENT forces transparency
+Color in 0xRRGGBB; HIYUI_DEFAULT = restore the component theme default, HIYUI_NONE = no change, HIYUI_TRANSPARENT = force transparent
 
 ### hoverOverlay
 
@@ -1009,9 +1009,9 @@ Color value in 0xRRGGBB format; HIYUI_DEFAULT restores the widget theme default,
 Widget & hoverOverlay(uint32_t color, uint8_t opa=LV_OPA_40)
 ```
 
-Sets the hover background overlay; transparent at rest, blended as color + opa on hover
+Sets the hover background overlay; transparent normally, blended as color + opa on hover
 
-Overlay color, 0xRRGGBB Hover opacity, default LV_OPA_40, same as Theme::kHoverOpa
+Overlay color in 0xRRGGBB Hover opacity, default LV_OPA_40, same as Theme::kHoverOpa
 
 ### underline
 
@@ -1019,7 +1019,7 @@ Overlay color, 0xRRGGBB Hover opacity, default LV_OPA_40, same as Theme::kHoverO
 Widget & underline(bool on=true)
 ```
 
-Sets text underline; applies to this widget and child text inheriting the property
+Sets text underline; applies to this component and child text inheriting the property
 
 ## 过渡动画
 
@@ -1051,7 +1051,7 @@ Animation duration in milliseconds
 int width() const
 ```
 
-Returns the current widget width
+Returns the current component width
 
 Width in logical pixels; 0 when unbound.
 
@@ -1061,7 +1061,7 @@ Width in logical pixels; 0 when unbound.
 int height() const
 ```
 
-Returns the current widget height
+Returns the current component height
 
 Height in logical pixels; 0 when unbound.
 
@@ -1073,7 +1073,7 @@ uint32_t childCount() const
 
 Returns the number of child objects
 
-The number of direct children
+Number of direct children
 
 ### contentWidth
 
@@ -1081,7 +1081,7 @@ The number of direct children
 int contentWidth() const
 ```
 
-Returns the content area width, excluding padding and border
+Returns the content width with padding and border removed
 
 Width in logical pixels; 0 when unbound.
 
@@ -1091,7 +1091,7 @@ Width in logical pixels; 0 when unbound.
 int contentHeight() const
 ```
 
-Returns the content area height, excluding padding and border
+Returns the content height with padding and border removed
 
 Height in logical pixels; 0 when unbound.
 
@@ -1101,7 +1101,7 @@ Height in logical pixels; 0 when unbound.
 int padLeft() const
 ```
 
-Returns single-side padding
+Returns the padding of one side
 
 Padding of the corresponding side in logical pixels; 0 when unbound.
 
@@ -1111,7 +1111,7 @@ Padding of the corresponding side in logical pixels; 0 when unbound.
 int padRight() const
 ```
 
-Returns the right padding
+Returns right padding
 
 ### padTop
 
@@ -1119,7 +1119,7 @@ Returns the right padding
 int padTop() const
 ```
 
-Returns the top padding
+Returns top padding
 
 ### padBottom
 
@@ -1127,7 +1127,7 @@ Returns the top padding
 int padBottom() const
 ```
 
-Returns the bottom padding
+Returns bottom padding
 
 ### widthPx
 
@@ -1151,7 +1151,7 @@ Queries padding in physical pixels; 0 when unbound.
 int index() const
 ```
 
-Returns the index of this widget within its parent
+Returns this widget's index within its parent
 
 Index; 0 = first child
 
@@ -1161,7 +1161,7 @@ Index; 0 = first child
 Rect boundsPx() const
 ```
 
-Returns the untransformed bounds in screen coordinates, in physical pixels; an empty rectangle when unbound.
+Returns the untransformed bounds in screen coordinates in physical pixels; empty rectangle when unbound.
 
 ### contentBoundsPx
 
@@ -1169,7 +1169,7 @@ Returns the untransformed bounds in screen coordinates, in physical pixels; an e
 Rect contentBoundsPx() const
 ```
 
-Returns the content area relative to the widget top-left corner, in physical pixels; an empty rectangle when unbound.
+Returns the content area relative to the component's top-left corner in physical pixels; empty rectangle when unbound.
 
 ### toLocalPx
 
@@ -1177,7 +1177,7 @@ Returns the content area relative to the widget top-left corner, in physical pix
 Point toLocalPx(Point screenPoint) const
 ```
 
-Converts screen physical coordinates to widget-local coordinates, including the transforms of self and ancestors; returns the zero point when unbound.
+Converts screen physical coordinates to component-local coordinates, including transforms of itself and ancestors; returns the zero point when unbound.
 
 ### toScreenPx
 
@@ -1185,7 +1185,7 @@ Converts screen physical coordinates to widget-local coordinates, including the 
 Point toScreenPx(Point localPoint) const
 ```
 
-Converts widget-local physical coordinates to screen coordinates, including the transforms of self and ancestors; returns the zero point when unbound.
+Converts component-local physical coordinates to screen coordinates, including transforms of itself and ancestors; returns the zero point when unbound.
 
 ### state
 
@@ -1219,9 +1219,9 @@ Sets whether pointer clicks are accepted; does not change the disabled state.
 Widget & onClick(F &&f, EventHandle *handle=nullptr)
 ```
 
-Binds a click event callback
+Binds the click event callback
 
-Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle of this binding
+Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle for this binding
 
 ### onPress
 
@@ -1229,9 +1229,9 @@ Callable type with signature void() or void(Event&amp;) Optional out parameter r
 Widget & onPress(F &&f, EventHandle *handle=nullptr)
 ```
 
-Binds a press event callback
+Binds the press event callback
 
-Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle of this binding
+Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle for this binding
 
 ### onLongPress
 
@@ -1239,9 +1239,9 @@ Callable type with signature void() or void(Event&amp;) Optional out parameter r
 Widget & onLongPress(F &&f, EventHandle *handle=nullptr)
 ```
 
-Binds a long press event callback
+Binds the long-press event callback
 
-Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle of this binding
+Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle for this binding
 
 ### onChange
 
@@ -1249,9 +1249,9 @@ Callable type with signature void() or void(Event&amp;) Optional out parameter r
 Widget & onChange(F &&f, EventHandle *handle=nullptr)
 ```
 
-Binds a value change event callback
+Binds the value-changed event callback
 
-Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle of this binding
+Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle for this binding
 
 ### on
 
@@ -1261,10 +1261,10 @@ Widget & on(EventCode code, F &&handler, EventHandle *handle=nullptr)
 
 Binds a callback for any event type
 
-Repeated binding appends; existing callbacks are not replaced. The callback is saved while unmounted and connected after mounting; move-only closures are supported. The callback is released when the object or its pending configuration is destroyed.
+Repeated binds are appended and existing callbacks are not replaced. Callbacks are saved before mounting and connected after mounting; move-only closures are supported. Callbacks are released when the object or the pending mount configuration is destroyed.
 
 
-Callable type Optional out parameter receiving the unbind handle of this binding
+Callable type Optional out parameter receiving the unbind handle for this binding
 
 ### onBackRequest
 
@@ -1272,7 +1272,7 @@ Callable type Optional out parameter receiving the unbind handle of this binding
 Widget & onBackRequest(F &&handler, EventHandle *handle=nullptr)
 ```
 
-Appends a back handler taking BackRequest &amp;; handlers on the same object run before the default local back. Supports pre-mount binding and move-only closures; the first handler with handled true ends the current routing. The argument is valid only during the callback; unbinding and destruction follow the on event handle rules.
+Appends a back handler accepting BackRequest &amp;; handlers on the same object run before the default local back. Supports pre-mount binding and move-only closures; the first handler with handled true ends the routing. The argument is valid only during the callback; unbinding and destruction follow the event handle rules of on.
 
 ### onEnvironmentChange
 
@@ -1280,9 +1280,9 @@ Appends a back handler taking BackRequest &amp;; handlers on the same object run
 Widget & onEnvironmentChange(F &&handler, EventHandle *handle=nullptr)
 ```
 
-Appends an environment subscription notified with the first snapshot and later changes once a valid layout completes. Supports pre-mount binding and move-only closures; the handler is not invoked within the binding call stack. The callback accepts const LayoutEnvironment &amp; or no arguments; the snapshot is valid only during the callback. Identical snapshots do not notify again; moving across parents follows the host and is unaffected by wrapper moves. The callback may unbind or destroy widgets; destroying a widget removes its listener from the source.
+Appends an environment subscription notified with the first snapshot after a valid layout and with later changes. Supports pre-mount binding and move-only closures; handlers are not invoked inside the bind call stack. The callback accepts const LayoutEnvironment &amp; or no arguments; the snapshot is valid only during the callback. Identical snapshots do not notify again; moves across parents follow the host and are unaffected by wrapper moves. Handlers may unbind or destroy components; destroying the component removes the source listening.
 
-Optional out parameter; off can be repeated, destruction does not unbind, use ScopedEventHandle for scoped unbinding.
+Optional out parameter; off can be repeated, destruction does not unbind, and scoped unbinding uses ScopedEventHandle.
 
 ### onDpiChange
 
@@ -1292,7 +1292,7 @@ Widget & onDpiChange(F &&f)
 
 Binds a DPI change callback
 
-The callback runs after DPI recalculation completes, covering local style scaling and layout updates. Repeated binding appends. Unbinds automatically when the widget is deleted. Can be bound before mounting. Move-only closures are supported.
+The callback runs after DPI recalculation of local style scaling and layout updates completes; repeated binds are appended; unbinds automatically when the component is deleted. Can be bound before mounting; move-only closures are supported.
 
 
 Callable type with signature void()
@@ -1305,7 +1305,7 @@ Widget & onThemeChange(F &&f)
 
 Binds a theme change callback
 
-Runs after setTheme() refreshes the widget styles. Repeated binding appends. Unbinds automatically when the widget is deleted. The callback must not capture Widget wrapper objects; use a Ref proxy. Can be bound before mounting. Move-only closures are supported.
+Runs after setTheme() refreshes the component styles; repeated binds are appended; unbinds automatically when the component is deleted. The callback must not capture the Widget wrapper; use a Ref proxy. Can be bound before mounting; move-only closures are supported.
 
 
 Callable type with signature void()
@@ -1316,9 +1316,9 @@ Callable type with signature void()
 Widget & onRightClick(F &&f, EventHandle *handle=nullptr)
 ```
 
-Binds a right click event callback
+Binds the right-click event callback
 
-Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle of this binding
+Callable type with signature void() or void(Event&amp;) Optional out parameter receiving the unbind handle for this binding
 
 ### contextMenu
 
@@ -1326,7 +1326,7 @@ Callable type with signature void() or void(Event&amp;) Optional out parameter r
 Widget & contextMenu(std::vector< ContextMenuItem > items, PopupMode mode=PopupMode::Inline)
 ```
 
-Binds a right click context menu
+Binds the right-click context menu
 
 ## 鼠标指针
 
@@ -1336,7 +1336,7 @@ Binds a right click context menu
 Widget & cursor(CursorType type)
 ```
 
-Sets the widget mouse cursor type, SDL mode
+Sets the mouse cursor type of the component in SDL mode
 
 Switches to the given cursor on hover and restores the default arrow on leave.
 
@@ -1350,7 +1350,7 @@ Widget & selectableText(bool withMenu=true)
 
 Enables text selection and copy
 
-Installs onto the inner text object returned by primaryTextObj(). Provides mouse drag selection, double click word selection, Primary+A select all, Primary+C copy, IBeam cursor and LV_PART_SELECTED inverted highlight. Highlight follows theme, with an optional right click copy and select all menu. Requires the derived class to override primaryTextObj() to take effect. Idempotent.
+Assembles onto the inner text object returned by primaryTextObj(): mouse drag selection, double-click word selection, Primary+A select all, Primary+C copy, IBeam cursor, LV_PART_SELECTED inverted highlight, theme following, and an optional right-click copy/select-all menu. Requires the derived class to override primaryTextObj() to take effect; idempotent.
 
 ### selectedText
 
@@ -1366,9 +1366,9 @@ Returns the selected text; empty string when nothing is selected
 static void installTextSelection(lv_obj_t *label, bool withMenu=true)
 ```
 
-Installs text selection capability on any LVGL label object
+Assembles text selection capability onto any LVGL label object
 
-Same implementation as selectableText() but without depending on primaryTextObj(), installing directly on the given label. Intended for multi-label library widgets such as ChatList virtual pools installing per label. Idempotent. External widgets can just use selectableText().
+Same implementation as selectableText() but without depending on primaryTextObj(), assembling directly on the given label. Intended for in-library multi-label components such as per-label assembly in the ChatList virtual pool; idempotent. External components can use selectableText().
 
 ## 悬浮提示
 
@@ -1380,10 +1380,10 @@ Widget & tooltip(const char *text)
 
 Binds tooltip text, Top direction by default
 
-The tooltip bubble pops up automatically after about 500ms of hover and closes on leave. The tooltip mounts to lv_layer_top() and does not affect widget layout.
+The tooltip bubble opens automatically after about 500ms of hover and closes on leave. The tooltip is mounted on lv_layer_top() and does not affect component layout.
 
 
-Tooltip text, copied at call time; nullptr clears the tooltip.
+Tooltip text, copied on call; nullptr clears the tooltip.
 
 ### tooltip
 
@@ -1391,7 +1391,7 @@ Tooltip text, copied at call time; nullptr clears the tooltip.
 Widget & tooltip(const LocalizedText &text)
 ```
 
-Binds tooltip text that updates with language; copies the description; a plain tooltip call replaces this binding.
+Binds tooltip text that updates with the language; copies the description; a plain tooltip call replaces this binding.
 
 ### tooltip
 
@@ -1409,9 +1409,9 @@ Binds a tooltip with full configuration
 Widget & ref(Ref< T > &r)
 ```
 
-Binds a widget reference for later access to the mounted widget
+Binds a component reference for later access to the mounted component
 
-Reference target type, usually the same as this widget type
+Reference target type, usually the same as this component's type
 
 ### ref
 
@@ -1419,13 +1419,13 @@ Reference target type, usually the same as this widget type
 Ref< Widget > ref() const
 ```
 
-Returns a non-owning reference, invalidated automatically when the widget is deleted.
+Returns a non-owning reference that becomes invalid automatically when the component is deleted.
 
 ## Friends
 
 ### reapplyThemeToAll
 
-Refreshes theme styles on all registered widgets
+Refreshes theme styles of all registered widgets
 
 ## Public Methods
 
@@ -1435,9 +1435,9 @@ Refreshes theme styles on all registered widgets
 void moveToIndex(int index) const
 ```
 
-Moves this widget to the given index within its parent
+Moves the component to the given index within its parent
 
-Target index; 0 = bottommost, -1 = counted from the end
+Target index; 0 = bottom, -1 = counted from the end
 
 ## Protected Methods
 
@@ -1447,7 +1447,7 @@ Target index; 0 = bottommost, -1 = counted from the end
 void create(lv_obj_t *parent)
 ```
 
-Creates a base LVGL object, lv_obj_create
+Creates a base LVGL object with lv_obj_create
 
 ### create
 
@@ -1455,9 +1455,9 @@ Creates a base LVGL object, lv_obj_create
 void create(lv_obj_t *parent)
 ```
 
-Creates the LVGL object with the given create function
+Creates the LVGL object with the given creation function
 
-LVGL create function pointer, such as lv_button_create
+LVGL creation function pointer, such as lv_button_create
 
 ### applyThemeDefaults
 
@@ -1465,7 +1465,7 @@ LVGL create function pointer, such as lv_button_create
 void applyThemeDefaults()
 ```
 
-Applies theme default styles
+Applies the theme default styles
 
 ### bindThemeCallback
 
@@ -1475,7 +1475,7 @@ void bindThemeCallback(std::function< void()> fn)
 
 Registers a theme refresh callback
 
-setTheme() invokes this callback. The callback must not capture Widget wrapper objects.
+setTheme() invokes this callback. The callback must not capture the Widget wrapper.
 
 ### bindDpiCallback
 
@@ -1501,7 +1501,7 @@ Marks a fixed background color
 virtual lv_obj_t * primaryTextObj() const
 ```
 
-Returns the widget primary text object, the inner label or textarea, used by text capabilities such as selectableText
+Returns the component's primary text object, the inner label/textarea, used by text capabilities such as selectableText
 
 Derived classes override as needed to return their own primary text object; base text nodes return themselves by default.
 
@@ -1511,7 +1511,7 @@ Derived classes override as needed to return their own primary text object; base
 void applyCommonProps(int width, int height, uint32_t bg, uint32_t textColor, int radius)
 ```
 
-Applies common properties from Props, internal use
+Applies common properties from Props; internal use
 
 ## protected-static-func
 
@@ -1529,4 +1529,4 @@ Queries whether the object uses a fixed background color
 static void setCursorForObj(lv_obj_t *obj, CursorType type)
 ```
 
-Sets the mouse cursor for any lv_obj_t, for use on derived class internal objects
+Sets the mouse cursor for any lv_obj_t; for internal objects of derived classes

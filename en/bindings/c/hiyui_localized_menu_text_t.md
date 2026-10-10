@@ -6,7 +6,7 @@ title: "hiyui_localized_menu_text_t"
 
 **Header:** `#include <hiyui/c/i18n.h>`
 
-Overrides the text of the zero-based item in menu pre-order traversal, indexes include separators.
+Overrides the text of a zero-based menu item in pre-order traversal. The index includes separators.
 
 ## Public Members
 

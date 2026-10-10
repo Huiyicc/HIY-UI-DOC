@@ -8,7 +8,7 @@ title: "ListDetailProps"
 
 **Namespace:** `hiyui`
 
-List detail creation properties. Invalid configurations create no widget.
+List-detail creation properties. Invalid configuration creates no component.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ List detail creation properties. Invalid configurations create no widget.
 int splitMinWidth
 ```
 
-Minimum content logical width to enter the split layout. Must be greater than the sum of listWidth and gap.
+Minimum content logical width to enter split mode. Must be greater than the sum of listWidth and gap.
 
 ### listWidth
 
@@ -26,7 +26,7 @@ Minimum content logical width to enter the split layout. Must be greater than th
 int listWidth
 ```
 
-List width in the split layout, positive logical pixels.
+List width in split mode, positive logical pixels.
 
 ### gap
 
@@ -34,7 +34,7 @@ List width in the split layout, positive logical pixels.
 int gap
 ```
 
-Split layout gap, non-negative logical pixels.
+Split pane gap, non-negative logical pixels.
 
 ### animated
 
@@ -42,4 +42,4 @@ Split layout gap, non-negative logical pixels.
 bool animated
 ```
 
-Whether pane switches in the single-pane layout use theme animation.
+Whether single-pane area switching uses theme animation.

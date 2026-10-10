@@ -8,9 +8,9 @@ title: "ExclusionZone"
 
 **Namespace:** `hiyui`
 
-Exclusion zone for the transition animation
+Exclusion area for the transition animation
 
-Overlay pixels inside the exclusion zone stay transparent so active components below, such as the Segmented thumb, keep rendering normally during the transition.
+Overlay pixels inside the exclusion area stay transparent, letting active components below, such as the Segmented thumb, render normally during the transition.
 
 ## Public Members
 
@@ -52,4 +52,4 @@ Height
 bool circular
 ```
 
-When true, centered at the rect center with radius min(w,h)/2
+When true, a circle centered on the rect with radius min(w,h)/2

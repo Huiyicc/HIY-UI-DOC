@@ -75,7 +75,7 @@ title: "event.h"
 typedef struct hiyui_event_s hiyui_event_t
 ```
 
-Borrowed event valid only inside the corresponding event callback.
+A borrowed event valid only inside its event callback.
 
 ### hiyui_event_handle_t
 
@@ -91,7 +91,7 @@ Event subscription handle, released by hiyui_event_handle_destroy.
 typedef void(* hiyui_event_fn) (hiyui_event_t *event, void *user_data)
 ```
 
-Called synchronously on the UI thread; the event and its borrowed objects must not be kept beyond the callback.
+Called synchronously on the UI thread. The event and its borrowed objects must not be kept beyond the callback.
 
 ### hiyui_mouse_move_fn
 
@@ -115,7 +115,7 @@ HIYUI_API int HIYUI_CALL hiyui_wdg_on(hiyui_widget_t *widget, hiyui_event_code_t
 
 Appends an event subscription; user_data is released when the widget is deleted or the subscription is removed.
 
-When non-NULL it takes ownership of user_data and is also called on registration failure; released only after an in-flight callback returns. May be NULL; when non-NULL, *out_handle must be NULL and the returned handle must be released separately. Returns 1 on success and 0 on failure; without a requested handle the subscription lasts until widget deletion.
+When non-NULL, takes over user_data and is also called if registration fails; release happens only after an in-flight callback returns. May be NULL; when non-NULL, *out_handle must be NULL, and the returned handle must be released separately. Returns 1 on successful registration and 0 on failure; without a requested handle the subscription lasts until widget deletion.
 
 ### hiyui_event_register
 
@@ -123,7 +123,7 @@ When non-NULL it takes ownership of user_data and is also called on registration
 HIYUI_API hiyui_event_code_t HIYUI_CALL hiyui_event_register(void)
 ```
 
-Allocates a custom event code on the UI thread; it stays valid for the process lifetime and is never reused.
+Allocates a custom event code on the UI thread. It stays valid for the process lifetime and is never reused.
 
 ### hiyui_wdg_send_event
 
@@ -131,7 +131,7 @@ Allocates a custom event code on the UI thread; it stays valid for the process l
 HIYUI_API int HIYUI_CALL hiyui_wdg_send_event(hiyui_widget_t *widget, hiyui_event_code_t code, void *data)
 ```
 
-Sends the event synchronously with data borrowed until the call returns; DELETE, an invalid code, or a NULL widget returns 0. KEY_PREVIEW cannot be sent manually. For KEY and INPUT_KEY, data points to a uint32_t key value; other built-in events must satisfy the corresponding data contract.
+Sends the event synchronously; data is borrowed until the call returns. Returns 0 for DELETE, an invalid code, or a NULL widget. KEY_PREVIEW cannot be sent manually. For KEY and INPUT_KEY, data points to a uint32_t key code; other built-in events must satisfy the corresponding event data contract.
 
 ### hiyui_event_data
 
@@ -139,7 +139,7 @@ Sends the event synchronously with data borrowed until the call returns; DELETE,
 HIYUI_API void *HIYUI_CALL hiyui_event_data(const hiyui_event_t *event)
 ```
 
-Event payload valid only within the current callback; a NULL event returns NULL.
+The event payload, valid only within the current callback. A NULL event returns NULL.
 
 ### hiyui_event_off
 
@@ -147,7 +147,7 @@ Event payload valid only within the current callback; a NULL event returns NULL.
 HIYUI_API void HIYUI_CALL hiyui_event_off(hiyui_event_handle_t *handle)
 ```
 
-Unbinds; repeated calls, NULL, and calls after widget deletion have no additional effect.
+Unbinds the subscription. Repeated calls, NULL, and calls after widget deletion have no additional effect.
 
 ### hiyui_event_connected
 
@@ -155,7 +155,7 @@ Unbinds; repeated calls, NULL, and calls after widget deletion have no additiona
 HIYUI_API int HIYUI_CALL hiyui_event_connected(const hiyui_event_handle_t *handle)
 ```
 
-Whether events can still be received; NULL returns 0.
+Whether the subscription can still receive events. NULL returns 0.
 
 ### hiyui_event_handle_destroy
 
@@ -163,7 +163,7 @@ Whether events can still be received; NULL returns 0.
 HIYUI_API void HIYUI_CALL hiyui_event_handle_destroy(hiyui_event_handle_t *handle)
 ```
 
-Unbinds and frees the handle; NULL-safe, and a non-NULL handle can be freed only once.
+Unbinds and releases the handle. NULL is safe, and a non-NULL handle can be released only once.
 
 ### hiyui_event_code
 
@@ -179,7 +179,7 @@ A NULL or unmapped event returns HIYUI_EVENT_UNKNOWN.
 HIYUI_API uint32_t HIYUI_CALL hiyui_event_key(const hiyui_event_t *event)
 ```
 
-Character keys keep the raw key value; non-key events or NULL return HIYUI_KEY_NONE.
+Character keys keep the raw key code. Non-key events or NULL return HIYUI_KEY_NONE.
 
 ### hiyui_event_target
 
@@ -187,7 +187,7 @@ Character keys keep the raw key value; non-key events or NULL return HIYUI_KEY_N
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_event_target(const hiyui_event_t *event)
 ```
 
-Returns the borrowed widget that actually triggered the event; a NULL event returns NULL.
+Returns the borrowed widget that actually triggered the event. A NULL event returns NULL.
 
 ### hiyui_event_current_target
 
@@ -195,7 +195,7 @@ Returns the borrowed widget that actually triggered the event; a NULL event retu
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_event_current_target(const hiyui_event_t *event)
 ```
 
-Returns the borrowed widget the callback is attached to; a NULL event returns NULL.
+Returns the borrowed widget the callback was attached to. A NULL event returns NULL.
 
 ### hiyui_event_pointer_position_px
 
@@ -203,7 +203,7 @@ Returns the borrowed widget the callback is attached to; a NULL event returns NU
 HIYUI_API int HIYUI_CALL hiyui_event_pointer_position_px(const hiyui_event_t *event, hiyui_point_t *out)
 ```
 
-Gets the local physical coordinates of the current propagation target; without pointer input returns 0 and zeroes the output.
+Gets the local physical coordinates of the object currently propagating the event. Without pointer input, returns 0 and zeroes the output.
 
 ### hiyui_event_stop_bubbling
 
@@ -217,7 +217,7 @@ HIYUI_API void HIYUI_CALL hiyui_event_stop_bubbling(hiyui_event_t *event)
 HIYUI_API void HIYUI_CALL hiyui_event_stop_processing(hiyui_event_t *event)
 ```
 
-Stops further event processing; the DELETE event does not allow stopping lifecycle cleanup, so the call is a no-op.
+Stops further event processing. For the DELETE event, lifecycle cleanup cannot be stopped and the call is a no-op.
 
 ### hiyui_mouse_move_register
 

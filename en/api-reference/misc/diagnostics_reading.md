@@ -8,4 +8,4 @@ title: "diagnostics::Reading"
 
 **Namespace:** `hiyui`
 
-One reading with explicit validity; value is not used in computations when unavailable.
+A reading with explicit validity; when unavailable value is excluded from computations.

@@ -6,7 +6,7 @@ title: "hiyui_dock_event_t"
 
 **Header:** `#include <hiyui/c/dock.h>`
 
-name is valid only during the callback execution.
+name is valid only during the callback.
 
 ## Public Members
 

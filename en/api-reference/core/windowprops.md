@@ -10,7 +10,7 @@ title: "WindowProps"
 
 Window creation properties
 
-Pure POD struct, all fields have defaults, supports C++20 aggregate initialization. Used through Application::createWindow(WindowProps).
+Pure POD struct; all fields have defaults and C++20 aggregate initialization is supported. Used through Application::createWindow(WindowProps).
 
 ## Public Members
 
@@ -36,7 +36,7 @@ Window width in pixels
 int height
 ```
 
-Content area height in pixels; in borderless mode the title bar and menu bar stack on top of it
+Content area height in pixels; in borderless mode the title bar and menu bar add on top of it
 
 ### borderless
 
@@ -44,7 +44,7 @@ Content area height in pixels; in borderless mode the title bar and menu bar sta
 bool borderless
 ```
 
-Borderless mode
+Borderless mode or not
 
 ### resizable
 
@@ -52,7 +52,7 @@ Borderless mode
 bool resizable
 ```
 
-Whether the user can drag to resize
+Whether the user can resize by dragging
 
 ### shadow
 
@@ -60,7 +60,7 @@ Whether the user can drag to resize
 bool shadow
 ```
 
-Window shadow, effective only in borderless mode
+Window shadow enabled; effective only in borderless mode
 
 ### x
 
@@ -68,7 +68,7 @@ Window shadow, effective only in borderless mode
 int x
 ```
 
-Window X coordinate, -1 = centered
+Window X coordinate; -1 = centered
 
 ### y
 
@@ -76,7 +76,7 @@ Window X coordinate, -1 = centered
 int y
 ```
 
-Window Y coordinate, -1 = centered
+Window Y coordinate; -1 = centered
 
 ### titleBar
 
@@ -84,7 +84,7 @@ Window Y coordinate, -1 = centered
 TitleBarProps titleBar
 ```
 
-Title bar properties, effective only in borderless mode
+Title bar properties; effective only in borderless mode
 
 ### enterAnimation
 
@@ -108,7 +108,7 @@ Exit animation
 MenuBarProps menuBar
 ```
 
-App menu bar style, effective only for borderless desktop windows, used when menu() installs menus
+Application menu bar style; effective only on borderless desktop, used when menu() installs the menu
 
 ### initiallyHidden
 
@@ -124,4 +124,4 @@ Stays hidden after creation and mounting on desktop until show is called explici
 WindowBackground background
 ```
 
-Window background, covering the title bar and content area.
+Window background covering the title bar and content area.

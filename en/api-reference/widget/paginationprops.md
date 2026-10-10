@@ -8,7 +8,7 @@ title: "PaginationProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a Pagination
+Creation properties of pagination
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Properties for creating a Pagination
 int total
 ```
 
-Total record count
+Total number of records
 
 ### current
 
@@ -26,7 +26,7 @@ Total record count
 int current
 ```
 
-Current page, starting from 1
+Current page number, starting from 1
 
 ### pageSize
 
@@ -42,7 +42,7 @@ Records per page
 int width
 ```
 
-Widget width; the number of visible page buttons shrinks automatically at finite width
+Widget width; with a finite width the visible page numbers are reduced automatically
 
 ### activeColor
 
@@ -50,7 +50,7 @@ Widget width; the number of visible page buttons shrinks automatically at finite
 uint32_t activeColor
 ```
 
-Current page color, HIYUI_DEFAULT = follow theme Primary
+Current page number color, HIYUI_DEFAULT = follow theme Primary
 
 ### textColor
 
@@ -74,4 +74,4 @@ Font size
 int buttonSize
 ```
 
-Page button size
+Page number button size

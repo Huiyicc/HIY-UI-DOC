@@ -8,4 +8,4 @@ title: "PartStyles"
 
 **Namespace:** `hiyui`
 
-State styles for a part; unset fields inherit normal. When several states apply at once, fields override in the order checked, focused, hovered, pressed, disabled.
+State styles for a part; fields left unset inherit normal. When several states apply at once, fields resolve in the order checked, focused, hovered, pressed, disabled.

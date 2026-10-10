@@ -8,4 +8,4 @@ title: "LocalizedText"
 
 **Namespace:** `hiyui`
 
-Owning translation description, copied when bound to a widget; rebinding is required after arguments change.
+Owning translation description; copied when bound to a widget, and rebinding is required after arguments change.

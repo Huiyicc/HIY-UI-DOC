@@ -8,4 +8,4 @@ title: "pal::SurfaceCapabilities"
 
 **Namespace:** `hiyui`
 
-Window surface presentation capabilities.
+Window surface presentation capabilities

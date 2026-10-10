@@ -14,12 +14,12 @@ title: "RichInput"
 
 ### RichInputEventType
 
-Internal rich text input event types
+Rich text input internal event types
 
 | Value | Description |
 |---|---|
 | `Changed` | Content changed |
-| `Submit` | Submitted by Enter. |
+| `Submit` | Enter submits. |
 
 ## Public Methods
 
@@ -29,7 +29,7 @@ Internal rich text input event types
 RichInput & insertText(const std::string &text, Notify notify=Notify::No) &
 ```
 
-Insert text. The format inherits from the character left of the cursor. An existing selection is deleted first.
+Inserts text. The format inherits from the character left of the cursor. With a selection, the selection is deleted first
 
 ### insertImage
 
@@ -37,9 +37,9 @@ Insert text. The format inherits from the character left of the cursor. An exist
 RichInput & insertImage(const void *src, int h=70, Notify notify=Notify::No) &
 ```
 
-Insert an image at the cursor
+Inserts an image at the cursor
 
-A file path string or lv_image_dsc_t*. A GIF uses its first frame as a static image Target image height in logical pixels
+File path string or lv_image_dsc_t*. GIF uses the first frame as a static image Target image height in logical pixels
 
 ### plainText
 
@@ -47,7 +47,7 @@ A file path string or lv_image_dsc_t*. A GIF uses its first frame as a static im
 std::string plainText() const
 ```
 
-Plain text. Mentions output `@display`, images output the source text, other inline objects output a space
+Plain text. Mention outputs `@display`. Image outputs the source text. Other inline objects output a space
 
 ### length
 
@@ -55,7 +55,7 @@ Plain text. Mentions output `@display`, images output the source text, other inl
 int length() const
 ```
 
-Character count, each inline object counts as 1
+Character count. Each inline object counts as 1
 
 ### cursorPos
 
@@ -63,7 +63,7 @@ Character count, each inline object counts as 1
 int cursorPos() const
 ```
 
-Cursor position as a UTF-8 byte offset, each inline object occupies 3 bytes
+Cursor position as a UTF-8 byte offset. Each inline object occupies 3 bytes
 
 ### selectedText
 
@@ -71,7 +71,7 @@ Cursor position as a UTF-8 byte offset, each inline object occupies 3 bytes
 std::string selectedText() const
 ```
 
-Selection plain text, same semantics as plainText()
+Plain text of the selection. Same semantics as plainText()
 
 ### applyCharFormat
 
@@ -79,7 +79,7 @@ Selection plain text, same semantics as plainText()
 RichInput & applyCharFormat(const RichCharFormat &fmt, Notify notify=Notify::No) &
 ```
 
-Apply a character format to the selection. Without a selection it is recorded as the format for subsequent input and invalidated once the cursor moves.
+Applies character format to the selection. Without a selection, the format is recorded for subsequent input and becomes invalid after the cursor moves
 
 ### charFormatAt
 
@@ -87,7 +87,7 @@ Apply a character format to the selection. Without a selection it is recorded as
 RichCharFormat charFormatAt() const
 ```
 
-The format effective at the cursor. With a selection it is the format of the first selected character. Without one it is the format new input will inherit.
+Format in effect at the cursor. With a selection, the format of the first selected character. Without a selection, the format inherited by new input
 
 ### charFormatAt
 
@@ -103,7 +103,7 @@ UTF-8 byte offset
 RichInput & setBlockFormat(const RichBlockFormat &fmt, Notify notify=Notify::No) &
 ```
 
-Apply a format to the paragraphs intersecting the selection. Without a selection it applies to the paragraph at the cursor.
+Applies block format to paragraphs intersecting the selection. Without a selection, applies to the paragraph at the cursor
 
 ### blockFormatAt
 
@@ -119,7 +119,7 @@ UTF-8 byte offset
 RichInput & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Register a content change callback. Repeated bindings are appended.
+Registers the content-changed callback. Repeated bindings are appended
 
 ### onSubmit
 
@@ -127,7 +127,7 @@ Register a content change callback. Repeated bindings are appended.
 RichInput & onSubmit(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Register a submit callback. Repeated bindings are appended. Once registered, Enter triggers the callback without inserting a newline, Shift+Enter inserts a newline. When unregistered, Enter inserts a newline.
+Registers the submit callback. Repeated bindings are appended. After registration, Enter triggers the callback and does not insert a newline, while Shift+Enter inserts a newline. When not registered, Enter inserts a newline
 
 ## Static Methods
 
@@ -137,4 +137,4 @@ Register a submit callback. Repeated bindings are appended. Once registered, Ent
 static lv_event_code_t eventCode(RichInputEventType type)
 ```
 
-Get the internal rich text input event code.
+Gets the internal event code of the rich text input.

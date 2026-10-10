@@ -8,7 +8,7 @@ title: "RichCharFormat"
 
 **Namespace:** `hiyui`
 
-Character format; fields left at default inherit the widget default
+Character format; fields left at defaults inherit the widget defaults
 
 ## Public Members
 

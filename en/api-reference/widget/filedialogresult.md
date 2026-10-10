@@ -28,6 +28,6 @@ Selected file or directory paths
 const std::string & path() const
 ```
 
-Get the first selected path, convenience method
+Returns the first selected path, convenience method
 
 The first path, an empty string when nothing is selected

@@ -18,7 +18,7 @@ Owning output interface for value readers.
 bool setString(std::string_view value) noexcept
 ```
 
-Copies a string; clears the output and returns false when memory is insufficient.
+Copies the string; clears the output and returns false on allocation failure.
 
 ### value
 
@@ -26,4 +26,4 @@ Copies a string; clears the output and returns false when memory is insufficient
 const XmlValue & value() const noexcept
 ```
 
-Returns the borrowed value; it becomes invalid when the writer is destroyed or written again.
+Returns a borrowed value; it becomes invalid when the writer is destroyed or written again.

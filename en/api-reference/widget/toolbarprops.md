@@ -8,4 +8,4 @@ title: "ToolBarProps"
 
 **Namespace:** `hiyui`
 
-Tool bar configuration; sizes and spacing use theme logical pixels.
+Tool bar configuration, sizes and spacing use theme logical pixels.

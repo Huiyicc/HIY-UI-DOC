@@ -26,7 +26,7 @@ Show border lines
 bool striped
 ```
 
-Zebra stripes
+Striped rows
 
 ### showHeader
 
@@ -34,7 +34,7 @@ Zebra stripes
 bool showHeader
 ```
 
-Show the header
+Show header
 
 ### rowSelection
 
@@ -42,7 +42,7 @@ Show the header
 bool rowSelection
 ```
 
-Row selection mode, checkboxes
+Row selection mode with checkboxes
 
 ### selectable
 
@@ -50,7 +50,7 @@ Row selection mode, checkboxes
 bool selectable
 ```
 
-Drag to select a cell area and copy TSV text
+Drag-select a cell region and copy TSV text
 
 ### indentSize
 
@@ -58,7 +58,7 @@ Drag to select a cell area and copy TSV text
 int indentSize
 ```
 
-Tree indentation in pixels
+Tree indent in pixels
 
 ### maxHeight
 
@@ -66,7 +66,7 @@ Tree indentation in pixels
 int maxHeight
 ```
 
-Maximum height, effective when height=HIYUI_AUTO, 0 = unlimited
+Maximum height, effective when height=HIYUI_AUTO. 0 = unlimited
 
 ### scrollX
 
@@ -74,7 +74,7 @@ Maximum height, effective when height=HIYUI_AUTO, 0 = unlimited
 int scrollX
 ```
 
-Total horizontal scroll width. &gt;0 enables horizontal scrolling
+Total width for horizontal scrolling. &gt;0 enables horizontal scrolling
 
 ### footer
 

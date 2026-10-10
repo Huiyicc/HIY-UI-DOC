@@ -10,7 +10,7 @@ title: "TabsEx"
 
 Session tab card widget.
 
-Tab items are grouped by Pin state. The close event only signals a close request; after disconnecting the session and releasing resources, call `removeTab()` to delete the corresponding UI node.
+Tab items are grouped by Pin state. The close event only represents a close request, the caller calls `removeTab()` to delete the UI node after disconnecting the session and releasing resources.
 
 **Inherits:** `hiyui::Chainable< TabsEx >`
 
@@ -64,7 +64,7 @@ Creates the tab card container on a parent object.
 TabsEx & items(const std::vector< TabsExItem > &items, Notify notify=Notify::No) &
 ```
 
-Replaces all tab items and rearranges them by Pin state; title and Host text are copied.
+Replaces all tab items and rearranges them by Pin state, title and host text are copied.
 
 ### items
 
@@ -72,7 +72,7 @@ Replaces all tab items and rearranges them by Pin state; title and Host text are
 TabsEx & items(std::initializer_list< const char * > titles, Notify notify=Notify::No) &
 ```
 
-Replaces all tab items with a list of titles.
+Replaces all tab items with a text list.
 
 ### append
 
@@ -80,7 +80,7 @@ Replaces all tab items with a list of titles.
 TabsEx & append(const TabsExItem &item, Notify notify=Notify::No) &
 ```
 
-Appends a tab item; title and Host text are copied.
+Appends one tab item, title and host text are copied.
 
 ### removeTab
 
@@ -90,7 +90,7 @@ TabsEx & removeTab(int index, Notify notify=Notify::No) &
 
 Removes a tab item.
 
-Current tab index. State is unchanged when the index is out of range.
+Current tab index. No state change when the index is out of range.
 
 ### activeIndex
 
@@ -98,9 +98,9 @@ Current tab index. State is unchanged when the index is out of range.
 TabsEx & activeIndex(int index, Notify notify=Notify::No) &
 ```
 
-Sets the active tab.
+Sets the currently active tab.
 
-Tab index; state is unchanged when the index is out of range or the tab is disabled.
+Tab index, no state change when the index is out of range or the tab is disabled.
 
 ### activeIndex
 
@@ -108,9 +108,9 @@ Tab index; state is unchanged when the index is out of range or the tab is disab
 int activeIndex() const
 ```
 
-Returns the active tab.
+Returns the currently active tab.
 
-Current index; -1 when there are no tabs.
+The current index, -1 when there are no tabs.
 
 ### scrollToTab
 
@@ -120,7 +120,7 @@ TabsEx & scrollToTab(int index) &
 
 Scrolls the tab bar so the given tab is fully visible.
 
-Tab index; state is unchanged when the index is out of range.
+Tab index, no state change when the index is out of range.
 
 ### itemCount
 
@@ -138,7 +138,7 @@ int itemData(int index) const
 
 Returns the tab user data.
 
-Current tab index. The `data` value; returns 0 when the index is out of range.
+Current tab index. The `data` value, 0 when the index is out of range.
 
 ### tabTitle
 
@@ -148,7 +148,7 @@ std::string tabTitle(int index) const
 
 Returns the current tab title.
 
-Current tab index. Current title; empty string when the index is out of range.
+Current tab index. The current title, an empty string when the index is out of range.
 
 ### connectionState
 
@@ -158,7 +158,7 @@ TabsEx & connectionState(int index, TabConnectionState state) &
 
 Sets the connection state.
 
-State is unchanged when the index is out of range.
+No state change when the index is out of range.
 
 ### closable
 
@@ -168,7 +168,7 @@ TabsEx & closable(int index, bool value) &
 
 Sets whether the tab can be closed.
 
-true shows the close control and allows middle-click close, false hides the close control. State is unchanged when the index is out of range or the value is unchanged.
+true shows the close control and allows middle-click close, false hides the close control. No state change when the index is out of range or the value is unchanged.
 
 ### pinned
 
@@ -178,7 +178,7 @@ TabsEx & pinned(int index, bool pinned=true, Notify notify=Notify::No) &
 
 Sets the Pin state and rearranges tabs.
 
-Current tab index. true places the tab in the Pin group, false in the normal group.
+Current tab index. true moves the tab into the Pin group, false moves it into the normal group.
 
 ### isPinned
 
@@ -188,7 +188,7 @@ bool isPinned(int index) const
 
 Returns whether the tab is in the Pin group.
 
-Pin state; false when the index is out of range.
+The Pin state, false when the index is out of range.
 
 ### rename
 
@@ -198,7 +198,7 @@ TabsEx & rename(int index, const char *title) &
 
 Sets the tab title.
 
-Null or empty restores the Host text; the text is copied during the call. State is unchanged when the index is out of range.
+Null or an empty string restores showing the host, the text is copied during the call. No state change when the index is out of range.
 
 ### onChange
 
@@ -206,7 +206,7 @@ Null or empty restores the Host text; the text is copied during the call. State 
 TabsEx & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the activation event; the callback can receive `TabsExEvent`, the index, or no arguments.
+Binds the activation event, the callback can receive a TabsExEvent, an index, or no arguments.
 
 ### onCloseRequest
 

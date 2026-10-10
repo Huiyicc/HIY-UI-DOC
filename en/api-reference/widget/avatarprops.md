@@ -18,7 +18,7 @@ Avatar creation properties
 const void * src
 ```
 
-Image source, a file path or lv_image_dsc_t*
+Image source. File path or lv_image_dsc_t*
 
 ### text
 
@@ -42,7 +42,7 @@ Avatar diameter
 bool circle
 ```
 
-Whether circular, false = use radius
+Whether circular. false = use radius
 
 ### radius
 
@@ -58,7 +58,7 @@ Corner radius when not circular
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color. HIYUI_DEFAULT = follow theme
 
 ### textColor
 
@@ -74,7 +74,7 @@ Text color
 uint32_t borderColor
 ```
 
-Border color, HIYUI_NONE = no border
+Border color. HIYUI_NONE = no border
 
 ### borderWidth
 

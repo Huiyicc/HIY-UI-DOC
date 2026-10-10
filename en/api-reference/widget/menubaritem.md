@@ -26,7 +26,7 @@ Top-level item text
 uint32_t iconCodepoint
 ```
 
-Top-level item icon codepoint, 0 = no icon
+Top-level item icon codepoint. 0 = no icon
 
 ### iconStyle
 
@@ -58,4 +58,4 @@ Dropdown menu items
 std::optional< LocalizedText > localizedText
 ```
 
-When set it overrides the original text and updates on language switch. The description is copied when passed to the widget.
+Overrides the original text and updates on language switch. The description is copied when passed to the widget.

@@ -8,7 +8,7 @@ title: "diagnostics::Config"
 
 **Namespace:** `hiyui`
 
-Capture configuration with finite capacity; capacity counts records, and time units are named in the fields.
+Capture configuration with finite capacity; capacities are record counts and time units are given in field names.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Capture configuration with finite capacity; capacity counts records, and time un
 uint32_t eventCapacity
 ```
 
-64 to 1048576; in Detailed mode the capacity splits half between normal spans and LVGL details, with the remainder going to normal spans.
+64 to 1048576; in Detailed the capacity is split evenly between normal spans and LVGL details, with the remainder going to normal spans.
 
 ### frameCapacity
 
@@ -42,7 +42,7 @@ uint32_t sampleCapacity
 uint32_t frameBudgetUs
 ```
 
-Positive; reference budget for continuous request intervals, does not change refresh scheduling.
+Positive; a reference budget for continuous request intervals; does not change refresh scheduling.
 
 ### samplePeriodMs
 
@@ -50,7 +50,7 @@ Positive; reference budget for continuous request intervals, does not change ref
 uint32_t samplePeriodMs
 ```
 
-At least 250; sampling runs with the UI main loop and is not back-filled after blocking.
+At least 250; sampling runs with the UI main loop and samples missed during blocking are not back-filled.
 
 ### profilerMinDurationUs
 
@@ -58,7 +58,7 @@ At least 250; sampling runs with the UI main loop and is not back-filled after b
 uint32_t profilerMinDurationUs
 ```
 
-Filters LVGL details only; 0 keeps all calls, does not affect normal spans or frame statistics.
+Filters LVGL details only; 0 keeps all calls; does not affect normal spans or frame statistics.
 
 ### eventMinDurationUs
 
@@ -66,4 +66,4 @@ Filters LVGL details only; 0 keeps all calls, does not affect normal spans or fr
 uint32_t eventMinDurationUs
 ```
 
-Automatic event callbacks below this microsecond value only increment filteredEventCallbacks; 0 keeps all, does not affect manual Scope.
+Automatic event callbacks below this many microseconds are only counted in filteredEventCallbacks; 0 keeps all; handwritten Scope is unaffected.

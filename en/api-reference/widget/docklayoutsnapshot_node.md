@@ -18,7 +18,7 @@ Split node or tab group node.
 bool split
 ```
 
-true = split node, false = tab group node.
+true for a split node, false for a tab group node.
 
 ### horizontal
 
@@ -26,7 +26,7 @@ true = split node, false = tab group node.
 bool horizontal
 ```
 
-Split node orientation, true when children are arranged horizontally.
+Split node orientation, true when children arrange horizontally.
 
 ### weight
 

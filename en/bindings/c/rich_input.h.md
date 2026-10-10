@@ -16,7 +16,7 @@ Rich text editor with inline images, mentions, selection, and undo/redo
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_rich_input_create(hiyui_widget_t *parent, const hiyui_rich_input_props_t *props)
 ```
 
-Creates a rich text editor; NULL props uses all defaults
+Creates a rich text editor; a NULL props uses all defaults
 
 ### hiyui_rich_input_insert_text
 
@@ -24,7 +24,7 @@ Creates a rich text editor; NULL props uses all defaults
 HIYUI_API void HIYUI_CALL hiyui_rich_input_insert_text(hiyui_widget_t *ri, const char *text, hiyui_notify_t notify)
 ```
 
-Inserts text at the cursor, normalizing emoji internally
+Inserts text at the cursor; emoji are normalized internally
 
 ### hiyui_rich_input_insert_image
 
@@ -32,7 +32,7 @@ Inserts text at the cursor, normalizing emoji internally
 HIYUI_API void HIYUI_CALL hiyui_rich_input_insert_image(hiyui_widget_t *ri, const void *src, int h, hiyui_notify_t notify)
 ```
 
-Inserts an image at the cursor. src can be a file path string or lv_image_dsc_t* and must stay valid for the editor lifetime.
+Inserts an image at the cursor; src is a file path string or an lv_image_dsc_t pointer and must stay valid for the editor lifetime
 
 ### hiyui_rich_input_insert_mention
 
@@ -48,7 +48,7 @@ Inserts a mention node at the cursor
 HIYUI_API const char *HIYUI_CALL hiyui_rich_input_plain_text(hiyui_widget_t *ri)
 ```
 
-Returns the plain text. Borrows internal storage, valid until the next call.
+Plain text; borrows internal storage, valid until the next call
 
 ### hiyui_rich_input_length
 
@@ -56,7 +56,7 @@ Returns the plain text. Borrows internal storage, valid until the next call.
 HIYUI_API int HIYUI_CALL hiyui_rich_input_length(hiyui_widget_t *ri)
 ```
 
-Document character count. Images and mentions each count as 1; this is not the UTF-8 byte count.
+Document character count; images and mentions count as 1 each, not a UTF-8 byte count
 
 ### hiyui_rich_input_empty
 
@@ -76,7 +76,7 @@ HIYUI_API void HIYUI_CALL hiyui_rich_input_clear(hiyui_widget_t *ri, hiyui_notif
 HIYUI_API const char *HIYUI_CALL hiyui_rich_input_get_html(hiyui_widget_t *ri)
 ```
 
-Exports HTML. Borrows internal storage, valid until the next call. Only file-path images are exported.
+Exports HTML; borrows internal storage, valid until the next call; only file-path images are exported
 
 ### hiyui_rich_input_set_html
 
@@ -84,7 +84,7 @@ Exports HTML. Borrows internal storage, valid until the next call. Only file-pat
 HIYUI_API void HIYUI_CALL hiyui_rich_input_set_html(hiyui_widget_t *ri, const char *html, hiyui_notify_t notify)
 ```
 
-Replaces the content with HTML. Unknown tags are ignored and their text is kept.
+Replaces the content with HTML; unknown tags are ignored and their text is kept
 
 ### hiyui_rich_input_set_nodes
 
@@ -92,7 +92,7 @@ Replaces the content with HTML. Unknown tags are ignored and their text is kept.
 HIYUI_API void HIYUI_CALL hiyui_rich_input_set_nodes(hiyui_widget_t *ri, const hiyui_rich_node_t *nodes, int count, hiyui_notify_t notify)
 ```
 
-Replaces the whole node array
+Replaces the node array as a whole
 
 ### hiyui_rich_input_node_count
 
@@ -100,7 +100,7 @@ Replaces the whole node array
 HIYUI_API int HIYUI_CALL hiyui_rich_input_node_count(hiyui_widget_t *ri)
 ```
 
-Returns the node count and builds an internal snapshot for node_at to borrow.
+Total node count, and refreshes the internal snapshot used by node_at
 
 ### hiyui_rich_input_node_at
 
@@ -108,7 +108,7 @@ Returns the node count and builds an internal snapshot for node_at to borrow.
 HIYUI_API int HIYUI_CALL hiyui_rich_input_node_at(hiyui_widget_t *ri, int idx, hiyui_rich_node_t *out)
 ```
 
-Copies the node at idx into out, returning 1 on success. Fields borrow internal storage, valid until the next call.
+Copies the node at idx into out and returns 1 on success; fields borrow internal storage, valid until the next call
 
 ### hiyui_rich_input_cursor_pos
 
@@ -116,7 +116,7 @@ Copies the node at idx into out, returning 1 on success. Fields borrow internal 
 HIYUI_API int HIYUI_CALL hiyui_rich_input_cursor_pos(hiyui_widget_t *ri)
 ```
 
-Cursor position as a UTF-8 byte offset. Each inline object occupies 3 bytes.
+Cursor position as a UTF-8 byte offset; inline objects occupy 3 bytes
 
 ### hiyui_rich_input_set_cursor_pos
 
@@ -136,7 +136,7 @@ HIYUI_API int HIYUI_CALL hiyui_rich_input_has_selection(hiyui_widget_t *ri)
 HIYUI_API const char *HIYUI_CALL hiyui_rich_input_selected_text(hiyui_widget_t *ri)
 ```
 
-Returns the plain text of the selection. Borrows internal storage, valid until the next call.
+Selected text as plain text; borrows internal storage, valid until the next call
 
 ### hiyui_rich_input_select_all
 
@@ -194,7 +194,7 @@ Content change callback
 HIYUI_API hiyui_rich_char_format_t HIYUI_CALL hiyui_rich_input_char_format_at(hiyui_widget_t *ri)
 ```
 
-Returns the character format at the cursor. A NULL ri returns all defaults.
+Queries the character format at the cursor; a NULL ri returns all defaults.
 
 ### hiyui_rich_input_apply_char_format
 
@@ -202,7 +202,7 @@ Returns the character format at the cursor. A NULL ri returns all defaults.
 HIYUI_API void HIYUI_CALL hiyui_rich_input_apply_char_format(hiyui_widget_t *ri, const hiyui_rich_char_format_t *fmt, hiyui_notify_t notify)
 ```
 
-Applies a character format to the selection or to subsequent input.
+Applies a character format to the selection or subsequent input.
 
 ### hiyui_rich_input_set_block_format
 

@@ -36,7 +36,7 @@ Non-negative logical pixels.
 int padding_x
 ```
 
-Left and right padding, non-negative logical pixels.
+Horizontal padding, non-negative logical pixels.
 
 ### padding_y
 
@@ -44,7 +44,7 @@ Left and right padding, non-negative logical pixels.
 int padding_y
 ```
 
-Top and bottom padding, non-negative logical pixels.
+Vertical padding, non-negative logical pixels.
 
 ### width
 
@@ -80,7 +80,7 @@ Non-negative logical pixels.
 int max_width
 ```
 
-Non-negative logical pixels, HIYUI_AUTO removes the local limit.
+Non-negative logical pixels. HIYUI_AUTO removes the local limit.
 
 ### max_height
 
@@ -88,7 +88,7 @@ Non-negative logical pixels, HIYUI_AUTO removes the local limit.
 int max_height
 ```
 
-Non-negative logical pixels, HIYUI_AUTO removes the local limit.
+Non-negative logical pixels. HIYUI_AUTO removes the local limit.
 
 ### flex
 
@@ -96,7 +96,7 @@ Non-negative logical pixels, HIYUI_AUTO removes the local limit.
 int flex
 ```
 
-Range 0 to 255, 0 does not take part in main axis free space distribution.
+Range 0 to 255. 0 excludes the widget from main-axis free space distribution.
 
 ### hidden
 

@@ -8,7 +8,7 @@ title: "Easing"
 
 **Namespace:** `hiyui`
 
-Easing utility class, static-only interface
+Easing utility class with a purely static interface
 
 ## Static Methods
 
@@ -20,7 +20,7 @@ static lv_anim_path_cb_t path(Ease e) noexcept
 
 Returns the LVGL path callback
 
-AngleLerp and Impact map to Linear. Classic variants return a pointer equal to the corresponding lv_anim_path_* value, same origin and equivalent.
+AngleLerp and Impact map to Linear. Classic variants return a pointer equal to the corresponding lv_anim_path_*, identical by origin.
 
 ### at
 
@@ -28,7 +28,7 @@ AngleLerp and Impact map to Linear. Classic variants return a pointer equal to t
 static double at(Ease e, double t) noexcept
 ```
 
-Normalized evaluation, t in [0,1] to the current progress ratio; Back/Elastic/Spring/Bounce may exceed the range
+Normalized evaluation, t in [0,1] to the current progress ratio; Back/Elastic/Spring/Bounce may go out of range
 
 ### at
 
@@ -36,4 +36,4 @@ Normalized evaluation, t in [0,1] to the current progress ratio; Back/Elastic/Sp
 static double at(Ease e, double t, double start, double end) noexcept
 ```
 
-Range evaluation, t in [0,1] to the current value mapped into [start,end]
+Range evaluation, t in [0,1] mapped to the current value in [start,end]

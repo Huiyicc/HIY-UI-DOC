@@ -8,7 +8,7 @@ title: "ListDetail"
 
 **Namespace:** `hiyui`
 
-Switches the list detail presentation between single-pane and split based on the content width it is assigned. It must be sized by its parent. Each named pane holds at most one direct child, and the subtrees are managed by the parent widget. The single-pane layout shows only the active pane. The split layout gives the list the configured width and the detail the remaining width. With only one pane it fills the space. Relayout preserves subtrees, input state and valid scroll offsets. It does not change business selection, commit drafts or add navigation history. Entering a pane restores its last valid focusable descendant, otherwise the first one is chosen. Relayout keeps focus that is still visible. Deleting Detail returns to List. Deleting List keeps the detail. Neither structure nor size changes dispatch value notifications.
+Switches the list-detail presentation between single-pane and split based on the content width assigned to it. Its size must be assigned by the parent. Each named area holds at most one direct child; the subtree is managed by the parent widget. Single-pane shows only the active area; in split mode the list uses the configured width and the detail takes the remaining width, filling the space when only one area exists. Relayout keeps the subtree, input and valid scroll offsets, and does not change business selection, commit drafts or add navigation history. Entering an area restores its last valid focusable descendant, otherwise the first one is selected; relayout keeps focus that is still visible. After Detail is deleted, back returns to List; after List is deleted, the detail is kept. Structure and size changes never dispatch value notifications.
 
 **Inherits:** `hiyui::Container< ListDetail >`
 
@@ -20,7 +20,7 @@ Switches the list detail presentation between single-pane and split based on the
 ListDetail & init(Window &window) &
 ```
 
-Mount into the window root content area.
+Mounts to the window root content area.
 
 ### activePane
 
@@ -28,7 +28,7 @@ Mount into the window root content area.
 ListDetailPane activePane() const
 ```
 
-The most recently requested pane. List when initial, unmounted or destroy was requested.
+Most recently requested area. List when initial, unmounted, or deletion was requested.
 
 ### presentation
 
@@ -36,7 +36,7 @@ The most recently requested pane. List when initial, unmounted or destroy was re
 ListDetailPresentation presentation() const
 ```
 
-The current presentation. Split when the content logical width reaches splitMinWidth. Single when invalid.
+Current presentation. Split when the content logical width reaches splitMinWidth. Single when invalid.
 
 ### activePane
 
@@ -44,7 +44,7 @@ The current presentation. Split when the content logical width reaches splitMinW
 ListDetail & activePane(ListDetailPane value, Notify notify=Notify::No) &
 ```
 
-Set the active pane. Business data is unchanged. Requesting Detail without a Detail pane is a no-op. Can be called before mounting and is applied once the named panes are mounted. Invalid enums and destroy-requested states are no-ops.
+Sets the active area without changing business data. Requesting Detail does nothing when no Detail area is provided. Can be called before mount and applies after the named areas are mounted. Invalid enum values and deletion-requested state do nothing.
 
 Yes dispatches onChange once only when the value actually changes. Silent by default.
 
@@ -54,9 +54,9 @@ Yes dispatches onChange once only when the value actually changes. Silent by def
 bool back()
 ```
 
-When showing Detail in the single-pane layout and a List pane exists, return to the list and notify with Notify::Yes.
+Returns to the list when in single-pane Detail and a List area exists, notifying as with Notify::Yes.
 
-Returns true when this back navigation is consumed, otherwise false. Calling it applies no history.
+true when this call consumes the back action, false otherwise. No history is applied when not called.
 
 ### onChange
 
@@ -64,6 +64,6 @@ Returns true when this back navigation is consumed, otherwise false. Calling it 
 ListDetail & onChange(F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Append an active pane change callback. Accepts void(ListDetailPane), void(Event&amp;) or void(). Supports binding before mounting and move-only closures. Released after destruction. Layout changes do not trigger it.
+Appends an active-area change callback. Accepts void(ListDetailPane), void(Event&amp;) or void(). Supports binding before mount and move-only closures. Released on destroy. Layout changes do not trigger it.
 
-Optional unbind handle. off can be called repeatedly. For scoped unbinding use ScopedEventHandle.
+Optional unbind handle. off can be repeated. Use ScopedEventHandle for scope-based unbinding.

@@ -6,7 +6,7 @@ title: "hiyui_video_statistics_t"
 
 **Header:** `#include <hiyui/c/video.h>`
 
-Cumulative statistics for the current session; seeking and automatic reconnection do not reset them, while stop or an explicit source change does.
+Cumulative statistics for the current session. Seeks and automatic reconnection do not reset them; stopping or explicitly reopening the source does.
 
 ## Public Members
 
@@ -16,7 +16,7 @@ Cumulative statistics for the current session; seeking and automatic reconnectio
 hiyui_video_decoder_t decoder
 ```
 
-NONE until a frame has been decoded.
+NONE before any frame has been decoded.
 
 ### width
 
@@ -46,7 +46,7 @@ uint64_t decoded_frames
 uint64_t dropped_frames
 ```
 
-Frames skipped for falling behind the playback clock, excluding seek pre-read.
+Frames skipped for falling behind the playback clock, excluding seek prefetch.
 
 ### gpu_frames
 
@@ -54,7 +54,7 @@ Frames skipped for falling behind the playback clock, excluding seek pre-read.
 uint64_t gpu_frames
 ```
 
-Hardware frames submitted directly to GPU composition, excluding repeated drawing.
+Hardware frames submitted directly to GPU composition, excluding repeated draws.
 
 ### readback_count
 
@@ -70,7 +70,7 @@ Number of times hardware frames or composited layers were read back to the CPU.
 uint64_t decode_time_us
 ```
 
-Accumulated microseconds of decode calls, including waits inside the calls.
+Accumulated decode call time in microseconds, including waits inside the call.
 
 ### conversion_time_us
 
@@ -78,4 +78,4 @@ Accumulated microseconds of decode calls, including waits inside the calls.
 uint64_t conversion_time_us
 ```
 
-Accumulated microseconds of video frame preparation and CPU pixel conversion.
+Accumulated video frame preparation and CPU pixel conversion time in microseconds.

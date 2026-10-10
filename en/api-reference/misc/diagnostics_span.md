@@ -8,7 +8,7 @@ title: "diagnostics::Span"
 
 **Namespace:** `hiyui`
 
-Monotonic clock span including waits; timestamps are zeroed at capture start, nested spans must not be added directly.
+Monotonic clock span including waits; timestamps are zeroed at capture start and nested spans cannot be added directly.
 
 ## Public Members
 
@@ -18,4 +18,4 @@ Monotonic clock span including waits; timestamps are zeroed at capture start, ne
 bool profiler
 ```
 
-From LVGL probes; displayId is the refresh context, 0 means unknown.
+From the LVGL probe; displayId is the refresh context and 0 means unknown.

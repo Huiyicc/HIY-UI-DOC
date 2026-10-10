@@ -18,11 +18,11 @@ Pagination widget
 
 ### PaginationEventType
 
-Internal pagination event types
+Pagination internal event types
 
 | Value | Description |
 |---|---|
-| `Changed` | Page changed |
+| `Changed` | Page number changed |
 
 ## Public Methods
 
@@ -32,7 +32,7 @@ Internal pagination event types
 Pagination(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Pagination
 
@@ -40,7 +40,7 @@ Wrap an existing LVGL object
 Pagination(PaginationProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -48,7 +48,7 @@ Construct from aggregated properties
 Pagination & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object under a parent object
 
 ### init
 
@@ -56,7 +56,7 @@ Create the LVGL object under a parent
 Pagination & init(Widget &parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object under a parent object
 
 ### currentPage
 
@@ -64,7 +64,7 @@ Create the LVGL object under a parent
 Pagination & currentPage(int page, Notify notify=Notify::No) &
 ```
 
-Jump to the given page
+Jumps to the given page
 
 Page number, starting from 1
 
@@ -74,9 +74,9 @@ Page number, starting from 1
 int currentPage() const
 ```
 
-Get the current page
+Returns the current page number
 
-The current page
+Current page number
 
 ### totalPages
 
@@ -84,9 +84,9 @@ The current page
 int totalPages() const
 ```
 
-Get the total page count
+Returns the total number of pages
 
-The total page count
+Total number of pages
 
 ### onChange
 
@@ -94,9 +94,9 @@ The total page count
 Pagination & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the page change event, repeated binds append
+Binds the page change event, repeated binding appends
 
-Callable type, signature void(int) Callback, the argument is the new page Optional out parameter receiving the unbind handle of this binding
+Callable type, signature void(int) Callback, receives the new page number Optional out parameter receiving the unbind handle for this binding
 
 ### activeColor
 
@@ -104,7 +104,7 @@ Callable type, signature void(int) Callback, the argument is the new page Option
 Pagination & activeColor(ThemeRole role) &
 ```
 
-Binds the current page color to a theme semantic role, updated automatically on theme switch
+Binds the current page number color to a theme semantic role, updated automatically on theme change
 
 ### textColor
 
@@ -112,7 +112,7 @@ Binds the current page color to a theme semantic role, updated automatically on 
 Pagination & textColor(ThemeRole role) &
 ```
 
-Binds the page number text color to a theme semantic role, updated automatically on theme switch
+Binds the page number text color to a theme semantic role, updated automatically on theme change
 
 ## Static Methods
 
@@ -122,7 +122,7 @@ Binds the page number text color to a theme semantic role, updated automatically
 static lv_event_code_t eventCode(PaginationEventType type)
 ```
 
-Get the internal pagination event code.
+Returns the internal pagination event code.
 
 ### rebuild
 
@@ -130,7 +130,7 @@ Get the internal pagination event code.
 static void rebuild(PaginationState *st)
 ```
 
-Rebuild the button layout, internal use
+Rebuilds the button layout, internal use
 
 ### goToPage
 
@@ -138,4 +138,4 @@ Rebuild the button layout, internal use
 static void goToPage(PaginationState *st, int page, Notify notify=Notify::Yes)
 ```
 
-Switch the page with a strip scroll animation, internal use
+Switches the page with a strip scroll animation, internal use

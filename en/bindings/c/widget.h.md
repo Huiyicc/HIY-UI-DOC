@@ -6,7 +6,7 @@ title: "widget.h"
 
 **Header:** `#include <hiyui/c/widget.h>`
 
-General widget operations: size, style, events, tooltips
+Common widget operations: size, style, events, tooltips
 
 ## Enums
 
@@ -125,7 +125,7 @@ General widget operations: size, style, events, tooltips
 typedef void(* hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text, void *user_data)
 ```
 
-The text is borrowed until the callback returns; the callback runs on the UI thread and can update the node with set_text_content.
+The text is borrowed until the callback returns. The callback runs on the UI thread and may update the node with set_text_content.
 
 ### hiyui_theme_style_fn
 
@@ -133,7 +133,7 @@ The text is borrowed until the callback returns; the callback runs on the UI thr
 typedef void(* hiyui_theme_style_fn) (hiyui_style_spec_set_t *out, void *user_data)
 ```
 
-Fills in the initialized default styles, out is valid only inside the callback, and the callback must not change the theme or delete widgets. Image sources and paths in the output are borrowed and must stay valid until the image is replaced or the widget is destroyed.
+Fills in an already-initialized default style. out is valid only inside the callback. The callback must not change the theme or delete widgets. Output image sources and paths are borrowed values. They must stay valid until the image is replaced or the widget is destroyed.
 
 ## Functions
 
@@ -143,7 +143,7 @@ Fills in the initialized default styles, out is valid only inside the callback, 
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_primitive_create(hiyui_widget_t *parent, hiyui_primitive_kind_t kind)
 ```
 
-Creates a base node without the widget theme, owned by the parent; returns NULL when the parent is NULL or the kind is invalid.
+Creates a base node without widget theming, owned by the parent. Returns NULL when the parent is NULL or the type is invalid.
 
 ### hiyui_wdg_set_text_content
 
@@ -151,7 +151,7 @@ Creates a base node without the widget theme, owned by the parent; returns NULL 
 HIYUI_API void HIYUI_CALL hiyui_wdg_set_text_content(hiyui_widget_t *w, const char *text)
 ```
 
-Sets the content of a base text node; NULL text refreshes the existing text, and a NULL w or non-text node does nothing.
+Sets the content of a base text node. NULL text refreshes the existing text. NULL w or a non-text node does nothing.
 
 ### hiyui_wdg_get_text_content
 
@@ -159,7 +159,7 @@ Sets the content of a base text node; NULL text refreshes the existing text, and
 HIYUI_API size_t HIYUI_CALL hiyui_wdg_get_text_content(hiyui_widget_t *w, char *buffer, size_t capacity)
 ```
 
-Copies the text and returns the required capacity including NUL; buffer may be NULL, an empty string is written when capacity is insufficient, and 1 is returned when there is no text.
+Copies the text and returns the required capacity including NUL. buffer may be NULL. Insufficient capacity writes an empty string. Returns 1 when there is no text.
 
 ### hiyui_wdg_text_overflow
 
@@ -167,7 +167,7 @@ Copies the text and returns the required capacity including NUL; buffer may be N
 HIYUI_API void HIYUI_CALL hiyui_wdg_text_overflow(hiyui_widget_t *w, hiyui_text_overflow_t value)
 ```
 
-Ellipsis is a single line ellipsis and Dots keeps the height; NULL or a non-text node does nothing.
+Ellipsis truncates to one line, Dots keeps the height. NULL or a non-text node does nothing.
 
 ### hiyui_wdg_get_text_color
 
@@ -187,7 +187,7 @@ HIYUI_API int HIYUI_CALL hiyui_selectable_text_by_default(void)
 HIYUI_API int HIYUI_CALL hiyui_image_source_is_text(const void *source)
 ```
 
-Returns whether the source is a path or symbol string, NULL returns 0.
+Returns whether the source is a path or symbol string. NULL returns 0.
 
 ### hiyui_wdg_bind_text
 
@@ -195,9 +195,9 @@ Returns whether the source is a path or symbol string, NULL returns 0.
 HIYUI_API int HIYUI_CALL hiyui_wdg_bind_text(hiyui_widget_t *w, const hiyui_localized_text_t *text, hiyui_text_binding_fn setter, void *user_data, hiyui_destroy_fn destroy)
 ```
 
-Copies the translation descriptor, updates immediately and on later language changes, and repeated binding replaces the previous binding. When destroy is not NULL it takes ownership of user_data, which is released on failure, replacement, unbinding, or widget destruction.
+Copies the translation description and updates immediately, then on later language changes. Rebinding replaces the previous binding. When destroy is non-NULL it takes ownership of user_data. It is released on failure, replacement, unbinding or widget destruction.
 
-1 on success, 0 for NULL arguments or an invalid text descriptor.
+1 on success. 0 on NULL arguments or an invalid text description.
 
 ### hiyui_wdg_clear_text_binding
 
@@ -205,7 +205,7 @@ Copies the translation descriptor, updates immediately and on later language cha
 HIYUI_API void HIYUI_CALL hiyui_wdg_clear_text_binding(hiyui_widget_t *w)
 ```
 
-Removes the translation binding and keeps the text, NULL or repeated calls do nothing.
+Removes the translation binding and keeps the text. NULL or repeated calls do nothing.
 
 ### hiyui_wdg_parent
 
@@ -213,7 +213,7 @@ Removes the translation binding and keeps the text, NULL or repeated calls do no
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_wdg_parent(hiyui_widget_t *w)
 ```
 
-Returns a borrowed node, NULL, out-of-range, or nonexistent returns NULL, and the node must not be used after its parent is deleted.
+Returns a borrowed node. Returns NULL for NULL input, an out-of-range index or a missing child. Invalid after the parent is deleted.
 
 ### hiyui_wdg_child_at
 
@@ -233,7 +233,7 @@ HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_wdg_screen(hiyui_widget_t *w)
 HIYUI_API void HIYUI_CALL hiyui_wdg_reparent(hiyui_widget_t *w, hiyui_widget_t *parent)
 ```
 
-Reparents the widget, NULL or an ancestor cycle does nothing.
+Reparents the widget. NULL or an ancestor cycle does nothing.
 
 ### hiyui_wdg_contains
 
@@ -241,7 +241,7 @@ Reparents the widget, NULL or an ancestor cycle does nothing.
 HIYUI_API int HIYUI_CALL hiyui_wdg_contains(hiyui_widget_t *w, hiyui_widget_t *other)
 ```
 
-Whether the ancestor relation includes the widget itself, NULL returns 0.
+Returns whether the ancestor relation includes the widget itself. NULL returns 0.
 
 ### hiyui_wdg_is_hidden
 
@@ -291,7 +291,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_flex_align(hiyui_widget_t *w, hiyui_align_t 
 HIYUI_API void HIYUI_CALL hiyui_wdg_gap(hiyui_widget_t *w, int gap)
 ```
 
-Gap and minimum size are in logical pixels, NULL does nothing.
+Gap and minimum size are in logical pixels. NULL does nothing.
 
 ### hiyui_wdg_minimum_size
 
@@ -461,7 +461,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_move_to_index(hiyui_widget_t *w, int index)
 HIYUI_API void HIYUI_CALL hiyui_wdg_size_px(hiyui_widget_t *w, int width, int height)
 ```
 
-Sets the size in physical pixels, NULL does nothing.
+Sets the size in physical pixels. NULL does nothing.
 
 ### hiyui_wdg_width_px
 
@@ -481,9 +481,9 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_height_px(hiyui_widget_t *w, int height)
 HIYUI_API void HIYUI_CALL hiyui_wdg_max_width(hiyui_widget_t *w, int value)
 ```
 
-Sets the maximum logical width, updated with DPI; when the minimum width exceeds the limit the widget is laid out at the minimum width.
+Sets the maximum logical width, updated with DPI. When the minimum width exceeds the limit, layout uses the minimum width.
 
-Non-negative logical pixels, 0 is a zero limit, HIYUI_AUTO removes the local limit, and other negative values do nothing. Does nothing when NULL or already requested for deletion.
+Non-negative logical pixels. 0 is a zero limit, HIYUI_AUTO removes the local limit, other negative values do nothing. NULL or a widget with a pending destroy request does nothing.
 
 ### hiyui_wdg_max_height
 
@@ -491,9 +491,9 @@ Non-negative logical pixels, 0 is a zero limit, HIYUI_AUTO removes the local lim
 HIYUI_API void HIYUI_CALL hiyui_wdg_max_height(hiyui_widget_t *w, int value)
 ```
 
-Sets the maximum logical height, updated with DPI; when the minimum height exceeds the limit the widget is laid out at the minimum height.
+Sets the maximum logical height, updated with DPI. When the minimum height exceeds the limit, layout uses the minimum height.
 
-Non-negative logical pixels, 0 is a zero limit, HIYUI_AUTO removes the local limit, and other negative values do nothing. Does nothing when NULL or already requested for deletion.
+Non-negative logical pixels. 0 is a zero limit, HIYUI_AUTO removes the local limit, other negative values do nothing. NULL or a widget with a pending destroy request does nothing.
 
 ### hiyui_wdg_max_width_px
 
@@ -501,7 +501,7 @@ Non-negative logical pixels, 0 is a zero limit, HIYUI_AUTO removes the local lim
 HIYUI_API void HIYUI_CALL hiyui_wdg_max_width_px(hiyui_widget_t *w, int width)
 ```
 
-Maximum size in physical pixels, HIYUI_AUTO removes the limit, NULL does nothing.
+Sets the maximum size in physical pixels. HIYUI_AUTO removes the limit. NULL does nothing.
 
 ### hiyui_wdg_max_height_px
 
@@ -515,7 +515,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_max_height_px(hiyui_widget_t *w, int height)
 HIYUI_API int HIYUI_CALL hiyui_wdg_get_layout_metrics(hiyui_widget_t *w, hiyui_layout_metrics_t *out)
 ```
 
-Returns 0 for NULL arguments and zeroes non-NULL output.
+NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_update_layout
 
@@ -523,7 +523,7 @@ Returns 0 for NULL arguments and zeroes non-NULL output.
 HIYUI_API void HIYUI_CALL hiyui_wdg_update_layout(hiyui_widget_t *w)
 ```
 
-Completes layout synchronously, callbacks may delete widgets, and NULL does nothing.
+Completes layout synchronously. Callbacks may delete widgets. NULL does nothing.
 
 ### hiyui_wdg_invalidate_layout
 
@@ -537,7 +537,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_invalidate_layout(hiyui_widget_t *w)
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_focused_widget(void)
 ```
 
-Borrowed focus node of the default input group, or NULL when none exists.
+Returns the borrowed focus node of the default input group. NULL when none exists.
 
 ### hiyui_wdg_has_focus_group
 
@@ -557,7 +557,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_focus_next(hiyui_widget_t *w, int previous)
 HIYUI_API int HIYUI_CALL hiyui_wdg_window_focused(hiyui_widget_t *w)
 ```
 
-Whether the owning desktop window has keyboard focus, NULL or non-desktop platforms return 0.
+Returns whether the owning desktop window has keyboard focus. NULL or non-desktop platforms return 0.
 
 ### hiyui_wdg_accessibility_role
 
@@ -577,7 +577,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_accessibility_changed(hiyui_widget_t *w)
 HIYUI_API void HIYUI_CALL hiyui_wdg_theme_style(hiyui_widget_t *w, hiyui_widget_type_t type)
 ```
 
-Applies the built-in widget theme, called once before setting explicit styles, and NULL does nothing.
+Applies the built-in widget theme. Call once before setting explicit styles. NULL does nothing.
 
 ### hiyui_wdg_bind_theme_style
 
@@ -585,9 +585,9 @@ Applies the built-in widget theme, called once before setting explicit styles, a
 HIYUI_API int HIYUI_CALL hiyui_wdg_bind_theme_style(hiyui_widget_t *w, hiyui_theme_style_fn provider, void *user_data, hiyui_destroy_fn destroy)
 ```
 
-Appends a default style provider that runs immediately and on theme and DPI updates, and explicit styles override its result. When destroy is not NULL it takes ownership of user_data, which is released on failure or widget destruction.
+Appends a default style provider. It runs immediately and on theme and DPI updates. Explicit styles override its result. When destroy is non-NULL it takes ownership of user_data. It is released on failure or widget destruction.
 
-1 on success, 0 when w or provider is NULL.
+1 on success. 0 when w or provider is NULL.
 
 ### hiyui_wdg_apply_style_spec
 
@@ -595,7 +595,7 @@ Appends a default style provider that runs immediately and on theme and DPI upda
 HIYUI_API void HIYUI_CALL hiyui_wdg_apply_style_spec(hiyui_widget_t *w, const hiyui_style_spec_t *style)
 ```
 
-Merges explicit styles, keeps zero values and alpha, and reapplies on theme and DPI updates, NULL arguments do nothing.
+Merges explicit styles, keeping zero values and alpha. Reapplied on theme and DPI updates. NULL arguments do nothing.
 
 ### hiyui_wdg_apply_style_spec_set
 
@@ -609,7 +609,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_apply_style_spec_set(hiyui_widget_t *w, cons
 HIYUI_API void HIYUI_CALL hiyui_wdg_selectable_text(hiyui_widget_t *w, int with_menu)
 ```
 
-Enables text selection, a non-zero with_menu includes the copy menu, repeated calls have no extra effect, and non-desktop platforms do nothing.
+Enables text selection. A non-zero with_menu includes a copy menu. Repeated calls have no extra effect. Non-desktop platforms do nothing.
 
 ### hiyui_wdg_cursor
 
@@ -617,7 +617,7 @@ Enables text selection, a non-zero with_menu includes the copy menu, repeated ca
 HIYUI_API void HIYUI_CALL hiyui_wdg_cursor(hiyui_widget_t *w, hiyui_cursor_t cursor)
 ```
 
-Uses the given mouse cursor on hover, NULL or non-desktop platforms do nothing.
+Uses the given mouse cursor on hover. NULL or non-desktop platforms do nothing.
 
 ### hiyui_wdg_pos
 
@@ -745,7 +745,7 @@ HIYUI_API uint32_t HIYUI_CALL hiyui_wdg_get_child_count(hiyui_widget_t *w)
 HIYUI_API int HIYUI_CALL hiyui_wdg_get_bounds_px(hiyui_widget_t *w, hiyui_rect_t *out)
 ```
 
-Queries the untransformed bounds in screen coordinates, NULL arguments return 0 and non-NULL output is zeroed.
+Queries the untransformed bounds in screen coordinates. NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_get_content_bounds_px
 
@@ -753,7 +753,7 @@ Queries the untransformed bounds in screen coordinates, NULL arguments return 0 
 HIYUI_API int HIYUI_CALL hiyui_wdg_get_content_bounds_px(hiyui_widget_t *w, hiyui_rect_t *out)
 ```
 
-Queries the local content area in physical pixels, NULL arguments return 0 and non-NULL output is zeroed.
+Queries the local content area in physical pixels. NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_to_local_px
 
@@ -761,7 +761,7 @@ Queries the local content area in physical pixels, NULL arguments return 0 and n
 HIYUI_API int HIYUI_CALL hiyui_wdg_to_local_px(hiyui_widget_t *w, hiyui_point_t point, hiyui_point_t *out)
 ```
 
-Converts screen physical coordinates to local coordinates including ancestor transforms, NULL arguments return 0 and non-NULL output is zeroed.
+Converts screen physical coordinates to local coordinates, including ancestor transforms. NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_to_screen_px
 
@@ -769,7 +769,7 @@ Converts screen physical coordinates to local coordinates including ancestor tra
 HIYUI_API int HIYUI_CALL hiyui_wdg_to_screen_px(hiyui_widget_t *w, hiyui_point_t point, hiyui_point_t *out)
 ```
 
-Converts local physical coordinates to screen coordinates including ancestor transforms, NULL arguments return 0 and non-NULL output is zeroed.
+Converts local physical coordinates to screen coordinates, including ancestor transforms. NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_get_state
 
@@ -777,7 +777,7 @@ Converts local physical coordinates to screen coordinates including ancestor tra
 HIYUI_API int HIYUI_CALL hiyui_wdg_get_state(hiyui_widget_t *w, hiyui_widget_state_t *out)
 ```
 
-Queries the interaction state, NULL arguments return 0 and non-NULL output is zeroed.
+Queries the interaction state. NULL arguments return 0. A non-NULL output is zeroed.
 
 ### hiyui_wdg_redraw
 
@@ -819,7 +819,7 @@ HIYUI_API int HIYUI_CALL hiyui_wdg_get_viewport_metrics(hiyui_widget_t *w, int w
 
 Queries the current viewport of the widget.
 
-Minimum logical width for the wide layout, must be greater than 0. Receives the query result on success. Returns 1 on success, 0 when arguments or the widget are invalid.
+Minimum logical width to enter the wide layout, must be greater than 0. Receives the query result on success. Returns 1 on success. Returns 0 on invalid arguments or widget.
 
 ### hiyui_wdg_layout_environment
 
@@ -827,9 +827,9 @@ Minimum logical width for the wide layout, must be greater than 0. Receives the 
 HIYUI_API int HIYUI_CALL hiyui_wdg_layout_environment(hiyui_widget_t *w, hiyui_layout_environment_t *out)
 ```
 
-Queries the environment of the most recent layout without forcing a synchronous layout, call on the UI thread.
+Queries the environment of the most recently completed layout without forcing a synchronous layout. Call on the UI thread.
 
-Returns 1 for a valid snapshot, 0 when out is NULL, and an invalid widget writes a default snapshot and returns 0.
+Returns 1 for a valid snapshot. Returns 0 when out is NULL. An invalid widget writes a default snapshot and returns 0.
 
 ### hiyui_wdg_on_environment_change
 
@@ -837,9 +837,9 @@ Returns 1 for a valid snapshot, 0 when out is NULL, and an invalid widget writes
 HIYUI_API int HIYUI_CALL hiyui_wdg_on_environment_change(hiyui_widget_t *w, hiyui_environment_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Appends an environment subscription notified with the first snapshot and later changes after layout completes, identical snapshots are not notified again. The handler is not called within the binding call stack, moves across parents follow the host, and cleanup happens on widget destruction. When the callback unbinds or destroys the widget, user_data is released after the current dispatch ends.
+Appends an environment subscription. Notifies with the first snapshot after layout completes and on later changes. Identical snapshots do not notify again. The handler is not called from within the binding call stack. Moving across parents follows the host. Cleaned up when the widget is destroyed. When the callback unbinds or destroys the widget, user_data is released after the current dispatch ends.
 
-When not NULL it takes ownership of user_data, released once even if binding fails. May be NULL, otherwise must point to NULL, unbind through hiyui_event_off. 1 on successful binding, 0 for an invalid widget, NULL callback, or non-NULL output handle.
+When non-NULL it takes ownership of user_data. Released once even if binding fails. May be NULL, otherwise must point to NULL. Unbind through hiyui_event_off. 1 on successful binding. 0 for an invalid widget, NULL callback or non-NULL output handle.
 
 ### hiyui_wdg_on_back_request
 
@@ -847,9 +847,9 @@ When not NULL it takes ownership of user_data, released once even if binding fai
 HIYUI_API int HIYUI_CALL hiyui_wdg_on_back_request(hiyui_widget_t *w, hiyui_back_request_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Appends a back request handler called before the default local back handling of this object, the first consumer ends routing. When the callback unbinds or destroys the widget, user_data is released after the current dispatch ends.
+Appends a back-request handler. Called before the default local back handling of this object. Routing ends after the first consumer. When the callback unbinds or destroys the widget, user_data is released after the current dispatch ends.
 
-When not NULL it takes ownership of user_data, released once even if binding fails. May be NULL, otherwise must point to NULL, use the existing event handle to unbind and release. 1 on successful binding, 0 for an invalid widget, NULL callback, or non-NULL output handle.
+When non-NULL it takes ownership of user_data. Released once even if binding fails. May be NULL, otherwise must point to NULL. Use the existing event handle to unbind and release. 1 on successful binding. 0 for an invalid widget, NULL callback or non-NULL output handle.
 
 ### hiyui_wdg_align
 
@@ -857,7 +857,7 @@ When not NULL it takes ownership of user_data, released once even if binding fai
 HIYUI_API void HIYUI_CALL hiyui_wdg_align(hiyui_widget_t *w, hiyui_align_pos_t pos, int dx, int dy)
 ```
 
-Aligns to a position relative to the parent widget, dx/dy are offsets.
+Aligns to a position relative to the parent. dx/dy are offsets.
 
 ### hiyui_wdg_bg
 
@@ -877,7 +877,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_bg_role(hiyui_widget_t *w, hiyui_theme_role_
 HIYUI_API void HIYUI_CALL hiyui_wdg_surface(hiyui_widget_t *w, hiyui_surface_role_t role)
 ```
 
-Binds a surface material role, colors update with theme and DPI.
+Binds a surface material role. The color updates with theme and DPI.
 
 ### hiyui_wdg_text_color
 
@@ -1013,7 +1013,7 @@ Triggered after the widget size changes.
 HIYUI_API void HIYUI_CALL hiyui_wdg_on_delete(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud)
 ```
 
-Triggered before the widget is destroyed, the callback must not access w.
+Triggered before the widget is destroyed. The callback must not access w.
 
 ### hiyui_wdg_on_theme_change
 
@@ -1021,7 +1021,7 @@ Triggered before the widget is destroyed, the callback must not access w.
 HIYUI_API int HIYUI_CALL hiyui_wdg_on_theme_change(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-Theme change callback, runs after setTheme refreshes styles and unbinds automatically when the widget is deleted.
+Theme change callback. Runs after setTheme refreshes styles. Automatically unbound when the widget is deleted.
 
 ### hiyui_wdg_on_dpi_change
 
@@ -1029,7 +1029,7 @@ Theme change callback, runs after setTheme refreshes styles and unbinds automati
 HIYUI_API int HIYUI_CALL hiyui_wdg_on_dpi_change(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-DPI change callback, unbinds automatically when the widget is deleted.
+DPI change callback. Automatically unbound when the widget is deleted.
 
 ### hiyui_wdg_tooltip
 
@@ -1055,7 +1055,7 @@ HIYUI_API void HIYUI_CALL hiyui_tooltip_dismiss(void)
 HIYUI_API void HIYUI_CALL hiyui_wdg_accessibility(hiyui_widget_t *w, const hiyui_accessibility_props_t *props)
 ```
 
-Restores automatic semantics when props is NULL.
+NULL props restores automatic semantics.
 
 ### hiyui_register_dpi_binding
 
@@ -1063,9 +1063,9 @@ Restores automatic semantics when props is NULL.
 HIYUI_API int HIYUI_CALL hiyui_register_dpi_binding(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-Registers a callback to recompute on DPI changes, unregistered automatically when the widget is destroyed.
+Registers a DPI change recompute callback. Automatically unregistered when the widget is destroyed.
 
-Returns 1 on successful registration, 0 for invalid arguments or registration failure.
+Returns 1 on successful registration. Returns 0 on invalid arguments or registration failure.
 
 ### hiyui_wdg_destroy
 
@@ -1073,7 +1073,7 @@ Returns 1 on successful registration, 0 for invalid arguments or registration fa
 HIYUI_API void HIYUI_CALL hiyui_wdg_destroy(hiyui_widget_t *w)
 ```
 
-Destroys the widget, destroying the parent cascades to child widgets
+Destroys the widget. Destroying the parent cascades to child widgets.
 
 ### hiyui_wdg_clean
 
@@ -1081,7 +1081,7 @@ Destroys the widget, destroying the parent cascades to child widgets
 HIYUI_API void HIYUI_CALL hiyui_wdg_clean(hiyui_widget_t *w)
 ```
 
-Removes all child widgets
+Removes all child widgets.
 
 ### hiyui_wdg_scroll_to_y
 
@@ -1089,7 +1089,7 @@ Removes all child widgets
 HIYUI_API void HIYUI_CALL hiyui_wdg_scroll_to_y(hiyui_widget_t *w, int y)
 ```
 
-Scrolls to the given Y position
+Scrolls to the given Y position.
 
 ### hiyui_wdg_scrollable
 
@@ -1097,7 +1097,7 @@ Scrolls to the given Y position
 HIYUI_API void HIYUI_CALL hiyui_wdg_scrollable(hiyui_widget_t *w, int scrollable)
 ```
 
-Sets scrollability, 0 disables
+Sets whether the widget is scrollable. 0 disables scrolling.
 
 ### hiyui_wdg_raw
 
@@ -1105,7 +1105,7 @@ Sets scrollability, 0 disables
 HIYUI_API struct _lv_obj_t *HIYUI_CALL hiyui_wdg_raw(hiyui_widget_t *w)
 ```
 
-Returns the underlying lv_obj_t*, allowing mixed use of the raw LVGL API
+Returns the underlying lv_obj_t pointer. Allows mixing raw LVGL API calls.
 
 ### hiyui_debug_print_obj
 
@@ -1113,7 +1113,7 @@ Returns the underlying lv_obj_t*, allowing mixed use of the raw LVGL API
 HIYUI_API void HIYUI_CALL hiyui_debug_print_obj(hiyui_widget_t *w, const char *name)
 ```
 
-Debug prints object size, padding, and child count
+Debug: prints object size, padding and child count.
 
 ### hiyui_debug_print_children
 
@@ -1121,7 +1121,7 @@ Debug prints object size, padding, and child count
 HIYUI_API void HIYUI_CALL hiyui_debug_print_children(hiyui_widget_t *w, const char *prefix)
 ```
 
-Debug prints width and height of all child objects
+Debug: prints width and height of all child objects.
 
 ### hiyui_wdg_press_lock
 
@@ -1153,4 +1153,4 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_enable_pc_scroll(hiyui_widget_t *w)
 HIYUI_API void HIYUI_CALL hiyui_wdg_apply_scrollbar_style(hiyui_widget_t *w)
 ```
 
-Applies the native scrollbar normal and scrolling styles, NULL does nothing.
+Applies the native scrollbar normal and scrolling styles. NULL does nothing.

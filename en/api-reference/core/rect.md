@@ -8,4 +8,4 @@ title: "Rect"
 
 **Namespace:** `hiyui`
 
-Rectangle area, coordinates and size in physical pixels.
+Rectangle; coordinates and size are physical pixels.

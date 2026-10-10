@@ -10,7 +10,7 @@ title: "BarChart"
 
 Bar chart widget
 
-Wraps lv_chart in BAR/STACKED mode with hover shadow highlighting and value bubbles.
+Wraps lv_chart in BAR/STACKED modes with hover shadow highlight and value bubbles.
 
 
 
@@ -29,7 +29,7 @@ Wraps lv_chart in BAR/STACKED mode with hover shadow highlighting and value bubb
 BarChart(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### BarChart
 
@@ -37,7 +37,7 @@ Wrap an existing LVGL object
 BarChart(BarChartProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 Bar chart properties
 
@@ -47,7 +47,7 @@ Bar chart properties
 BarChart & init(lv_obj_t *parent) &
 ```
 
-Create the bar chart under a parent object
+Creates the bar chart on a parent object
 
 Parent LVGL object pointer
 
@@ -57,7 +57,7 @@ Parent LVGL object pointer
 BarChart & init(Widget &parent) &
 ```
 
-Create the bar chart under a parent object
+Creates the bar chart on a parent object
 
 Parent LVGL object pointer
 
@@ -67,9 +67,9 @@ Parent LVGL object pointer
 int addSeries(SeriesConfig config={})
 ```
 
-Add a data series
+Adds a data series
 
-Series configuration Index of the added series, incrementing from 0
+Series configuration Index of the new series, incrementing from 0
 
 ### data
 
@@ -77,9 +77,9 @@ Series configuration Index of the added series, incrementing from 0
 BarChart & data(int seriesIdx, const int32_t *values, int count) &
 ```
 
-Set the entire data of a series
+Replaces the whole data set of a series
 
-Series index Data array Number of data points This component
+Series index Value array Number of data points This component
 
 ### data
 
@@ -87,9 +87,9 @@ Series index Data array Number of data points This component
 BarChart & data(int seriesIdx, const std::vector< int32_t > &values) &
 ```
 
-Set the entire data of a series
+Replaces the whole data set of a series
 
-Series index Data array This component
+Series index Value array This component
 
 ### xLabels
 
@@ -97,9 +97,9 @@ Series index Data array This component
 BarChart & xLabels(const std::vector< std::string > &labels) &
 ```
 
-Set the X axis tick texts
+Sets the X axis tick texts
 
-Array of tick texts This component
+Tick text array This component
 
 ### xLabels
 
@@ -107,7 +107,7 @@ Array of tick texts This component
 BarChart & xLabels(const std::vector< LocalizedText > &labels) &
 ```
 
-Bind localized texts to the tick labels. Replacing the labels releases the previous binding and does not change data or viewport.
+Binds per-tick localized texts. Replacing the labels releases the original binding without changing data or viewport.
 
 ### yRange
 
@@ -115,7 +115,7 @@ Bind localized texts to the tick labels. Replacing the labels releases the previ
 BarChart & yRange(int32_t min, int32_t max) &
 ```
 
-Set the Y axis range
+Sets the Y axis range
 
 Minimum value Maximum value This component
 
@@ -125,6 +125,6 @@ Minimum value Maximum value This component
 lv_obj_t * chartObj() const
 ```
 
-Get the underlying lv_chart object
+Returns the underlying lv_chart object
 
-Pointer to the bar chart LVGL object for advanced custom drawing
+Bar chart LVGL object pointer for advanced custom drawing

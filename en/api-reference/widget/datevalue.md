@@ -8,9 +8,9 @@ title: "DateValue"
 
 **Namespace:** `hiyui`
 
-Date value.
+Date value
 
-Uniformly represents the selected value of all picker types. year=0 means no selection.
+Uniformly represents the selected value of all picker types. year=0 means nothing is selected.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ Uniformly represents the selected value of all picker types. year=0 means no sel
 int year
 ```
 
-Year.
+Year
 
 ### month
 
@@ -28,7 +28,7 @@ Year.
 int month
 ```
 
-Month 1-12, 0 in Year mode.
+Month 1-12, 0 in Year mode
 
 ### day
 
@@ -36,7 +36,7 @@ Month 1-12, 0 in Year mode.
 int day
 ```
 
-Day 1-31, valid only in Date/Week modes.
+Day 1-31, valid only in Date/Week modes
 
 ### hour
 
@@ -44,7 +44,7 @@ Day 1-31, valid only in Date/Week modes.
 int hour
 ```
 
-Hour 0-23, -1 = no time.
+Hour 0-23, -1 = no time part
 
 ### minute
 
@@ -52,7 +52,7 @@ Hour 0-23, -1 = no time.
 int minute
 ```
 
-Minute 0-59.
+Minute 0-59
 
 ### second
 
@@ -60,7 +60,7 @@ Minute 0-59.
 int second
 ```
 
-Second 0-59.
+Second 0-59
 
 ## Public Methods
 
@@ -70,7 +70,7 @@ Second 0-59.
 bool valid() const
 ```
 
-Whether a valid date value exists.
+Returns whether a valid date value exists
 
 ### hasTime
 
@@ -78,7 +78,7 @@ Whether a valid date value exists.
 bool hasTime() const
 ```
 
-Whether the time part is valid.
+Returns whether the time part is valid
 
 ### weekOfYear
 
@@ -94,4 +94,4 @@ ISO 8601 week number, 1-53.
 int quarterOfYear() const
 ```
 
-Quarter, 1-4.
+Quarter, 1-4

@@ -8,7 +8,7 @@ title: "TerminalModel"
 
 **Namespace:** `hiyui`
 
-Windowless VT state and input encoder; calls on one instance must be serialized by the caller.
+Windowless VT state and input encoder; calls on the same instance must be serialized by the caller.
 
 ## Public Methods
 
@@ -18,7 +18,7 @@ Windowless VT state and input encoder; calls on one instance must be serialized 
 TerminalModel(TerminalSize size={80, 24}, int scrollbackLines=2000)
 ```
 
-Non-positive rows or columns become 1, negative scrollback becomes zero.
+Non-positive rows or columns become 1 and a negative scrollback count becomes zero.
 
 ### resize
 
@@ -50,4 +50,4 @@ Current screen text, excluding history and trailing spaces.
 std::string screen() const
 ```
 
-Produces UTF-8/VT draw data for the current screen, including colors, cursor, title and mouse mode. The receiver must use the same rows and columns, and feed input back through onInput for this model to encode. Data excludes history and is not for restoring shell protocol state.
+Generates UTF-8/VT draw data for the current screen, including colors, cursor, title and mouse mode. The receiver must use the same rows and columns, and input is fed back through onInput encoded by this model. The data excludes history and is not for restoring shell protocol state.

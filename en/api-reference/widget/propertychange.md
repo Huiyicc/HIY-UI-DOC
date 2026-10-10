@@ -8,4 +8,4 @@ title: "PropertyChange"
 
 **Namespace:** `hiyui`
 
-Snapshot of a formal value change. The value can be copied and kept. userData is still held by the caller. Commits and changes of Tuple children use the parent Tuple id, userData and the complete old and new tuples.
+Snapshot of a committed value change. The value can be copied and kept; userData is still owned by the caller. Tuple child commits and changes use the parent Tuple id, userData and complete old and new tuples.

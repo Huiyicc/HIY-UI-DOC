@@ -8,7 +8,7 @@ title: "FrameNavigation"
 
 **Namespace:** `hiyui`
 
-Navigation area of a WindowFrame.
+Navigation area of WindowFrame.
 
 **Inherits:** `hiyui::Container< FrameNavigation >`
 
@@ -28,4 +28,4 @@ Wraps an existing navigation area object.
 FrameNavigation & init(lv_obj_t *parent, const FrameRegionProps &props={}) &
 ```
 
-Creates the navigation area in a WindowFrame; no creation when the parent is invalid or the area already exists.
+Creates the navigation area in the WindowFrame, nothing is created when the parent is invalid or the area already exists.

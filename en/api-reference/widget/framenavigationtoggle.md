@@ -10,7 +10,7 @@ title: "FrameNavigationToggle"
 
 Button controlling the navigation area of its WindowFrame.
 
-Shown in Drawer presentation and hidden in other presentations. The button must live inside the WindowFrame subtree.
+Shown in Drawer presentation and hidden in other presentations. The button must be inside the WindowFrame subtree.
 
 **Inherits:** `hiyui::Chainable< FrameNavigationToggle, Button >`
 
@@ -30,4 +30,4 @@ Wraps an existing navigation toggle button object.
 FrameNavigationToggle & init(lv_obj_t *parent) &
 ```
 
-Creates the navigation toggle button in a WindowFrame subtree; no creation when the frame is not found.
+Creates the navigation toggle button in the WindowFrame subtree, nothing is created when the frame is not found.

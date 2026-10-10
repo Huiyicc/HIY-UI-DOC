@@ -18,7 +18,7 @@ HIYUI_API void HIYUI_CALL hiyui_glass_attach(hiyui_widget_t *obj, const hiyui_ba
 
 Attaches a frosted glass effect to a widget.
 
-Target widget. Blur parameters. No effect when blur_radius is 0. Blur source. NULL means backdrop-filter mode, which blurs the area below the widget.
+Target widget Blur parameters; no effect when blur_radius=0 Blur source; NULL selects backdrop-filter mode, which blurs the area below the widget
 
 ### hiyui_glass_detach
 
@@ -42,4 +42,4 @@ Marks the cache invalid so the blur image is regenerated after the widget size o
 HIYUI_API int HIYUI_CALL hiyui_glass_is_attached(hiyui_widget_t *obj)
 ```
 
-Returns whether a frosted glass effect is attached to the widget
+Queries whether a frosted glass effect is attached to the widget

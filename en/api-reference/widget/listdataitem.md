@@ -8,4 +8,4 @@ title: "ListDataItem"
 
 **Namespace:** `hiyui`
 
-Internal data item; separators are managed in the same collection
+Internal data item, separators are managed uniformly as well

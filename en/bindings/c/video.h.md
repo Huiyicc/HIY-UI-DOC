@@ -6,7 +6,7 @@ title: "video.h"
 
 **Header:** `#include <hiyui/c/video.h>`
 
-File and network video playback; operations and callbacks are limited to the UI thread. A non-NULL widget argument must be a Video not yet destroyed; NULL arguments make commands no-ops. When FFmpeg is disabled, creation returns NULL, queries return empty state, and subscriptions return failure.
+File and network video playback; operations and callbacks are limited to the UI thread. A non-NULL widget argument must be a Video that is not yet destroyed. NULL arguments make commands no-ops. When FFmpeg is not enabled, creation returns NULL, queries return an empty state, and subscriptions return failure.
 
 ## 视频事件订阅
 
@@ -22,7 +22,7 @@ HIYUI_API int HIYUI_CALL hiyui_video_on_state_changed(hiyui_widget_t *widget, hi
 HIYUI_API int HIYUI_CALL hiyui_video_on_position_changed(hiyui_widget_t *widget, hiyui_video_position_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Notifies the position roughly every 100 milliseconds during playback, in milliseconds.
+Notifies the position roughly every 100 milliseconds during playback. The unit is milliseconds.
 
 ### hiyui_video_on_error
 
@@ -49,7 +49,7 @@ Unknown video duration, in milliseconds.
 | `HIYUI_VIDEO_STOPPED` |  |
 | `HIYUI_VIDEO_ENDED` |  |
 | `HIYUI_VIDEO_ERROR` |  |
-| `HIYUI_VIDEO_RECONNECTING` | Waiting for or performing automatic reconnection, keeping the last frame and the playback intent. |
+| `HIYUI_VIDEO_RECONNECTING` | Waiting for or performing automatic reconnection; the last frame and the playback intent are kept. |
 
 ### hiyui_video_decoder_t
 
@@ -79,7 +79,7 @@ typedef void(* hiyui_video_position_fn) (int64_t position_ms, void *user_data)
 typedef void(* hiyui_video_error_fn) (const char *message, void *user_data)
 ```
 
-message is valid only within the current callback; the pointer must not be stored.
+message is valid only within the current callback; the pointer must not be saved.
 
 ## Functions
 
@@ -89,7 +89,7 @@ message is valid only within the current callback; the pointer must not be store
 HIYUI_API int HIYUI_CALL hiyui_video_available(void)
 ```
 
-Returns 1 when FFmpeg is enabled at compile time; does not indicate that the current media or audio device is available.
+Returns 1 when FFmpeg is enabled at compile time. Does not indicate that the current media or audio device is usable.
 
 ### hiyui_video_create
 
@@ -97,9 +97,9 @@ Returns 1 when FFmpeg is enabled at compile time; does not indicate that the cur
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_video_create(hiyui_widget_t *parent, const hiyui_video_props_t *props)
 ```
 
-Creates a video widget inside the parent; the playback session is released when the parent is deleted. Automatic reconnection applies to HTTP(S), RTSP(S), RTMP(S), TCP, UDP, RTP, SRT, and RIST. Seekable sources resume the interrupted position; other sources reconnect and reset the timeline. Reconnection keeps the paused state and the latest seek request; exhausted retries or a permanent error enters ERROR. With reconnection enabled, the end of a non-seekable stream of unknown duration is treated as a disconnect. During reconnection, pause sets the paused state after recovery; stop, a source change, and destruction cancel reconnection.
+Creates a video widget inside the parent; the playback session is released when the parent is deleted. Automatic reconnection applies to HTTP(S), RTSP(S), RTMP(S), TCP, UDP, RTP, SRT, and RIST. Seekable sources resume from the interrupted position; other sources reconnect and reset the timeline. Reconnection keeps the paused state and the latest seek request; exhausted retries or permanent errors enter ERROR. With reconnection enabled, the end of a non-seekable stream with unknown duration is treated as a stream interruption. During reconnection, pause sets the paused state after recovery; stop, changing the source, and destruction cancel reconnection.
 
-NULL uses the default configuration. Borrowed widget; returns NULL when parent is NULL, the feature is disabled, or creation fails.
+NULL uses the default configuration. A borrowed widget. Returns NULL when parent is NULL, the feature is not enabled, or creation fails.
 
 ### hiyui_video_set_src
 
@@ -107,7 +107,7 @@ NULL uses the default configuration. Borrowed widget; returns NULL when parent i
 HIYUI_API void HIYUI_CALL hiyui_video_set_src(hiyui_widget_t *widget, const char *source)
 ```
 
-Copies and loads the source asynchronously, honoring the initial autoplay; the same source reloads too, and NULL or an empty string clears it.
+Copies and asynchronously loads the source, honoring the initial autoplay. The same source is reloaded too. NULL or an empty string clears it.
 
 ### hiyui_video_play
 
@@ -115,7 +115,7 @@ Copies and loads the source asynchronously, honoring the initial autoplay; the s
 HIYUI_API void HIYUI_CALL hiyui_video_play(hiyui_widget_t *widget)
 ```
 
-Starts or resumes playback; after stop, end, or error it reopens the saved source, and an empty source is a no-op.
+Starts or resumes playback. After stop, end, or error, the saved source is reopened; an empty source is a no-op.
 
 ### hiyui_video_pause
 
@@ -123,7 +123,7 @@ Starts or resumes playback; after stop, end, or error it reopens the saved sourc
 HIYUI_API void HIYUI_CALL hiyui_video_pause(hiyui_widget_t *widget)
 ```
 
-Pauses audio and the clock while keeping the frame; repeated calls have no additional effect.
+Pauses audio and the clock while keeping the picture. Repeated calls have no additional effect.
 
 ### hiyui_video_stop
 
@@ -131,7 +131,7 @@ Pauses audio and the clock while keeping the frame; repeated calls have no addit
 HIYUI_API void HIYUI_CALL hiyui_video_stop(hiyui_widget_t *widget)
 ```
 
-Releases the session and clears the frame and time while keeping the source; the next play starts from the beginning.
+Releases the session and clears the picture and time, keeping the source. Playing again starts from the beginning.
 
 ### hiyui_video_seek
 
@@ -139,7 +139,7 @@ Releases the session and clears the frame and time while keeping the source; the
 HIYUI_API void HIYUI_CALL hiyui_video_seek(hiyui_widget_t *widget, int64_t position_ms)
 ```
 
-Seeks asynchronously and keeps the playing or paused state, clamping the position to the media range. No-op when not loaded or not seekable; consecutive requests keep the last one not yet executed.
+Seeks asynchronously and keeps the playing or paused state; the position is clamped to the media range. No-op when not loaded or not seekable; among consecutive requests, only the last not-yet-executed one takes effect.
 
 ### hiyui_video_set_fit
 
@@ -155,7 +155,7 @@ HIYUI_IMAGE_FIT_DEFAULT uses Contain.
 HIYUI_API void HIYUI_CALL hiyui_video_set_loop(hiyui_widget_t *widget, int loop)
 ```
 
-A non-zero value enables looping, effective only for seekable media.
+A non-zero value enables looping; effective only for seekable media.
 
 ### hiyui_video_set_muted
 
@@ -163,7 +163,7 @@ A non-zero value enables looping, effective only for seekable media.
 HIYUI_API void HIYUI_CALL hiyui_video_set_muted(hiyui_widget_t *widget, int muted)
 ```
 
-A non-zero value enables muting; the saved volume is unchanged.
+A non-zero value enables muting. The saved volume is unchanged.
 
 ### hiyui_video_set_volume
 
@@ -171,7 +171,7 @@ A non-zero value enables muting; the saved volume is unchanged.
 HIYUI_API void HIYUI_CALL hiyui_video_set_volume(hiyui_widget_t *widget, int volume)
 ```
 
-Clamps the volume to 0-100; 0 means silence, and the setting is kept while muted.
+The volume is clamped to 0-100. 0 means silence, and the setting is saved even while muted.
 
 ### hiyui_video_get_state
 
@@ -179,7 +179,7 @@ Clamps the volume to 0-100; 0 means silence, and the setting is kept while muted
 HIYUI_API hiyui_video_playback_state_t HIYUI_CALL hiyui_video_get_state(hiyui_widget_t *widget)
 ```
 
-Returns HIYUI_VIDEO_EMPTY when the widget is NULL or the feature is disabled.
+Returns HIYUI_VIDEO_EMPTY for NULL or when the feature is not enabled.
 
 ### hiyui_video_get_position_ms
 
@@ -187,7 +187,7 @@ Returns HIYUI_VIDEO_EMPTY when the widget is NULL or the feature is disabled.
 HIYUI_API int64_t HIYUI_CALL hiyui_video_get_position_ms(hiyui_widget_t *widget)
 ```
 
-Position in milliseconds; returns 0 when not loaded, NULL, or the feature is disabled.
+Position in milliseconds. Returns 0 when not loaded, NULL, or the feature is not enabled.
 
 ### hiyui_video_get_duration_ms
 
@@ -195,7 +195,7 @@ Position in milliseconds; returns 0 when not loaded, NULL, or the feature is dis
 HIYUI_API int64_t HIYUI_CALL hiyui_video_get_duration_ms(hiyui_widget_t *widget)
 ```
 
-Duration in milliseconds; returns HIYUI_VIDEO_TIME_UNKNOWN when unknown, not loaded, NULL, or the feature is disabled.
+Duration in milliseconds. Returns HIYUI_VIDEO_TIME_UNKNOWN when the duration is unknown, the widget is not loaded or NULL, or the feature is not enabled.
 
 ### hiyui_video_seekable
 
@@ -211,9 +211,9 @@ Returns 1 when loaded and seekable, otherwise 0.
 HIYUI_API size_t HIYUI_CALL hiyui_video_get_error(hiyui_widget_t *widget, char *buffer, size_t capacity)
 ```
 
-Copies the error text into the caller buffer; an empty string when there is no error, the widget is NULL, or the feature is disabled.
+Copies the error text into a caller buffer. An empty string is written when there is no error, the widget is NULL, or the feature is not enabled.
 
-May be NULL; when non-NULL and capacity is greater than 0 the text is always zero-terminated. Buffer capacity in bytes. Bytes needed for the full text including the terminating zero; truncated when the buffer is too small.
+May be NULL; when non-NULL and capacity is greater than 0, the text is always zero-terminated. Buffer capacity in bytes. Bytes needed for the full text, including the terminating zero. Truncated when the buffer is too small.
 
 ### hiyui_video_get_statistics
 
@@ -221,6 +221,6 @@ May be NULL; when non-NULL and capacity is greater than 0 the text is always zer
 HIYUI_API void HIYUI_CALL hiyui_video_get_statistics(hiyui_widget_t *widget, hiyui_video_statistics_t *statistics)
 ```
 
-Writes a copy of the statistics; all-zero output when the widget is NULL, not loaded, stopped, or the feature is disabled.
+Writes a copy of the statistics. The output is all zeros for a NULL widget, when not loaded, stopped, or the feature is not enabled.
 
 No-op when NULL.

@@ -8,9 +8,9 @@ title: "Color"
 
 **Namespace:** `hiyui`
 
-RGB color value wrapper supporting compile-time construction and channel operations.
+RGB color value wrapper with compile-time construction and channel operations.
 
-Stores the value internally as a uint32_t in 0xRRGGBB format. Provides darken / lighten static methods for compile-time color computation.
+Stores the value as uint32_t in 0xRRGGBB format. Provides darken / lighten static methods for compile-time color computation.
 
 
 
@@ -34,7 +34,7 @@ RGB color value in 0xRRGGBB format
 constexpr Color()=default
 ```
 
-Default constructor, the color is black (0x000000)
+Default constructor, color is black (0x000000)
 
 ### Color
 
@@ -42,7 +42,7 @@ Default constructor, the color is black (0x000000)
 constexpr Color(uint32_t hex)
 ```
 
-Constructs from a hexadecimal value
+Constructs from a hex value
 
 Color value in 0xRRGGBB format
 
@@ -69,7 +69,7 @@ static Color lighten(Color c, int percent)
 
 Lightens the color by a given percentage
 
-Interpolates each RGB channel toward 255 by the given percentage.
+Interpolates each RGB channel toward 255 by percent.
 
 
 Lightening percentage in [0, 100]; 0 = unchanged, 100 = fully white

@@ -10,7 +10,7 @@ title: "SlotContent"
 
 Widget content slot description
 
-When iconCodepoint is nonzero the font icon is used, otherwise iconSrc.
+When iconCodepoint is nonzero, the font icon is used; otherwise iconSrc is used.
 
 ## Public Members
 
@@ -36,7 +36,7 @@ Material Symbols codepoint
 const void * iconSrc
 ```
 
-Image source, a file path or lv_image_dsc_t*
+Image source. File path or lv_image_dsc_t*
 
 ### iconSize
 
@@ -44,7 +44,7 @@ Image source, a file path or lv_image_dsc_t*
 uint32_t iconSize
 ```
 
-Icon size, 0 = follow the widget default
+Icon size. 0 = follow the widget default
 
 ### iconStyle
 
@@ -52,7 +52,7 @@ Icon size, 0 = follow the widget default
 FontIconStyle iconStyle
 ```
 
-Icon style, fill/weight/grade/opticalSize
+Icon style. fill/weight/grade/opticalSize
 
 ### iconColor
 
@@ -60,4 +60,4 @@ Icon style, fill/weight/grade/opticalSize
 uint32_t iconColor
 ```
 
-Icon color, HIYUI_DEFAULT = follow the parent text color
+Icon color. HIYUI_DEFAULT = follow the parent text color

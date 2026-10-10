@@ -18,7 +18,7 @@ Namespace and display information of an XML module.
 const char * namespaceUri
 ```
 
-Namespace URI; must not be empty.
+Namespace URI, must not be empty.
 
 ### preferredPrefix
 

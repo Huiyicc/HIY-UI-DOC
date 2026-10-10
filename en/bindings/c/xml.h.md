@@ -6,7 +6,7 @@ title: "xml.h"
 
 **Header:** `#include <hiyui/c/xml.h>`
 
-XML APIs and callbacks in this header must be called on the LVGL/Hiy-UI UI thread.
+The XML APIs and callbacks in this header must be called on the LVGL/Hiy-UI UI thread.
 
 ## Enums
 
@@ -193,7 +193,7 @@ typedef struct hiyui_xml_factory_context_s hiyui_xml_factory_context_t
 typedef struct hiyui_xml_value_writer_s hiyui_xml_value_writer_t
 ```
 
-Write interface for a value reader. Valid only during the current callback.
+Write interface for a value reader; valid only during the current callback.
 
 ### hiyui_xml_registry_snapshot_t
 
@@ -207,7 +207,7 @@ typedef struct hiyui_xml_registry_snapshot_s hiyui_xml_registry_snapshot_t
 typedef int(* hiyui_xml_resolve_fn) (const char *referring_source, const char *requested_source, size_t max_bytes, hiyui_xml_source_t *out, void *user_data)
 ```
 
-Returns non-zero on success. The content can report overflow using max_bytes + 1 bytes.
+Returns non-zero on success; content may report oversize with max_bytes + 1 bytes.
 
 ### hiyui_xml_tree_item_t
 
@@ -215,7 +215,7 @@ Returns non-zero on success. The content can report overflow using max_bytes + 1
 typedef struct hiyui_xml_tree_item_s hiyui_xml_tree_item_t
 ```
 
-Read-only recursive view of an ItemTree. All pointers are valid only during the collector callback.
+Read-only recursive view for ItemTree; all pointers are valid only during the collector callback.
 
 ### hiyui_xml_userdata_destroy_fn
 
@@ -229,7 +229,7 @@ typedef void(* hiyui_xml_userdata_destroy_fn) (void *user_data)
 typedef hiyui_xml_widget_result_t(* hiyui_xml_factory_fn) (hiyui_widget_t *parent, const hiyui_xml_attr_t *attrs, size_t attr_count, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
-The loader applies common XML attributes after the factory returns. The factory must not apply them again.
+The loader applies common XML attributes uniformly after the factory returns; factories must not apply them again.
 
 ### hiyui_xml_item_collector_fn
 
@@ -251,7 +251,7 @@ Receives top-level items and their recursive children.
 typedef int(* hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
-Validates a runtime binding value. The callback must not modify widgets or external state.
+Validates a runtime bound value; the callback must not modify widgets or external state.
 
 ### hiyui_xml_property_setter_fn
 
@@ -259,7 +259,7 @@ Validates a runtime binding value. The callback must not modify widgets or exter
 typedef int(* hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
-Applies a runtime binding value that already passed the validator of the same registration description.
+Applies a runtime bound value that already passed the validator of the same registration description.
 
 ### hiyui_xml_value_reader_fn
 
@@ -267,7 +267,7 @@ Applies a runtime binding value that already passed the validator of the same re
 typedef int(* hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_value_writer_t *writer, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
-On success the callback must write the value kind declared in the registration description. The writer is valid only during the callback.
+On success the callback must write the value kind declared in the registration description; writer is valid only during the callback.
 
 ### hiyui_xml_command_fn
 
@@ -281,7 +281,7 @@ typedef void(* hiyui_xml_command_fn) (const hiyui_xml_command_event_t *event, vo
 typedef ptrdiff_t(* hiyui_xml_read_fn) (char *buffer, size_t capacity, void *user_data)
 ```
 
-Returns 0 for end of input and negative for failure. A positive return must not exceed capacity.
+Returns 0 for end, a negative value for failure, and a positive value that must not exceed capacity.
 
 ### hiyui_xml_window_t
 
@@ -297,7 +297,7 @@ typedef struct hiyui_xml_window_s hiyui_xml_window_t
 HIYUI_API const char *HIYUI_CALL hiyui_xml_attr_get(const hiyui_xml_attr_t *attrs, size_t attr_count, const char *name)
 ```
 
-Returns the borrowed attribute value. Returns NULL when the name does not exist or arguments are invalid.
+Returns a borrowed attribute value; NULL when the name does not exist or arguments are invalid.
 
 ### hiyui_xml_context_create
 
@@ -305,7 +305,7 @@ Returns the borrowed attribute value. Returns NULL when the name does not exist 
 HIYUI_API hiyui_xml_context_t *HIYUI_CALL hiyui_xml_context_create(void)
 ```
 
-Creates a standalone XML context. Returns NULL on failure.
+Creates a standalone XML context; returns NULL on failure.
 
 ### hiyui_xml_context_destroy
 
@@ -313,7 +313,7 @@ Creates a standalone XML context. Returns NULL on failure.
 HIYUI_API void HIYUI_CALL hiyui_xml_context_destroy(hiyui_xml_context_t *context)
 ```
 
-Destroys the context handle. Commands and bindings held by loaded widgets stay valid until the widgets are destroyed.
+Destroys the context handle; commands and bindings held by loaded widgets stay valid until the widgets are destroyed.
 
 ### hiyui_xml_context_register_command
 
@@ -321,7 +321,7 @@ Destroys the context handle. Commands and bindings held by loaded widgets stay v
 HIYUI_API hiyui_xml_context_registration_t HIYUI_CALL hiyui_xml_context_register_command(hiyui_xml_context_t *context, const char *name, hiyui_xml_command_fn callback, void *user_data, hiyui_xml_userdata_destroy_fn destroy_user_data)
 ```
 
-Registers a named command. On success the context takes ownership of user_data, and the command no longer fires after unregistration.
+Registers a named command; on success the context takes ownership of user_data, and the command no longer fires after unregistration.
 
 ### hiyui_xml_context_unregister_command
 
@@ -335,7 +335,7 @@ HIYUI_API hiyui_xml_context_status_t HIYUI_CALL hiyui_xml_context_unregister_com
 HIYUI_API int HIYUI_CALL hiyui_xml_context_register_menu_resource(hiyui_xml_context_t *context, const char *name, const hiyui_context_menu_item_t *items, int item_count, hiyui_popup_mode_t mode)
 ```
 
-Registers a named menu resource. The name, menu structure, and texts are all copied; a resource with the same name is replaced. Menu tree. Resources pointed to by icon_src must stay valid until the menu resource is removed. Number of menu items. May be 0; when non-zero, items must not be NULL. Returns non-zero when SDL3 is enabled, the arguments are valid, and the resource is stored.
+Registers a named menu resource; the name, menu structure, and texts are copied, and a same-name resource is replaced. Menu tree; resources pointed to by icon_src must stay valid until the menu resource is removed. Menu item count; may be 0, and items must not be NULL when non-zero. Non-zero when SDL3 is enabled, arguments are valid, and the resource is stored.
 
 ### hiyui_xml_context_remove_menu_resource
 
@@ -343,7 +343,7 @@ Registers a named menu resource. The name, menu structure, and texts are all cop
 HIYUI_API int HIYUI_CALL hiyui_xml_context_remove_menu_resource(hiyui_xml_context_t *context, const char *name)
 ```
 
-Removes a named menu resource. Returns zero when the resource does not exist or SDL3 is not enabled.
+Removes a named menu resource; returns zero when the resource does not exist or SDL3 is not enabled.
 
 ### hiyui_xml_context_set_resource
 
@@ -351,7 +351,7 @@ Removes a named menu resource. Returns zero when the resource does not exist or 
 HIYUI_API int HIYUI_CALL hiyui_xml_context_set_resource(hiyui_xml_context_t *context, const char *name, const char *value)
 ```
 
-The name and value are both copied.
+Both name and value are copied.
 
 ### hiyui_xml_context_remove_resource
 
@@ -365,7 +365,7 @@ HIYUI_API int HIYUI_CALL hiyui_xml_context_remove_resource(hiyui_xml_context_t *
 HIYUI_API int HIYUI_CALL hiyui_xml_context_set_style(hiyui_xml_context_t *context, const char *name, const hiyui_style_set_t *style)
 ```
 
-The name and style value are both copied.
+Both name and style value are copied.
 
 ### hiyui_xml_context_remove_style
 
@@ -379,7 +379,7 @@ HIYUI_API int HIYUI_CALL hiyui_xml_context_remove_style(hiyui_xml_context_t *con
 HIYUI_API int HIYUI_CALL hiyui_xml_context_set_binding(hiyui_xml_context_t *context, const char *name, const char *value)
 ```
 
-Sets the value and synchronously updates runtime binding targets that are still alive.
+Sets the value and immediately updates runtime binding targets that are still alive.
 
 ### hiyui_xml_context_update_binding
 
@@ -387,7 +387,7 @@ Sets the value and synchronously updates runtime binding targets that are still 
 HIYUI_API hiyui_xml_binding_result_t *HIYUI_CALL hiyui_xml_context_update_binding(hiyui_xml_context_t *context, const char *name, const char *value)
 ```
 
-Returns a standalone result handle. On validation failure the value is not saved and setters are not called. The caller must destroy the result with hiyui_xml_binding_result_destroy.
+Returns an independent result handle; on validation failure no value is saved and no setter is called. The caller must destroy the result with `hiyui_xml_binding_result_destroy`.
 
 ### hiyui_xml_context_last_binding_result
 
@@ -395,7 +395,7 @@ Returns a standalone result handle. On validation failure the value is not saved
 HIYUI_API hiyui_xml_binding_result_t *HIYUI_CALL hiyui_xml_context_last_binding_result(const hiyui_xml_context_t *context)
 ```
 
-Returns a standalone result handle. The caller destroys it with hiyui_xml_binding_result_destroy.
+Returns an independent result handle; the caller destroys it with `hiyui_xml_binding_result_destroy`.
 
 ### hiyui_xml_context_remove_binding
 
@@ -433,7 +433,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_xml_binding_result_diagnostic_count(const hiyu
 HIYUI_API int HIYUI_CALL hiyui_xml_binding_result_get_diagnostic(const hiyui_xml_binding_result_t *result, size_t index, hiyui_xml_diagnostic_t *out)
 ```
 
-out must be initialized with HIYUI_XML_DIAGNOSTIC_INIT.
+out must be initialized with `HIYUI_XML_DIAGNOSTIC_INIT`.
 
 ### hiyui_xml_binding_result_destroy
 
@@ -447,7 +447,7 @@ HIYUI_API void HIYUI_CALL hiyui_xml_binding_result_destroy(hiyui_xml_binding_res
 HIYUI_API hiyui_xml_collection_result_t *HIYUI_CALL hiyui_xml_context_set_collection(hiyui_xml_context_t *context, const char *name, const hiyui_xml_collection_item_t *items, size_t item_count)
 ```
 
-Deep-copies all fields. index is a reserved field name. If any Repeater build fails, the original collection and UI are kept.
+Deep-copies all fields. `index` is a reserved field name. If any Repeater construction fails, the original collection and UI are kept.
 
 ### hiyui_xml_context_append_collection_item
 
@@ -509,7 +509,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_xml_collection_result_diagnostic_count(const h
 HIYUI_API int HIYUI_CALL hiyui_xml_collection_result_get_diagnostic(const hiyui_xml_collection_result_t *result, size_t index, hiyui_xml_diagnostic_t *out)
 ```
 
-out must be initialized with HIYUI_XML_DIAGNOSTIC_INIT.
+out must be initialized with `HIYUI_XML_DIAGNOSTIC_INIT`.
 
 ### hiyui_xml_collection_result_destroy
 
@@ -523,7 +523,7 @@ HIYUI_API void HIYUI_CALL hiyui_xml_collection_result_destroy(hiyui_xml_collecti
 HIYUI_API hiyui_xml_layout_t *HIYUI_CALL hiyui_xml_layout_from_file(hiyui_widget_t *parent, const char *path, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-Loads through the host file system. When options is non-null it must be initialized.
+Loads through the host file system; options must be initialized when non-NULL.
 
 ### hiyui_xml_layout_from_string
 
@@ -531,7 +531,7 @@ Loads through the host file system. When options is non-null it must be initiali
 HIYUI_API hiyui_xml_layout_t *HIYUI_CALL hiyui_xml_layout_from_string(hiyui_widget_t *parent, const char *xml, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-When options is non-null it must be initialized with HIYUI_XML_LOAD_OPTIONS_INIT.
+When options is non-NULL it must be initialized with `HIYUI_XML_LOAD_OPTIONS_INIT`.
 
 ### hiyui_xml_layout_from_memory
 
@@ -539,7 +539,7 @@ When options is non-null it must be initialized with HIYUI_XML_LOAD_OPTIONS_INIT
 HIYUI_API hiyui_xml_layout_t *HIYUI_CALL hiyui_xml_layout_from_memory(hiyui_widget_t *parent, const char *xml, size_t size, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-The input buffer only needs to stay valid during the synchronous call. When options is non-null it must be initialized.
+The input buffer only needs to be valid during the synchronous call; options must be initialized when non-NULL.
 
 ### hiyui_xml_layout_from_reader
 
@@ -547,7 +547,7 @@ The input buffer only needs to stay valid during the synchronous call. When opti
 HIYUI_API hiyui_xml_layout_t *HIYUI_CALL hiyui_xml_layout_from_reader(hiyui_widget_t *parent, hiyui_xml_read_fn reader, void *reader_user_data, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-reader and user_data are used only during the synchronous call. External resources are managed by the caller.
+reader and user_data are used only during the synchronous call; external resources are managed by the caller.
 
 ### hiyui_xml_layout_valid
 
@@ -561,7 +561,7 @@ HIYUI_API int HIYUI_CALL hiyui_xml_layout_valid(const hiyui_xml_layout_t *layout
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_xml_layout_get_by_id(const hiyui_xml_layout_t *layout, const char *id)
 ```
 
-Returns a borrowed widget handle. The layout does not own the widget.
+Returns a borrowed widget handle; the layout does not own the widget.
 
 ### hiyui_xml_layout_diagnostic_count
 
@@ -575,7 +575,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_xml_layout_diagnostic_count(const hiyui_xml_la
 HIYUI_API int HIYUI_CALL hiyui_xml_layout_get_diagnostic(const hiyui_xml_layout_t *layout, size_t index, hiyui_xml_diagnostic_t *out)
 ```
 
-out must be initialized with HIYUI_XML_DIAGNOSTIC_INIT.
+out must be initialized with `HIYUI_XML_DIAGNOSTIC_INIT`.
 
 ### hiyui_xml_layout_source_id
 
@@ -583,7 +583,7 @@ out must be initialized with HIYUI_XML_DIAGNOSTIC_INIT.
 HIYUI_API const char *HIYUI_CALL hiyui_xml_layout_source_id(const hiyui_xml_layout_t *layout)
 ```
 
-Returns a borrowed source ID, valid until the layout is destroyed. Returns NULL when there is no source ID.
+Returns a borrowed source ID, valid until the layout is destroyed; NULL when there is no source ID.
 
 ### hiyui_xml_layout_dependency_count
 
@@ -613,7 +613,7 @@ Destroys the query handle without destroying the widget tree already attached to
 HIYUI_API hiyui_xml_reload_host_t *HIYUI_CALL hiyui_xml_reload_host_create(hiyui_widget_t *parent, hiyui_xml_context_t *context)
 ```
 
-Creates a whole-tree transactional reload host. The host copies the shared state of context and owns XML root trees committed later. On reload failure the candidate tree is destroyed and the current root tree is kept.
+Creates a whole-tree transactional reload host. The host copies the shared state of context and owns the XML root tree committed afterwards. On reload failure the candidate tree is destroyed and the current root tree is kept.
 
 ### hiyui_xml_reload_host_reload_file
 
@@ -621,7 +621,7 @@ Creates a whole-tree transactional reload host. The host copies the shared state
 HIYUI_API int HIYUI_CALL hiyui_xml_reload_host_reload_file(hiyui_xml_reload_host_t *host, const char *path, const hiyui_xml_load_options_t *options)
 ```
 
-When options is non-null it must be initialized. Loads in strict mode regardless of the strict field.
+options must be initialized when non-NULL; loading always uses strict mode regardless of the strict field.
 
 ### hiyui_xml_reload_host_reload_string
 
@@ -629,7 +629,7 @@ When options is non-null it must be initialized. Loads in strict mode regardless
 HIYUI_API int HIYUI_CALL hiyui_xml_reload_host_reload_string(hiyui_xml_reload_host_t *host, const char *xml, const hiyui_xml_load_options_t *options)
 ```
 
-When options is non-null it must be initialized. On success the current root tree is replaced.
+options must be initialized when non-NULL; on success the current root tree is replaced.
 
 ### hiyui_xml_reload_host_reload_memory
 
@@ -637,7 +637,7 @@ When options is non-null it must be initialized. On success the current root tre
 HIYUI_API int HIYUI_CALL hiyui_xml_reload_host_reload_memory(hiyui_xml_reload_host_t *host, const char *xml, size_t size, const hiyui_xml_load_options_t *options)
 ```
 
-The input buffer only needs to stay valid during the synchronous call.
+The input buffer only needs to be valid during the synchronous call.
 
 ### hiyui_xml_reload_host_reload_reader
 
@@ -653,7 +653,7 @@ reader and user_data are used only during the synchronous call.
 HIYUI_API int HIYUI_CALL hiyui_xml_reload_host_valid(const hiyui_xml_reload_host_t *host)
 ```
 
-Returns non-zero when a valid committed layout currently exists.
+Non-zero when a valid committed layout currently exists.
 
 ### hiyui_xml_reload_host_status
 
@@ -661,7 +661,7 @@ Returns non-zero when a valid committed layout currently exists.
 HIYUI_API hiyui_xml_reload_status_t HIYUI_CALL hiyui_xml_reload_host_status(const hiyui_xml_reload_host_t *host)
 ```
 
-Returns the status of the most recent reload. HIYUI_XML_RELOAD_IDLE after creation and after reset.
+Returns the status of the most recent reload; `HIYUI_XML_RELOAD_IDLE` after creation and reset.
 
 ### hiyui_xml_reload_host_get_by_id
 
@@ -669,7 +669,7 @@ Returns the status of the most recent reload. HIYUI_XML_RELOAD_IDLE after creati
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_xml_reload_host_get_by_id(const hiyui_xml_reload_host_t *host, const char *id)
 ```
 
-Returns a borrowed widget handle. Invalid after a successful reload, reset, or host destruction.
+Returns a borrowed widget handle; invalidated by a successful reload, reset, or host destruction.
 
 ### hiyui_xml_reload_host_diagnostic_count
 
@@ -685,7 +685,7 @@ Returns the diagnostic count of the most recent reload.
 HIYUI_API int HIYUI_CALL hiyui_xml_reload_host_get_diagnostic(const hiyui_xml_reload_host_t *host, size_t index, hiyui_xml_diagnostic_t *out)
 ```
 
-Strings in out stay valid until the next reload, reset, or host destruction.
+Strings in out are valid until the next reload, reset, or host destruction.
 
 ### hiyui_xml_reload_host_source_id
 
@@ -693,7 +693,7 @@ Strings in out stay valid until the next reload, reset, or host destruction.
 HIYUI_API const char *HIYUI_CALL hiyui_xml_reload_host_source_id(const hiyui_xml_reload_host_t *host)
 ```
 
-Returns a borrowed source ID. Invalid after the next reload, reset, or host destruction.
+Returns a borrowed source ID; invalidated by the next reload, reset, or host destruction.
 
 ### hiyui_xml_reload_host_dependency_count
 
@@ -707,7 +707,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_xml_reload_host_dependency_count(const hiyui_x
 HIYUI_API const char *HIYUI_CALL hiyui_xml_reload_host_dependency(const hiyui_xml_reload_host_t *host, size_t index)
 ```
 
-Returns a borrowed include source ID. Invalid after the next reload, reset, or host destruction.
+Returns a borrowed Include source ID; invalidated by the next reload, reset, or host destruction.
 
 ### hiyui_xml_reload_host_reset
 
@@ -731,7 +731,7 @@ Destroys the host and its current root tree.
 HIYUI_API hiyui_xml_registration_t HIYUI_CALL hiyui_xml_register_module(const hiyui_xml_module_spec_t *spec)
 ```
 
-spec must be initialized with HIYUI_XML_MODULE_SPEC_INIT. The registry deep-copies all strings.
+spec must be initialized with `HIYUI_XML_MODULE_SPEC_INIT`; the registry deep-copies all strings.
 
 ### hiyui_xml_unregister_module
 
@@ -739,7 +739,7 @@ spec must be initialized with HIYUI_XML_MODULE_SPEC_INIT. The registry deep-copi
 HIYUI_API hiyui_xml_registration_status_t HIYUI_CALL hiyui_xml_unregister_module(uint64_t token)
 ```
 
-Unregisters the module and all its widgets. New loads no longer parse that namespace.
+Unregisters the module and all its widgets; new loads no longer resolve that namespace.
 
 ### hiyui_xml_register_widget
 
@@ -747,7 +747,7 @@ Unregisters the module and all its widgets. New loads no longer parse that names
 HIYUI_API hiyui_xml_registration_t HIYUI_CALL hiyui_xml_register_widget(uint64_t module_token, const hiyui_xml_widget_spec_t *spec)
 ```
 
-spec must be initialized with HIYUI_XML_WIDGET_SPEC_INIT. The registry deep-copies the local name and attribute metadata. On success it takes ownership of user_data; on failure ownership stays with the caller.
+spec must be initialized with `HIYUI_XML_WIDGET_SPEC_INIT`. The registry deep-copies the local name and attribute metadata. On success it takes ownership of user_data; on failure ownership stays with the caller.
 
 ### hiyui_xml_unregister_widget
 
@@ -755,7 +755,7 @@ spec must be initialized with HIYUI_XML_WIDGET_SPEC_INIT. The registry deep-copi
 HIYUI_API hiyui_xml_registration_status_t HIYUI_CALL hiyui_xml_unregister_widget(uint64_t token)
 ```
 
-After unregistration new layouts no longer use the tag. Existing custom attribute bindings no longer call the setter.
+After unregistration new layouts no longer use the tag, and existing custom attribute bindings no longer call the setter.
 
 ### hiyui_xml_registry_snapshot_create
 
@@ -763,7 +763,7 @@ After unregistration new layouts no longer use the tag. Existing custom attribut
 HIYUI_API hiyui_xml_registry_snapshot_t *HIYUI_CALL hiyui_xml_registry_snapshot_create(void)
 ```
 
-Creates a deep-copy snapshot of the registry. Returns NULL on failure.
+Creates a deep-copy snapshot of the registry; returns NULL on failure.
 
 ### hiyui_xml_registry_snapshot_destroy
 
@@ -801,7 +801,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_xml_registry_snapshot_widget_count(const hiyui
 HIYUI_API int HIYUI_CALL hiyui_xml_registry_snapshot_get_widget(const hiyui_xml_registry_snapshot_t *snapshot, size_t module_index, size_t widget_index, hiyui_xml_widget_metadata_t *out)
 ```
 
-out must be initialized with HIYUI_XML_WIDGET_METADATA_INIT.
+out must be initialized with `HIYUI_XML_WIDGET_METADATA_INIT`.
 
 ### hiyui_xml_registry_snapshot_common_attribute_count
 
@@ -865,7 +865,7 @@ HIYUI_API void HIYUI_CALL hiyui_xml_value_writer_set_number(hiyui_xml_value_writ
 HIYUI_API int HIYUI_CALL hiyui_xml_value_writer_set_string(hiyui_xml_value_writer_t *writer, const char *value)
 ```
 
-Copies the string. Returns non-zero on success.
+Copies the string; returns non-zero on success.
 
 ### hiyui_xml_factory_context_error
 
@@ -873,7 +873,7 @@ Copies the string. Returns non-zero on success.
 HIYUI_API void HIYUI_CALL hiyui_xml_factory_context_error(hiyui_xml_factory_context_t *context, hiyui_xml_diagnostic_code_t code, const char *attribute, const char *message)
 ```
 
-Reports an error for the current element. Valid only during factory or item collector callbacks.
+Reports an error for the current element, only during a factory or item collector callback.
 
 ### hiyui_xml_set_debug_outline
 
@@ -881,7 +881,7 @@ Reports an error for the current element. Valid only during factory or item coll
 HIYUI_API void HIYUI_CALL hiyui_xml_set_debug_outline(int enabled)
 ```
 
-When enabled, widgets loaded by all later XML loads draw a 1px debug outline.
+When enabled, all widgets from subsequent XML loads draw a 1px debug outline.
 
 ### hiyui_xml_get_debug_outline
 
@@ -897,7 +897,7 @@ Returns the current state of the debug outline switch.
 HIYUI_API hiyui_xml_window_t *HIYUI_CALL hiyui_xml_window_from_file(const char *path, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-Loads a \&lt;Window\&gt; from a file transactionally. When options is non-null it must be initialized.
+Transactionally loads a \&lt;Window\&gt; from a file; options must be initialized when non-NULL.
 
 ### hiyui_xml_window_from_string
 
@@ -905,7 +905,7 @@ Loads a \&lt;Window\&gt; from a file transactionally. When options is non-null i
 HIYUI_API hiyui_xml_window_t *HIYUI_CALL hiyui_xml_window_from_string(const char *xml, hiyui_xml_context_t *context, const hiyui_xml_load_options_t *options)
 ```
 
-Loads a \&lt;Window\&gt; from a memory string transactionally. When options is non-null it must be initialized.
+Transactionally loads a \&lt;Window\&gt; from an in-memory string; options must be initialized when non-NULL.
 
 ### hiyui_xml_window_window
 
@@ -913,7 +913,7 @@ Loads a \&lt;Window\&gt; from a memory string transactionally. When options is n
 HIYUI_API hiyui_win_t *HIYUI_CALL hiyui_xml_window_window(const hiyui_xml_window_t *window)
 ```
 
-Returns the created window. Returns NULL when no window was created.
+Returns the created window, or NULL when no window was created.
 
 ### hiyui_xml_window_diagnostic_count
 
@@ -929,7 +929,7 @@ Returns the number of diagnostics produced by the load.
 HIYUI_API int HIYUI_CALL hiyui_xml_window_get_diagnostic(const hiyui_xml_window_t *window, size_t index, hiyui_xml_diagnostic_t *out)
 ```
 
-out must be initialized with HIYUI_XML_DIAGNOSTIC_INIT.
+out must be initialized with `HIYUI_XML_DIAGNOSTIC_INIT`.
 
 ### hiyui_xml_window_source_id
 
@@ -955,7 +955,7 @@ HIYUI_API const char *HIYUI_CALL hiyui_xml_window_dependency(const hiyui_xml_win
 HIYUI_API int HIYUI_CALL hiyui_xml_window_valid(const hiyui_xml_window_t *window)
 ```
 
-Returns non-zero only when the window was created and there are no error diagnostics.
+Non-zero only when the window was created and there are no error diagnostics.
 
 ### hiyui_xml_window_destroy
 

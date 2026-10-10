@@ -8,7 +8,7 @@ title: "TerminalInput"
 
 **Namespace:** `hiyui`
 
-Unencoded terminal input; text is valid only during this call or event callback.
+Uncoded terminal input; text is valid only for the duration of the call or event callback.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Unencoded terminal input; text is valid only during this call or event callback.
 uint8_t modifiers
 ```
 
-Bitmask, Shift is 1, Alt is 2, Ctrl is 4.
+Bitmask; Shift is 1, Alt is 2, Ctrl is 4.
 
 ### row
 
@@ -26,7 +26,7 @@ Bitmask, Shift is 1, Alt is 2, Ctrl is 4.
 int row
 ```
 
-Mouse row, zero based.
+Mouse row, zero-based.
 
 ### column
 
@@ -34,7 +34,7 @@ Mouse row, zero based.
 int column
 ```
 
-Mouse column, zero based.
+Mouse column, zero-based.
 
 ### button
 
@@ -42,7 +42,7 @@ Mouse column, zero based.
 int button
 ```
 
-0 means motion, 1-3 are buttons, 4/5 are wheel up/down.
+Zero means movement, 1-3 are buttons, 4/5 are wheel up/down.
 
 ### pressed
 

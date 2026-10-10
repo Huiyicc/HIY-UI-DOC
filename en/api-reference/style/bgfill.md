@@ -18,7 +18,7 @@ Background fill
 RGBA color
 ```
 
-Fill color, opacity controlled by the RGBA alpha
+Fill color, opacity controlled by RGBA alpha
 
 ### gradient
 

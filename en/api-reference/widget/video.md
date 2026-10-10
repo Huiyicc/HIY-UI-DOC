@@ -8,7 +8,7 @@ title: "Video"
 
 **Namespace:** `hiyui`
 
-Play a file or network video; all public operations are confined to the UI thread. Loading, playback and seeks complete asynchronously; events are delivered on the UI thread. Formats and protocols are provided by the linked FFmpeg. Deleting the parent widget stops and releases the playback session. clean() clears the frame and stops; calling play() again reloads the saved source. Properties and playback commands can be set before mounting; operations have no effect after the widget becomes invalid. Automatic reconnection applies to HTTP(S), RTSP(S), RTMP(S), TCP, UDP, RTP, SRT and RIST. Seekable sources resume from the interruption position; other sources reconnect and reset the timeline. Reconnection preserves the paused state and the latest seek request; exhausted retries or a permanent error enters Error. With reconnection enabled, the end of a non-seekable stream with unknown duration is treated as a stream interruption. During reconnection, pause() sets the paused state for after recovery; stop(), changing the source and destruction cancel reconnection.
+Plays file or network video; all public operations are confined to the UI thread. Loading, playback, and seeking complete asynchronously; events are delivered on the UI thread. Formats and protocols are provided by the linked FFmpeg. Deleting the parent widget stops playback and releases the playback session. clean() clears the frame and stops; play() again reloads the saved source. Properties and playback commands can be set before mounting; operations have no effect after the widget becomes invalid. Auto-reconnect applies to HTTP(S), RTSP(S), RTMP(S), TCP, UDP, RTP, SRT, and RIST. Seekable sources resume from the interrupted position; other sources reconnect and reset the timeline. Reconnection preserves the paused state and the latest seek request; exhausted retries or a permanent error enters Error. With reconnection enabled, the end of a non-seekable stream with unknown duration is treated as a stream interruption. During reconnection, pause() sets the paused state after recovery; stop(), a source change, and destruction cancel reconnection.
 
 **Inherits:** `hiyui::Chainable< Video >`
 
@@ -20,7 +20,7 @@ Play a file or network video; all public operations are confined to the UI threa
 Video & src(const char *source) &
 ```
 
-Replace the playback source; copies the path and loads with the initial autoplay setting. The same source is reloaded too; nullptr or an empty string clears it. Can be configured before mounting.
+Replaces the playback source, copying the path and loading with the initial autoplay configuration. The same source is reloaded; nullptr or an empty string clears it. Can be configured before mounting.
 
 ### play
 
@@ -28,7 +28,7 @@ Replace the playback source; copies the path and loads with the initial autoplay
 Video & play() &
 ```
 
-Starts or resumes playback; reopens the saved source after stop, end or error; no-op on an empty source.
+Starts or resumes playback; after stop, end, or error it reopens the saved source; an empty source is a no-op.
 
 ### pause
 
@@ -36,7 +36,7 @@ Starts or resumes playback; reopens the saved source after stop, end or error; n
 Video & pause() &
 ```
 
-Pauses audio and the playback clock, keeping the frame; repeated calls have no extra effect.
+Pauses audio and the playback clock and keeps the frame; repeated calls have no additional effect.
 
 ### stop
 
@@ -44,7 +44,7 @@ Pauses audio and the playback clock, keeping the frame; repeated calls have no e
 Video & stop() &
 ```
 
-Releases the playback session and clears the frame and time, keeping the source; calling play again starts from the beginning.
+Releases the playback session and clears the frame and time while keeping the source; the next play starts from the beginning.
 
 ### seek
 
@@ -52,7 +52,7 @@ Releases the playback session and clears the frame and time, keeping the source;
 Video & seek(int64_t positionMs) &
 ```
 
-Seek to the given millisecond position, keeping the play or pause state. The position is clamped to the media range; no-op when not loaded or not seekable. Concurrent requests keep only the last not-yet-executed one; old frames and audio are cleared after completion.
+Seeks to the given position in milliseconds and keeps the play or pause state. The position is clamped to the media range; no effect when not loaded or non-seekable. Consecutive requests keep only the last not-yet-executed one; old frames and audio are cleared on completion.
 
 ### volume
 
@@ -60,7 +60,7 @@ Seek to the given millisecond position, keeping the play or pause state. The pos
 Video & volume(int value) &
 ```
 
-Sets the volume, clamped to 0-100; the setting is still saved while muted.
+Sets the volume, clamped to 0-100; the setting is still stored while muted.
 
 ### playbackState
 
@@ -84,7 +84,7 @@ Current position in milliseconds; 0 when not loaded or invalid.
 int64_t durationMs() const
 ```
 
-Total duration in milliseconds; HIYUI_VIDEO_TIME_UNKNOWN when unknown, not loaded or invalid.
+Total duration in milliseconds; HIYUI_VIDEO_TIME_UNKNOWN when unknown, not loaded, or invalid.
 
 ### seekable
 
@@ -108,7 +108,7 @@ An empty string when no error occurred; returns an independent copy.
 VideoStatistics statistics() const
 ```
 
-A copy of the current session statistics; all counters are zero when not loaded, stopped or invalid.
+A copy of the current session statistics; all counters are zero when not loaded, stopped, or invalid.
 
 ### onStateChanged
 
@@ -116,7 +116,7 @@ A copy of the current session statistics; all counters are zero when not loaded,
 Video & onStateChanged(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Appends a playback state subscription; the callback takes a VideoPlaybackState or no argument.
+Appends a playback state subscription; the callback takes a VideoPlaybackState or no arguments.
 
 ### onPositionChanged
 
@@ -124,7 +124,7 @@ Appends a playback state subscription; the callback takes a VideoPlaybackState o
 Video & onPositionChanged(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Appends a position subscription, taking a millisecond position or no argument. Notified about every 100 ms during playback.
+Appends a position subscription; the callback takes the position in milliseconds or no arguments. Notified about every 100 milliseconds during playback.
 
 ### onError
 
@@ -132,4 +132,4 @@ Appends a position subscription, taking a millisecond position or no argument. N
 Video & onError(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Appends an error subscription, taking the error text or no argument. Bindings can be unbound via EventHandle.
+Appends an error subscription; the callback takes the error text or no arguments. Bindings can be unbound through EventHandle.

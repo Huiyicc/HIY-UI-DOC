@@ -10,7 +10,7 @@ title: "Image"
 
 Image display widget
 
-Supports file paths and lv_image_dsc_t* embedded resources as image sources. Windows paths are converted to LVGL FS format automatically.
+Supports file paths and lv_image_dsc_t* embedded resources as image sources. Windows paths are converted to the LVGL FS format automatically.
 
 
 
@@ -26,7 +26,7 @@ Supports file paths and lv_image_dsc_t* embedded resources as image sources. Win
 Image(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Image
 
@@ -34,7 +34,7 @@ Wrap an existing LVGL object
 Image(ImageProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -42,7 +42,7 @@ Construct from aggregated properties
 Image & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL image object under a parent
+Creates the LVGL image object under a parent object
 
 ### init
 
@@ -50,7 +50,7 @@ Create the LVGL image object under a parent
 Image & init(Widget &parent) &
 ```
 
-Create the LVGL image object under a parent
+Creates the LVGL image object under a parent object
 
 ### src
 
@@ -58,9 +58,9 @@ Create the LVGL image object under a parent
 Image & src(const void *s) &
 ```
 
-Switch the image source at runtime, generic pointer
+Switches the image source at runtime, generic pointer
 
-File paths are copied before return; the image descriptor and pixels are borrowed until the source is replaced or the widget is destroyed.
+The file path is copied before return. The image descriptor and its pixels are borrowed until the source is replaced or the widget is destroyed.
 
 ### src
 
@@ -68,7 +68,7 @@ File paths are copied before return; the image descriptor and pixels are borrowe
 Image & src(const char *path) &
 ```
 
-Switch the image source at runtime, file path
+Switches the image source at runtime, file path
 
 UTF-8 file path, copied before return.
 
@@ -78,9 +78,9 @@ UTF-8 file path, copied before return.
 Image & src(const ImageBuffer &buffer) &
 ```
 
-Bind a library-owned pixel resource
+Binds a library-owned pixel resource
 
-Copied into a widget snapshot that lives until the source is replaced or the widget is destroyed; the local ImageBuffer can be destroyed after binding. No effect on gif-mode instances; the widget must be initialized.
+Copied into a widget snapshot that lives until the source is replaced or the widget is destroyed. After binding, the local ImageBuffer can be destroyed. No effect on GIF mode instances; the widget must be initialized.
 
 
 32-bit pixel resource; an invalid buffer leaves the current display unchanged
@@ -91,7 +91,7 @@ Copied into a widget snapshot that lives until the source is replaced or the wid
 Image & recolor(uint32_t color, uint8_t opa=255) &
 ```
 
-Set recoloring, icon mode
+Sets recoloring, icon mode
 
 Recolor color, 0xRRGGBB Recolor intensity [0,255], default 255
 
@@ -101,4 +101,4 @@ Recolor color, 0xRRGGBB Recolor intensity [0,255], default 255
 Image & fit(ImageFit mode) &
 ```
 
-Set the scale and alignment mode
+Sets the scaling and alignment mode

@@ -20,7 +20,7 @@ Progress bar widget
 Progress & value(int v, Notify notify=Notify::No) &
 ```
 
-Set the value at runtime, with animation
+Sets the value at runtime, triggering an animation
 
 New value [0,100]
 
@@ -30,7 +30,7 @@ New value [0,100]
 int value() const
 ```
 
-Get the current target value
+Returns the current target value
 
 ### text
 
@@ -38,7 +38,7 @@ Get the current target value
 Progress & text(const char *t) &
 ```
 
-Set custom text
+Sets custom text
 
 ### text
 
@@ -46,7 +46,7 @@ Set custom text
 Progress & text(const LocalizedText &text) &
 ```
 
-Binds locale-updated text and copies the description. A plain string call replaces this binding.
+Binds text that updates with the language and copies the description; a plain string call replaces this binding.
 
 ### activeColor
 
@@ -54,7 +54,7 @@ Binds locale-updated text and copies the description. A plain string call replac
 Progress & activeColor(uint32_t color) &
 ```
 
-Set the active color at runtime
+Sets the active color at runtime
 
 ### activeColor
 
@@ -62,7 +62,7 @@ Set the active color at runtime
 Progress & activeColor(ThemeRole role) &
 ```
 
-Binds the active color to a theme semantic role, updated automatically on theme switch
+Binds the active color to a theme semantic role, updated automatically on theme change
 
 ### trackColor
 
@@ -70,7 +70,7 @@ Binds the active color to a theme semantic role, updated automatically on theme 
 Progress & trackColor(ThemeRole role) &
 ```
 
-Binds the track color to a theme semantic role, updated automatically on theme switch
+Binds the track color to a theme semantic role, updated automatically on theme change
 
 ### gradientEndColor
 
@@ -78,7 +78,7 @@ Binds the track color to a theme semantic role, updated automatically on theme s
 Progress & gradientEndColor(ThemeRole role) &
 ```
 
-Binds the gradient end color to a theme semantic role, updated automatically on theme switch
+Binds the gradient end color to a theme semantic role, updated automatically on theme change
 
 ### segments
 
@@ -86,7 +86,7 @@ Binds the gradient end color to a theme semantic role, updated automatically on 
 Progress & segments(const ProgressSegment *segs, int count) &
 ```
 
-Set segments at runtime
+Sets segments at runtime
 
 ### currentStep
 
@@ -94,7 +94,7 @@ Set segments at runtime
 Progress & currentStep(int step) &
 ```
 
-Set the current step in Steps mode.
+Sets the current step in Steps mode.
 
 ### currentStep
 
@@ -102,7 +102,7 @@ Set the current step in Steps mode.
 int currentStep() const
 ```
 
-Get the current step, Steps mode, 0-based
+Returns the current step, Steps mode, 0-based
 
 ### stepCount
 
@@ -110,4 +110,4 @@ Get the current step, Steps mode, 0-based
 int stepCount() const
 ```
 
-Get the total step count, Steps mode
+Returns the total number of steps, Steps mode

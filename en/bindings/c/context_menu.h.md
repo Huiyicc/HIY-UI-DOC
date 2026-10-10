@@ -6,7 +6,7 @@ title: "context_menu.h"
 
 **Header:** `#include <hiyui/c/context_menu.h>`
 
-ContextMenu definitions and right-click binding interfaces.
+ContextMenu definitions and right-click binding API.
 
 ## Enums
 
@@ -25,7 +25,7 @@ ContextMenu definitions and right-click binding interfaces.
 typedef struct hiyui_context_menu_item_t hiyui_context_menu_item_t
 ```
 
-Recursively nested menu items. When shortcut is NULL and accelerator is bound, a hint text is generated automatically. action_ex takes precedence over action, and action_ud is passed to action_ex.
+Recursively nested menu item; the shortcut text is generated automatically when shortcut is NULL and an accelerator is bound. action_ex takes precedence over action, and action_ud is passed to action_ex.
 
 ## Functions
 

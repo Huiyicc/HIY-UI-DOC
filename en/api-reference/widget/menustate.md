@@ -16,7 +16,7 @@ title: "MenuState"
 std::vector< MenuItemNode > nodes
 ```
 
-Flat list of all nodes.
+Flat list of all nodes
 
 ### selectedLeafIdx
 
@@ -24,7 +24,7 @@ Flat list of all nodes.
 int selectedLeafIdx
 ```
 
-Current selected leaf index.
+Current selected leaf index
 
 ### hoveredNodeIdx
 
@@ -32,7 +32,7 @@ Current selected leaf index.
 int hoveredNodeIdx
 ```
 
-Current hovered node index.
+Current hovered node index
 
 ### indicatorTargetNodeIdx
 
@@ -40,7 +40,7 @@ Current hovered node index.
 int indicatorTargetNodeIdx
 ```
 
-Target node index the indicator follows.
+Target node index the indicator follows
 
 ### props
 
@@ -48,7 +48,7 @@ Target node index the indicator follows.
 MenuProps props
 ```
 
-Original configuration in logical values; physical sizes are recomputed from it on DPI changes.
+Original configuration in logical values, physical sizes are recomputed from it on DPI changes
 
 ### iconFillOnSelected
 
@@ -56,7 +56,7 @@ Original configuration in logical values; physical sizes are recomputed from it 
 bool iconFillOnSelected
 ```
 
-Icon fill becomes 1 when selected.
+Icon fill becomes 1 when selected
 
 ### menuObj
 
@@ -64,7 +64,7 @@ Icon fill becomes 1 when selected.
 lv_obj_t * menuObj
 ```
 
-Menu container pointer.
+Menu container pointer
 
 ### mode
 
@@ -72,7 +72,7 @@ Menu container pointer.
 MenuMode mode
 ```
 
-Current display mode.
+Current display mode
 
 ### expandedWidth
 
@@ -80,7 +80,7 @@ Current display mode.
 int expandedWidth
 ```
 
-Wide mode width, cached props_.width.
+Wide mode width, caches props_.width
 
 ### collapsedWidth
 
@@ -88,7 +88,7 @@ Wide mode width, cached props_.width.
 int collapsedWidth
 ```
 
-Narrow mode width, NarrowIcon.
+Narrow mode width, NarrowIcon
 
 ### narrowIconTextWidth
 
@@ -96,7 +96,7 @@ Narrow mode width, NarrowIcon.
 int narrowIconTextWidth
 ```
 
-NarrowIconText mode width.
+Medium mode width, NarrowIconText
 
 ### showToggleBtn
 
@@ -104,7 +104,7 @@ NarrowIconText mode width.
 bool showToggleBtn
 ```
 
-Whether to show the toggle button.
+Whether to show the toggle button
 
 ### toggleBtnPos
 
@@ -112,7 +112,7 @@ Whether to show the toggle button.
 ToggleBtnPos toggleBtnPos
 ```
 
-Toggle button position.
+Toggle button position
 
 ### toggleBtnObj
 
@@ -120,7 +120,7 @@ Toggle button position.
 lv_obj_t * toggleBtnObj
 ```
 
-Toggle button row object.
+Toggle button row object
 
 ### toggleIconObj
 
@@ -128,7 +128,7 @@ Toggle button row object.
 lv_obj_t * toggleIconObj
 ```
 
-Toggle button arrow icon.
+Toggle button arrow icon
 
 ### toggleDivider
 
@@ -136,7 +136,7 @@ Toggle button arrow icon.
 lv_obj_t * toggleDivider
 ```
 
-Separator line above the toggle button.
+Separator above the toggle button
 
 ### widthAnim
 
@@ -144,7 +144,7 @@ Separator line above the toggle button.
 lv_anim_t widthAnim
 ```
 
-Width transition animation.
+Width transition animation
 
 ### currentWidth
 
@@ -152,7 +152,7 @@ Width transition animation.
 int currentWidth
 ```
 
-Current width during the animation.
+Current width during the animation
 
 ### hoverPopup
 
@@ -160,7 +160,7 @@ Current width during the animation.
 lv_obj_t * hoverPopup
 ```
 
-Current hover popup panel.
+Current hover popup panel
 
 ### hoverPopupNodeIdx
 
@@ -168,4 +168,4 @@ Current hover popup panel.
 int hoverPopupNodeIdx
 ```
 
-Node index associated with the popup panel.
+Node index associated with the popup panel

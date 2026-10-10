@@ -10,7 +10,7 @@ title: "MenuBar"
 
 Top menu bar
 
-Arranges top-level items horizontally and opens a dropdown on click, reusing the ContextMenu popup engine. Accelerators of leaf menu items are registered with the HotkeyManager at items() and unregistered on rebuild or destruction.
+Arranges top-level items horizontally; clicking opens a dropdown using the ContextMenu popup engine. Leaf menu item accelerators are registered with the HotkeyManager at items() and unregistered on rebuild or destruction.
 
 **Inherits:** `hiyui::Chainable< MenuBar >`
 
@@ -22,7 +22,7 @@ Arranges top-level items horizontally and opens a dropdown on click, reusing the
 MenuBar(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### MenuBar
 
@@ -30,7 +30,7 @@ Wrap an existing LVGL object
 MenuBar(MenuBarProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -38,7 +38,7 @@ Construct from aggregated properties
 MenuBar & init(lv_obj_t *parent) &
 ```
 
-Create under a parent
+Creates on a parent
 
 ### init
 
@@ -46,7 +46,7 @@ Create under a parent
 MenuBar & init(Widget &parent) &
 ```
 
-Create under a parent
+Creates on a parent
 
 ### items
 
@@ -54,6 +54,6 @@ Create under a parent
 MenuBar & items(const std::vector< MenuBarItem > &items) &
 ```
 
-Set the top-level menu items and rebuild the whole tree
+Sets the top-level menu items, rebuilding the whole tree
 
-For each item, children is the dropdown content
+Each item's children is the dropdown content

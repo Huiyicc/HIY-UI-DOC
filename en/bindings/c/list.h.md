@@ -6,9 +6,9 @@ title: "list.h"
 
 **Header:** `#include <hiyui/c/list.h>`
 
-Template list with virtual rendering, custom templates, multi-state styles, grid, and expansion
+Templated list with virtual rendering, custom templates, multi-state styles, grid layout, and expandable items
 
-Callback-driven. set_count returns the total data count, and builder renders by index. The caller owns the data, and the list drives virtual rendering with an index sequence.
+Callback driven: set_count returns the total data count and builder renders by index. The caller owns the data; the list drives virtual rendering internally with index sequences.
 
 ## Enums
 
@@ -47,7 +47,7 @@ typedef void(* hiyui_list_click_fn) (int idx, void *user_data)
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_list_create(hiyui_widget_t *parent, const hiyui_list_props_t *props)
 ```
 
-Creates a template list; NULL props uses all defaults
+Creates a templated list; a NULL props uses all defaults
 
 ### hiyui_list_set_template
 
@@ -55,7 +55,7 @@ Creates a template list; NULL props uses all defaults
 HIYUI_API void HIYUI_CALL hiyui_list_set_template(hiyui_widget_t *list, const hiyui_list_template_t *tpl)
 ```
 
-Sets the item template, including build functions, multi-state styles, and expanded details
+Sets the item template: build function, multi-state styles, expanded detail, and more
 
 ### hiyui_list_set_count
 
@@ -63,7 +63,7 @@ Sets the item template, including build functions, multi-state styles, and expan
 HIYUI_API void HIYUI_CALL hiyui_list_set_count(hiyui_widget_t *list, hiyui_list_count_fn count, void *user_data)
 ```
 
-Sets the data count callback. The list drives rendering internally with an index sequence.
+Sets the total data count callback; the list drives rendering internally with index sequences
 
 ### hiyui_list_refresh
 
@@ -71,7 +71,7 @@ Sets the data count callback. The list drives rendering internally with an index
 HIYUI_API void HIYUI_CALL hiyui_list_refresh(hiyui_widget_t *list, hiyui_notify_t notify)
 ```
 
-Rebuilds the data and fully refreshes, to call after data changes
+Rebuilds the data and fully refreshes; call after data is added, removed, or changed
 
 ### hiyui_list_set_selected
 

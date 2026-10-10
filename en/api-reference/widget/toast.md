@@ -8,9 +8,9 @@ title: "Toast"
 
 **Namespace:** `hiyui`
 
-Overlay toast widget
+Floating-layer toast component
 
-Mounted on lv_layer_top() and does not affect the main window layout. A position shows at most 2 toasts fully; older toasts fade out and the layout shrinks back when exceeded.
+Mounted on lv_layer_top() without affecting the main window layout. At most 2 toasts are fully shown per position; older toasts fade out and the layout shrinks back.
 
 
 
@@ -26,7 +26,7 @@ Mounted on lv_layer_top() and does not affect the main window layout. A position
 Toast & message(const char *value) &
 ```
 
-Set the toast text; plain text removes the translation binding; nullptr shows empty text.
+Sets the toast text; plain text clears the translation binding, nullptr shows empty text.
 
 ### message
 
@@ -34,7 +34,7 @@ Set the toast text; plain text removes the translation binding; nullptr shows em
 Toast & message(LocalizedText value) &
 ```
 
-Bind the toast text; copies text and parameters and updates with the language.
+Binds the toast text; text and parameters are copied and updated with the language.
 
 ### Toast
 
@@ -42,7 +42,7 @@ Bind the toast text; copies text and parameters and updates with the language.
 Toast(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Toast
 
@@ -50,7 +50,7 @@ Wrap an existing LVGL object
 Toast(ToastProps props={})
 ```
 
-Aggregate construct from properties
+Aggregate construction from properties
 
 ### show
 
@@ -58,9 +58,9 @@ Aggregate construct from properties
 Toast & show() &
 ```
 
-Show the toast
+Shows the toast
 
-The toast object is mounted on lv_layer_top(); after show() returns the queue owns the underlying object. The C++ wrapper no longer holds raw_.
+The toast object is mounted on lv_layer_top(); after show() returns the underlying object is managed by the toast queue and the C++ wrapper no longer holds raw_.
 
 ## Static Methods
 
@@ -70,7 +70,7 @@ The toast object is mounted on lv_layer_top(); after show() returns the queue ow
 static void info(LocalizedText message, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Show a toast that updates with the language; copies text and parameters.
+Shows a toast that updates with the language; text and parameters are copied.
 
 ### success
 
@@ -78,7 +78,7 @@ Show a toast that updates with the language; copies text and parameters.
 static void success(LocalizedText message, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Show a toast that updates with the language; copies text and parameters.
+Shows a toast that updates with the language; text and parameters are copied.
 
 ### warning
 
@@ -86,7 +86,7 @@ Show a toast that updates with the language; copies text and parameters.
 static void warning(LocalizedText message, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Show a toast that updates with the language; copies text and parameters.
+Shows a toast that updates with the language; text and parameters are copied.
 
 ### error
 
@@ -94,7 +94,7 @@ Show a toast that updates with the language; copies text and parameters.
 static void error(LocalizedText message, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Show a toast that updates with the language; copies text and parameters.
+Shows a toast that updates with the language; text and parameters are copied.
 
 ### info
 
@@ -102,9 +102,9 @@ Show a toast that updates with the language; copies text and parameters.
 static void info(const char *msg, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Shortcut to show an info toast
+Shortcut for an info toast
 
-Auto-dismiss time in ms; 0 = never auto-close
+Auto-dismiss time in ms; 0 = do not close automatically
 
 ### success
 
@@ -112,9 +112,9 @@ Auto-dismiss time in ms; 0 = never auto-close
 static void success(const char *msg, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Shortcut to show a success toast
+Shortcut for a success toast
 
-Auto-dismiss time in ms; 0 = never auto-close
+Auto-dismiss time in ms; 0 = do not close automatically
 
 ### warning
 
@@ -122,9 +122,9 @@ Auto-dismiss time in ms; 0 = never auto-close
 static void warning(const char *msg, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Shortcut to show a warning toast
+Shortcut for a warning toast
 
-Auto-dismiss time in ms; 0 = never auto-close
+Auto-dismiss time in ms; 0 = do not close automatically
 
 ### error
 
@@ -132,6 +132,6 @@ Auto-dismiss time in ms; 0 = never auto-close
 static void error(const char *msg, int duration=3000, ToastPosition pos=ToastPosition::TopCenter)
 ```
 
-Shortcut to show an error toast
+Shortcut for an error toast
 
-Auto-dismiss time in ms; 0 = never auto-close
+Auto-dismiss time in ms; 0 = do not close automatically

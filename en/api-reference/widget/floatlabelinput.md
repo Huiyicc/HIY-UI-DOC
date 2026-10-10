@@ -8,9 +8,9 @@ title: "FloatLabelInput"
 
 **Namespace:** `hiyui`
 
-Text input with outlined style and a floating label
+Text input using the outlined style with a floating label
 
-The label shows inside the input area while the input is empty and unfocused. On focus or when text exists, the label moves above the left of the border and shrinks.
+The label is shown inside the input area while the input is empty and unfocused. On focus or when text exists the label moves above the left edge of the border and shrinks.
 
 
 
@@ -37,7 +37,7 @@ Wraps an existing floating label input object
 FloatLabelInput(FloatLabelInputProps props={})
 ```
 
-Aggregate construction from properties
+Constructs through aggregate property initialization
 
 ### init
 
@@ -45,7 +45,7 @@ Aggregate construction from properties
 FloatLabelInput & init(lv_obj_t *parent) &
 ```
 
-Creates the floating label input under a parent
+Creates the floating label input on the parent
 
 ### init
 
@@ -53,7 +53,7 @@ Creates the floating label input under a parent
 FloatLabelInput & init(Widget &parent) &
 ```
 
-Creates the floating label input under a parent
+Creates the floating label input on the parent
 
 ### input
 
@@ -107,7 +107,7 @@ FloatLabelInput & label(const char *t) &
 
 Sets the floating label text
 
-A null pointer or an empty string hides the label
+A null pointer or empty string hides the label
 
 ### label
 
@@ -115,7 +115,7 @@ A null pointer or an empty string hides the label
 FloatLabelInput & label(const LocalizedText &text) &
 ```
 
-Binds text that updates with the language, copying the description; a plain string call replaces this binding.
+Binds text that updates with the language, the description is copied, a plain string call replaces this binding.
 
 ### clear
 
@@ -155,7 +155,7 @@ Sets whether the input is interactive
 FloatLabelInput & on(EventCode code, F &&handler, EventHandle *handle=nullptr) &
 ```
 
-Binds an input event; ValueChanged targets this component, other events target the inner input
+Binds an input event, ValueChanged targets this component while other events target the inner input
 
 Optional out parameter receiving the unbind handle of this binding
 
@@ -175,6 +175,6 @@ Optional out parameter receiving the unbind handle of this binding
 FloatLabelInput & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the text change event; the generic event entry observes the same commits
+Binds the text change event, the generic event entry observes the same commit
 
 Optional out parameter receiving the unbind handle of this binding

@@ -8,7 +8,7 @@ title: "TrayProps"
 
 **Namespace:** `hiyui`
 
-Tray creation properties.
+Tray creation properties
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Tray creation properties.
 const char * tooltip
 ```
 
-Hover tooltip, UTF-8.
+Hover tooltip, UTF-8
 
 ### icon
 
@@ -26,7 +26,7 @@ Hover tooltip, UTF-8.
 TrayIcon icon
 ```
 
-Icon source.
+Icon source
 
 ### iconSrc
 
@@ -34,7 +34,7 @@ Icon source.
 const lv_image_dsc_t * iconSrc
 ```
 
-ARGB8888 image, only for Custom. Read during creation.
+ARGB8888 image, only for Custom; read during creation
 
 ### iconSize
 
@@ -42,4 +42,4 @@ ARGB8888 image, only for Custom. Read during creation.
 int iconSize
 ```
 
-Icon edge length in physical pixels. 0 means the platform current small icon size.
+Icon edge length in physical pixels; 0 means the platform's current small icon size

@@ -21,7 +21,7 @@ C style system: Style / StyleSet / Border / Shadow / Gradient.
 | `HIYUI_SHADOW_SIDE_LEFT` = 1 << 3 |  |
 | `HIYUI_SHADOW_SIDE_ALL` = HIYUI_SHADOW_SIDE_TOP \| HIYUI_SHADOW_SIDE_RIGHT \| HIYUI_SHADOW_SIDE_BOTTOM \| HIYUI_SHADOW_SIDE_LEFT |  |
 
-Bitmask of edges where the shadow applies.
+Bitmask of the edges where a shadow takes effect.
 
 ### hiyui_shadow_placement_t
 
@@ -85,7 +85,7 @@ HIYUI_API hiyui_style_spec_set_t HIYUI_CALL hiyui_style_spec_set_default(void)
 HIYUI_API hiyui_style_t HIYUI_CALL hiyui_style_default(void)
 ```
 
-Returns a zero-initialized style.
+Returns a zero-initialized style
 
 ### hiyui_style_set_default
 
@@ -93,4 +93,4 @@ Returns a zero-initialized style.
 HIYUI_API hiyui_style_set_t HIYUI_CALL hiyui_style_set_default(void)
 ```
 
-Returns a zero-initialized style_set.
+Returns a zero-initialized style set

@@ -6,7 +6,7 @@ title: "hiyui_xml_tree_item_s"
 
 **Header:** `#include <hiyui/c/xml.h>`
 
-Read-only recursive view of an ItemTree. All pointers are valid only during the collector callback.
+Read-only recursive view for ItemTree; all pointers are valid only during the collector callback.
 
 ## Public Members
 

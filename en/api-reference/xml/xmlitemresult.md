@@ -8,4 +8,4 @@ title: "XmlItemResult"
 
 **Namespace:** `hiyui`
 
-Optional content host for a single ItemList item.
+Optional content host for one ItemList item.

@@ -18,7 +18,7 @@ Pie slice data
 const char * name
 ```
 
-Slice name, used for the legend
+Slice name, used in the legend
 
 ### value
 
@@ -26,7 +26,7 @@ Slice name, used for the legend
 float value
 ```
 
-Raw value, percentages are computed automatically
+Raw value; percentages are computed automatically
 
 ### color
 
@@ -34,7 +34,7 @@ Raw value, percentages are computed automatically
 uint32_t color
 ```
 
-Slice color, HIYUI_DEFAULT = automatic assignment
+Slice color; HIYUI_DEFAULT assigns automatically
 
 ### localizedName
 

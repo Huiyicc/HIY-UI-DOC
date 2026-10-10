@@ -8,7 +8,7 @@ title: "Card"
 
 **Namespace:** `hiyui`
 
-Card container widget that can hold child widgets
+Card container widget that can contain child components
 
 **See also:** `CardProps`
 
@@ -25,7 +25,7 @@ Card container widget that can hold child widgets
 Card(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Card
 
@@ -33,9 +33,9 @@ Wrap an existing LVGL object
 Card(CardProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-Card properties, aggregate initialization supported
+Card properties. Supports aggregate initialization
 
 ### init
 
@@ -43,7 +43,7 @@ Card properties, aggregate initialization supported
 Card & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -53,7 +53,7 @@ Parent LVGL object pointer This component
 Card & init(Widget &parent) &
 ```
 
-Create the LVGL object under a parent
+Creates the LVGL object on a parent
 
 Parent LVGL object pointer This component
 
@@ -63,9 +63,9 @@ Parent LVGL object pointer This component
 Card & title(const char *t) &
 ```
 
-Set the card title
+Sets the card title
 
-Title text, UTF-8 encoded This component
+Title text in UTF-8 This component
 
 ### title
 
@@ -73,7 +73,7 @@ Title text, UTF-8 encoded This component
 Card & title(const LocalizedText &text) &
 ```
 
-Bind a title that updates with the language, created when the title area is missing. A plain title call replaces this binding.
+Binds a title that updates with the language. Creates the title area when missing. A plain title call replaces this binding.
 
 ### titleColor
 
@@ -81,4 +81,4 @@ Bind a title that updates with the language, created when the title area is miss
 Card & titleColor(ThemeRole role) &
 ```
 
-Bind the title color to a theme semantic role, updated automatically on theme change
+Binds the title color to a theme semantic role. Updates automatically on theme switch

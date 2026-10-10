@@ -8,7 +8,7 @@ title: "DockProps"
 
 **Namespace:** `hiyui`
 
-Creation properties for the dock container.
+Dock container creation properties.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Creation properties for the dock container.
 bool animated
 ```
 
-Whether dock and float animations are enabled.
+Whether docking and floating animations are enabled.
 
 ### bg
 

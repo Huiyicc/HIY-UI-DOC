@@ -8,7 +8,7 @@ title: "DropdownProps"
 
 **Namespace:** `hiyui`
 
-Dropdown creation properties
+Dropdown selection creation properties
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Initial selected index
 const char * placeholder
 ```
 
-Placeholder text shown when nothing is selected
+Placeholder text for empty selection
 
 ### width
 
@@ -34,7 +34,7 @@ Placeholder text shown when nothing is selected
 int width
 ```
 
-Dropdown width
+Dropdown box width
 
 ### height
 
@@ -42,7 +42,7 @@ Dropdown width
 int height
 ```
 
-Dropdown height, HIYUI_AUTO = fit content
+Dropdown box height, HIYUI_AUTO = fit content
 
 ### bg
 
@@ -82,7 +82,7 @@ Corner radius, HIYUI_DEFAULT = follow theme
 int maxHeight
 ```
 
-Maximum dropdown list height in theme logical pixels; 0 or less means unlimited
+Maximum dropdown list height in theme logical pixels, 0 or less means unlimited
 
 ### arrowSide
 
@@ -114,7 +114,7 @@ List item height
 PopupMode popupMode
 ```
 
-Popup mode. Window falls back to inline when floating window capability is unavailable or creation fails
+Popup mode, Window falls back to inline when floating windows are unavailable or creation fails
 
 ### searchable
 
@@ -122,7 +122,7 @@ Popup mode. Window falls back to inline when floating window capability is unava
 bool searchable
 ```
 
-Search filter toggle, off by default. In editable mode typing filters the list; in non-editable mode a search box is shown at the top of the popup list
+Search filter toggle, off by default, in editable mode typing filters while in non-editable mode a search box is shown at the top of the popup list
 
 ### editable
 
@@ -130,4 +130,4 @@ Search filter toggle, off by default. In editable mode typing filters the list; 
 bool editable
 ```
 
-Editable mode; the closed state accepts free-text input
+Editable mode, free text can be typed while closed

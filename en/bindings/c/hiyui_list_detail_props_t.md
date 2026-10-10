@@ -6,7 +6,7 @@ title: "hiyui_list_detail_props_t"
 
 **Header:** `#include <hiyui/c/layout.h>`
 
-Initialize with hiyui_list_detail_props_init, integer 0 does not mean a default value.
+Initialize with hiyui_list_detail_props_init. Integer 0 does not mean the default value.
 
 ## Public Members
 
@@ -16,7 +16,7 @@ Initialize with hiyui_list_detail_props_init, integer 0 does not mean a default 
 int split_min_width
 ```
 
-Minimum content logical width for the two pane layout, must be greater than list_width plus gap.
+Minimum content logical width of the two-pane layout. Must be greater than list_width plus gap.
 
 ### list_width
 
@@ -24,7 +24,7 @@ Minimum content logical width for the two pane layout, must be greater than list
 int list_width
 ```
 
-List width in the two pane layout, positive logical pixels.
+Two-pane list width, positive logical pixels.
 
 ### gap
 
@@ -32,7 +32,7 @@ List width in the two pane layout, positive logical pixels.
 int gap
 ```
 
-Two pane gap, non-negative logical pixels.
+Two-pane gap, non-negative logical pixels.
 
 ### animated
 
@@ -40,4 +40,4 @@ Two pane gap, non-negative logical pixels.
 hiyui_bool_t animated
 ```
 
-DEFAULT and TRUE enable theme animation, FALSE disables it.
+DEFAULT and TRUE enable theme animations, FALSE disables them.

@@ -18,7 +18,7 @@ Time value
 int hour
 ```
 
-Hour 0-23; -1 = unset
+Hour 0-23; -1 = not set
 
 ### minute
 
@@ -26,7 +26,7 @@ Hour 0-23; -1 = unset
 int minute
 ```
 
-Minute 0-59; -1 = unset
+Minute 0-59; -1 = not set
 
 ### second
 
@@ -34,4 +34,4 @@ Minute 0-59; -1 = unset
 int second
 ```
 
-Second 0-59; -1 = unset
+Second 0-59; -1 = not set

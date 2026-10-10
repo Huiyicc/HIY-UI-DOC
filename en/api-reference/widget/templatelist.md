@@ -38,7 +38,7 @@ Sets the data and renders
 TemplateList & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the selection event callback; repeated binds append
+Binds the selection change callback, repeated binds append
 
 ### appendItem
 
@@ -46,9 +46,9 @@ Binds the selection event callback; repeated binds append
 TemplateList & appendItem(const T &item, Notify notify=Notify::No) &
 ```
 
-Appends one item at the end of the list
+Appends one item to the end of the list
 
-Updates only the data and the virtual height without triggering layout sync. Rendering happens automatically on scroll events or a later explicit refresh.
+Only updates data and virtual height without triggering layout sync. Rendering happens on scroll events or later explicit refresh.
 
 ### beginUpdate
 
@@ -72,7 +72,7 @@ Resumes view refresh and updates immediately
 TemplateList & columnCount(int count) &
 ```
 
-Sets the Grid fixed column count; &lt;=0 means auto-fit by minimum width
+Sets the fixed Grid column count, &lt;=0 adapts by minimum width
 
 ### minItemWidth
 
@@ -80,7 +80,7 @@ Sets the Grid fixed column count; &lt;=0 means auto-fit by minimum width
 TemplateList & minItemWidth(int width) &
 ```
 
-Sets the Grid auto-fit minimum item width
+Sets the adaptive minimum item width in Grid mode
 
 ### rowGap
 
@@ -88,7 +88,7 @@ Sets the Grid auto-fit minimum item width
 TemplateList & rowGap(int gap) &
 ```
 
-Sets the Grid row spacing; HIYUI_NONE_INT reuses gap
+Sets the Grid row spacing, HIYUI_NONE_INT means reuse gap
 
 ### columnGap
 
@@ -96,4 +96,4 @@ Sets the Grid row spacing; HIYUI_NONE_INT reuses gap
 TemplateList & columnGap(int gap) &
 ```
 
-Sets the Grid column spacing; HIYUI_NONE_INT reuses gap
+Sets the Grid column spacing, HIYUI_NONE_INT means reuse gap

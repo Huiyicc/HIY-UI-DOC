@@ -8,7 +8,7 @@ title: "AccessibilityProps"
 
 **Namespace:** `hiyui`
 
-Overrides accessibility information provided automatically by the component. Strings use UTF-8.
+Overrides accessibility information provided automatically by the component; strings use UTF-8.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Overrides accessibility information provided automatically by the component. Str
 const char * name
 ```
 
-nullptr uses the associated label or the component's own name.
+nullptr uses the associated label or the component name.
 
 ### description
 
@@ -26,7 +26,7 @@ nullptr uses the associated label or the component's own name.
 const char * description
 ```
 
-Supplementary description. nullptr clears the explicit description.
+Supplementary description; nullptr clears the explicit description.
 
 ### automationId
 
@@ -34,7 +34,7 @@ Supplementary description. nullptr clears the explicit description.
 const char * automationId
 ```
 
-Application-assigned identifier, does not change with the display language.
+Application-defined identifier, invariant across display languages.
 
 ### decorative
 
@@ -42,4 +42,4 @@ Application-assigned identifier, does not change with the display language.
 bool decorative
 ```
 
-Omits its own semantics while keeping the semantics of independent child components.
+Omits its own semantics while keeping semantics of independent child components.

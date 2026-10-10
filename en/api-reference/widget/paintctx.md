@@ -8,7 +8,7 @@ title: "PaintCtx"
 
 **Namespace:** `hiyui`
 
-Widget information for paint and interaction callbacks; valid only during the callback.
+Current widget information for paint and interaction callbacks, valid only during the callback.
 
 ## Public Members
 
@@ -34,7 +34,7 @@ Widget height in physical pixels
 float dpiScale
 ```
 
-Combined DPI factor, dpr x uiScale
+Current combined DPI factor, dpr × uiScale
 
 ### theme
 
@@ -42,7 +42,7 @@ Combined DPI factor, dpr x uiScale
 const Theme & theme
 ```
 
-The current theme
+Current theme
 
 ### state
 
@@ -50,7 +50,7 @@ The current theme
 WidgetState state
 ```
 
-The current interaction state
+Current interaction state
 
 ### content
 

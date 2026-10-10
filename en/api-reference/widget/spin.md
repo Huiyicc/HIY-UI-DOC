@@ -20,7 +20,7 @@ Loading spinner widget
 Spin & spinning(bool on) &
 ```
 
-Control the spin animation
+Controls the spinning animation
 
 ### spinning
 
@@ -28,7 +28,7 @@ Control the spin animation
 bool spinning() const
 ```
 
-Query whether currently spinning
+Queries whether currently spinning
 
 ### color
 
@@ -36,7 +36,7 @@ Query whether currently spinning
 Spin & color(uint32_t c) &
 ```
 
-Change the color at runtime
+Changes the color at runtime
 
 0xRRGGBB
 
@@ -46,7 +46,7 @@ Change the color at runtime
 Spin & color(ThemeRole role) &
 ```
 
-Bind the color to a theme semantic role, updated automatically on theme change
+Binds the color to a theme semantic role. Updates automatically on theme switch
 
 ### type
 
@@ -54,7 +54,7 @@ Bind the color to a theme semantic role, updated automatically on theme change
 Spin & type(SpinType t) &
 ```
 
-Change the shape at runtime
+Changes the appearance at runtime
 
 ### speed
 
@@ -62,9 +62,9 @@ Change the shape at runtime
 Spin & speed(float s) &
 ```
 
-Change the speed factor at runtime
+Changes the speed multiplier at runtime
 
-Speed factor, 0 = static, 1.0 = normal, &gt;1 = faster
+Speed multiplier. 0 = static, 1.0 = normal, &gt;1 = faster
 
 ### speed
 
@@ -72,4 +72,4 @@ Speed factor, 0 = static, 1.0 = normal, &gt;1 = faster
 float speed() const
 ```
 
-Query the current speed factor
+Queries the current speed multiplier

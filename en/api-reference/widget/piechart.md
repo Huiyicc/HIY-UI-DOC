@@ -10,7 +10,7 @@ title: "PieChart"
 
 Pie and donut chart widget
 
-Draws itself with DrawCtx and supports hover highlighting and percent labels. Renders as a donut chart when innerRadius &gt; 0.
+Self-drawn with DrawCtx, with hover highlight and percent labels. Renders a donut chart when innerRadius &gt; 0.
 
 
 
@@ -32,7 +32,7 @@ Draws itself with DrawCtx and supports hover highlighting and percent labels. Re
 PieChart(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### PieChart
 
@@ -40,7 +40,7 @@ Wrap an existing LVGL object
 PieChart(PieChartProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 Pie chart properties
 
@@ -50,7 +50,7 @@ Pie chart properties
 PieChart & init(lv_obj_t *parent) &
 ```
 
-Create the pie chart under a parent object
+Creates the pie chart on a parent object
 
 Parent LVGL object pointer
 
@@ -60,7 +60,7 @@ Parent LVGL object pointer
 PieChart & init(Widget &parent) &
 ```
 
-Create the pie chart under a parent object
+Creates the pie chart on a parent object
 
 Parent LVGL object pointer
 
@@ -70,9 +70,9 @@ Parent LVGL object pointer
 PieChart & slices(const std::vector< PieSlice > &slices) &
 ```
 
-Set the slice data, replacing all slices
+Replaces all slice data
 
-Array of slices This component
+Slice array This component
 
 ### sliceValue
 
@@ -80,7 +80,7 @@ Array of slices This component
 PieChart & sliceValue(int idx, float value) &
 ```
 
-Update the value of a single slice at runtime
+Updates the value of one slice
 
 Slice index New value This component
 
@@ -90,6 +90,6 @@ Slice index New value This component
 lv_obj_t * chartObj() const
 ```
 
-Get the underlying pie chart draw object
+Returns the underlying pie chart draw object
 
-Pointer to the pie chart LVGL object for advanced custom drawing
+Pie chart LVGL object pointer for advanced custom drawing

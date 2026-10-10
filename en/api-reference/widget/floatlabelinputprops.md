@@ -18,7 +18,7 @@ Floating label input creation properties
 const char * label
 ```
 
-Floating label text; when empty at creation, input.placeholder is used
+Floating label text, an empty value at creation falls back to input.placeholder
 
 ### input
 
@@ -26,7 +26,7 @@ Floating label text; when empty at creation, input.placeholder is used
 InputProps input
 ```
 
-Inner Input properties
+Properties of the inner Input
 
 ### animated
 
@@ -34,4 +34,4 @@ Inner Input properties
 bool animated
 ```
 
-Whether the label position and scale animation is enabled
+Whether label position and scale animation is enabled

@@ -8,7 +8,7 @@ title: "system_tray.h"
 
 System tray
 
-Windows and macOS provide a native tray. On other platforms the handle can be created but valid() returns 0. Other operations silently do nothing.
+Windows and macOS provide a native tray. On other platforms the handle can be created but valid() returns 0, and other operations silently do nothing.
 
 ## Enums
 
@@ -57,7 +57,7 @@ typedef void(* hiyui_system_tray_notify_fn) (void *user_data)
 HIYUI_API hiyui_system_tray_t *HIYUI_CALL hiyui_system_tray_create(hiyui_win_t *host_win, const hiyui_system_tray_props_t *props)
 ```
 
-Creates a tray bound to the host window. NULL props uses default icon properties.
+Creates a tray bound to the host window; a NULL props uses default icon properties.
 
 ### hiyui_system_tray_valid
 
@@ -65,7 +65,7 @@ Creates a tray bound to the host window. NULL props uses default icon properties
 HIYUI_API hiyui_bool_t HIYUI_CALL hiyui_system_tray_valid(const hiyui_system_tray_t *tray)
 ```
 
-Returns whether the tray was created successfully on the current platform.
+Queries whether the tray was created successfully on the current platform.
 
 ### hiyui_system_tray_on_left_click
 
@@ -73,7 +73,7 @@ Returns whether the tray was created successfully on the current platform.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_on_left_click(hiyui_system_tray_t *tray, hiyui_system_tray_click_fn callback, void *user_data)
 ```
 
-Sets the left-click callback. NULL clears the callback.
+Sets the left-click callback. Pass NULL to clear it.
 
 ### hiyui_system_tray_on_right_click
 
@@ -81,7 +81,7 @@ Sets the left-click callback. NULL clears the callback.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_on_right_click(hiyui_system_tray_t *tray, hiyui_system_tray_click_fn callback, void *user_data)
 ```
 
-Sets the right-click callback. When a menu is set, right-click events are handled by the menu.
+Sets the right-click callback; when a menu is set the menu takes over right-click events.
 
 ### hiyui_system_tray_on_double_click
 
@@ -89,7 +89,7 @@ Sets the right-click callback. When a menu is set, right-click events are handle
 HIYUI_API void HIYUI_CALL hiyui_system_tray_on_double_click(hiyui_system_tray_t *tray, hiyui_system_tray_click_fn callback, void *user_data)
 ```
 
-Sets the double-click callback. NULL clears the callback.
+Sets the left double-click callback. Pass NULL to clear it.
 
 ### hiyui_system_tray_on_middle_click
 
@@ -97,7 +97,7 @@ Sets the double-click callback. NULL clears the callback.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_on_middle_click(hiyui_system_tray_t *tray, hiyui_system_tray_click_fn callback, void *user_data)
 ```
 
-Sets the middle-click callback. NULL clears the callback.
+Sets the middle-click callback. Pass NULL to clear it.
 
 ### hiyui_system_tray_on_message_click
 
@@ -105,7 +105,7 @@ Sets the middle-click callback. NULL clears the callback.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_on_message_click(hiyui_system_tray_t *tray, hiyui_system_tray_notify_fn callback, void *user_data)
 ```
 
-Sets the notification balloon click callback. NULL clears the callback.
+Sets the notification balloon click callback. Pass NULL to clear it.
 
 ### hiyui_system_tray_set_menu
 
@@ -113,7 +113,7 @@ Sets the notification balloon click callback. NULL clears the callback.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_set_menu(hiyui_system_tray_t *tray, const hiyui_context_menu_item_t *items, int count)
 ```
 
-Sets the menu shown on right click. Menu text and shortcut strings are copied during the call.
+Sets the right-click menu; menu text and shortcut strings are copied during the call.
 
 ### hiyui_system_tray_set_menu_max_height
 
@@ -121,7 +121,7 @@ Sets the menu shown on right click. Menu text and shortcut strings are copied du
 HIYUI_API void HIYUI_CALL hiyui_system_tray_set_menu_max_height(hiyui_system_tray_t *tray, int32_t max_height)
 ```
 
-Sets the tray menu panel height limit. A max_height of 0 uses 70% of the screen work area height.
+Sets the tray menu panel height cap; max_height 0 uses 70 percent of the screen work area height.
 
 ### hiyui_system_tray_set_icon
 
@@ -129,7 +129,7 @@ Sets the tray menu panel height limit. A max_height of 0 uses 70% of the screen 
 HIYUI_API void HIYUI_CALL hiyui_system_tray_set_icon(hiyui_system_tray_t *tray, hiyui_tray_icon_t icon, const void *icon_src)
 ```
 
-Changes the icon at runtime. icon_src is read only for CUSTOM.
+Changes the icon at runtime; icon_src is read only for the CUSTOM icon mode.
 
 ### hiyui_system_tray_set_tooltip
 
@@ -145,7 +145,7 @@ Changes the UTF-8 tooltip text at runtime.
 HIYUI_API void HIYUI_CALL hiyui_system_tray_show_message(hiyui_system_tray_t *tray, const char *title, const char *text, hiyui_tray_message_icon_t icon, uint32_t timeout_ms)
 ```
 
-Shows a notification balloon. Natively supported only on Windows; other platforms silently ignore it.
+Shows a notification balloon; natively supported only on Windows, silently ignored on other platforms.
 
 ### hiyui_system_tray_destroy
 

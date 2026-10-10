@@ -6,7 +6,7 @@ title: "hiyui_layout_environment_t"
 
 **Header:** `#include <hiyui/c/types.h>`
 
-Content logical size after subtracting borders and padding; window areas are not subtracted from it.
+Content logical size after subtracting borders and padding. Window areas are not subtracted from it.
 
 ## Public Members
 
@@ -34,7 +34,7 @@ int content_height
 float scale
 ```
 
-Scale from logical to physical pixels, 1.0 for an invalid snapshot.
+Scale from logical to physical pixels; 1.0 for an invalid snapshot.
 
 ### input
 

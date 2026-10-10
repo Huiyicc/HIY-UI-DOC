@@ -6,7 +6,7 @@ title: "layout.h"
 
 **Header:** `#include <hiyui/c/layout.h>`
 
-Layout components and the responsive window frame
+Layout components and responsive window frame
 
 ## Enums
 
@@ -79,7 +79,7 @@ Edge the window frame navigation area attaches to.
 typedef uint32_t hiyui_layout_fields_t
 ```
 
-Bit set of rule managed fields, values of unmarked fields are ignored.
+Bit set of rule-managed fields. Values of unmarked fields are ignored.
 
 ## Functions
 
@@ -89,7 +89,7 @@ Bit set of rule managed fields, values of unmarked fields are ignored.
 HIYUI_API void HIYUI_CALL hiyui_layout_values_init(hiyui_layout_values_t *out)
 ```
 
-Writes the C++ defaults with maximum sizes HIYUI_AUTO and hidden FALSE, NULL does nothing.
+Writes the C++ default values. Maximum sizes are HIYUI_AUTO and hidden is FALSE. NULL does nothing.
 
 ### hiyui_layout_rule_init
 
@@ -97,7 +97,7 @@ Writes the C++ defaults with maximum sizes HIYUI_AUTO and hidden FALSE, NULL doe
 HIYUI_API void HIYUI_CALL hiyui_layout_rule_init(hiyui_layout_rule_t *out)
 ```
 
-Writes the default unbounded interval and default values, NULL does nothing and no resources are allocated.
+Writes the default unbounded interval and default values. NULL does nothing. Allocates no resources.
 
 ### hiyui_layout_rules_init
 
@@ -105,7 +105,7 @@ Writes the default unbounded interval and default values, NULL does nothing and 
 HIYUI_API void HIYUI_CALL hiyui_layout_rules_init(hiyui_layout_rules_t *out)
 ```
 
-Writes the default base, a NULL array, and a zero count, NULL does nothing and no resources are allocated.
+Writes the default base, a NULL array and a zero count. NULL does nothing. Allocates no resources.
 
 ### hiyui_wdg_layout_rules
 
@@ -113,9 +113,9 @@ Writes the default base, a NULL array, and a zero count, NULL does nothing and n
 HIYUI_API int HIYUI_CALL hiyui_wdg_layout_rules(hiyui_widget_t *w, hiyui_widget_t *host, const hiyui_layout_rules_t *rules)
 ```
 
-Copies and installs the single set of layout rules, updating while preserving the subtree and business state, without dispatching ValueChanged. A successful replacement first restores the base of fields still managed by the old set, unknown field bits, invalid enums of marked fields, or invalid values are rejected. Explicit layout setters and style padding assignment release the fields they write, theme and DPI updates keep the rules in control. When the minimum size exceeds a finite maximum the minimum size takes precedence, and overflow is handled by the scroll container set by the application. A hidden subtree leaves hit testing and focus traversal, showing it again does not move existing valid focus, call on the UI thread.
+Copies and installs the only set of layout rules. Updates keep the subtree and business state. ValueChanged is not dispatched. A successful replacement first restores the base of fields still controlled by the old set. Unknown field bits, or invalid enum or numeric values in marked fields, are invalid. Explicit layout setters and style padding assignments release the fields they write. Theme and DPI updates keep the rules in control. When the minimum size exceeds a finite upper limit, the minimum size wins. Overflow is handled by scroll containers set up by the application. A hidden subtree leaves hit testing and focus traversal. Showing it again does not move existing valid focus. Call on the UI thread.
 
-NULL uses the direct parent and follows reparenting, otherwise it must be a valid ancestor and not the widget itself or a descendant. Host axes used in breakpoints must be sized by the parent layout or explicit sizes, not by the content of managed descendants. When the explicit host becomes invalid, leaves the ancestor chain, or the host breakpoint axis loses its constraint, the still managed base is restored and the rules are cleared. NULL or a default empty configuration equals clearing, the structure and array are copied before return. 1 means the installation or clearing was accepted, 0 means the target or configuration is invalid and the previous rules remain.
+NULL uses the direct parent and follows re-parenting. Otherwise it must be a valid ancestor. The widget itself and descendants are not accepted. Host axes used by breakpoints must be allocated by the parent layout or explicit sizes. They must not be sized from controlled descendant content. When the explicit host is invalidated, leaves the ancestor chain, or its breakpoint axis loses its constraint. The still-controlled base is restored and the rules are cleared. NULL or the default empty configuration is equivalent to clearing. The structure and arrays are copied before return. 1 means the installation or clearing is accepted. 0 means the target or configuration is invalid and the previous rules are kept.
 
 ### hiyui_wdg_clear_layout_rules
 
@@ -123,7 +123,7 @@ NULL uses the direct parent and follows reparenting, otherwise it must be a vali
 HIYUI_API void HIYUI_CALL hiyui_wdg_clear_layout_rules(hiyui_widget_t *w)
 ```
 
-Restores the base of still managed fields and removes the rules and subscription, NULL, invalid objects, and repeated calls do nothing.
+Restores the base of still-controlled fields and removes the rules and subscription. NULL, invalid objects and repeated calls do nothing.
 
 ### hiyui_list_detail_props_init
 
@@ -131,7 +131,7 @@ Restores the base of still managed fields and removes the rules and subscription
 HIYUI_API void HIYUI_CALL hiyui_list_detail_props_init(hiyui_list_detail_props_t *out)
 ```
 
-Writes 720, 240, 12, and TRUE, NULL does nothing and repeated calls overwrite previous values.
+Writes 720, 240, 12 and TRUE. NULL does nothing. Repeated calls overwrite previous values.
 
 ### hiyui_list_detail_create
 
@@ -139,9 +139,9 @@ Writes 720, 240, 12, and TRUE, NULL does nothing and repeated calls overwrite pr
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_list_detail_create(hiyui_widget_t *parent, const hiyui_list_detail_props_t *props)
 ```
 
-Creates a list detail container that switches between single pane and two pane by its own content width, the parent must assign its size. Re-layout keeps pane subtrees, input, and valid scroll offsets, and does not change business data or application history. Entering a pane restores valid focus, with only one pane it fills the area, and after Detail is deleted it returns to List.
+Creates a list-detail container that switches between single-pane and two-pane layouts by its own content width. The parent must allocate its size. Re-layout preserves pane subtrees, input state and valid scroll offsets. Business data and application history are unchanged. Entering a pane restores valid focus. With only one pane it fills the container. After Detail is deleted the List is restored.
 
-NULL uses the C++ defaults, the configuration is copied at call time. NULL when the parent or configuration is invalid, on success the parent manages the widget lifecycle.
+NULL uses the C++ defaults. The configuration is copied at call time. NULL when the parent or configuration is invalid. On success the parent manages the widget lifecycle.
 
 ### hiyui_list_detail_list_create
 
@@ -149,7 +149,7 @@ NULL uses the C++ defaults, the configuration is copied at call time. NULL when 
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_list_detail_list_create(hiyui_widget_t *parent)
 ```
 
-Creates the list pane, returns NULL when the parent is not a ListDetail, is invalid, or the pane already exists.
+Creates the list pane. Returns NULL when the parent is not a ListDetail, is invalid, or the pane already exists.
 
 ### hiyui_list_detail_content_create
 
@@ -157,7 +157,7 @@ Creates the list pane, returns NULL when the parent is not a ListDetail, is inva
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_list_detail_content_create(hiyui_widget_t *parent)
 ```
 
-Creates the detail pane, returns NULL when the parent is not a ListDetail, is invalid, or the pane already exists.
+Creates the detail pane. Returns NULL when the parent is not a ListDetail, is invalid, or the pane already exists.
 
 ### hiyui_list_detail_active_pane
 
@@ -165,7 +165,7 @@ Creates the detail pane, returns NULL when the parent is not a ListDetail, is in
 HIYUI_API hiyui_list_detail_pane_t HIYUI_CALL hiyui_list_detail_active_pane(hiyui_widget_t *w)
 ```
 
-Queries the active pane, NULL or invalid objects return HIYUI_LIST_DETAIL_PANE_LIST.
+Queries the active pane. NULL or invalid objects return HIYUI_LIST_DETAIL_PANE_LIST.
 
 ### hiyui_list_detail_presentation
 
@@ -173,7 +173,7 @@ Queries the active pane, NULL or invalid objects return HIYUI_LIST_DETAIL_PANE_L
 HIYUI_API hiyui_list_detail_presentation_t HIYUI_CALL hiyui_list_detail_presentation(hiyui_widget_t *w)
 ```
 
-Queries the current presentation, NULL or invalid objects return HIYUI_LIST_DETAIL_SINGLE.
+Queries the current presentation. NULL or invalid objects return HIYUI_LIST_DETAIL_SINGLE.
 
 ### hiyui_list_detail_set_active_pane
 
@@ -181,7 +181,7 @@ Queries the current presentation, NULL or invalid objects return HIYUI_LIST_DETA
 HIYUI_API void HIYUI_CALL hiyui_list_detail_set_active_pane(hiyui_widget_t *w, hiyui_list_detail_pane_t value, hiyui_notify_t notify)
 ```
 
-Sets the active pane, requesting Detail when there is no Detail, invalid enums, NULL, or invalid objects do nothing. When notify is YES and the value changes, ValueChanged is sent once and can be subscribed with hiyui_wdg_on_change to query the new value. Size and structure changes do not notify, and released handles must not be passed again.
+Sets the active pane. Requesting Detail without a Detail pane, invalid enums, NULL or invalid objects do nothing. When notify is YES and the value changes, ValueChanged is sent once. Subscribe with hiyui_wdg_on_change and query the new value. Size and structure changes do not notify. Released handles must not be passed again.
 
 ### hiyui_list_detail_back
 
@@ -189,7 +189,7 @@ Sets the active pane, requesting Detail when there is no Detail, invalid enums, 
 HIYUI_API int HIYUI_CALL hiyui_list_detail_back(hiyui_widget_t *w)
 ```
 
-When in single pane Detail and a List exists, switches back to List, notifies, and returns 1, otherwise returns 0, application history is not invoked.
+In single-pane Detail with a List present, switches back to List, notifies and returns 1. Otherwise returns 0. Application history is not invoked.
 
 ### hiyui_vbox_create
 
@@ -221,7 +221,7 @@ HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_flowbox_create(hiyui_widget_t *parent
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_window_frame_create(hiyui_widget_t *parent, const hiyui_window_frame_props_t *props)
 ```
 
-Creates the responsive window frame.
+Creates a responsive window frame.
 
 ### hiyui_frame_header_create
 
@@ -229,7 +229,7 @@ Creates the responsive window frame.
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_frame_header_create(hiyui_widget_t *parent)
 ```
 
-Creates the WindowFrame header area, returns NULL when the area already exists.
+Creates the WindowFrame header area. Returns NULL when the area already exists.
 
 ### hiyui_frame_navigation_create
 
@@ -237,7 +237,7 @@ Creates the WindowFrame header area, returns NULL when the area already exists.
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_frame_navigation_create(hiyui_widget_t *parent)
 ```
 
-Creates the WindowFrame navigation area, returns NULL when the area already exists.
+Creates the WindowFrame navigation area. Returns NULL when the area already exists.
 
 ### hiyui_frame_content_create
 
@@ -245,7 +245,7 @@ Creates the WindowFrame navigation area, returns NULL when the area already exis
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_frame_content_create(hiyui_widget_t *parent)
 ```
 
-Creates the WindowFrame content area, returns NULL when the area already exists.
+Creates the WindowFrame content area. Returns NULL when the area already exists.
 
 ### hiyui_frame_navigation_toggle_create
 
@@ -253,7 +253,7 @@ Creates the WindowFrame content area, returns NULL when the area already exists.
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_frame_navigation_toggle_create(hiyui_widget_t *parent, const hiyui_frame_navigation_toggle_props_t *props)
 ```
 
-Creates the navigation toggle button within the WindowFrame subtree.
+Creates the navigation toggle button inside the WindowFrame subtree.
 
 ### hiyui_window_frame_width_class
 
@@ -261,7 +261,7 @@ Creates the navigation toggle button within the WindowFrame subtree.
 HIYUI_API hiyui_layout_width_class_t HIYUI_CALL hiyui_window_frame_width_class(hiyui_widget_t *frame)
 ```
 
-Returns the current width class, invalid objects return HIYUI_LAYOUT_WIDTH_NARROW.
+Returns the current width class. Invalid objects return HIYUI_LAYOUT_WIDTH_NARROW.
 
 ### hiyui_window_frame_open_navigation
 
@@ -269,7 +269,7 @@ Returns the current width class, invalid objects return HIYUI_LAYOUT_WIDTH_NARRO
 HIYUI_API void HIYUI_CALL hiyui_window_frame_open_navigation(hiyui_widget_t *frame)
 ```
 
-Opens the current Drawer navigation, other presentations leave the state unchanged.
+Opens the current Drawer navigation. Other presentations do not change state.
 
 ### hiyui_window_frame_close_navigation
 
@@ -277,7 +277,7 @@ Opens the current Drawer navigation, other presentations leave the state unchang
 HIYUI_API void HIYUI_CALL hiyui_window_frame_close_navigation(hiyui_widget_t *frame)
 ```
 
-Closes the current Drawer navigation, other presentations leave the state unchanged.
+Closes the current Drawer navigation. Other presentations do not change state.
 
 ### hiyui_window_frame_toggle_navigation
 
@@ -285,7 +285,7 @@ Closes the current Drawer navigation, other presentations leave the state unchan
 HIYUI_API void HIYUI_CALL hiyui_window_frame_toggle_navigation(hiyui_widget_t *frame)
 ```
 
-Toggles the current Drawer navigation, other presentations leave the state unchanged.
+Toggles the current Drawer navigation. Other presentations do not change state.
 
 ### hiyui_window_frame_navigation_is_open
 

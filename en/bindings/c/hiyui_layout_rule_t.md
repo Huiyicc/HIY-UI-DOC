@@ -6,7 +6,7 @@ title: "hiyui_layout_rule_t"
 
 **Header:** `#include <hiyui/c/layout.h>`
 
-Applies when the logical content sizes of both axes fall in an interval with an inclusive lower bound and an exclusive upper bound. Lower bounds are non-negative and upper bounds are non-negative or HIYUI_AUTO, a lower bound must not exceed a finite upper bound, and equal bounds never match.
+Applies when both axes of logical content size fall in an interval with inclusive lower bound and exclusive upper bound. Lower bounds are non-negative, upper bounds are non-negative or HIYUI_AUTO. A lower bound must not exceed a finite upper bound. Equal bounds never match.
 
 ## Public Members
 

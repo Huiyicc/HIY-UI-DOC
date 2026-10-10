@@ -16,7 +16,7 @@ title: "diagnostics::Display"
 uint64_t drawBufferBytes
 ```
 
-Size of draw buffers registered with LVGL, excluding SDL textures and GPU driver allocations.
+Size of draw buffers registered with LVGL; excludes SDL textures and GPU driver allocations.
 
 ### renderer
 
@@ -32,7 +32,7 @@ Current compositing backend.
 std::string fallbackReason
 ```
 
-Most recent fallback reason, empty if none occurred.
+Reason of the most recent fallback; empty when none occurred.
 
 ### gpuTasks
 
@@ -40,7 +40,7 @@ Most recent fallback reason, empty if none occurred.
 uint64_t gpuTasks
 ```
 
-Draw tasks submitted to the GPU compositor since display creation.
+Number of draw tasks submitted to the GPU compositor since the display was created.
 
 ### softwareTasks
 
@@ -48,7 +48,7 @@ Draw tasks submitted to the GPU compositor since display creation.
 uint64_t softwareTasks
 ```
 
-Tasks drawn in software within the GPU compositor.
+Number of tasks drawn in software within the GPU compositor.
 
 ### uploadBytes
 
@@ -56,7 +56,7 @@ Tasks drawn in software within the GPU compositor.
 uint64_t uploadBytes
 ```
 
-Pixel bytes uploaded in total by the compositor and display backend.
+Total pixel bytes uploaded by the compositor and display backend.
 
 ### readbackBytes
 
@@ -64,7 +64,7 @@ Pixel bytes uploaded in total by the compositor and display backend.
 uint64_t readbackBytes
 ```
 
-Pixel bytes read back in total by the compositor and shaders.
+Total pixel bytes read back by the compositor and shaders.
 
 ### submittedFrames
 
@@ -72,7 +72,7 @@ Pixel bytes read back in total by the compositor and shaders.
 uint64_t submittedFrames
 ```
 
-Frames whose submit returned during this capture, excluding refreshes with no observed submit.
+Frames with an observed submit return in this capture; refreshes without an observed submit are excluded.
 
 ### continuousIntervals
 
@@ -80,7 +80,7 @@ Frames whose submit returned during this capture, excluding refreshes with no ob
 uint64_t continuousIntervals
 ```
 
-Submit intervals counted into active statistics during this capture.
+Number of submit intervals counted into the activity statistics in this capture.
 
 ### continuousIntervalSumUs
 
@@ -88,4 +88,4 @@ Submit intervals counted into active statistics during this capture.
 uint64_t continuousIntervalSumUs
 ```
 
-Sum of submit intervals in active statistics, in microseconds.
+Sum of submit intervals in the activity statistics, in microseconds.

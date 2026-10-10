@@ -154,7 +154,7 @@ HIYUI_API int HIYUI_CALL hiyui_date_picker_on_calendar_change(hiyui_widget_t *w,
 HIYUI_API void HIYUI_CALL hiyui_date_picker_set_disabled_date(hiyui_widget_t *w, hiyui_date_disabled_fn cb, void *ud)
 ```
 
-Disabled-date predicate. A non-zero return means the date cannot be selected.
+Disabled-date predicate; a non-zero return marks the date unselectable
 
 ### hiyui_date_picker_on_panel_change
 

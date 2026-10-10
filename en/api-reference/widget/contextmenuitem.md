@@ -10,7 +10,7 @@ title: "ContextMenuItem"
 
 Menu item definition
 
-Passed through a std::vector to ContextMenu::show() or Widget::contextMenu(). text and shortcut borrow caller strings. children, action and accelerator are owned by this struct.
+Passed as a std::vector to ContextMenu::show() or Widget::contextMenu(). text and shortcut borrow caller strings; children, action and accelerator are owned by this struct.
 
 ## Public Members
 
@@ -36,7 +36,7 @@ Right-side hint. Generated from accelerator when nullptr
 uint32_t iconCodepoint
 ```
 
-Font icon codepoint. Nonzero overrides iconSrc
+Font icon codepoint. Non-zero overrides iconSrc
 
 ### iconSrc
 
@@ -44,7 +44,7 @@ Font icon codepoint. Nonzero overrides iconSrc
 const void * iconSrc
 ```
 
-Image source, a file path or lv_image_dsc_t*
+Image source. File path or lv_image_dsc_t*
 
 ### iconStyle
 
@@ -60,7 +60,7 @@ Icon style
 bool separator
 ```
 
-Separator line. Other fields are ignored
+Separator. Other fields are ignored
 
 ### disabled
 
@@ -84,7 +84,7 @@ Submenu items
 std::function< void(MenuContext &)> action
 ```
 
-Click callback. The owner context is described by MenuContext
+Click callback. See MenuContext for the owner context
 
 ### accelerator
 
@@ -100,4 +100,4 @@ Hotkey binding. sdlKey=0 means none
 std::optional< LocalizedText > localizedText
 ```
 
-When present it overrides text, owns the text and updates with the language.
+Overrides text when present. Owns the text and updates with the language.

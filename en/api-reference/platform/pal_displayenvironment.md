@@ -8,7 +8,7 @@ title: "pal::DisplayEnvironment"
 
 **Namespace:** `hiyui`
 
-Physical pixel regions of the host client area. Facts not provided remain unknown.
+Physical pixel areas of the host client area; facts not provided stay unknown.
 
 ## Public Members
 
@@ -18,4 +18,4 @@ Physical pixel regions of the host client area. Facts not provided remain unknow
 bool keyboardAreaKnown
 ```
 
-When known, true means the keyboard is closed and the area is empty.
+True when it is known that the keyboard is closed and the area is empty.

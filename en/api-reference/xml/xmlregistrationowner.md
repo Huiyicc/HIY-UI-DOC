@@ -8,7 +8,7 @@ title: "XmlRegistrationOwner"
 
 **Namespace:** `hiyui`
 
-Move-only owner of an XML component registration; unregisters the token still held on destruction.
+Move-only XML component registration owner; unregisters the token still held on destruction.
 
 ## Public Methods
 

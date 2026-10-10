@@ -38,7 +38,7 @@ hiyui_xml_diagnostic_code_t code
 const char * source
 ```
 
-Borrowed string, valid until the owning result is destroyed. NULL when there is no source ID.
+Borrowed string, valid until the owning result is destroyed; NULL when there is no source ID.
 
 ### line
 
@@ -58,7 +58,7 @@ int column
 const char * element
 ```
 
-Borrowed string, valid until the owning handle is destroyed. NULL when there is no matching value.
+Borrowed string, valid until the owning handle is destroyed; NULL when no corresponding value exists.
 
 ### attribute
 

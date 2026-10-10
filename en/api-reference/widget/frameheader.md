@@ -8,7 +8,7 @@ title: "FrameHeader"
 
 **Namespace:** `hiyui`
 
-Top area of a WindowFrame.
+Top area of WindowFrame.
 
 **Inherits:** `hiyui::Container< FrameHeader >`
 
@@ -28,4 +28,4 @@ Wraps an existing top area object.
 FrameHeader & init(lv_obj_t *parent, const FrameRegionProps &props={}) &
 ```
 
-Creates the top area in a WindowFrame; no creation when the parent is invalid or the area already exists.
+Creates the top area in the WindowFrame, nothing is created when the parent is invalid or the area already exists.

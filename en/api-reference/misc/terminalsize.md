@@ -8,4 +8,4 @@ title: "TerminalSize"
 
 **Namespace:** `hiyui`
 
-Terminal character grid size; queries return zero rows and columns while the Terminal is not mounted.
+Terminal character grid size; queries return zero rows and columns when Terminal is not mounted.

@@ -8,7 +8,7 @@ title: "diagnostics::Snapshot"
 
 **Namespace:** `hiyui`
 
-Self-contained capture copy; the resource table is read only when an object snapshot is requested, overwrite and truncation state is described by fields.
+Self-contained capture copy; the resource table is read only when an object snapshot is requested, and resource overwrite and truncation state are described by the fields.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Self-contained capture copy; the resource table is read only when an object snap
 uint64_t untrackedResources
 ```
 
-Failed registrations since initialization plus this snapshot's truncations, may include duplicate observations.
+Failed registrations since initialization plus truncations in this snapshot; may include duplicate observations.
 
 ### recorderBytes
 
@@ -26,7 +26,7 @@ Failed registrations since initialization plus this snapshot's truncations, may 
 uint64_t recorderBytes
 ```
 
-Ring buffer element usage, excluding registry, strings, snapshot and panel.
+Ring buffer element storage; excludes registries, strings, snapshots and the panel.
 
 ### resourcesTimeUs
 
@@ -34,7 +34,7 @@ Ring buffer element usage, excluding registry, strings, snapshot and panel.
 uint64_t resourcesTimeUs
 ```
 
-Resource snapshot time, may be later than durationUs when capture stopped.
+Time of the resource snapshot; may be later than durationUs at stop.
 
 ### overwrittenProfilerEvents
 
@@ -42,7 +42,7 @@ Resource snapshot time, may be later than durationUs when capture stopped.
 uint64_t overwrittenProfilerEvents
 ```
 
-LVGL detail entries within overwrittenEvents that were overwritten.
+Number of LVGL detail entries overwritten within overwrittenEvents.
 
 ### filteredProfilerEvents
 
@@ -50,7 +50,7 @@ LVGL detail entries within overwrittenEvents that were overwritten.
 uint64_t filteredProfilerEvents
 ```
 
-Finished calls below the detail threshold, not counted in overwrittenEvents.
+Number of finished calls below the detail threshold; not counted in overwrittenEvents.
 
 ### eventLossEndUs
 
@@ -58,7 +58,7 @@ Finished calls below the detail threshold, not counted in overwrittenEvents.
 uint64_t eventLossEndUs
 ```
 
-Largest end time of overwritten normal spans, 0 when nothing was overwritten.
+Largest end time among overwritten normal spans; 0 when nothing was overwritten.
 
 ### profilerLossEndUs
 
@@ -66,7 +66,7 @@ Largest end time of overwritten normal spans, 0 when nothing was overwritten.
 uint64_t profilerLossEndUs
 ```
 
-Largest end time of overwritten LVGL details, 0 when nothing was overwritten.
+Largest end time among overwritten LVGL details; 0 when nothing was overwritten.
 
 ### incompleteProfilerSpans
 
@@ -74,7 +74,7 @@ Largest end time of overwritten LVGL details, 0 when nothing was overwritten.
 uint64_t incompleteProfilerSpans
 ```
 
-LVGL calls within incompleteSpans that exceeded the nesting limit or were unfinished at stop.
+Number of LVGL calls in incompleteSpans that exceeded the nesting limit or had not ended when stopping.
 
 ### filteredEventCallbacks
 
@@ -82,4 +82,4 @@ LVGL calls within incompleteSpans that exceeded the nesting limit or were unfini
 uint64_t filteredEventCallbacks
 ```
 
-Finished event callbacks below eventMinDurationUs, not counted in overwrittenEvents.
+Number of finished event callbacks below eventMinDurationUs; not counted in overwrittenEvents.

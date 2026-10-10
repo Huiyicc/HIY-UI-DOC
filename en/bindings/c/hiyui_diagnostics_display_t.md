@@ -62,7 +62,7 @@ int alive
 uint64_t submitted_frames
 ```
 
-Frames whose submit returned during this capture, excluding refreshes with no observed submit.
+Frames whose submit returned during this collection, excluding refreshes with no observed submit.
 
 ### continuous_intervals
 
@@ -70,7 +70,7 @@ Frames whose submit returned during this capture, excluding refreshes with no ob
 uint64_t continuous_intervals
 ```
 
-Submit intervals counted into the activity statistics during this capture.
+Number of submit intervals counted into the active statistics during this collection.
 
 ### continuous_interval_sum_us
 
@@ -78,4 +78,4 @@ Submit intervals counted into the activity statistics during this capture.
 uint64_t continuous_interval_sum_us
 ```
 
-Sum of submit intervals in the activity statistics, in microseconds.
+Sum of submit intervals in the active statistics, in microseconds.

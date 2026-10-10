@@ -8,4 +8,4 @@ title: "XmlCollectionField"
 
 **Namespace:** `hiyui`
 
-Named string field in a collection item. Name and value are read only during the call, and `index` is a reserved name.
+Named string fields of a collection item; name and value are read only during the call, and `index` is a reserved name.

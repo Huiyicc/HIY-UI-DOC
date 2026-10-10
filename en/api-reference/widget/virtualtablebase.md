@@ -8,12 +8,12 @@ title: "VirtualTableBase"
 
 **Namespace:** `hiyui`
 
-Virtual table rendering base class
+Virtual table rendering base
 
-Provides anchor restore, offset sync and other common methods. Subclasses manage their own row object pools and data binding.
+Provides common methods such as anchor restoration and offset synchronization. Subclasses manage their own row object pool and data binding.
 
 
-The final component type
+Final component type
 
 **Inherits:** `hiyui::Chainable< Derived >`
 
@@ -25,7 +25,7 @@ The final component type
 virtual VirtualAnchor doCaptureAnchor()=0
 ```
 
-Capture the anchor item of the current viewport; implemented by subclasses
+Captures the anchor item of the current viewport, implemented by subclasses
 
 ### doFindVisibleIndexById
 
@@ -33,7 +33,7 @@ Capture the anchor item of the current viewport; implemented by subclasses
 virtual int doFindVisibleIndexById(int itemId)=0
 ```
 
-Find the visible index by itemId; implemented by subclasses
+Finds the visible index by itemId, implemented by subclasses
 
 ### doGetTotalContentHeight
 
@@ -41,7 +41,7 @@ Find the visible index by itemId; implemented by subclasses
 virtual int doGetTotalContentHeight()=0
 ```
 
-Get the current total content height; implemented by subclasses
+Returns the current total content height, implemented by subclasses
 
 ### doGetRowHeight
 
@@ -49,7 +49,7 @@ Get the current total content height; implemented by subclasses
 virtual int doGetRowHeight()=0
 ```
 
-Get the default row height; implemented by equal-height-row subclasses
+Returns the default row height, implemented by equal-height row subclasses
 
 ### doGetRowHeight
 
@@ -57,7 +57,7 @@ Get the default row height; implemented by equal-height-row subclasses
 virtual int doGetRowHeight(int)
 ```
 
-Get the height of a given visible row; overridden by variable-height-row subclasses
+Returns the height of a visible row, overridden by variable-height row subclasses
 
 ### doGetGap
 
@@ -65,7 +65,7 @@ Get the height of a given visible row; overridden by variable-height-row subclas
 virtual int doGetGap()
 ```
 
-Get the row gap; needed for variable-height-row anchor restore
+Returns the row gap, required for anchor restoration with variable row heights
 
 ### restoreAnchorPosition
 
@@ -73,7 +73,7 @@ Get the row gap; needed for variable-height-row anchor restore
 virtual void restoreAnchorPosition(const VirtualAnchor &anchor)
 ```
 
-Restore the anchor item to its original screen position
+Restores the anchor item to its original screen position
 
 ### correctScrollY
 
@@ -81,7 +81,7 @@ Restore the anchor item to its original screen position
 virtual void correctScrollY()
 ```
 
-Clamp scrollY to the valid range
+Clamps scrollY to the valid range
 
 ### doRefreshPool
 
@@ -89,7 +89,7 @@ Clamp scrollY to the valid range
 virtual void doRefreshPool()
 ```
 
-Refresh visible rows after a synchronous refresh; implemented by subclasses
+Refreshes visible rows after a synchronized refresh, implemented by subclasses
 
 ### syncRefresh
 
@@ -97,7 +97,7 @@ Refresh visible rows after a synchronous refresh; implemented by subclasses
 void syncRefresh(const VirtualAnchor &anchor)
 ```
 
-Unified synchronous refresh flow
+Unified synchronized refresh flow
 
 ### forceLayoutSync
 
@@ -105,7 +105,7 @@ Unified synchronous refresh flow
 void forceLayoutSync()
 ```
 
-Force LVGL to complete layout calculation
+Forces LVGL to complete layout computation
 
 ### captureAnchor
 
@@ -113,4 +113,4 @@ Force LVGL to complete layout calculation
 VirtualAnchor captureAnchor()
 ```
 
-Capture the current anchor, for subclass use
+Captures the current anchor, for subclass use

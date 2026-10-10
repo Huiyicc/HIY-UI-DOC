@@ -8,4 +8,4 @@ title: "PropertyCommitRequest"
 
 **Namespace:** `hiyui`
 
-Commit request, valid only during the handler call and non-copyable. Must be accepted, rejected, or deferred; unanswered requests are rejected. Asynchronous operations keep the handle returned by defer.
+Commit request, valid only during the handler call and non-copyable. It must be accepted, rejected, or deferred; an unanswered request is rejected. Asynchronous operations store the handle returned by defer.

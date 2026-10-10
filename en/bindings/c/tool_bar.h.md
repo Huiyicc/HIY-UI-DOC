@@ -65,7 +65,7 @@ title: "tool_bar.h"
 typedef struct hiyui_tool_menu_item_s hiyui_tool_menu_item_t
 ```
 
-Menu input is copied recursively during the set_menu call; non-separator ids are non-zero and unique across the whole menu.
+The menu input is copied recursively during the set_menu call. Non-separator ids must be non-zero and unique across the whole menu.
 
 ### hiyui_tool_activate_fn
 
@@ -73,7 +73,7 @@ Menu input is copied recursively during the set_menu call; non-separator ids are
 typedef void(* hiyui_tool_activate_fn) (const hiyui_tool_event_t *event, void *user_data)
 ```
 
-event is valid only during the callback and may be copied by value.
+event is valid only during the callback and can be copied by value.
 
 ### hiyui_tool_change_fn
 
@@ -119,7 +119,7 @@ HIYUI_API void HIYUI_CALL hiyui_tool_separator_props_init(hiyui_tool_separator_p
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_tool_bar_create(hiyui_widget_t *parent, const hiyui_tool_bar_props_t *props)
 ```
 
-props NULL uses defaults and parent NULL returns NULL; the widget is destroyed with its parent.
+A NULL props uses defaults, and a NULL parent returns NULL. The widget is destroyed with its parent.
 
 ### hiyui_tool_button_create
 
@@ -217,7 +217,7 @@ HIYUI_API int HIYUI_CALL hiyui_tool_bar_get_item_count(hiyui_widget_t *bar)
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_tool_bar_get_item(hiyui_widget_t *bar, int index)
 ```
 
-Returns a borrowed widget; out of range or a NULL bar returns NULL.
+Returns a borrowed widget. Returns NULL for an out-of-range index or a NULL bar.
 
 ### hiyui_tool_bar_refresh
 
@@ -279,7 +279,7 @@ HIYUI_API void HIYUI_CALL hiyui_tool_button_set_text(hiyui_widget_t *button, con
 HIYUI_API size_t HIYUI_CALL hiyui_tool_button_get_text(hiyui_widget_t *button, char *buffer, size_t capacity)
 ```
 
-Returns the required byte count excluding the trailing NUL; with non-zero capacity it writes a NUL-terminated truncated copy.
+Returns the required byte count, excluding the terminating NUL. With a non-zero capacity, writes a truncated NUL-terminated copy.
 
 ### hiyui_tool_button_bind_text
 
@@ -359,7 +359,7 @@ HIYUI_API void HIYUI_CALL hiyui_tool_button_set_hidden(hiyui_widget_t *button, i
 HIYUI_API int HIYUI_CALL hiyui_tool_button_set_menu(hiyui_widget_t *button, const hiyui_tool_menu_item_t *items, size_t count)
 ```
 
-Returns 1 on success; invalid data rejects the whole replacement, and count 0 clears the menu.
+Returns 1 on success. Invalid data rejects the whole replacement, and a count of 0 clears the menu.
 
 ### hiyui_tool_button_get_menu
 
@@ -367,7 +367,7 @@ Returns 1 on success; invalid data rejects the whole replacement, and count 0 cl
 HIYUI_API hiyui_tool_menu_snapshot_t *HIYUI_CALL hiyui_tool_button_get_menu(hiyui_widget_t *button)
 ```
 
-Returns a caller-owned menu snapshot; widget changes or destruction do not affect the copy.
+Returns a caller-owned menu snapshot. Widget changes or destruction do not affect the copy.
 
 ### hiyui_tool_menu_snapshot_items
 
@@ -417,7 +417,7 @@ HIYUI_API int HIYUI_CALL hiyui_tool_button_is_menu_open(hiyui_widget_t *button)
 HIYUI_API int HIYUI_CALL hiyui_tool_button_set_shortcut(hiyui_widget_t *button, const hiyui_hotkey_t *spec)
 ```
 
-Binds a shortcut on the desktop SDL backend and returns 0 on other backends; a NULL spec unbinds.
+Binds the shortcut on the desktop SDL backend; other backends return 0. A NULL spec unbinds.
 
 ### hiyui_tool_button_on_activate
 
@@ -425,7 +425,7 @@ Binds a shortcut on the desktop SDL backend and returns 0 on other backends; a N
 HIYUI_API int HIYUI_CALL hiyui_tool_button_on_activate(hiyui_widget_t *button, hiyui_tool_activate_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Appends a subscription; destroy takes ownership of user_data and is also released when registration fails, and a non-NULL out_handle must initially point to NULL.
+Appends a subscription; destroy takes over user_data and is also released if registration fails. When out_handle is non-NULL, its value must be NULL.
 
 ### hiyui_tool_button_on_change
 

@@ -6,7 +6,7 @@ title: "hiyui_chart_hit_t"
 
 **Header:** `#include <hiyui/c/chart.h>`
 
-Hit result. Valid only inside the tooltip callback; the pointer is invalid after the callback returns.
+Hit result; valid only inside the tooltip callback, pointers are invalid after the callback returns
 
 ## Public Members
 

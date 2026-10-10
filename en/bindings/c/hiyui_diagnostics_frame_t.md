@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_frame_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-render_us includes flush; submitted only means the CPU submit call returned and does not imply GPU completion or actual presentation.
+render_us includes flush. submitted only means the CPU submit call returned, not GPU completion or actual present.
 
 ## Public Members
 
@@ -64,7 +64,7 @@ uint64_t flush_wait_us
 uint64_t submit_us
 ```
 
-For software SDL this is the accumulated flush callback time, for GL the swap call time.
+With software SDL, accumulated flush callback time; with GL, the swap call time.
 
 ### input_to_submit_us
 
@@ -102,7 +102,7 @@ uint32_t flush_count
 int continuous
 ```
 
-The first refresh request of this frame arrived within one frame budget after the previous submit; not the actual dropped frame count.
+The first refresh request of this frame arrived within one frame budget after the previous submit; this does not indicate the actual number of dropped frames.
 
 ### submitted
 
@@ -116,7 +116,7 @@ int submitted
 int input_associated
 ```
 
-Time association from the latest input handling to the next submit; it does not guarantee the input caused this frame.
+Time association from the most recent input handling to the next submit; it does not guarantee the input caused this frame.
 
 ### request_associated
 

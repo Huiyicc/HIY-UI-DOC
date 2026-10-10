@@ -8,12 +8,12 @@ title: "PopupPanel"
 
 **Namespace:** `hiyui`
 
-Popup panel
+Popup panel widget
 
-open() takes an anchor and a content builder callback. Placement, outside-click close, ESC close, ancestor-scroll close and the expand animation are handled automatically.
+open() receives an anchor and a content builder callback. Placement, outside-click close, ESC close, ancestor-scroll close, and the expand animation are handled automatically.
 
 
-PopupPanel manages the LVGL object lifetime independently and does not inherit Widget.
+PopupPanel manages the LVGL object lifetime on its own and does not inherit Widget.
 
 
 
@@ -27,7 +27,7 @@ PopupPanel manages the LVGL object lifetime independently and does not inherit W
 using hiyui::PopupPanel::Builder = std::function<void(Widget &)>
 ```
 
-Content builder callback, the argument is the panel content container
+Content builder callback; the argument is the panel content container
 
 ## Public Methods
 
@@ -37,7 +37,7 @@ Content builder callback, the argument is the panel content container
 PopupPanel(PopupPanelProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### open
 
@@ -45,7 +45,7 @@ Construct from aggregated properties
 PopupPanel & open(Widget &anchor, Builder builder)
 ```
 
-Open the popup
+Opens the popup
 
 ### open
 
@@ -53,7 +53,7 @@ Open the popup
 PopupPanel & open(Widget &anchor, F &&builder)
 ```
 
-Builds the popup content synchronously. The callback may hold move-only resources and is not retained after the call returns.
+Builds the popup content synchronously. The callback may own move-only resources; the builder is not kept after the call returns.
 
 ### close
 
@@ -61,7 +61,7 @@ Builds the popup content synchronously. The callback may hold move-only resource
 PopupPanel & close()
 ```
 
-Close the popup
+Closes the popup
 
 ### isOpen
 
@@ -69,7 +69,7 @@ Close the popup
 bool isOpen() const
 ```
 
-Query whether the popup is open
+Returns whether the popup is open
 
 ### raw
 
@@ -77,9 +77,9 @@ Query whether the popup is open
 lv_obj_t * raw() const
 ```
 
-Get the underlying panel LVGL object
+Returns the underlying LVGL object of the panel
 
-The panel object pointer, nullptr when not open
+Panel object pointer, nullptr when not open
 
 ### onClose
 
@@ -87,7 +87,7 @@ The panel object pointer, nullptr when not open
 PopupPanel & onClose(CloseCallback cb)
 ```
 
-Bind the close callback
+Binds the close callback
 
 ### onClose
 

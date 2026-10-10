@@ -8,7 +8,7 @@ title: "ProgressProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a Progress
+Creation properties of the progress bar
 
 ## Public Members
 
@@ -34,7 +34,7 @@ Current value [0,100]
 int width
 ```
 
-Width for Line, outer diameter for Circle and Dashboard
+Line: width / Circle,Dashboard: outer diameter
 
 ### height
 
@@ -42,7 +42,7 @@ Width for Line, outer diameter for Circle and Dashboard
 int height
 ```
 
-Height for Line, ignored for Circle
+Line: height (ignored by Circle)
 
 ### strokeWidth
 
@@ -50,7 +50,7 @@ Height for Line, ignored for Circle
 int strokeWidth
 ```
 
-Arc width for Circle and Dashboard
+Arc width for circle and dashboard modes
 
 ### startAngle
 
@@ -74,7 +74,7 @@ Dashboard gap angle
 bool rounded
 ```
 
-Rounded line ends
+Rounded ends
 
 ### showText
 
@@ -82,7 +82,7 @@ Rounded line ends
 bool showText
 ```
 
-Show the percentage text
+Show the percentage
 
 ### customText
 
@@ -106,7 +106,7 @@ Track color
 uint32_t activeColor
 ```
 
-Active color, follows theme Primary
+Active color, follows Primary
 
 ### gradientEndColor
 
@@ -138,7 +138,7 @@ Segment definitions
 int segmentCount
 ```
 
-Segment count
+Number of segments
 
 ### animated
 
@@ -146,7 +146,7 @@ Segment count
 bool animated
 ```
 
-Transition animation on value change
+Value change transition animation
 
 ### small
 
@@ -154,7 +154,7 @@ Transition animation on value change
 bool small
 ```
 
-Compact mode
+Small mode
 
 ### stepCount
 
@@ -162,7 +162,7 @@ Compact mode
 int stepCount
 ```
 
-Total step count, Steps mode
+Total number of steps (Steps mode)
 
 ### currentStep
 
@@ -170,4 +170,4 @@ Total step count, Steps mode
 int currentStep
 ```
 
-Current step, Steps mode, 0-based
+Current step (Steps mode, 0-based)

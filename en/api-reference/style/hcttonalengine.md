@@ -10,7 +10,7 @@ title: "HctTonalEngine"
 
 HCT (CAM16 + L*) based tonal mapping engine
 
-chroma is an absolute HCT chroma value; typical MD3 TonalSpot values are Primary=36, Secondary=16, Tertiary=24, Neutral=6, NeutralVariant=8. Perceptually uniform with high color accuracy.
+chroma is the absolute HCT chroma value, typical MD3 TonalSpot values are Primary=36, Secondary=16, Tertiary=24, Neutral=6, NeutralVariant=8. Perceptually uniform, high color scheme accuracy.
 
 **Inherits:** `hiyui::TonalEngine`
 
@@ -32,9 +32,9 @@ Seed color in 0xRRGGBB format
 virtual uint32_t tonalColor(double chroma, int tone) const override
 ```
 
-Generates a color at the given tone under the current hue
+Generates a color of the given tone at the current hue
 
-Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100] A 0xRRGGBB value
+Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100]
 
 ### tonalColorWithHueShift
 
@@ -42,6 +42,6 @@ Chroma ratio [0.0, 1.0], 1.0 = the seed color original chroma Tone [0, 100] A 0x
 virtual uint32_t tonalColorWithHueShift(int hueDelta, double chroma, int tone) const override
 ```
 
-Generates a color after shifting the hue, used for Tertiary and similar
+Generates a color after shifting the hue, for Tertiary and similar
 
-Hue shift in degrees Chroma ratio [0.0, 1.0] Tone [0, 100] A 0xRRGGBB value
+Hue shift in degrees Chroma ratio [0.0, 1.0] Tone [0, 100]

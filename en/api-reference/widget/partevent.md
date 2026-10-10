@@ -18,4 +18,4 @@ Part activation info; index is the current data index, HIYUI_NO_SELECTION means 
 void preventDefault()
 ```
 
-Prevents the component default behavior of this activation, such as selection or sorting.
+Suppresses the component default behavior of this activation, such as selection or sorting.

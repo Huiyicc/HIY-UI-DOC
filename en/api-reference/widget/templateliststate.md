@@ -18,7 +18,7 @@ TemplateList runtime state, lifetime follows the LVGL object.
 bool updating
 ```
 
-true during beginUpdate, pausing view refresh
+true during beginUpdate, pauses view refresh
 
 ### expandedIdx
 
@@ -26,7 +26,7 @@ true during beginUpdate, pausing view refresh
 int expandedIdx
 ```
 
-Currently expanded row index, -1 = none
+Currently expanded row index, -1 = none expanded
 
 ### animatingHeight
 
@@ -42,4 +42,4 @@ Animation intermediate value, 0 = not animating
 lv_obj_t * animListObj
 ```
 
-List object used in the animation callback
+List object used inside animation callbacks

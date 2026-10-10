@@ -22,7 +22,7 @@ int valid
 hiyui_logical_rect_t safe_area
 ```
 
-Excludes decorations and known system-reserved areas.
+Excludes decorations and known system reserved areas.
 
 ### available_area
 
@@ -30,7 +30,7 @@ Excludes decorations and known system-reserved areas.
 hiyui_logical_rect_t available_area
 ```
 
-Largest rectangle excluding the keyboard; with equal area, the upper one wins, then the left one.
+Largest rectangle excluding the keyboard; among equal areas, the upper one wins, then the left one.
 
 ### keyboard_area
 
@@ -52,7 +52,7 @@ When 0, safe_area only covers the currently known content extent.
 int keyboard_area_known
 ```
 
-An empty keyboard area is unknown or closed; this field distinguishes the two.
+An empty keyboard area may be unknown or closed; this field distinguishes the two.
 
 ### shape
 

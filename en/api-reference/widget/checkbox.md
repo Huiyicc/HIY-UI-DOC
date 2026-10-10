@@ -22,7 +22,7 @@ Checkbox widget
 Checkbox(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Checkbox
 
@@ -30,9 +30,9 @@ Wrap an existing LVGL object
 Checkbox(CheckboxProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
-Checkbox properties, aggregate initialization supported
+Checkbox properties. Supports aggregate initialization
 
 ### init
 
@@ -40,7 +40,7 @@ Checkbox properties, aggregate initialization supported
 Checkbox & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL checkbox object under a parent
+Creates the LVGL checkbox object on a parent
 
 Parent LVGL object pointer This component
 
@@ -50,7 +50,7 @@ Parent LVGL object pointer This component
 Checkbox & init(Widget &parent) &
 ```
 
-Create the LVGL checkbox object under a parent
+Creates the LVGL checkbox object on a parent
 
 Parent LVGL object pointer This component
 
@@ -60,7 +60,7 @@ Parent LVGL object pointer This component
 Checkbox & checked(bool c, Notify notify=Notify::No) &
 ```
 
-Set the checked state at runtime
+Sets the checked state at runtime
 
 true = check, false = uncheck This component
 
@@ -70,7 +70,7 @@ true = check, false = uncheck This component
 Checkbox & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Append a state change subscription. The callback can take a bool, an Event&amp; or no parameter.
+Appends a state-change subscription. The callback can take bool, Event&amp; or no parameters.
 
 ### isChecked
 
@@ -78,9 +78,9 @@ Append a state change subscription. The callback can take a bool, an Event&amp; 
 bool isChecked() const
 ```
 
-Query whether currently checked
+Queries whether currently checked
 
-The checked state
+Checked state
 
 ### text
 
@@ -88,9 +88,9 @@ The checked state
 Checkbox & text(const char *t) &
 ```
 
-Change the label text at runtime
+Changes the label text at runtime
 
-New text content, UTF-8 encoded This component
+New text content in UTF-8 This component
 
 ### text
 
@@ -98,7 +98,7 @@ New text content, UTF-8 encoded This component
 Checkbox & text(const LocalizedText &text) &
 ```
 
-Bind text that updates with the language, copying the description. A plain string call replaces this binding.
+Binds text that updates with the language. Copies the description. A plain string call replaces this binding.
 
 ### checkedColor
 
@@ -106,4 +106,4 @@ Bind text that updates with the language, copying the description. A plain strin
 Checkbox & checkedColor(ThemeRole role) &
 ```
 
-Bind the checked indicator color to a theme semantic role, updated automatically on theme change
+Binds the checked check box color to a theme semantic role. Updates automatically on theme switch

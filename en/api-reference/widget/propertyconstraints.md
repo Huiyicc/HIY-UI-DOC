@@ -8,7 +8,7 @@ title: "PropertyConstraints"
 
 **Namespace:** `hiyui`
 
-Numeric bounds and step use the same value type as the property. Empty values mean unset. The minimum must not exceed the maximum, the step must be greater than zero, and floating point values must be finite.
+Numeric bounds and step use the same value type as the property; empty means unset. Minimum must not exceed maximum, step must be greater than zero, and floating-point values must be finite.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Numeric bounds and step use the same value type as the property. Empty values me
 int decimals
 ```
 
-Displayed decimal places, 0 to 15. Does not change stored precision.
+Displayed decimal places, 0 to 15. Does not change storage precision.
 
 ### maxLength
 
@@ -26,7 +26,7 @@ Displayed decimal places, 0 to 15. Does not change stored precision.
 int maxLength
 ```
 
-Text UTF-8 byte limit. 0 means unlimited.
+Text UTF-8 byte limit. 0 = unlimited
 
 ### localizedUnit
 
@@ -34,4 +34,4 @@ Text UTF-8 byte limit. 0 means unlimited.
 std::optional< LocalizedText > localizedUnit
 ```
 
-When set it overrides unit and affects display only.
+Overrides unit when set. Affects display only.

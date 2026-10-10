@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_snapshot_info_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Text is borrowed from the snapshot; resources_time_us is the moment resources were read and can be later than the capture stop.
+Text is borrowed from the snapshot. resources_time_us is the moment resources were read, which can be later than the collection stop.
 
 ## Public Members
 
@@ -180,7 +180,7 @@ Number of LVGL detail entries overwritten within overwritten_events.
 uint64_t filtered_profiler_events
 ```
 
-Finished calls below the detail threshold, not counted in overwritten_events.
+Number of finished calls below the detail threshold; not counted in overwritten_events.
 
 ### event_loss_end_us
 
@@ -188,7 +188,7 @@ Finished calls below the detail threshold, not counted in overwritten_events.
 uint64_t event_loss_end_us
 ```
 
-Latest end time of overwritten normal spans, 0 when nothing was overwritten.
+Latest end time of overwritten normal spans; 0 when nothing was overwritten.
 
 ### profiler_loss_end_us
 
@@ -196,7 +196,7 @@ Latest end time of overwritten normal spans, 0 when nothing was overwritten.
 uint64_t profiler_loss_end_us
 ```
 
-Latest end time of overwritten LVGL detail, 0 when nothing was overwritten.
+Latest end time of overwritten LVGL detail spans; 0 when nothing was overwritten.
 
 ### incomplete_profiler_spans
 
@@ -204,7 +204,7 @@ Latest end time of overwritten LVGL detail, 0 when nothing was overwritten.
 uint64_t incomplete_profiler_spans
 ```
 
-LVGL calls in incomplete_spans exceeding the nesting limit or unfinished at stop.
+Number of LVGL calls in incomplete_spans that exceeded the nesting limit or had not ended when collection stopped.
 
 ### filtered_event_callbacks
 
@@ -212,4 +212,4 @@ LVGL calls in incomplete_spans exceeding the nesting limit or unfinished at stop
 uint64_t filtered_event_callbacks
 ```
 
-Finished event callbacks below event_min_duration_us, not counted in overwritten_events.
+Number of finished event callbacks below event_min_duration_us; not counted in overwritten_events.

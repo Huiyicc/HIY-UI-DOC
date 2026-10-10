@@ -8,7 +8,7 @@ title: "PropertyReply"
 
 **Namespace:** `hiyui`
 
-Copyable non-owning reply handle; all methods must be called on the UI thread. Invalidated by the first completion or cancellation, a property version change, or widget deletion; repeated completion returns false.
+Copyable, non-owning reply handle; all methods must be called on the UI thread. Becomes invalid after the first completion, cancellation, a property version change, or widget deletion; completing again returns false.
 
 ## Public Methods
 

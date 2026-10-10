@@ -24,7 +24,7 @@ Animation type
 uint32_t duration
 ```
 
-Duration, 0 = theme default
+Duration; 0 = theme default
 
 ### easing
 

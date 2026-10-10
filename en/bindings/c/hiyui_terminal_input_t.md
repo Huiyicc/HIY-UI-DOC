@@ -6,7 +6,7 @@ title: "hiyui_terminal_input_t"
 
 **Header:** `#include <hiyui/c/terminal.h>`
 
-Raw input; text may be NULL and the bytes are valid only during the call or callback.
+Raw input. text may be NULL. The bytes are valid only during the call or callback.
 
 ## Public Members
 

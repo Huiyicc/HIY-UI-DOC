@@ -10,7 +10,7 @@ title: "LineChart"
 
 Line chart widget
 
-Wraps lv_chart in LINE/CURVE mode with gradient area fill, data point highlighting and tooltip.
+Wraps lv_chart in LINE/CURVE modes with gradient area fill, data point highlight and tooltip.
 
 
 
@@ -29,7 +29,7 @@ Wraps lv_chart in LINE/CURVE mode with gradient area fill, data point highlighti
 LineChart(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### LineChart
 
@@ -37,7 +37,7 @@ Wrap an existing LVGL object
 LineChart(LineChartProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 Line chart properties
 
@@ -47,7 +47,7 @@ Line chart properties
 LineChart & init(lv_obj_t *parent) &
 ```
 
-Create the line chart under a parent object
+Creates the line chart on a parent object
 
 Parent LVGL object pointer
 
@@ -57,7 +57,7 @@ Parent LVGL object pointer
 LineChart & init(Widget &parent) &
 ```
 
-Create the line chart under a parent object
+Creates the line chart on a parent object
 
 Parent LVGL object pointer
 
@@ -67,9 +67,9 @@ Parent LVGL object pointer
 int addSeries(SeriesConfig config={})
 ```
 
-Add a data series
+Adds a data series
 
-Series configuration such as name, color and line width Index of the added series, incrementing from 0
+Series configuration: name, color, line width, etc. Index of the new series, incrementing from 0
 
 ### data
 
@@ -77,9 +77,9 @@ Series configuration such as name, color and line width Index of the added serie
 LineChart & data(int seriesIdx, const int32_t *values, int count) &
 ```
 
-Set the entire data of a series
+Replaces the whole data set of a series
 
-Series index, the value returned by addSeries Data array Number of data points This component
+Series index, the value returned by addSeries Value array Number of data points This component
 
 ### data
 
@@ -87,9 +87,9 @@ Series index, the value returned by addSeries Data array Number of data points T
 LineChart & data(int seriesIdx, const std::vector< int32_t > &values) &
 ```
 
-Set the entire data of a series
+Replaces the whole data set of a series
 
-Series index Data array This component
+Series index Value array This component
 
 ### pushValue
 
@@ -97,7 +97,7 @@ Series index Data array This component
 LineChart & pushValue(int seriesIdx, int32_t value) &
 ```
 
-Push one data point to the end of a series
+Appends one data point to a series
 
 Series index Data value This component
 
@@ -107,7 +107,7 @@ Series index Data value This component
 LineChart & clearSeries(int seriesIdx) &
 ```
 
-Clear the data of a series
+Clears the data of a series
 
 Series index This component
 
@@ -117,9 +117,9 @@ Series index This component
 LineChart & xLabels(const std::vector< std::string > &labels) &
 ```
 
-Set the X axis tick texts
+Sets the X axis tick texts
 
-Array of tick texts, length should match pointCount This component
+Tick text array; the length should match pointCount This component
 
 ### xLabels
 
@@ -127,7 +127,7 @@ Array of tick texts, length should match pointCount This component
 LineChart & xLabels(const std::vector< LocalizedText > &labels) &
 ```
 
-Bind localized texts to the tick labels. Replacing the labels releases the previous binding and does not change data or viewport.
+Binds per-tick localized texts. Replacing the labels releases the original binding without changing data or viewport.
 
 ### yRange
 
@@ -135,7 +135,7 @@ Bind localized texts to the tick labels. Replacing the labels releases the previ
 LineChart & yRange(int32_t min, int32_t max) &
 ```
 
-Set the Y axis range
+Sets the Y axis range
 
 Minimum value Maximum value This component
 
@@ -145,6 +145,6 @@ Minimum value Maximum value This component
 lv_obj_t * chartObj() const
 ```
 
-Get the underlying lv_chart object
+Returns the underlying lv_chart object
 
-Pointer to the line chart LVGL object for advanced custom drawing
+Line chart LVGL object pointer for advanced custom drawing

@@ -8,4 +8,4 @@ title: "XmlSchemaParseResult"
 
 **Namespace:** `hiyui`
 
-Result of parsing the dedicated Schema XML.
+Dedicated schema XML parse result.

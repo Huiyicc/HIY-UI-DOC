@@ -8,7 +8,7 @@ title: "ToolButtonProps"
 
 **Namespace:** `hiyui`
 
-Tool button configuration; sizes use theme logical pixels. Strings and image paths are copied by the widget; image descriptors are borrowed until the widget is destroyed.
+Tool button configuration, sizes use theme logical pixels. Strings and image paths are copied by the component, image descriptors are borrowed until the widget is destroyed.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Tool button configuration; sizes use theme logical pixels. Strings and image pat
 uint32_t radioGroup
 ```
 
-Radio buttons with the same value in one tool bar are mutually exclusive; standalone buttons group by parent container.
+Radio buttons with the same value within one tool bar are mutually exclusive, standalone buttons are grouped by the parent container.
 
 ### iconSize
 
@@ -26,4 +26,4 @@ Radio buttons with the same value in one tool bar are mutually exclusive; standa
 int iconSize
 ```
 
-0 follows the tool bar; 18 when used standalone.
+0 follows the tool bar, 18 when used standalone.

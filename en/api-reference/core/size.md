@@ -8,9 +8,9 @@ title: "Size"
 
 **Namespace:** `hiyui`
 
-Two-dimensional size
+2D size
 
-Used for window size, widget size and similar cases, supports aggregate initialization.
+Used for window size, widget size and similar cases; supports aggregate initialization.
 
 ## Public Members
 

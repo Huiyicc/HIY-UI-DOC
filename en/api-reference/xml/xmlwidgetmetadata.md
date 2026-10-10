@@ -18,4 +18,4 @@ Read-only metadata copy of a registered component.
 bool itemAllowsChildren
 ```
 
-Whether an ItemList item may contain a component subtree.
+Whether ItemList items may contain component subtrees.

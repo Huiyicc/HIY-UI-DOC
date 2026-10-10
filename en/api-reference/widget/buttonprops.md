@@ -18,7 +18,7 @@ Button creation properties
 const char * text
 ```
 
-Button text, UTF-8 encoded
+Button text in UTF-8
 
 ### iconCodepoint
 
@@ -42,7 +42,7 @@ Image source before the text
 uint32_t iconSize
 ```
 
-Icon size, 0 = default 18
+Icon size. 0 = default 18
 
 ### iconStyle
 
@@ -50,7 +50,7 @@ Icon size, 0 = default 18
 FontIconStyle iconStyle
 ```
 
-Icon style, fill/weight/grade/opticalSize
+Icon style. fill/weight/grade/opticalSize
 
 ### variant
 
@@ -66,7 +66,7 @@ Button variant
 int width
 ```
 
-Width, HIYUI_AUTO = fit content
+Width. HIYUI_AUTO = fit content
 
 ### height
 
@@ -74,7 +74,7 @@ Width, HIYUI_AUTO = fit content
 int height
 ```
 
-Height, HIYUI_AUTO = fit content
+Height. HIYUI_AUTO = fit content
 
 ### bg
 
@@ -82,7 +82,7 @@ Height, HIYUI_AUTO = fit content
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color. HIYUI_DEFAULT = follow theme
 
 ### textColor
 
@@ -90,7 +90,7 @@ Background color, HIYUI_DEFAULT = follow theme
 uint32_t textColor
 ```
 
-Text color, HIYUI_DEFAULT = follow theme
+Text color. HIYUI_DEFAULT = follow theme
 
 ### fontSize
 
@@ -98,7 +98,7 @@ Text color, HIYUI_DEFAULT = follow theme
 int fontSize
 ```
 
-Font size, 0 = use the theme default
+Font size. 0 = use the theme default
 
 ### radius
 
@@ -106,7 +106,7 @@ Font size, 0 = use the theme default
 uint32_t radius
 ```
 
-Corner radius, HIYUI_DEFAULT = follow theme
+Corner radius. HIYUI_DEFAULT = follow theme
 
 ### underline
 
@@ -114,7 +114,7 @@ Corner radius, HIYUI_DEFAULT = follow theme
 bool underline
 ```
 
-Text underline, only effective for the Link variant, on by default
+Text underline. Only effective on the Link variant, on by default
 
 ### normalSrc
 
@@ -122,7 +122,7 @@ Text underline, only effective for the Link variant, on by default
 const void * normalSrc
 ```
 
-Normal state image, a file path (const char*) or lv_image_dsc_t*. State pick priority: disabled &gt; pressed &gt; hovered &gt; normal. Setting any state image makes the background fully transparent by default
+Normal state base image, file path (const char*) or lv_image_dsc_t*. State selection priority is disabled &gt; pressed &gt; hovered &gt; normal. After any state base image is set, the background defaults to fully transparent
 
 ### hoveredSrc
 
@@ -130,7 +130,7 @@ Normal state image, a file path (const char*) or lv_image_dsc_t*. State pick pri
 const void * hoveredSrc
 ```
 
-Hovered state image, entered on pointer hover; falls back to the next lower-priority image when unset
+Hovered state base image, entered while the pointer hovers. Falls back to a lower-priority base image when unset
 
 ### pressedSrc
 
@@ -138,7 +138,7 @@ Hovered state image, entered on pointer hover; falls back to the next lower-prio
 const void * pressedSrc
 ```
 
-Pressed state image; falls back to the next lower-priority image when unset
+Pressed state base image. Falls back to a lower-priority base image when unset
 
 ### disabledSrc
 
@@ -146,7 +146,7 @@ Pressed state image; falls back to the next lower-priority image when unset
 const void * disabledSrc
 ```
 
-Disabled state image; falls back to the next lower-priority image when unset
+Disabled state base image. Falls back to a lower-priority base image when unset
 
 ### fit
 
@@ -154,4 +154,4 @@ Disabled state image; falls back to the next lower-priority image when unset
 ImageFit fit
 ```
 
-Image fit mode, applied when the size is constrained by layout
+Base image scaling mode. Takes effect when the size is constrained by the layout

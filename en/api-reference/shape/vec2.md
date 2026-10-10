@@ -8,7 +8,7 @@ title: "Vec2"
 
 **Namespace:** `hiyui`
 
-2D floating-point coordinates
+2D floating point coordinate
 
 Used for custom polygon vertices; coordinates are normalized to [0, 1].
 

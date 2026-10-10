@@ -10,7 +10,7 @@ title: "GlassEffect"
 
 Frosted glass blur effect attaching a blur filter to an LVGL object
 
-Render hierarchy, base image -&gt; color layer -&gt; blur layer. Without a base image or color, blurs the already drawn area below the component, the backdrop-filter behavior. With a base image or color, composites internally and then blurs.
+Render hierarchy: base image -&gt; color layer -&gt; blur layer. Without base image or color, blurs the already drawn area below the component, backdrop-filter behavior. With base image or color, composites internally and then blurs.
 
 
 
@@ -29,7 +29,7 @@ static void attach(_lv_obj_t *obj, const Backdrop &params, const BlurSource &sou
 
 Attaches the blur effect to the given object
 
-Target LVGL object pointer Blur parameters such as radius and saturation Blur source configuration, empty by default for backdrop-filter mode
+Target LVGL object pointer Blur parameters such as radius and saturation Blur source configuration; empty by default, backdrop-filter mode
 
 ### detach
 
@@ -47,7 +47,7 @@ Target LVGL object pointer
 static void invalidateCache(_lv_obj_t *obj)
 ```
 
-Marks the cache dirty so the blur image is regenerated on the next draw
+Marks the cache dirty and regenerates the blur image on the next draw
 
 Target LVGL object pointer
 

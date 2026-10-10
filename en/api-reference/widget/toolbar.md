@@ -8,7 +8,7 @@ title: "ToolBar"
 
 **Namespace:** `hiyui`
 
-Tool bar container supporting in-place mounting, declarative subtrees, overflow menu and embedded widgets. Child widgets are managed by the tool bar; overflow does not destroy them. Use moveItem for dynamic reordering. Call on the UI thread. Configuration and event bindings made before mounting apply at init; operations after destruction have no effect. Queries on unmounted or destroyed objects return default values.
+Tool bar container supporting in-place mounting, declarative subtrees, overflow menu and embedded widgets. Child widgets are managed by the tool bar, overflow does not destroy them, use moveItem for dynamic ordering. Call on the UI thread, configuration and event bindings made before mounting are applied at init, operations after destruction have no effect. Queries on unmounted or destroyed objects return default values.
 
 **Inherits:** `hiyui::Container< ToolBar >`
 
@@ -20,7 +20,7 @@ Tool bar container supporting in-place mounting, declarative subtrees, overflow 
 ToolBar & buttonSize(int value) &
 ```
 
-Sets the minimum button hit size in logical pixels; positive values are valid; 44 suits touch interfaces.
+Sets the minimum button hit size in logical pixels, positive values are effective, 44 suits touch interfaces.
 
 ### append
 
@@ -28,7 +28,7 @@ Sets the minimum button hit size in logical pixels; positive values are valid; 4
 ToolBar & append(Widget &item) &
 ```
 
-Appends a mounted widget to the tool bar, moving its parent-child relationship; repeated appends keep the order.
+Appends a mounted widget to the tool bar and reparents it, repeated appends keep the order unchanged.
 
 ### moveItem
 
@@ -36,7 +36,7 @@ Appends a mounted widget to the tool bar, moving its parent-child relationship; 
 bool moveItem(Widget &item, int index)
 ```
 
-Moves a top-level item to the given index in [0,itemCount); invalid arguments return false.
+Moves a top-level item to the given index within [0,itemCount), invalid arguments return false.
 
 ### removeItem
 
@@ -44,7 +44,7 @@ Moves a top-level item to the given index in [0,itemCount); invalid arguments re
 bool removeItem(Widget &item)
 ```
 
-Removes a top-level item and its subtree; returns false for items not owned by this tool bar.
+Removes a top-level item and its subtree, returns false for items not in this tool bar.
 
 ### itemAt
 
@@ -52,7 +52,7 @@ Removes a top-level item and its subtree; returns false for items not owned by t
 Ref< Widget > itemAt(int index) const
 ```
 
-Returns a non-owning reference to a top-level item; out-of-range returns an empty reference. The index includes separators.
+Returns a non-owning reference to a top-level item, an empty reference when out of range, the index includes separators.
 
 ### refresh
 
@@ -60,4 +60,4 @@ Returns a non-owning reference to a top-level item; out-of-range returns an empt
 ToolBar & refresh() &
 ```
 
-Refreshes sizes and overflow assignment synchronously; layout events also refresh automatically.
+Refreshes sizes and overflow assignment synchronously, layout events also refresh automatically.

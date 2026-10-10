@@ -8,7 +8,7 @@ title: "FileDialogProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a file dialog
+Creation properties of the file dialog
 
 ## Public Members
 
@@ -58,4 +58,4 @@ Filter array
 int filterCount
 ```
 
-Filter count
+Number of filters

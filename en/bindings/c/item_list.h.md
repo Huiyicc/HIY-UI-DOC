@@ -6,9 +6,9 @@ title: "item_list.h"
 
 **Header:** `#include <hiyui/c/item_list.h>`
 
-List widget with full data arrays and virtual rendering
+List widget taking full item arrays with virtual rendering
 
-Takes a full items array and supports separators, icons, selection highlight, append, and batch updates. Complements hiyui_list, which uses count and build callbacks.
+Accepts a full items array and supports separators, icons, selection highlight, append, and batch updates. Complements hiyui_list, which is driven by count/build callbacks.
 
 ## Functions
 
@@ -18,7 +18,7 @@ Takes a full items array and supports separators, icons, selection highlight, ap
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_item_list_create(hiyui_widget_t *parent, const hiyui_item_list_props_t *props)
 ```
 
-Creates a list; NULL props uses all defaults
+Creates a list; a NULL props uses all defaults
 
 ### hiyui_item_list_set_items
 
@@ -34,7 +34,7 @@ Sets the list items in bulk
 HIYUI_API void HIYUI_CALL hiyui_item_list_set_selected(hiyui_widget_t *l, int idx, hiyui_notify_t notify)
 ```
 
-Sets the selected item. idx is a logical index excluding separators; -1 clears the selection.
+Sets the selected item; idx is a logical index excluding separators, -1 clears selection
 
 ### hiyui_item_list_get_selected
 
@@ -42,7 +42,7 @@ Sets the selected item. idx is a logical index excluding separators; -1 clears t
 HIYUI_API int HIYUI_CALL hiyui_item_list_get_selected(hiyui_widget_t *l)
 ```
 
-Returns the current selected index; -1 means no selection
+Returns the current selected index, -1 when nothing is selected
 
 ### hiyui_item_list_on_change
 

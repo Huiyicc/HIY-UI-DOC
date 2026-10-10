@@ -71,7 +71,7 @@ typedef struct hiyui_terminal_model hiyui_terminal_model_t
 typedef void(* hiyui_terminal_data_fn) (const char *data, size_t size, void *user_data)
 ```
 
-The data is valid only during the callback and may contain zero bytes; the callback runs on the UI thread.
+The data is valid only during the callback and may contain zero bytes. The callback is invoked on the UI thread.
 
 ### hiyui_terminal_resize_fn
 
@@ -87,7 +87,7 @@ typedef void(* hiyui_terminal_resize_fn) (hiyui_terminal_size_t size, void *user
 HIYUI_API hiyui_terminal_model_t *HIYUI_CALL hiyui_terminal_model_create(hiyui_terminal_size_t size, int scrollback_lines)
 ```
 
-Creates a windowless VT model; non-positive dimensions become 1, a negative history line count becomes zero, and failure returns NULL.
+Creates a windowless VT model. Non-positive dimensions become 1. A negative scrollback line count becomes zero. Returns NULL on failure.
 
 ### hiyui_terminal_model_destroy
 
@@ -95,7 +95,7 @@ Creates a windowless VT model; non-positive dimensions become 1, a negative hist
 HIYUI_API void HIYUI_CALL hiyui_terminal_model_destroy(hiyui_terminal_model_t *model)
 ```
 
-Releases the model; NULL is a no-op.
+Releases the model. NULL is a no-op.
 
 ### hiyui_terminal_model_write
 
@@ -103,7 +103,7 @@ Releases the model; NULL is a no-op.
 HIYUI_API void HIYUI_CALL hiyui_terminal_model_write(hiyui_terminal_model_t *model, const char *data, size_t size)
 ```
 
-Calls on the model must be serialized; a NULL model or NULL data is a no-op.
+Calls on the model must be serialized. A NULL model or NULL data is a no-op.
 
 ### hiyui_terminal_model_input
 
@@ -129,7 +129,7 @@ HIYUI_API hiyui_terminal_size_t HIYUI_CALL hiyui_terminal_model_get_size(hiyui_t
 HIYUI_API size_t HIYUI_CALL hiyui_terminal_model_get_screen(hiyui_terminal_model_t *model, char *buffer, size_t capacity)
 ```
 
-Returns the required length; with non-zero capacity it copies at most capacity-1 bytes and adds a terminator, and a NULL model returns an empty value.
+Returns the required length. With a non-zero capacity, copies at most capacity-1 bytes and adds a zero terminator. A NULL model yields an empty value.
 
 ### hiyui_terminal_model_get_text
 
@@ -137,7 +137,7 @@ Returns the required length; with non-zero capacity it copies at most capacity-1
 HIYUI_API size_t HIYUI_CALL hiyui_terminal_model_get_text(hiyui_terminal_model_t *model, char *buffer, size_t capacity)
 ```
 
-Returns the required length; with non-zero capacity it copies at most capacity-1 bytes and adds a terminator, and a NULL model returns an empty value.
+Returns the required length. With a non-zero capacity, copies at most capacity-1 bytes and adds a zero terminator. A NULL model yields an empty value.
 
 ### hiyui_terminal_model_take_output
 
@@ -145,7 +145,7 @@ Returns the required length; with non-zero capacity it copies at most capacity-1
 HIYUI_API void HIYUI_CALL hiyui_terminal_model_take_output(hiyui_terminal_model_t *model, void(*callback)(const char *, size_t, void *), void *user_data)
 ```
 
-Passes all pending output bytes to the callback and clears them; a NULL model or callback is a no-op.
+Passes all pending output bytes to the callback and clears them. A NULL model or callback is a no-op.
 
 ### hiyui_terminal_props_init
 
@@ -153,7 +153,7 @@ Passes all pending output bytes to the callback and clears them; a NULL model or
 HIYUI_API void HIYUI_CALL hiyui_terminal_props_init(hiyui_terminal_props_t *props)
 ```
 
-Fills in defaults matching TerminalProps; NULL is a no-op.
+Fills in defaults matching TerminalProps. NULL is a no-op.
 
 ### hiyui_terminal_create
 
@@ -161,7 +161,7 @@ Fills in defaults matching TerminalProps; NULL is a no-op.
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_terminal_create(hiyui_widget_t *parent, const hiyui_terminal_props_t *props)
 ```
 
-Creates a terminal inside the parent; returns NULL when the parent is NULL or creation fails.
+Creates a terminal inside the parent widget. Returns NULL when the parent is NULL or creation fails.
 
 ### hiyui_terminal_write
 
@@ -169,7 +169,7 @@ Creates a terminal inside the parent; returns NULL when the parent is NULL or cr
 HIYUI_API void HIYUI_CALL hiyui_terminal_write(hiyui_widget_t *widget, const char *data, size_t size)
 ```
 
-Writes output bytes; a NULL widget, NULL data, or zero length is a no-op.
+Writes output bytes. A NULL widget, NULL data, or zero length is a no-op.
 
 ### hiyui_terminal_paste
 
@@ -177,7 +177,7 @@ Writes output bytes; a NULL widget, NULL data, or zero length is a no-op.
 HIYUI_API void HIYUI_CALL hiyui_terminal_paste(hiyui_widget_t *widget, const char *data, size_t size)
 ```
 
-Sends pasted text; a NULL widget, NULL data, or zero length is a no-op.
+Sends pasted text. A NULL widget, NULL data, or zero length is a no-op.
 
 ### hiyui_terminal_clear_scrollback
 
@@ -217,7 +217,7 @@ A NULL widget returns zero rows and zero columns.
 HIYUI_API void HIYUI_CALL hiyui_terminal_set_terminal_size(hiyui_widget_t *widget, hiyui_terminal_size_t size)
 ```
 
-Fixes the grid; a non-positive dimension restores the automatic grid, and a NULL widget is a no-op.
+Fixes the grid. A non-positive dimension restores the automatic grid. A NULL widget is a no-op.
 
 ### hiyui_terminal_set_read_only
 
@@ -239,7 +239,7 @@ A NULL widget returns HIYUI_BOOL_FALSE.
 HIYUI_API size_t HIYUI_CALL hiyui_terminal_get_text(hiyui_widget_t *widget, char *buffer, size_t capacity)
 ```
 
-Returns the required byte count excluding the terminating zero; with non-zero capacity it copies at most capacity-1 bytes and adds a terminator.
+Returns the required byte count, excluding the terminating zero. With a non-zero capacity, copies at most capacity-1 bytes and adds a zero terminator.
 
 ### hiyui_terminal_get_title
 
@@ -247,7 +247,7 @@ Returns the required byte count excluding the terminating zero; with non-zero ca
 HIYUI_API size_t HIYUI_CALL hiyui_terminal_get_title(hiyui_widget_t *widget, char *buffer, size_t capacity)
 ```
 
-Returns the required byte count excluding the terminating zero; with non-zero capacity it copies at most capacity-1 bytes and adds a terminator.
+Returns the required byte count, excluding the terminating zero. With a non-zero capacity, copies at most capacity-1 bytes and adds a zero terminator.
 
 ### hiyui_terminal_get_selection_text
 
@@ -255,7 +255,7 @@ Returns the required byte count excluding the terminating zero; with non-zero ca
 HIYUI_API size_t HIYUI_CALL hiyui_terminal_get_selection_text(hiyui_widget_t *widget, char *buffer, size_t capacity)
 ```
 
-Returns the required byte count excluding the terminating zero; with non-zero capacity it copies at most capacity-1 bytes and adds a terminator.
+Returns the required byte count, excluding the terminating zero. With a non-zero capacity, copies at most capacity-1 bytes and adds a zero terminator.
 
 ### hiyui_terminal_on_data
 
@@ -263,7 +263,7 @@ Returns the required byte count excluding the terminating zero; with non-zero ca
 HIYUI_API int HIYUI_CALL hiyui_terminal_on_data(hiyui_widget_t *widget, hiyui_terminal_data_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Binds the send event; returns 1 on success and 0 on failure, following the event handle and destroy ownership contract.
+Binds the data-sent event. Returns 1 on success and 0 on failure. Follows the event handle and destroy ownership contract.
 
 ### hiyui_terminal_on_input
 
@@ -271,7 +271,7 @@ Binds the send event; returns 1 on success and 0 on failure, following the event
 HIYUI_API int HIYUI_CALL hiyui_terminal_on_input(hiyui_widget_t *widget, hiyui_terminal_input_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Binds raw user input excluding protocol responses; ownership and return value match hiyui_terminal_on_data.
+Binds raw user input, excluding protocol responses. Ownership and return value match hiyui_terminal_on_data.
 
 ### hiyui_terminal_on_resize
 
@@ -279,7 +279,7 @@ Binds raw user input excluding protocol responses; ownership and return value ma
 HIYUI_API int HIYUI_CALL hiyui_terminal_on_resize(hiyui_widget_t *widget, hiyui_terminal_resize_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Binds the grid change event; ownership and return value match hiyui_terminal_on_data.
+Binds the grid change event. Ownership and return value match hiyui_terminal_on_data.
 
 ### hiyui_terminal_on_title_change
 
@@ -287,4 +287,4 @@ Binds the grid change event; ownership and return value match hiyui_terminal_on_
 HIYUI_API int HIYUI_CALL hiyui_terminal_on_title_change(hiyui_widget_t *widget, hiyui_terminal_data_fn callback, void *user_data, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Binds title changes; the UTF-8 bytes are valid only during the callback, and ownership and return value match hiyui_terminal_on_data.
+Binds the title change event. The UTF-8 bytes are valid only during the callback. Ownership and return value match hiyui_terminal_on_data.

@@ -6,7 +6,7 @@ title: "hiyui_accessibility_props_t"
 
 **Header:** `#include <hiyui/c/widget.h>`
 
-Overrides the accessibility information the widget provides automatically, when decorative is not TRUE its own semantics are omitted.
+Overrides the accessibility information the widget provides automatically. When decorative is not TRUE, own semantics are omitted.
 
 ## Public Members
 

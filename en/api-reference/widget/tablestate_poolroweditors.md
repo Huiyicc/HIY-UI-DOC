@@ -16,7 +16,7 @@ title: "TableState::PoolRowEditors"
 std::vector< lv_obj_t * > editors
 ```
 
-By column index, nullptr for non-editor columns
+By column index, nullptr for non-editable columns
 
 ### boundDataIdx
 

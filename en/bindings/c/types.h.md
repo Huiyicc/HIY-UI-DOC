@@ -6,7 +6,7 @@ title: "types.h"
 
 **Header:** `#include <hiyui/c/types.h>`
 
-Base type definitions: export macros, opaque handles, callback types, enums, and sentinel values
+Base type definitions: export macros, opaque handles, callback types, enums, and sentinel values.
 
 ## Enums
 
@@ -117,7 +117,7 @@ Base type definitions: export macros, opaque handles, callback types, enums, and
 
 ### hiyui_picker_presentation_t
 
-Picker panel presentation.
+How the Picker panel is presented.
 
 | Value | Description |
 |---|---|
@@ -125,7 +125,7 @@ Picker panel presentation.
 | `HIYUI_PICKER_PRESENTATION_ANCHORED` |  |
 | `HIYUI_PICKER_PRESENTATION_BOTTOM_SHEET` |  |
 
-AUTO resolves at panel-open time from the window available-area logical width, or the screen logical width when there is no window host. A width below 720 uses BOTTOM_SHEET, otherwise ANCHORED. The presentation does not switch while the panel is open and is resolved again on the next open.
+AUTO is resolved from the logical width of the window available area when the panel opens, or from the screen logical width without a window host. BOTTOM_SHEET is used below a width of 720, otherwise ANCHORED. The presentation does not switch while the panel is open and is resolved again on the next opening.
 
 ### hiyui_layout_width_class_t
 
@@ -138,7 +138,7 @@ Layout width class.
 
 ### hiyui_capability_state_t
 
-State of a capability wired into the backend; UNKNOWN is not the same as UNAVAILABLE.
+State of a capability wired into the backend. UNKNOWN is not the same as UNAVAILABLE.
 
 | Value | Description |
 |---|---|
@@ -210,7 +210,7 @@ typedef void(* hiyui_string_fn) (const char *text, void *user_data)
 typedef void(* hiyui_destroy_fn) (void *user_data)
 ```
 
-Releases callback state, called once on the UI thread; must not throw or touch widgets being destroyed.
+Releases callback state, called once on the UI thread. Must not throw exceptions or touch widgets being destroyed.
 
 ### hiyui_environment_fn
 
@@ -218,7 +218,7 @@ Releases callback state, called once on the UI thread; must not throw or touch w
 typedef void(* hiyui_environment_fn) (const hiyui_layout_environment_t *value, void *user_data)
 ```
 
-value is valid only during the callback and may be copied for later use.
+value is valid only during the callback and can be copied for later use.
 
 ### hiyui_back_request_fn
 
@@ -254,7 +254,7 @@ typedef struct hiyui_draw_ctx_s hiyui_draw_ctx_t
 int hiyui_part_event_index(const hiyui_part_event_t *event)
 ```
 
-Activated item index, or HIYUI_NO_SELECTION when not applicable.
+Index of the activated item. Returns HIYUI_NO_SELECTION when not applicable.
 
 ### hiyui_part_event_column
 
@@ -262,7 +262,7 @@ Activated item index, or HIYUI_NO_SELECTION when not applicable.
 int hiyui_part_event_column(const hiyui_part_event_t *event)
 ```
 
-Column index, or HIYUI_NO_SELECTION when not applicable.
+Column index. Returns HIYUI_NO_SELECTION when not applicable.
 
 ### hiyui_part_event_prevent_default
 
@@ -270,4 +270,4 @@ Column index, or HIYUI_NO_SELECTION when not applicable.
 void hiyui_part_event_prevent_default(hiyui_part_event_t *event)
 ```
 
-Prevents the default widget behavior of this activation; event is valid only during the callback.
+Prevents the widget default behavior of this activation. event is valid only during the callback.

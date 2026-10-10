@@ -20,7 +20,7 @@ Pie chart creation properties
 int innerRadius
 ```
 
-Values &gt; 0 render a donut ring, in pixels
+Above 0 renders a donut chart, in pixels
 
 ### startAngle
 
@@ -28,7 +28,7 @@ Values &gt; 0 render a donut ring, in pixels
 int startAngle
 ```
 
-Start angle in degrees, -90 = 12 o'clock direction
+Start angle in degrees; -90 is the 12 o'clock direction
 
 ### sliceGap
 
@@ -36,7 +36,7 @@ Start angle in degrees, -90 = 12 o'clock direction
 int sliceGap
 ```
 
-Gap angle between slices
+Angular gap between slices
 
 ### showPercent
 

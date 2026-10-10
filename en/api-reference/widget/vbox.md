@@ -8,9 +8,9 @@ title: "VBox"
 
 **Namespace:** `hiyui`
 
-Vertical layout container, children arranged top to bottom
+Vertical layout container with children arranged top to bottom
 
-Before operator() is called, the VBox itself must be mounted to a parent object.
+Before operator() is called, the VBox itself must be mounted to a parent.
 
 
 
@@ -29,7 +29,7 @@ Before operator() is called, the VBox itself must be mounted to a parent object.
 VBox(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### VBox
 
@@ -37,7 +37,7 @@ Wrap an existing LVGL object
 VBox(VBoxProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 ### init
 
@@ -45,7 +45,7 @@ Construct from aggregated properties
 VBox & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL Flex Column container under a parent, using the layout properties saved at construction
+Creates the LVGL Flex Column container on a parent, using the layout properties saved at construction
 
 ### init
 
@@ -53,7 +53,7 @@ Create the LVGL Flex Column container under a parent, using the layout propertie
 VBox & init(lv_obj_t *parent, const VBoxProps &props) &
 ```
 
-Create the LVGL Flex Column container under a parent
+Creates the LVGL Flex Column container on a parent
 
 ### init
 
@@ -61,7 +61,7 @@ Create the LVGL Flex Column container under a parent
 VBox & init(Widget &parent) &
 ```
 
-Create the LVGL Flex Column container under a parent, using the layout properties saved at construction
+Creates the LVGL Flex Column container on a parent, using the layout properties saved at construction
 
 ### init
 
@@ -69,7 +69,7 @@ Create the LVGL Flex Column container under a parent, using the layout propertie
 VBox & init(Widget &parent, const VBoxProps &props) &
 ```
 
-Create the LVGL Flex Column container under a parent
+Creates the LVGL Flex Column container on a parent
 
 ### init
 
@@ -77,9 +77,9 @@ Create the LVGL Flex Column container under a parent
 VBox & init(Window &window) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
 
 ### init
 
@@ -87,6 +87,6 @@ Frameless windows mount into the content area below the title bar and menu bar. 
 VBox & init(Window &window, const VBoxProps &props) &
 ```
 
-Create the container in the window root content area
+Creates the container in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar. Normal windows mount to the screen.
+Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.

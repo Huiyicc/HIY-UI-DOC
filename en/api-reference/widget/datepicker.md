@@ -8,7 +8,7 @@ title: "DatePicker"
 
 **Namespace:** `hiyui`
 
-Date picker widget.
+Date picker widget
 
 **Inherits:** `hiyui::Chainable< DatePicker >`
 
@@ -16,13 +16,13 @@ Date picker widget.
 
 ### DatePickerEventType
 
-Date picker internal event types.
+Internal date picker event types
 
 | Value | Description |
 |---|---|
-| `Changed` | The value changed. |
-| `CalendarChanged` | The calendar selection changed. |
-| `PanelChanged` | The panel mode changed. |
+| `Changed` | The value changed |
+| `CalendarChanged` | The calendar selection changed |
+| `PanelChanged` | The panel mode changed |
 
 ## Public Methods
 
@@ -32,7 +32,7 @@ Date picker internal event types.
 DatePicker & placeholder(const char *value) &
 ```
 
-Sets the placeholder text, nullptr restores the default; plain text cancels the language binding and keeps the current value.
+Sets the placeholder text, nullptr restores the default, plain text cancels the language binding and keeps the current value.
 
 ### placeholder
 
@@ -40,7 +40,7 @@ Sets the placeholder text, nullptr restores the default; plain text cancels the 
 DatePicker & placeholder(LocalizedText value) &
 ```
 
-Binds the placeholder text; copies the text and arguments and updates with the language.
+Binds the placeholder text, copies the text and arguments and updates with the language.
 
 ### value
 
@@ -48,7 +48,7 @@ Binds the placeholder text; copies the text and arguments and updates with the l
 DatePicker & value(const DateValue &v, Notify notify=Notify::No) &
 ```
 
-Sets the current value.
+Sets the current value
 
 ### value
 
@@ -56,7 +56,7 @@ Sets the current value.
 DateValue value() const
 ```
 
-Returns the current value.
+Returns the current value
 
 ### selection
 
@@ -64,7 +64,7 @@ Returns the current value.
 DatePickerValue selection() const
 ```
 
-Returns the full committed selection; unconfirmed drafts inside the panel do not change the return value.
+Returns the full committed selection, unconfirmed drafts inside the panel do not change the return value.
 
 ### rangeValue
 
@@ -72,7 +72,7 @@ Returns the full committed selection; unconfirmed drafts inside the panel do not
 DatePicker & rangeValue(const DateValue &start, const DateValue &end, Notify notify=Notify::No) &
 ```
 
-Sets the range value, range mode only.
+Sets the range value, range mode only
 
 ### rangeValue
 
@@ -80,7 +80,7 @@ Sets the range value, range mode only.
 std::pair< DateValue, DateValue > rangeValue() const
 ```
 
-Returns the range value.
+Returns the range value
 
 ### open
 
@@ -88,7 +88,7 @@ Returns the range value.
 DatePicker & open() &
 ```
 
-Opens the panel.
+Opens the panel
 
 ### close
 
@@ -96,7 +96,7 @@ Opens the panel.
 DatePicker & close() &
 ```
 
-Closes the panel.
+Closes the panel
 
 ### status
 
@@ -104,7 +104,7 @@ Closes the panel.
 DatePicker & status(DatePickerStatus s) &
 ```
 
-Sets the custom status at runtime.
+Sets the custom status at runtime
 
 ### picker
 
@@ -112,7 +112,7 @@ Sets the custom status at runtime.
 DatePicker & picker(DatePickerType t, Notify notify=Notify::No) &
 ```
 
-Switches the picker type at runtime.
+Switches the picker type at runtime
 
 ### panelMode
 
@@ -120,7 +120,7 @@ Switches the picker type at runtime.
 DatePicker & panelMode(DatePanelMode m) &
 ```
 
-Controlled panel mode.
+Controlled panel mode
 
 ### onChange
 
@@ -128,9 +128,9 @@ Controlled panel mode.
 DatePicker & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the value changed callback; repeated binding appends.
+Binds the value changed callback, repeated binds append
 
-Callback receiving the current value. Optional out parameter receiving the unbind handle of this binding. This component.
+Callback, its argument is the current value Optional output parameter receiving the unbind handle of this binding This component
 
 ### onCalendarChange
 
@@ -138,9 +138,9 @@ Callback receiving the current value. Optional out parameter receiving the unbin
 DatePicker & onCalendarChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the calendar selection changed callback; repeated binding appends; fires on the first selection in range mode.
+Binds the calendar selection changed callback, repeated binds append, fires on the first selection in range mode
 
-Callback receiving the selected value. Optional out parameter receiving the unbind handle of this binding. This component.
+Callback, its argument is the selected value Optional output parameter receiving the unbind handle of this binding This component
 
 ### disabledDate
 
@@ -148,7 +148,7 @@ Callback receiving the selected value. Optional out parameter receiving the unbi
 DatePicker & disabledDate(std::function< bool(const DateValue &)> cb) &
 ```
 
-Disabled-date predicate callback.
+Disabled date predicate callback
 
 ### onPanelChange
 
@@ -156,9 +156,9 @@ Disabled-date predicate callback.
 DatePicker & onPanelChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the panel mode changed callback; repeated binding appends.
+Binds the panel mode changed callback, repeated binds append
 
-Callback receiving the panel mode and current value. Optional out parameter receiving the unbind handle of this binding. This component.
+Callback, its arguments are the panel mode and the current value Optional output parameter receiving the unbind handle of this binding This component
 
 ### footer
 
@@ -166,7 +166,7 @@ Callback receiving the panel mode and current value. Optional out parameter rece
 DatePicker & footer(std::function< void(Widget &)> cb) &
 ```
 
-Custom footer builder callback.
+Custom footer builder callback
 
 ## Static Methods
 

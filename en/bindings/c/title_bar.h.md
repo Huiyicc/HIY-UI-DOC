@@ -6,7 +6,7 @@ title: "title_bar.h"
 
 **Header:** `#include <hiyui/c/title_bar.h>`
 
-Title bar for frameless windows
+Frameless window title bar
 
 ## Enums
 
@@ -46,7 +46,7 @@ Title bar for frameless windows
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_title_bar_create(hiyui_widget_t *parent, const hiyui_title_bar_props_t *props)
 ```
 
-Creates a title bar. icon_bytes must stay valid for the title bar lifetime.
+Creates a title bar; icon_bytes must stay valid for the title bar lifetime.
 
 ### hiyui_title_bar_set_title
 
@@ -60,7 +60,7 @@ HIYUI_API void HIYUI_CALL hiyui_title_bar_set_title(hiyui_widget_t *w, const cha
 HIYUI_API void HIYUI_CALL hiyui_title_bar_set_maximized(hiyui_widget_t *w, int maximized)
 ```
 
-Non-zero shows the restore icon, 0 shows the maximize icon.
+A non-zero value shows the restore icon, 0 shows the maximize icon.
 
 ### hiyui_title_bar_get_layout
 
@@ -68,7 +68,7 @@ Non-zero shows the restore icon, 0 shows the maximize icon.
 HIYUI_API hiyui_title_bar_layout_t HIYUI_CALL hiyui_title_bar_get_layout(hiyui_widget_t *w)
 ```
 
-Control button layout. Returns the platform default when w is NULL.
+Control button layout; returns the platform default when w is NULL.
 
 ### hiyui_title_bar_on_minimize
 
@@ -94,7 +94,7 @@ HIYUI_API int HIYUI_CALL hiyui_title_bar_on_close(hiyui_widget_t *w, hiyui_callb
 HIYUI_API int HIYUI_CALL hiyui_title_bar_on_double_click(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Fires on double-click in the title bar area outside buttons.
+Fires when the title bar is double-clicked outside button areas.
 
 ### hiyui_title_bar_on_drag_begin
 
@@ -102,4 +102,4 @@ Fires on double-click in the title bar area outside buttons.
 HIYUI_API int HIYUI_CALL hiyui_title_bar_on_drag_begin(hiyui_widget_t *w, hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Fires once when the title bar area outside buttons is pressed, to start window dragging.
+Fires once when the title bar is pressed outside button areas, to start a window drag.

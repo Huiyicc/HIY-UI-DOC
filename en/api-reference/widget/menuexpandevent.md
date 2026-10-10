@@ -8,4 +8,4 @@ title: "MenuExpandEvent"
 
 **Namespace:** `hiyui`
 
-Expand event payload, valid only during the callback; nodeIdx is the preorder node index.
+Expand event payload, valid only during the callback, nodeIdx is the preorder node index.

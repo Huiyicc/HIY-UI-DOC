@@ -8,9 +8,9 @@ title: "detail::PopupSurface"
 
 **Namespace:** `hiyui`
 
-Popup surface panel
+Popup panel in a floating window
 
-open() creates a hidden popup window and registers the popup chain; after building content, the component calls finishLayout() to size the window to the content and show it. Closing always goes through close(); external closes triggered by the popup chain or display deletion call the onClose callback via closeSession, and the session becomes invalid after the callback returns.
+open() creates a hidden popup window and registers the popup chain; after the widget builds content, finishLayout() resizes the window to the content and shows it. Closing goes through close(); an outside close triggered by the popup chain or display deletion reaches the onClose callback through closeSession, and the session becomes invalid after the callback returns.
 
 ## Public Methods
 
@@ -22,7 +22,7 @@ bool open(lv_display_t *parentDisp, int32_t panelX, int32_t panelY, int32_t cont
 
 Opens the popup window
 
-Host display Desired panel X in host canvas pixels Desired panel Y in host canvas pixels Content width in canvas pixels Content height in canvas pixels Content shadow expansion in canvas pixels Returns false on creation failure; the caller falls back to an inline popup
+Host display Desired panel X in host canvas pixels Desired panel Y in host canvas pixels Content width in canvas pixels Content height in canvas pixels Content shadow outset in canvas pixels Returns false on creation failure; the caller falls back to an inline popup
 
 ### contentParent
 
@@ -38,7 +38,7 @@ Content mount point; returns nullptr when not open
 void finishLayout(lv_obj_t *content)
 ```
 
-Sizes the window to the content and shows it after the content is built
+Resizes the window to the content and shows it after content construction
 
 Content root object inside contentParent()
 
@@ -50,7 +50,7 @@ lv_group_t * takeFocusGroup(lv_obj_t *initialFocus)
 
 Creates a focus group and takes over keyboard input
 
-Initially focused object Returns the focus group, or nullptr when not open; the previous group is restored automatically on close
+Initially focused object Focus group; returns nullptr when not open, the original group is restored on close
 
 ### previousGroup
 
@@ -66,7 +66,7 @@ Focus group captured before the popup opened; returns nullptr when not open
 void onClose(std::function< void()> cb)
 ```
 
-Binds the external close callback
+Binds the outside-close callback
 
 ### close
 
@@ -82,4 +82,4 @@ Closes the popup window; no-op when not open, safe to call repeatedly
 bool isOpen() const
 ```
 
-Whether the popup is open
+Returns whether the popup is open

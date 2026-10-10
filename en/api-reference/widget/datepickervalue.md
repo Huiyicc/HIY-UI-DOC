@@ -8,4 +8,4 @@ title: "DatePickerValue"
 
 **Namespace:** `hiyui`
 
-Committed date selection; when range is true read start/end, otherwise read value; comparison includes time.
+Committed date selection, when range is true read start/end, otherwise read value, comparisons include time.

@@ -10,7 +10,7 @@ title: "WindowFrame"
 
 Responsive window frame managing the Header, Navigation and Content areas.
 
-Each area holds at most one direct child. Width class changes keep the area objects and their subtrees, updating only the layout presentation of the areas.
+Each area holds at most one direct child. Width class changes keep the area objects and their subtrees and only update the area layout presentation.
 
 **Inherits:** `hiyui::Container< WindowFrame >`
 
@@ -30,7 +30,7 @@ Wraps an existing window frame object.
 WindowFrame & init(lv_obj_t *parent) &
 ```
 
-Creates the window frame in a parent widget.
+Creates the window frame in the parent widget.
 
 ### init
 
@@ -38,7 +38,7 @@ Creates the window frame in a parent widget.
 WindowFrame & init(lv_obj_t *parent, const WindowFrameProps &props) &
 ```
 
-Creates the window frame in a parent widget with the given properties.
+Creates the window frame in the parent widget with the given properties.
 
 ### init
 
@@ -46,7 +46,7 @@ Creates the window frame in a parent widget with the given properties.
 WindowFrame & init(Widget &parent) &
 ```
 
-Creates the window frame in a parent widget.
+Creates the window frame in the parent widget.
 
 ### init
 
@@ -54,7 +54,7 @@ Creates the window frame in a parent widget.
 WindowFrame & init(Widget &parent, const WindowFrameProps &props) &
 ```
 
-Creates the window frame in a parent widget with the given properties.
+Creates the window frame in the parent widget with the given properties.
 
 ### init
 
@@ -64,7 +64,7 @@ WindowFrame & init(Window &window) &
 
 Creates the window frame in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
+Frameless windows mount to the content area below the title bar and menu bar, normal windows mount to the screen.
 
 ### init
 
@@ -74,7 +74,7 @@ WindowFrame & init(Window &window, const WindowFrameProps &props) &
 
 Creates the window frame in the window root content area
 
-Frameless windows mount into the content area below the title bar and menu bar; normal windows mount to the screen.
+Frameless windows mount to the content area below the title bar and menu bar, normal windows mount to the screen.
 
 ### widthClass
 
@@ -90,7 +90,7 @@ Returns the current width class.
 WindowFrame & openNavigation() &
 ```
 
-Opens the current Drawer navigation; other presentations leave the state unchanged.
+Opens the current Drawer navigation, other presentations leave the state unchanged.
 
 ### closeNavigation
 
@@ -98,7 +98,7 @@ Opens the current Drawer navigation; other presentations leave the state unchang
 WindowFrame & closeNavigation() &
 ```
 
-Closes the current Drawer navigation; other presentations leave the state unchanged.
+Closes the current Drawer navigation, other presentations leave the state unchanged.
 
 ### toggleNavigation
 
@@ -106,7 +106,7 @@ Closes the current Drawer navigation; other presentations leave the state unchan
 WindowFrame & toggleNavigation() &
 ```
 
-Toggles the current Drawer navigation; other presentations leave the state unchanged.
+Toggles the current Drawer navigation, other presentations leave the state unchanged.
 
 ### navigationOpen
 
@@ -114,4 +114,4 @@ Toggles the current Drawer navigation; other presentations leave the state uncha
 bool navigationOpen() const
 ```
 
-Returns whether the Drawer navigation is open or opening; other presentations return false.
+Returns whether the Drawer navigation is open or opening, other presentations return false.

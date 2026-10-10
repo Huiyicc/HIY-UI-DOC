@@ -8,4 +8,4 @@ title: "XmlSchemaTextResult"
 
 **Namespace:** `hiyui`
 
-Result of Schema text generation.
+Schema text generation result.

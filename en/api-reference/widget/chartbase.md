@@ -10,7 +10,7 @@ title: "ChartBase"
 
 Common chart base class, CRTP
 
-Provides the common skeleton for title, legend, plot area container and theme binding. Concrete charts such as line, bar, pie, waveform and gauge inherit ChartBase&lt;their own type&gt; and create the concrete chart object inside the plot area in buildChart().
+Provides the common skeleton for title, legend, plot area container and theme binding. Concrete charts such as line, bar, pie, waveform and gauge inherit ChartBase of the concrete type and create the chart object within the plot area in buildChart().
 
 
 Concrete chart type, e.g. LineChart inherits ChartBase&lt;LineChart&gt;
@@ -25,7 +25,7 @@ Concrete chart type, e.g. LineChart inherits ChartBase&lt;LineChart&gt;
 ChartBase(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### ChartBase
 
@@ -33,7 +33,7 @@ Wrap an existing LVGL object
 ChartBase(ChartBaseProps props={})
 ```
 
-Construct from aggregated properties
+Aggregate construction from properties
 
 Common chart properties
 
@@ -43,7 +43,7 @@ Common chart properties
 Derived & init(lv_obj_t *parent) &
 ```
 
-Initialize the layout skeleton under a parent object
+Initializes the layout skeleton on a parent object
 
 Parent LVGL object pointer This component
 
@@ -53,7 +53,7 @@ Parent LVGL object pointer This component
 Derived & init(Widget &parent) &
 ```
 
-Initialize the layout skeleton under a parent object
+Initializes the layout skeleton on a parent object
 
 Parent LVGL object pointer This component
 
@@ -63,9 +63,9 @@ Parent LVGL object pointer This component
 Derived & title(const char *text) &
 ```
 
-Change the title text at runtime
+Changes the title text at runtime
 
-New title, UTF-8 encoded This component
+New title in UTF-8 This component
 
 ### title
 
@@ -73,7 +73,7 @@ New title, UTF-8 encoded This component
 Derived & title(const LocalizedText &text) &
 ```
 
-Bind an existing title. Calling before initialization creates the title, a plain string unbinds it.
+Binds an existing localized title. Calling before init creates the title; a plain string unbinds.
 
 ### legendPosition
 
@@ -81,7 +81,7 @@ Bind an existing title. Calling before initialization creates the title, a plain
 Derived & legendPosition(LegendPosition pos) &
 ```
 
-Set the legend position. Calls after init only record the configuration and do not move a created legend.
+Sets the legend position. After init the call only records the configuration and does not move a created legend
 
 Legend position This component
 
@@ -91,7 +91,7 @@ Legend position This component
 Derived & xAxis(const AxisConfig &config) &
 ```
 
-Set the X axis configuration
+Sets the X axis configuration
 
 Axis configuration This component
 
@@ -101,6 +101,6 @@ Axis configuration This component
 Derived & yAxis(const AxisConfig &config) &
 ```
 
-Set the Y axis configuration
+Sets the Y axis configuration
 
 Axis configuration This component

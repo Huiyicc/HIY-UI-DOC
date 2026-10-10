@@ -8,7 +8,7 @@ title: "LayoutRule"
 
 **Namespace:** `hiyui`
 
-Matches on host logical content width and height; lower bounds inclusive, upper bounds exclusive, effective when both axes match. Lower bounds are non-negative; upper bounds are non-negative values or HIYUI_AUTO for no upper bound. A lower bound must not exceed a finite upper bound; equal values never match.
+Matches on host logical content width and height; lower bounds inclusive, upper bounds exclusive, effective only when both axes match. Lower bounds are non-negative; upper bounds are non-negative values or HIYUI_AUTO, meaning no upper bound. A lower bound must not exceed a finite upper bound; equal bounds never match.
 
 ## Public Members
 

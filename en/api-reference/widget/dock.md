@@ -10,7 +10,7 @@ title: "Dock"
 
 Dock container.
 
-Panes inserted at their declared edges form a split layout, and panes in the same group appear as tabs. Splitters are draggable, and tabs can be dragged out as floating windows and re-docked across groups. The layout can be saved as a snapshot and restored.
+Panes insert at their declared edges to form a split layout, panes in the same group appear as tabs. Separators are draggable, tabs can be dragged out as floating windows and re-docked across groups. The layout can be saved as a snapshot and restored.
 
 **Inherits:** `hiyui::Chainable< Dock >`
 
@@ -64,7 +64,7 @@ Creates the dock container on a parent object.
 Dock & operator()(Panes &&...panes) &
 ```
 
-Declares the initial layout, docking the panes in argument order. Rvalue panes mount with the container; lvalue panes must already be mounted.
+Declares the initial layout, docking panes in argument order. Rvalue panes are mounted with the container, lvalue panes must already be mounted.
 
 ### addPane
 
@@ -72,9 +72,9 @@ Declares the initial layout, docking the panes in argument order. Rvalue panes m
 Dock & addPane(DockPane &pane) &
 ```
 
-Docks a pane, inserting it into the current layout at the edge declared by its properties.
+Docks a pane, inserting it at the edge declared in its properties.
 
-This component; state is unchanged when the pane is not initialized or already registered.
+This component, no state change when the pane is not initialized or already registered.
 
 ### removePane
 
@@ -84,7 +84,7 @@ Dock & removePane(DockPane &pane) &
 
 Removes a pane and unregisters it.
 
-This component; state is unchanged when the pane does not belong to this container.
+This component, no state change when the pane does not belong to this dock.
 
 ### hidePane
 
@@ -92,9 +92,9 @@ This component; state is unchanged when the pane does not belong to this contain
 Dock & hidePane(DockPane &pane) &
 ```
 
-Hides a pane, keeping registration and the original position record; showPane() can restore it.
+Hides a pane, keeping its registration and original position record, restorable via showPane().
 
-This component; hiding a floating pane destroys its floating window.
+This component, hiding a floating pane destroys its floating window.
 
 ### showPane
 
@@ -102,9 +102,9 @@ This component; hiding a floating pane destroys its floating window.
 Dock & showPane(DockPane &pane) &
 ```
 
-Restores a hidden pane, preferring its group and tab position from before hiding.
+Restores a hidden pane, preferring its previous group and tab position.
 
-This component; enters the first group when the original group no longer exists.
+This component, joins the first group when the original group no longer exists.
 
 ### activatePane
 
@@ -114,7 +114,7 @@ Dock & activatePane(DockPane &pane) &
 
 Activates the tab containing the pane or brings its floating window to the front.
 
-This component; state is unchanged when the pane is not registered.
+This component, no state change when the pane is not registered.
 
 ### setFloating
 
@@ -122,9 +122,9 @@ This component; state is unchanged when the pane is not registered.
 Dock & setFloating(DockPane &pane, bool floating) &
 ```
 
-Switches the pane floating state programmatically.
+Programmatically toggles the floating state of a pane.
 
-Without a window manager, the floating pane is shown on top of the current display, keeping drag, resize, and re-dock behavior. This component; state is unchanged when the pane is not registered or the state already matches.
+Without a window manager the floating pane is shown on top of the current display, keeping drag, resize, and re-dock behavior. This component, no state change when the pane is not registered or the state already matches.
 
 ### paneCount
 
@@ -142,7 +142,7 @@ DockPane paneByName(const char *name)
 
 Finds a pane by unique name.
 
-Pane wrapper; raw() is nullptr when not found.
+The pane wrapper, raw() is nullptr when not found.
 
 ### saveLayout
 
@@ -152,7 +152,7 @@ DockLayoutSnapshot saveLayout() const
 
 Saves a snapshot of the current layout, including floating geometry and the hidden list.
 
-Snapshot value.
+The snapshot value.
 
 ### restoreLayout
 
@@ -162,7 +162,7 @@ Dock & restoreLayout(const DockLayoutSnapshot &snapshot) &
 
 Restores a layout snapshot.
 
-Registered panes are matched by pane name. Panes missing from the snapshot are collected into the first group, and unregistered names are skipped. This component; an empty-tree snapshot clears the layout to a state with no panes.
+Matches registered panes by name. Panes missing from the snapshot are collected into the first group, unregistered names are skipped. This component, an empty tree snapshot clears the layout to a no-pane state.
 
 ### onPaneEvent
 
@@ -170,7 +170,7 @@ Registered panes are matched by pane name. Panes missing from the snapshot are c
 Dock & onPaneEvent(DockEventType type, F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds a pane business event; the callback can receive `DockEvent`, the pane name, or no arguments.
+Binds a pane business event, the callback can receive a DockEvent, the pane name, or no arguments.
 
 ### onPaneActivated
 
@@ -178,7 +178,7 @@ Binds a pane business event; the callback can receive `DockEvent`, the pane name
 Dock & onPaneActivated(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Binds the tab activated event.
+Binds the tab activation event.
 
 ### onCloseRequest
 

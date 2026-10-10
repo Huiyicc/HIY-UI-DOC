@@ -18,7 +18,7 @@ Background image
 const void * src
 ```
 
-Image source, a file path (const char*) or lv_image_dsc_t*
+Image source, file path (const char*) or lv_image_dsc_t*
 
 ### fit
 
@@ -58,4 +58,4 @@ Recolor opacity [0,255]
 bool tiled
 ```
 
-Whether to tile
+Whether tiled

@@ -8,7 +8,7 @@ title: "TextFontSource"
 
 **Namespace:** `hiyui`
 
-Memory source for the application default body font.
+Memory source of the default body font to apply.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Memory source for the application default body font.
 const unsigned char * data
 ```
 
-Font file bytes; when both this and size are empty, the system font is used.
+Font file bytes. When both this and size are empty, the system font is used.
 
 ### lineHeight
 
@@ -26,4 +26,4 @@ Font file bytes; when both this and size are empty, the system font is used.
 float lineHeight
 ```
 
-Font size multiplier, 0 uses the font original line height; valid multipliers are 0.5 to 4.
+Font size multiplier, 0 uses the font original line height. Valid range is 0.5 to 4.

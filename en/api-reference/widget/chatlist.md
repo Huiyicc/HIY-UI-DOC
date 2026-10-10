@@ -30,9 +30,9 @@ Chat list internal event types
 ChatList & onBubbleClick(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the bubble click callback; repeated binds append
+Binds a bubble click callback; repeated bindings are appended
 
-Callback; its arguments are the message item and index Optional out parameter receiving the unbind handle of this binding This component
+Callback; the arguments are the message item and its index Optional output parameter receiving the unbind handle for this binding This component
 
 ### onBubbleLongPress
 
@@ -40,9 +40,9 @@ Callback; its arguments are the message item and index Optional out parameter re
 ChatList & onBubbleLongPress(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the bubble long-press callback; repeated binds append
+Binds a bubble long press callback; repeated bindings are appended
 
-Callback; its arguments are the message item and index Optional out parameter receiving the unbind handle of this binding This component
+Callback; the arguments are the message item and its index Optional output parameter receiving the unbind handle for this binding This component
 
 ### onScrollToTop
 
@@ -50,9 +50,9 @@ Callback; its arguments are the message item and index Optional out parameter re
 ChatList & onScrollToTop(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the scrolled-to-top callback; repeated binds append
+Binds a scrolled-to-top callback; repeated bindings are appended
 
-Callback function Optional out parameter receiving the unbind handle of this binding This component
+Callback function Optional output parameter receiving the unbind handle for this binding This component
 
 ## Static Methods
 
@@ -62,4 +62,4 @@ Callback function Optional out parameter receiving the unbind handle of this bin
 static lv_event_code_t eventCode(ChatListEventType type)
 ```
 
-Get the internal event code of the chat list.
+Returns the internal event code of the chat list.

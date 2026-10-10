@@ -8,7 +8,7 @@ title: "XmlFactoryContext"
 
 **Namespace:** `hiyui`
 
-Interface for factories and item collectors to report errors to the current load.
+Interface for factories and item collectors to report errors into the current load.
 
 ## Public Methods
 
@@ -26,7 +26,7 @@ Records an error diagnostic for the current element.
 bool hasCommand(std::string_view name) const
 ```
 
-Returns whether the command name is registered in the current context.
+Whether the command name is registered in the current context.
 
 ### makeCommandAction
 
@@ -36,4 +36,4 @@ std::function< void(MenuContext &)> makeCommandAction(std::string_view name) con
 
 Builds a menu item action that triggers the given command.
 
-Returns a callable action when the command is registered, with the owner context described in MenuContext; returns empty when not registered.
+Returns a callable action when the command is registered; the owner context is described by MenuContext. Returns empty when not registered.

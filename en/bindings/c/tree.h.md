@@ -6,7 +6,7 @@ title: "tree.h"
 
 **Header:** `#include <hiyui/c/tree.h>`
 
-Tree virtual-scroll widget
+Tree virtual-list widget
 
 Renders tens of millions of nodes in milliseconds. Supports checkboxes, multi-select, drag and drop, async loading, search filtering, connect lines, accordion mode, custom icons and fields, and context menus.
 
@@ -36,7 +36,7 @@ typedef struct hiyui_tree_node_t hiyui_tree_node_t
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_tree_create(hiyui_widget_t *parent, const hiyui_tree_props_t *props)
 ```
 
-Creates a tree; NULL props uses all defaults
+Creates a tree; a NULL props uses all defaults
 
 ### hiyui_tree_set_nodes
 
@@ -44,7 +44,7 @@ Creates a tree; NULL props uses all defaults
 HIYUI_API void HIYUI_CALL hiyui_tree_set_nodes(hiyui_widget_t *t, const hiyui_tree_node_t *nodes, int count, hiyui_notify_t notify)
 ```
 
-Sets the full node list
+Replaces all nodes
 
 ### hiyui_tree_set_children
 
@@ -52,7 +52,7 @@ Sets the full node list
 HIYUI_API void HIYUI_CALL hiyui_tree_set_children(hiyui_widget_t *t, uint32_t parent_id, const hiyui_tree_node_t *children, int count, hiyui_notify_t notify)
 ```
 
-Replaces the children of the given parent node; parent_id 0 replaces the root
+Replaces the children of the given parent; parent_id=0 replaces the root
 
 ### hiyui_tree_append_children
 
@@ -60,7 +60,7 @@ Replaces the children of the given parent node; parent_id 0 replaces the root
 HIYUI_API void HIYUI_CALL hiyui_tree_append_children(hiyui_widget_t *t, uint32_t parent_id, const hiyui_tree_node_t *children, int count, hiyui_notify_t notify)
 ```
 
-Appends child nodes without clearing existing ones; parent_id 0 appends to the root
+Appends children without clearing existing ones; parent_id=0 appends at the root
 
 ### hiyui_tree_expand_node
 
@@ -126,7 +126,7 @@ Disables or enables a node
 HIYUI_API void HIYUI_CALL hiyui_tree_show_connect_line(hiyui_widget_t *t, int show)
 ```
 
-Toggles connect lines at runtime
+Shows or hides connect lines at runtime
 
 ### hiyui_tree_filter
 
@@ -164,7 +164,7 @@ Selection change callback
 HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(*cb)(uint32_t id, int checked, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Check change callback
+Check state change callback
 
 ### hiyui_tree_on_expand
 
@@ -172,7 +172,7 @@ Check change callback
 HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(*cb)(uint32_t id, int expanded, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Expand change callback
+Expand state change callback
 
 ### hiyui_tree_on_drop
 
@@ -188,7 +188,7 @@ Drop completion callback
 HIYUI_API void HIYUI_CALL hiyui_tree_set_custom_field(hiyui_widget_t *t, void(*cb)(hiyui_widget_t *area, const hiyui_tree_node_view_t *node, void *ud), void *ud)
 ```
 
-Custom field render callback. The node view borrows internal data and is valid only inside the callback.
+Custom field render callback; the node view borrows internal storage and is valid inside the callback
 
 ### hiyui_tree_context_menu
 
@@ -204,7 +204,7 @@ Binds a context menu; effective on SDL desktop builds
 HIYUI_API int HIYUI_CALL hiyui_tree_is_expanded(hiyui_widget_t *t, uint32_t id)
 ```
 
-Returns whether the node is expanded
+Whether the node is expanded
 
 ### hiyui_tree_is_checked
 
@@ -212,7 +212,7 @@ Returns whether the node is expanded
 HIYUI_API int HIYUI_CALL hiyui_tree_is_checked(hiyui_widget_t *t, uint32_t id)
 ```
 
-Returns whether the node is checked
+Whether the node is checked
 
 ### hiyui_tree_is_selected
 
@@ -220,7 +220,7 @@ Returns whether the node is checked
 HIYUI_API int HIYUI_CALL hiyui_tree_is_selected(hiyui_widget_t *t, uint32_t id)
 ```
 
-Returns whether the node is selected
+Whether the node is selected
 
 ### hiyui_tree_get_checked_nodes
 
@@ -228,7 +228,7 @@ Returns whether the node is selected
 HIYUI_API int HIYUI_CALL hiyui_tree_get_checked_nodes(hiyui_widget_t *t, uint32_t *out, int max_count)
 ```
 
-Fills checked node ids. Returns the total count, filling at most max_count entries.
+Fills checked node ids and returns the total; at most max_count entries are written
 
 ### hiyui_tree_get_selected_nodes
 
@@ -236,7 +236,7 @@ Fills checked node ids. Returns the total count, filling at most max_count entri
 HIYUI_API int HIYUI_CALL hiyui_tree_get_selected_nodes(hiyui_widget_t *t, uint32_t *out, int max_count)
 ```
 
-Fills selected node ids. Returns the total count, filling at most max_count entries.
+Fills selected node ids and returns the total; at most max_count entries are written
 
 ### hiyui_tree_on_activate
 

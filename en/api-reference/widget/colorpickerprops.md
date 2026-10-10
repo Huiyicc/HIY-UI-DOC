@@ -8,7 +8,7 @@ title: "ColorPickerProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating a ColorPicker
+Creation properties of the color picker
 
 ## Public Members
 
@@ -42,7 +42,7 @@ Embedded panel mode
 bool extended
 ```
 
-Extended panel, also shows full RGB/HSL/HSV channel input
+Extended panel, also shows RGB/HSL/HSV full channel input
 
 ### showAlpha
 
@@ -50,7 +50,7 @@ Extended panel, also shows full RGB/HSL/HSV channel input
 bool showAlpha
 ```
 
-Show the alpha channel
+Show the Alpha channel
 
 ### alpha
 
@@ -58,7 +58,7 @@ Show the alpha channel
 uint8_t alpha
 ```
 
-Initial alpha value
+Initial Alpha value
 
 ### presentation
 

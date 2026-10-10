@@ -10,10 +10,10 @@ title: "Container"
 
 CRTP container base providing operator() child mounting for derived classes.
 
-Mounts child components to this container through operator()(children...). Holds child configuration while unmounted; after mounting the parent widget manages child lifetime. Named children must be explicitly std::move'd; the source wrapper is emptied and bound Refs stay attached.
+operator()(children...) mounts child components into this container. Before mounting the child configuration is held; after mounting the parent widget manages child lifetime. Named children must be passed with explicit std::move; the source wrapper becomes empty and bound Refs stay attached.
 
 
-Derived class type for CRTP. For example Button inherits Container&lt;Button&gt;. Lvalue calls return lvalue references, rvalue calls return rvalue references.
+Derived class type for CRTP; chaining returns the derived class. For example Button derives from Container&lt;Button&gt;; lvalue calls return an lvalue reference and rvalue calls return an rvalue reference.
 
 **Inherits:** `hiyui::Chainable< Derived >`
 
@@ -25,6 +25,6 @@ Derived class type for CRTP. For example Button inherits Container&lt;Button&gt;
 Derived & operator()(Children &&...children) &
 ```
 
-Mounts child components to this container
+Mounts child components into this container
 
-Pack of Widget-derived types Child component rvalues; the source wrapper is emptied after the call; already mounted child widgets are remounted to this container. Derived class reference, chainable
+Pack of Widget-derived types Child component rvalues; the source wrapper becomes empty after the call, and already-mounted child widgets are re-mounted to this container. Derived-class reference for chaining

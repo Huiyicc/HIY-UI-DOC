@@ -8,9 +8,9 @@ title: "BlurThreadPool"
 
 **Namespace:** `hiyui`
 
-Dedicated thread pool for blur algorithms, singleton
+Singleton thread pool dedicated to blur algorithms
 
-Creates (CPU core count - 1) worker threads at construction and provides parallel_for to distribute tasks evenly across all cores. Falls back to serial execution when there is one core.
+Creates CPU core count minus one worker threads at construction and provides parallel_for to distribute tasks evenly across all cores. With a single core it degrades to serial execution.
 
 ## Static Methods
 
@@ -32,7 +32,7 @@ Reference to the thread pool singleton
 int cores() const
 ```
 
-Returns the core count used by the pool, including the main thread
+Returns the number of cores used by the pool, including the main thread
 
 ### parallel_for
 
@@ -40,9 +40,9 @@ Returns the core count used by the pool, including the main thread
 void parallel_for(int count, const std::function< void(int)> &job)
 ```
 
-Runs tasks over the range [0, count) in parallel
+Executes tasks over the range [0, count) in parallel
 
-When cores == 1, tasks run serially on the calling thread.
+When cores == 1 it runs serially on the calling thread.
 
 
 Task callback; the argument is the task index in [0, count)

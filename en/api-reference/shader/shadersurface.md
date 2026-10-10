@@ -8,9 +8,9 @@ title: "ShaderSurface"
 
 **Namespace:** `hiyui`
 
-Shader hosting widget
+Widget that hosts a shader
 
-Binds a FragmentShader, advances iTime each frame, redraws the offscreen buffer, and blits it to the object area. Draws nothing when no shader is bound.
+Binds one FragmentShader, advancing iTime, redrawing the offscreen buffer, and blitting it to the object area each frame. Nothing is drawn without a bound shader.
 
 **Inherits:** `hiyui::Chainable< ShaderSurface >`
 
@@ -34,7 +34,7 @@ ShaderSurface & source(const char *glsl)
 
 Sets the GLSL fragment shader source
 
-Runs on the GPU when a GPU backend is available, otherwise clears the buffer. Replaces an existing shader. GLSL source, lifetime guaranteed by the caller; nullptr clears the shader This component
+Runs on the GPU when a GPU backend is available, otherwise clears the buffer. Replaces an existing shader. GLSL source whose lifetime is guaranteed by the caller; nullptr clears the shader This component
 
 ### start
 
@@ -58,6 +58,6 @@ Stops time driving
 ShaderSurface & running(bool on)
 ```
 
-Sets the time-driving switch
+Enables or disables time driving
 
 true = start, false = stop This component

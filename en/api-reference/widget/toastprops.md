@@ -42,7 +42,7 @@ Popup position
 int duration
 ```
 
-Auto-dismiss time in ms; 0 = never auto-close
+Auto-dismiss time in ms; 0 = do not close automatically
 
 ### maxWidth
 

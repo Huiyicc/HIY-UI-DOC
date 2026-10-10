@@ -8,4 +8,4 @@ title: "ToolMenuItem"
 
 **Namespace:** `hiyui`
 
-Menu data is stored by value; id is unique and nonzero across the whole menu, except separators. kind accepts Command, Toggle and Radio; non-empty children means a submenu.
+Menu data is stored by value, id is unique and nonzero across the whole menu tree except separators. kind accepts Command, Toggle and Radio, non-empty children means a submenu.

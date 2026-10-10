@@ -10,7 +10,7 @@ title: "ImageBuffer"
 
 32-bit pixel image resource with library-owned storage
 
-create copies pixels from the caller's buffer; rows are top-down, each row is width × 4 bytes with no padding between rows. After copy or move the internal descriptor still points to its own storage.
+create copies pixels from the caller buffer; rows are laid out top to bottom, width × 4 bytes per row, with no row padding. After copy or move the internal descriptor still points to its own storage.
 
 
 
@@ -27,7 +27,7 @@ create copies pixels from the caller's buffer; rows are top-down, each row is wi
 ImageBuffer(const ImageBuffer &other)
 ```
 
-Deep-copies pixels; the descriptor points to new storage
+Deep-copies the pixels; the descriptor points to new storage
 
 ### operator=
 
@@ -35,7 +35,7 @@ Deep-copies pixels; the descriptor points to new storage
 ImageBuffer & operator=(const ImageBuffer &other)
 ```
 
-Deep-copies pixels; the descriptor points to new storage
+Deep-copies the pixels; the descriptor points to new storage
 
 ### valid
 
@@ -71,4 +71,4 @@ static ImageBuffer create(uint32_t width, uint32_t height, PixelFormat format, c
 
 Creates a resource from caller pixels
 
-Width in pixels, must be greater than 0 Height in pixels, must be greater than 0 Pixel memory layout First address of the pixel bytes Must equal width × height × 4 Returns an empty resource with valid() false when parameters mismatch or total bytes exceed the 32-bit descriptor range; oversized allocation failure throws per standard library semantics.
+Width in pixels, must be greater than 0 Height in pixels, must be greater than 0 Pixel memory layout Address of the first pixel byte Must equal width × height × 4 Returns an empty resource with valid() false when arguments are inconsistent or the total byte count exceeds the 32-bit descriptor range; oversized allocation failure throws with standard library semantics.

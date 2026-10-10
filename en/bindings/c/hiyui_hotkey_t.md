@@ -6,7 +6,7 @@ title: "hiyui_hotkey_t"
 
 **Header:** `#include <hiyui/c/misc.h>`
 
-Hotkey combination, each modifier field is 0 or 1, and sdl_key 0 means unbound.
+Hotkey combination. Each modifier field is 0 or 1; sdl_key 0 means unbound.
 
 ## Public Members
 

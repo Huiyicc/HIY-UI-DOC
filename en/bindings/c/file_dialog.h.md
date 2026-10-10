@@ -6,9 +6,9 @@ title: "file_dialog.h"
 
 **Header:** `#include <hiyui/c/file_dialog.h>`
 
-Native file dialog
+Native file selection dialog
 
-Call on the Application UI thread; input texts and filters are copied during the call. Opening is non-blocking, and the result callback runs at most once in a later UI main-loop pass. Unsupported platforms return HIYUI_FILE_DIALOG_ERROR. Undelivered results are discarded on application exit, and calls after the main loop stops do nothing. The caller owns ud and must keep it valid until the callback runs or the application exits.
+Call on the Application UI thread; input texts and filters are copied during the call. Opening is non-blocking and the result callback runs at most once in a later UI main-loop iteration; unsupported platforms return HIYUI_FILE_DIALOG_ERROR. Undelivered results are discarded at application exit, and calls after the main loop stops do nothing. ud is owned by the caller and must stay valid until the callback runs or the application exits.
 
 ## Enums
 
@@ -37,7 +37,7 @@ Call on the Application UI thread; input texts and filters are copied during the
 typedef void(* hiyui_file_dialog_result_fn) (hiyui_file_dialog_status_t status, const char *const *paths, int count, void *ud)
 ```
 
-Result callback. The paths array is valid only inside the callback; deep-copy it to keep it.
+Result callback; the paths array is valid inside the callback, deep-copy it to keep it
 
 ## Functions
 
@@ -55,7 +55,7 @@ General entry point
 HIYUI_API void HIYUI_CALL hiyui_file_dialog_open_file(hiyui_file_dialog_result_fn cb, void *ud, const hiyui_file_filter_t *filters, int filter_count, const char *default_path)
 ```
 
-Convenience entry for picking a single file
+Convenience entry for single file selection
 
 ### hiyui_file_dialog_save_file
 
@@ -71,4 +71,4 @@ Convenience entry for saving a file
 HIYUI_API void HIYUI_CALL hiyui_file_dialog_select_folder(hiyui_file_dialog_result_fn cb, void *ud, const char *default_path)
 ```
 
-Convenience entry for selecting a folder
+Convenience entry for folder selection

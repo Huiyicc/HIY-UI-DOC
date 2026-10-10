@@ -10,7 +10,7 @@ title: "Anim"
 
 Chained builder for lv_anim
 
-Defaults to Ease::InOut easing. After chained configuration, start() launches the animation.
+Defaults to Ease::InOut easing. Configure through chaining, then start() launches the animation.
 
 ## Public Methods
 
@@ -20,7 +20,7 @@ Defaults to Ease::InOut easing. After chained configuration, start() launches th
 Anim(void *var, AnimExecCb execCb)
 ```
 
-Internal storage; the builder owns the lv_anim_t, and LVGL manages a copy after start
+Internal storage; the builder owns the lv_anim_t and LVGL manages the copy after start
 
 ### Anim
 
@@ -28,7 +28,7 @@ Internal storage; the builder owns the lv_anim_t, and LVGL manages a copy after 
 Anim(lv_anim_t &external, void *var, AnimExecCb execCb)
 ```
 
-External binding, operates on the passed lv_anim_t member, for an existing component member anim
+External binding, operates on the passed-in lv_anim_t member, for an existing component member anim
 
 ### ease
 
@@ -60,7 +60,7 @@ Sets the repeat count with LVGL semantics; 1 = once, LV_ANIM_REPEAT_INFINITE = i
 Anim & onReady(AnimReadyCb cb)
 ```
 
-Sets the callback for when the animation leaves the running set; fires on natural completion, on stop, or on replacement by a new animation on the same target
+Sets the callback for when the animation leaves the running set, triggered on natural completion, stop, or replacement by a new animation on the same target
 
 ### onCompleted
 
@@ -68,7 +68,7 @@ Sets the callback for when the animation leaves the running set; fires on natura
 Anim & onCompleted(AnimReadyCb cb)
 ```
 
-Sets the natural completion callback; fires once after all repeat and playback runs finish
+Sets the natural completion callback, fired once after all repeat / playback cycles finish
 
 ### onFinished
 
@@ -76,7 +76,7 @@ Sets the natural completion callback; fires once after all repeat and playback r
 Anim & onFinished(AnimTargetCb cb)
 ```
 
-Called when all playback and repeat runs finish naturally; not called on stop or replacement.
+Called when all playback and repeats finish naturally; not called on stop or replacement.
 
 ### onRemoved
 
@@ -84,7 +84,7 @@ Called when all playback and repeat runs finish naturally; not called on stop or
 Anim & onRemoved(AnimTargetCb cb)
 ```
 
-Called once on natural finish, stop, or replacement; can be used to release target resources.
+Called once on natural end, stop, or replacement; can be used to release target resources.
 
 ### start
 
@@ -102,7 +102,7 @@ Starts the animation and returns the LVGL animation handle
 static void stop(void *var, AnimExecCb cb)
 ```
 
-Stops all animations on the target matching execCb
+Stops all animations matching execCb on the target
 
 ### running
 

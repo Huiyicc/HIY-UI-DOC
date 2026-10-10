@@ -8,7 +8,7 @@ title: "UndoManager::Snapshot"
 
 **Namespace:** `hiyui`
 
-Text snapshot with text content and cursor position
+Text snapshot containing the text content and cursor position
 
 ## Public Members
 
@@ -18,4 +18,4 @@ Text snapshot with text content and cursor position
 uint32_t cursorPos
 ```
 
-Cursor position as character index
+Cursor position as a character index

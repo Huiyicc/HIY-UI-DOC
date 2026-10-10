@@ -16,7 +16,7 @@ Floating label input
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_float_label_input_create(hiyui_widget_t *parent, const hiyui_float_label_input_props_t *props)
 ```
 
-Creates a floating label input. A NULL label uses input.placeholder.
+Creates a floating label input; a NULL label uses input.placeholder.
 
 ### hiyui_float_label_input_set_text
 
@@ -30,7 +30,7 @@ HIYUI_API void HIYUI_CALL hiyui_float_label_input_set_text(hiyui_widget_t *w, co
 HIYUI_API const char *HIYUI_CALL hiyui_float_label_input_get_text(hiyui_widget_t *w)
 ```
 
-Current text. Returns NULL when w is NULL.
+Current text; returns NULL when w is NULL.
 
 ### hiyui_float_label_input_set_label
 
@@ -38,7 +38,7 @@ Current text. Returns NULL when w is NULL.
 HIYUI_API void HIYUI_CALL hiyui_float_label_input_set_label(hiyui_widget_t *w, const char *label)
 ```
 
-Sets the floating label text. NULL or an empty string hides the label.
+Sets the floating label text; NULL or an empty string hides the label.
 
 ### hiyui_float_label_input_clear
 
@@ -52,7 +52,7 @@ HIYUI_API void HIYUI_CALL hiyui_float_label_input_clear(hiyui_widget_t *w, hiyui
 HIYUI_API void HIYUI_CALL hiyui_float_label_input_focus(hiyui_widget_t *w)
 ```
 
-Focuses the inner input.
+Focuses the internal input.
 
 ### hiyui_float_label_input_add_to_group
 
@@ -60,4 +60,4 @@ Focuses the inner input.
 HIYUI_API void HIYUI_CALL hiyui_float_label_input_add_to_group(hiyui_widget_t *w)
 ```
 
-Adds the inner input to the default input group.
+Adds the internal input to the default input group.

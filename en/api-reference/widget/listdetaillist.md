@@ -8,6 +8,6 @@ title: "ListDetailList"
 
 **Namespace:** `hiyui`
 
-The list pane. Not created when the parent is not a ListDetail or a pane of the same kind already exists.
+List area. Not created when the parent is not a ListDetail or an area of the same kind already exists.
 
 **Inherits:** `hiyui::Container< ListDetailList >`

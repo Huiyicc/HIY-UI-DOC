@@ -8,7 +8,7 @@ title: "PropertyEditor"
 
 **Namespace:** `hiyui`
 
-Copyable non-owning edit session; all methods must be called on the UI thread. Invalidated by editor switch, factory unregistration, or deletion of the property or widget; writes on an invalid session return false.
+Copyable, non-owning edit session; all methods must be called on the UI thread. Becomes invalid after the editor is switched, the factory is unregistered, or the property or widget is deleted; writes on an invalid session return false.
 
 ## Public Methods
 
@@ -26,7 +26,7 @@ Returns HIYUI_NO_PROPERTY when invalid.
 std::optional< PropertyItem > property() const
 ```
 
-Returns a copy of the current description; empty when invalid.
+Returns a copy of the current description, or an empty optional when invalid.
 
 ### value
 
@@ -34,7 +34,7 @@ Returns a copy of the current description; empty when invalid.
 PropertyValue value() const
 ```
 
-Returns a copy of the current draft; an empty property value when invalid.
+Returns a copy of the current draft, or an empty property value when invalid.
 
 ### text
 
@@ -42,7 +42,7 @@ Returns a copy of the current draft; an empty property value when invalid.
 std::string text() const
 ```
 
-Returns the edit text, including input that has not parsed; returns an empty string for Mixed with no input yet.
+Returns the edit text, including input that has not parsed yet; Mixed with no input returns an empty string.
 
 ### setValue
 
@@ -58,7 +58,7 @@ Updates the draft without changing the committed value.
 bool setText(std::string text) const
 ```
 
-Saves the input and parses it by property type; on parse failure the input is kept and false is returned.
+Saves the input and parses it by the property type; on parse failure the input is kept and false is returned.
 
 ### error
 
@@ -66,7 +66,7 @@ Saves the input and parses it by property type; on parse failure the input is ke
 bool error(std::string message) const
 ```
 
-Sets a custom validation error; an empty string clears it; commit is blocked while an error exists.
+Sets a custom validation error; an empty string clears it. Committing is blocked while an error exists.
 
 ### commit
 

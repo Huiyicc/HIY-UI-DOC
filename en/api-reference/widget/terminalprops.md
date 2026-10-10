@@ -8,7 +8,7 @@ title: "TerminalProps"
 
 **Namespace:** `hiyui`
 
-Terminal creation properties; sizes and font size use logical pixels.
+Terminal creation properties; sizes and font sizes use logical pixels.
 
 ## Public Members
 
@@ -34,7 +34,7 @@ Positive integer.
 int scrollbackLines
 ```
 
-Upper limit of history lines; zero keeps no history.
+Maximum number of history lines; zero keeps no history.
 
 ### bg
 
@@ -58,7 +58,7 @@ HIYUI_DEFAULT follows the theme body text color.
 bool animated
 ```
 
-Whether cursor blinking is allowed; also controlled by the theme animation switch.
+Whether the cursor may blink; also gated by the theme animation switch.
 
 ### readOnly
 
@@ -66,4 +66,4 @@ Whether cursor blinking is allowed; also controlled by the theme animation switc
 bool readOnly
 ```
 
-Blocks user input; selection, copy, and scrolling remain available.
+Blocks user input; selection, copy, and scrolling stay available.

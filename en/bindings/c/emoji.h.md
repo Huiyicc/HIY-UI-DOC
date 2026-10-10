@@ -6,7 +6,7 @@ title: "emoji.h"
 
 **Header:** `#include <hiyui/c/emoji.h>`
 
-Emoji text rasterization utilities
+Emoji text rasterization utility
 
 ## Functions
 
@@ -18,4 +18,4 @@ HIYUI_API int HIYUI_CALL hiyui_emoji_render(const char *text, int font_size, con
 
 Rasterizes a single emoji text into an image descriptor.
 
-Emoji text in UTF-8. Font size in pixels. Values ≤ 0 use 22. Output image source. Borrows the internal font_cache and stays valid long-term. Output width. Output height. 1 on success. 0 means the text cannot be rendered as an image, so the caller falls back to text.
+Emoji text in UTF-8 Font size in pixels; a value of 0 or less uses 22 Output image source; borrows the internal font_cache and stays valid long term Output width Output height 1 on success, 0 when the emoji cannot be rendered as an image and the caller falls back to text

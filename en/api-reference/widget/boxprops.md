@@ -18,7 +18,7 @@ Box creation properties.
 int width
 ```
 
-Width, HIYUI_AUTO = fit content
+Width; HIYUI_AUTO = fit content
 
 ### height
 
@@ -26,7 +26,7 @@ Width, HIYUI_AUTO = fit content
 int height
 ```
 
-Height, HIYUI_AUTO = fit content
+Height; HIYUI_AUTO = fit content
 
 ### bg
 
@@ -34,7 +34,7 @@ Height, HIYUI_AUTO = fit content
 uint32_t bg
 ```
 
-Background color, HIYUI_DEFAULT = follow theme
+Background color; HIYUI_DEFAULT = follow theme
 
 ### radius
 
@@ -58,7 +58,7 @@ Border width
 uint32_t borderColor
 ```
 
-Border color, HIYUI_DEFAULT = follow theme
+Border color; HIYUI_DEFAULT = follow theme
 
 ### padding
 
@@ -74,4 +74,4 @@ Padding
 int margin
 ```
 
-Margin of the container in its parent layout
+Outer margin of the container within its parent layout

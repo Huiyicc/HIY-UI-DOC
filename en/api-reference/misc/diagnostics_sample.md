@@ -8,7 +8,7 @@ title: "diagnostics::Sample"
 
 **Namespace:** `hiyui`
 
-Process and LVGL readings; memory figures overlap and must not be summed.
+Process and LVGL readings; the memory figures overlap and must not be summed.
 
 ## Public Members
 
@@ -18,4 +18,4 @@ Process and LVGL readings; memory figures overlap and must not be summed.
 double processCpuPercent
 ```
 
-100% at full load on one core, can exceed 100% on multiple cores.
+100% at full load on one core; can exceed 100% on multiple cores.

@@ -8,7 +8,7 @@ title: "ItemStateStyle"
 
 **Namespace:** `hiyui`
 
-Item four-state style set.
+Four-state style set of an item.
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Default state
 ItemVisual hovered
 ```
 
-Mouse hover state
+Hover state
 
 ### selected
 

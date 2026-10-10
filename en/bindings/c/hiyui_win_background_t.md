@@ -6,7 +6,7 @@ title: "hiyui_win_background_t"
 
 **Header:** `#include <hiyui/c/app.h>`
 
-Window background, zero initialization equals the theme base color. image.src supports file paths. blur takes effect only when image.src is set, and blur_radius 0 shows the original image. overlay is 0xRRGGBB, and 0 means no overlay color.
+Window background. Zero initialization equals the theme base color. image.src accepts file paths. blur applies only when image.src is set. A blur_radius of 0 shows the original image. overlay is 0xRRGGBB; 0 applies no overlay.
 
 ## Public Members
 

@@ -8,9 +8,9 @@ title: "Segmented"
 
 **Namespace:** `hiyui`
 
-Segmented control widget
+Segmented control component
 
-Predefines multiple members; the thumb animates between them on click; individual items can be disabled.
+Predefines multiple members; clicking switches the thumb with an animation, and individual items can be disabled.
 
 
 
@@ -29,7 +29,7 @@ Segmented control internal event types
 
 | Value | Description |
 |---|---|
-| `Changed` | Selection changed |
+| `Changed` | Selected item changed |
 
 ## Public Methods
 
@@ -39,7 +39,7 @@ Segmented control internal event types
 Segmented & itemText(int index, const char *value) &
 ```
 
-Update the text of one item without firing the selection event; out-of-range indexes do nothing; nullptr shows empty text. index is zero-based. Replacing the whole collection clears bindings.
+Updates the text of the given item without emitting a selection event. Out-of-range indexes do nothing; nullptr shows empty text. The index is zero-based. Replacing the whole set clears bindings.
 
 ### itemText
 
@@ -47,7 +47,7 @@ Update the text of one item without firing the selection event; out-of-range ind
 Segmented & itemText(int index, LocalizedText value) &
 ```
 
-Bind item text; switching language keeps the items and the selection.
+Binds item text; the set and the selection are preserved across language switches.
 
 ### Segmented
 
@@ -55,7 +55,7 @@ Bind item text; switching language keeps the items and the selection.
 Segmented(lv_obj_t *raw)
 ```
 
-Wrap an existing LVGL object
+Wraps an existing LVGL object
 
 ### Segmented
 
@@ -63,7 +63,7 @@ Wrap an existing LVGL object
 Segmented(SegmentedProps props={})
 ```
 
-Aggregate construct from properties
+Aggregate construction from properties
 
 ### init
 
@@ -71,7 +71,7 @@ Aggregate construct from properties
 Segmented & init(lv_obj_t *parent) &
 ```
 
-Create the LVGL object on a parent
+Creates the LVGL object on a parent
 
 ### init
 
@@ -79,7 +79,7 @@ Create the LVGL object on a parent
 Segmented & init(Widget &parent) &
 ```
 
-Create the LVGL object on a parent
+Creates the LVGL object on a parent
 
 ### items
 
@@ -87,9 +87,9 @@ Create the LVGL object on a parent
 Segmented & items(const std::vector< SegmentedItem > &items, Notify notify=Notify::No) &
 ```
 
-Set or replace the item list; dynamic loading is supported
+Sets or replaces the item list, supporting dynamic loading
 
-The selection is kept while the current index is still valid and selectable; otherwise an available item is selected.
+The current selection is kept while its index is still valid and selectable; otherwise an available item is selected.
 
 ### items
 
@@ -105,7 +105,7 @@ Shortcut to set plain-text items
 Segmented & selectedIndex(int idx, Notify notify=Notify::No) &
 ```
 
-Switch the selected item programmatically
+Switches the selected item programmatically
 
 ### selectedIndex
 
@@ -113,7 +113,7 @@ Switch the selected item programmatically
 int selectedIndex() const
 ```
 
-Get the current selected index
+Returns the current selected index
 
 ### itemData
 
@@ -121,7 +121,7 @@ Get the current selected index
 int itemData(int idx) const
 ```
 
-Get the user data bound to an item.
+Returns the user data bound to the given item.
 
 Item index, matching the onChange callback index. The item data value; 0 when the index is out of range.
 
@@ -131,9 +131,9 @@ Item index, matching the onChange callback index. The item data value; 0 when th
 Segmented & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Register the change event callback; repeated binds append
+Registers a change callback; repeated bindings are appended
 
-Callback; its argument is the new selected index Optional out parameter receiving the unbind handle of this binding
+Callback; the argument is the newly selected index Optional output parameter receiving the unbind handle for this binding
 
 ### disableItem
 
@@ -141,7 +141,7 @@ Callback; its argument is the new selected index Optional out parameter receivin
 Segmented & disableItem(int idx, bool disable=true, Notify notify=Notify::No) &
 ```
 
-Disable or enable an item at runtime
+Disables or enables the given item at runtime
 
 ### activeColor
 
@@ -149,7 +149,7 @@ Disable or enable an item at runtime
 Segmented & activeColor(ThemeRole role) &
 ```
 
-Bind the selected item text color to a theme semantic role; updates automatically on theme change
+Binds the selected item text color to a theme semantic role; updates automatically on theme switch.
 
 ### activeBg
 
@@ -157,7 +157,7 @@ Bind the selected item text color to a theme semantic role; updates automaticall
 Segmented & activeBg(ThemeRole role) &
 ```
 
-Bind the selected item thumb background color to a theme semantic role; updates automatically on theme change
+Binds the selected item thumb background color to a theme semantic role; updates automatically on theme switch.
 
 ### textColor
 
@@ -165,7 +165,7 @@ Bind the selected item thumb background color to a theme semantic role; updates 
 Segmented & textColor(ThemeRole role) &
 ```
 
-Bind the unselected item text color to a theme semantic role; updates automatically on theme change
+Binds the unselected item text color to a theme semantic role; updates automatically on theme switch.
 
 ## Static Methods
 
@@ -175,4 +175,4 @@ Bind the unselected item text color to a theme semantic role; updates automatica
 static lv_event_code_t eventCode(SegmentedEventType type)
 ```
 
-Get the internal event code of the segmented control.
+Returns the internal event code of the segmented control.

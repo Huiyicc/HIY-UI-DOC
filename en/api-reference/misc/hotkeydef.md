@@ -26,7 +26,7 @@ Hotkey identifier
 uint32_t sdlKey
 ```
 
-SDL key code, 0 means unbound
+SDL keycode; 0 means unbound
 
 ### ctrl
 
@@ -50,7 +50,7 @@ Command on macOS, Ctrl on other platforms
 bool shift
 ```
 
-Shift required
+Requires Shift
 
 ### alt
 
@@ -58,7 +58,7 @@ Shift required
 bool alt
 ```
 
-Alt required
+Requires Alt
 
 ### meta
 
@@ -66,4 +66,4 @@ Alt required
 bool meta
 ```
 
-Command or Windows/Super key
+Command or the Windows/Super key

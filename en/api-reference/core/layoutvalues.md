@@ -8,7 +8,7 @@ title: "LayoutValues"
 
 **Namespace:** `hiyui`
 
-Layout field values; when the minimum size exceeds a finite maximum size, layout uses the minimum size. Lengths update with runtime DPI; when the minimum size exceeds the parent content area, overflow is allowed and scrolling is not enabled automatically.
+Layout field values; when the minimum size exceeds the finite maximum size, the minimum size applies. Lengths update with runtime DPI; overflow is allowed when the minimum size exceeds the parent content area, without enabling scrolling.
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Non-negative logical pixels.
 int paddingX
 ```
 
-Horizontal padding, non-negative logical pixels.
+Left and right padding, non-negative logical pixels.
 
 ### paddingY
 
@@ -34,7 +34,7 @@ Horizontal padding, non-negative logical pixels.
 int paddingY
 ```
 
-Vertical padding, non-negative logical pixels.
+Top and bottom padding, non-negative logical pixels.
 
 ### minWidth
 
@@ -58,7 +58,7 @@ Non-negative logical pixels.
 int maxWidth
 ```
 
-Non-negative logical pixels; HIYUI_AUTO removes the local upper bound.
+Non-negative logical pixels; HIYUI_AUTO removes the local cap.
 
 ### maxHeight
 
@@ -66,7 +66,7 @@ Non-negative logical pixels; HIYUI_AUTO removes the local upper bound.
 int maxHeight
 ```
 
-Non-negative logical pixels; HIYUI_AUTO removes the local upper bound.
+Non-negative logical pixels; HIYUI_AUTO removes the local cap.
 
 ### flex
 
@@ -74,4 +74,4 @@ Non-negative logical pixels; HIYUI_AUTO removes the local upper bound.
 int flex
 ```
 
-Share of the remaining main axis space, 0 to 255.
+Share of remaining main-axis space, range 0 to 255.

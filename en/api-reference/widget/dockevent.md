@@ -8,9 +8,9 @@ title: "DockEvent"
 
 **Namespace:** `hiyui`
 
-Dock event payload.
+Dock event content.
 
-`name` is the pane unique name and is valid only during the callback. `index` is the in-group tab index when the event occurred. `edge` carries the placement edge only for the PaneDocked event.
+`name` is the pane unique name, valid only during the callback. `index` is the tab index within the group when the event occurred. `edge` carries the dock edge only for the PaneDocked event.
 
 ## Public Members
 
@@ -36,7 +36,7 @@ Pane unique name, valid only during the callback.
 int index
 ```
 
-In-group tab index, -1 when not applicable.
+Tab index within the group, -1 when not applicable.
 
 ### edge
 
@@ -44,4 +44,4 @@ In-group tab index, -1 when not applicable.
 DockEdge edge
 ```
 
-Placement edge for PaneDocked.
+Dock edge for PaneDocked.

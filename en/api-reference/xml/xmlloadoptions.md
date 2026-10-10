@@ -18,7 +18,7 @@ Error handling and resource limits for XML loading.
 bool strict
 ```
 
-Destroys the complete component tree created by this load on error.
+Destroys the entire component tree created by this load when an error occurs.
 
 ### maxDepth
 

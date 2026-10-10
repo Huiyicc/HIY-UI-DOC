@@ -8,7 +8,7 @@ title: "diagnostics::Resource"
 
 **Namespace:** `hiyui`
 
-Non-owning copy; id identifies the observed lifetime, 0 means only the current snapshot exists. address must not be dereferenced; properties of released entries come from the last observation.
+Non-owning copy; id identifies the observed lifetime, 0 means only the current snapshot exists, address must not be dereferenced, and released entries carry attributes from the last observation.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Non-owning copy; id identifies the observed lifetime, 0 means only the current s
 uint64_t observedUs
 ```
 
-First observation time, 0 means earlier than the capture start or unknown.
+First observation time; 0 means earlier than the capture start or unknown.
 
 ### elapsedMs
 
@@ -26,7 +26,7 @@ First observation time, 0 means earlier than the capture start or unknown.
 int32_t elapsedMs
 ```
 
-Animation elapsed time, negative values mean start delay.
+Animation elapsed time; negative values mean start delay.
 
 ### targetAddress
 
@@ -34,4 +34,4 @@ Animation elapsed time, negative values mean start delay.
 uint64_t targetAddress
 ```
 
-Address of the animation target or timer user data, must not be dereferenced.
+Address of the animation target or timer user data; must not be dereferenced.

@@ -8,4 +8,4 @@ title: "XmlAttributeSpec"
 
 **Namespace:** `hiyui`
 
-Attribute description shared by the registry, schema, and validators.
+Attribute description shared by the Registry, Schema, and validators.

@@ -10,7 +10,7 @@ title: "Tree"
 
 Tree widget
 
-Supports checking, multi-selection, dragging, asynchronous loading, search filtering, connect lines, accordion mode, custom icons and fields, and the context menu.
+Supports checkboxes, multi-select, drag and drop, async loading, search filtering, connect lines, accordion mode, custom icons and fields, and context menus.
 
 **Inherits:** `hiyui::VirtualTableBase< Tree >`
 
@@ -24,9 +24,9 @@ Supports checking, multi-selection, dragging, asynchronous loading, search filte
 | `Select` | Node selected |
 | `Check` | Node checked |
 | `Expand` | Node expanded or collapsed |
-| `Drop` | Drag drop |
+| `Drop` | Drag drop position |
 
-Internal tree event types
+Tree internal event types
 
 ### contextMenu
 
@@ -34,7 +34,7 @@ Internal tree event types
 Tree & contextMenu(std::vector< ContextMenuItem > items) &
 ```
 
-Set the row menu and copy text and image paths immediately. Can be called before initialization. An empty list removes the menu.
+Sets the row context menu and immediately copies text and image paths. Can be called before init. An empty list removes the menu.
 
 ### eventCode
 
@@ -42,7 +42,7 @@ Set the row menu and copy text and image paths immediately. Can be called before
 static lv_event_code_t eventCode(TreeEventType type)
 ```
 
-Get the internal tree event code.
+Gets the tree internal event code.
 
 ## 数据
 
@@ -52,4 +52,4 @@ Get the internal tree event code.
 Tree & appendChildren(TreeNodeId parentId, const std::vector< TreeNodeConfig > &children, Notify notify=Notify::No) &
 ```
 
-Append child nodes without clearing existing ones. parentId=0 appends as root nodes
+Appends child nodes without clearing existing children. parentId=0 appends as root nodes

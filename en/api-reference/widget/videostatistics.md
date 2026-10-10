@@ -8,7 +8,7 @@ title: "VideoStatistics"
 
 **Namespace:** `hiyui`
 
-Cumulative statistics of the current session; not reset by seeks or auto-reconnect, reset on stop or on explicitly setting a new source.
+Cumulative statistics of the current session. Seek and auto-reconnect do not reset them; stop or an explicit source change resets them.
 
 ## Public Members
 
@@ -42,7 +42,7 @@ Pixel height of the most recently decoded frame.
 uint64_t droppedFrames
 ```
 
-Frames skipped for falling behind the playback clock, excluding seek pre-read.
+Frames skipped for falling behind the playback clock, excluding seek prefetch.
 
 ### gpuFrames
 
@@ -50,7 +50,7 @@ Frames skipped for falling behind the playback clock, excluding seek pre-read.
 uint64_t gpuFrames
 ```
 
-Hardware frames submitted directly to GPU composition, excluding repeated draws.
+Hardware frames submitted directly to GPU composition, excluding repeated drawing.
 
 ### readbackCount
 
@@ -58,7 +58,7 @@ Hardware frames submitted directly to GPU composition, excluding repeated draws.
 uint64_t readbackCount
 ```
 
-Number of times a hardware frame or composition layer was read back to the CPU.
+Times hardware frames or composition layers were read back to the CPU.
 
 ### decodeTimeUs
 
@@ -66,7 +66,7 @@ Number of times a hardware frame or composition layer was read back to the CPU.
 uint64_t decodeTimeUs
 ```
 
-Cumulative decode call time in microseconds, including in-call waits.
+Cumulative decode call time in microseconds, including waits inside the call.
 
 ### conversionTimeUs
 
@@ -74,4 +74,4 @@ Cumulative decode call time in microseconds, including in-call waits.
 uint64_t conversionTimeUs
 ```
 
-Cumulative time spent on video frame preparation and CPU pixel conversion.
+Cumulative time for video frame preparation and CPU pixel conversion.

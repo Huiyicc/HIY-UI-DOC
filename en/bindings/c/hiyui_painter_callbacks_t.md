@@ -6,7 +6,7 @@ title: "hiyui_painter_callbacks_t"
 
 **Header:** `#include <hiyui/c/custom_draw.h>`
 
-Custom paint strategy callbacks, unused fields are zeroed. All callbacks run on the UI thread and must not throw exceptions.
+Custom draw policy callbacks; unused fields are zeroed. All callbacks run on the UI thread and must not throw exceptions.
 
 ## Public Members
 

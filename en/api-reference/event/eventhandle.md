@@ -10,7 +10,7 @@ title: "EventHandle"
 
 Unbind handle for a single event binding
 
-Obtained as an optional output parameter when binding component events via Widget::on; move-only. Destruction does not unbind; repeated off() calls and off() after component destruction have no additional effect.
+Obtained through Widget::on as the optional out parameter of a component event binding, move-only. Destruction does not unbind. Repeated off() calls and off() after component destruction have no additional effect.
 
 ## Public Methods
 
@@ -22,7 +22,7 @@ void off()
 
 Unbinds the held event binding
 
-When called inside a callback, removes the registration immediately; closure destruction is deferred until the outermost callback returns. Calling before mounting cancels the pending connection.
+When called inside a callback the registration is removed immediately, and closure destruction is deferred until the outermost callback returns. Calling before attachment cancels the pending connection.
 
 ### operator bool
 
@@ -38,4 +38,4 @@ Returns true while the binding is still valid and the target has not requested d
 bool connected() const
 ```
 
-Returns true when the binding is connected and the target is valid; false before mounting, after deletion is requested, or after unbinding.
+Returns true when the binding is connected and the target is valid. False before attachment, after deletion is requested, or after unbinding.

@@ -24,4 +24,4 @@ Target image size in logical pixels, scaled by the theme DPI at draw time
 RichCharFormat charFormat
 ```
 
-Character format of text nodes; object nodes ignore it
+Character format of a text node, ignored for object nodes

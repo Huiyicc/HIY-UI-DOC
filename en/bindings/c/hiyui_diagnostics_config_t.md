@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_config_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-Defaults are obtained through config_init; event capacity 64 to 1048576, frame capacity 16 to 65536, sample capacity 2 to 65536. Detailed mode splits half the event capacity between normal spans and LVGL detail, with normal spans taking the remainder. frame_budget_us must be positive; sample_period_ms is at least 250, sampling runs with the UI main loop, and missed samples are not back-filled while blocked.
+Obtains default values via config_init. Event capacity ranges from 64 to 1048576, frame capacity from 16 to 65536, and sample capacity from 2 to 65536. Detailed splits half the event capacity between normal spans and LVGL detail spans, with the normal spans taking the remainder. frame_budget_us must be positive. sample_period_ms is at least 250; sampling runs with the UI main loop and does not backfill while blocked.
 
 ## Public Members
 
@@ -52,7 +52,7 @@ uint32_t sample_period_ms
 uint32_t profiler_min_duration_us
 ```
 
-Filters only LVGL detail, default 100 microseconds; 0 keeps all calls.
+Filters only LVGL detail spans; defaults to 100 microseconds; 0 keeps all calls.
 
 ### event_min_duration_us
 
@@ -60,4 +60,4 @@ Filters only LVGL detail, default 100 microseconds; 0 keeps all calls.
 uint32_t event_min_duration_us
 ```
 
-Microsecond threshold for automatic event callbacks, default 100; 0 keeps all and does not affect scope_begin/end.
+Microsecond threshold for automatic event callbacks; defaults to 100; 0 keeps all and does not affect scope_begin/end.

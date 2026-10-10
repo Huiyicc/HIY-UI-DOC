@@ -18,7 +18,7 @@ Layout snapshot node.
 Node root
 ```
 
-Root of the dock tree.
+Dock tree root.
 
 ### floating
 

@@ -48,7 +48,7 @@ Supports text, image, system, and time messages, rich text bubbles, avatars, gro
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_chat_list_create(hiyui_widget_t *parent, const hiyui_chat_list_props_t *props)
 ```
 
-Creates a chat list; NULL props uses all defaults
+Creates a chat list; a NULL props uses all defaults
 
 ### hiyui_chat_add_message
 
@@ -104,7 +104,7 @@ Ends a batch update and refreshes layout
 HIYUI_API void HIYUI_CALL hiyui_chat_scroll_to_bottom(hiyui_widget_t *cl, int animate)
 ```
 
-Scrolls to the bottom; a non-zero animate enables animation
+Scrolls to the bottom; a non-zero animate value enables animation
 
 ### hiyui_chat_scroll_to_top
 
@@ -120,7 +120,7 @@ Scrolls to the top
 HIYUI_API int HIYUI_CALL hiyui_chat_is_at_bottom(hiyui_widget_t *cl)
 ```
 
-Returns whether the list is at the bottom
+Whether the list is already at the bottom
 
 ### hiyui_chat_on_bubble_click
 
@@ -128,7 +128,7 @@ Returns whether the list is at the bottom
 HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(*cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
 ```
 
-Bubble click callback. The item fields borrow internal storage and are valid only inside the callback.
+Bubble click callback; item fields borrow internal storage and are valid inside the callback
 
 ### hiyui_chat_on_bubble_long_press
 
@@ -160,4 +160,4 @@ Total message count
 HIYUI_API int HIYUI_CALL hiyui_chat_message_at(hiyui_widget_t *cl, int idx, hiyui_chat_item_t *out)
 ```
 
-Copies the message at idx into out, returning 1 on success and 0 when out of range. Fields borrow internal storage, valid until the next call.
+Copies the message at idx into out; returns 1 on success and 0 when out of range; fields borrow internal storage, valid until the next call

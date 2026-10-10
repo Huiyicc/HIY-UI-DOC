@@ -6,9 +6,9 @@ title: "easing.h"
 
 **Header:** `#include <hiyui/c/easing.h>`
 
-Easing algorithm evaluation
+Easing function evaluation
 
-The enum order matches the C++ `hiyui::Ease`. Values are compatible and can be converted directly.
+The enum order matches C++ `hiyui::Ease`, values are compatible and the two can be converted directly.
 
 ## Enums
 
@@ -64,9 +64,9 @@ The enum order matches the C++ `hiyui::Ease`. Values are compatible and can be c
 HIYUI_API double HIYUI_CALL hiyui_easing_at(hiyui_ease_t e, double t)
 ```
 
-Evaluates at normalized time.
+Normalized evaluation.
 
-Easing algorithm. Normalized time in [0,1]. Current progress ratio. Back, Elastic, Spring, and Bounce may go out of range.
+Easing function Normalized time in [0,1] Current progress ratio; Back/Elastic/Spring/Bounce may go out of range
 
 ### hiyui_easing_at_range
 
@@ -74,6 +74,6 @@ Easing algorithm. Normalized time in [0,1]. Current progress ratio. Back, Elasti
 HIYUI_API double HIYUI_CALL hiyui_easing_at_range(hiyui_ease_t e, double t, double start, double end)
 ```
 
-Evaluates into a range.
+Range evaluation.
 
-Target range. t in [0,1] maps onto this range.
+Target interval; t in [0,1] maps onto this interval

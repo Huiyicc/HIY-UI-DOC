@@ -8,4 +8,4 @@ title: "Point"
 
 **Namespace:** `hiyui`
 
-Two-dimensional coordinates in physical pixels.
+2D coordinate in physical pixels.

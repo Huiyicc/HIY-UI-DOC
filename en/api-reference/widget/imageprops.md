@@ -8,7 +8,7 @@ title: "ImageProps"
 
 **Namespace:** `hiyui`
 
-Properties for creating an Image
+Creation properties of the image widget
 
 ## Public Members
 
@@ -26,7 +26,7 @@ Image source, a file path (const char*) or lv_image_dsc_t*
 int width
 ```
 
-Display width, HIYUI_AUTO = image intrinsic width
+Display width, HIYUI_AUTO = original image width
 
 ### height
 
@@ -34,7 +34,7 @@ Display width, HIYUI_AUTO = image intrinsic width
 int height
 ```
 
-Display height, HIYUI_AUTO = image intrinsic height
+Display height, HIYUI_AUTO = original image height
 
 ### fit
 
@@ -42,7 +42,7 @@ Display height, HIYUI_AUTO = image intrinsic height
 ImageFit fit
 ```
 
-Scale and alignment mode
+Scaling and alignment mode
 
 ### opacity
 

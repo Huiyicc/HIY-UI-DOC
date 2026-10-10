@@ -20,7 +20,7 @@ void record(const std::string &text, uint32_t cursorPos, UndoActionType actionTy
 
 Records the current state
 
-Determines the merge strategy Merge rules: Typing: consecutive input within 500ms merges into one record Edit/Program: each call records independently
+Determines the merge policy Typing: consecutive input within 500ms merges into one record. Edit/Program: each call is recorded separately.
 
 ### undo
 
@@ -30,7 +30,7 @@ Snapshot undo(const std::string &currentText, uint32_t currentCursor)
 
 Performs undo
 
-Pushes the current state onto the redo stack and pops the top of the undo stack to return. Returns an empty snapshot when there is nothing to undo.
+Pushes the current state onto the redo stack and returns the undo stack top. Returns an empty snapshot when there is no state to undo.
 
 ### redo
 
@@ -48,4 +48,4 @@ Pushes the redo state onto the undo stack and returns it. Returns an empty snaps
 void setMaxSteps(size_t maxSteps)
 ```
 
-Sets the maximum history steps; when smaller than the current record count, old records are trimmed automatically
+Sets the maximum number of history steps; when below the current record count, older records are trimmed

@@ -8,4 +8,4 @@ title: "XmlModuleMetadata"
 
 **Namespace:** `hiyui`
 
-Module metadata copy for one namespace.
+Metadata copy of the module for one namespace.

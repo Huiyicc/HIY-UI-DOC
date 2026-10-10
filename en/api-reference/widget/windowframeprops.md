@@ -18,7 +18,7 @@ Responsive window frame creation properties.
 int wideMinWidth
 ```
 
-Minimum content logical width to enter the wide layout; must be greater than 0.
+Minimum content logical width to enter the wide layout, must be greater than 0.
 
 ### narrowNavigation
 
@@ -50,7 +50,7 @@ Edge the navigation attaches to.
 int navigationWidth
 ```
 
-Docked navigation width; `HIYUI_AUTO` follows content, positive values are logical pixels.
+Docked navigation width, `HIYUI_AUTO` follows content, positive values are logical pixels.
 
 ### drawerWidth
 
@@ -58,7 +58,7 @@ Docked navigation width; `HIYUI_AUTO` follows content, positive values are logic
 int drawerWidth
 ```
 
-Drawer navigation maximum width in logical pixels.
+Maximum drawer navigation width in logical pixels.
 
 ### drawerMaxWidthPercent
 
@@ -66,7 +66,7 @@ Drawer navigation maximum width in logical pixels.
 int drawerMaxWidthPercent
 ```
 
-Maximum drawer percentage of the frame width.
+Maximum percentage of the frame width the drawer occupies.
 
 ### scrimOpacity
 

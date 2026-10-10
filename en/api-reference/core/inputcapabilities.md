@@ -8,7 +8,7 @@ title: "InputCapabilities"
 
 **Namespace:** `hiyui`
 
-Interaction devices currently connected to the backend; several can be available at once.
+Input facilities currently connected by the backend; several can be available at once.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Interaction devices currently connected to the backend; several can be available
 CapabilityState pointer
 ```
 
-Excludes touch emulating a mouse.
+Does not include touch emulating a mouse.
 
 ### keyboard
 
@@ -26,4 +26,4 @@ Excludes touch emulating a mouse.
 CapabilityState keyboard
 ```
 
-Includes a screen keyboard connected to the backend.
+Includes an on-screen keyboard connected by the backend.

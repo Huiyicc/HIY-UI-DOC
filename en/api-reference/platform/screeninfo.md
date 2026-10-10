@@ -8,7 +8,7 @@ title: "ScreenInfo"
 
 **Namespace:** `hiyui`
 
-Display screen information for the application layer to compute screen adaptation factors.
+Monitor screen information for the application layer to compute screen adaptation factors
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Display screen information for the application layer to compute screen adaptatio
 int displayIndex
 ```
 
-SDL display index.
+SDL display index
 
 ### physW
 
@@ -26,7 +26,7 @@ SDL display index.
 int physW
 ```
 
-Screen physical pixel width, desktop resolution.
+Screen physical pixel width, desktop resolution
 
 ### physH
 
@@ -34,7 +34,7 @@ Screen physical pixel width, desktop resolution.
 int physH
 ```
 
-Screen physical pixel height.
+Screen physical pixel height
 
 ### workW
 
@@ -42,7 +42,7 @@ Screen physical pixel height.
 int workW
 ```
 
-Work area width excluding the taskbar, SDL_GetDisplayUsableBounds.
+Work area width excluding taskbars, SDL_GetDisplayUsableBounds
 
 ### workH
 
@@ -50,7 +50,7 @@ Work area width excluding the taskbar, SDL_GetDisplayUsableBounds.
 int workH
 ```
 
-Work area height.
+Work area height
 
 ### dpr
 
@@ -58,4 +58,4 @@ Work area height.
 float dpr
 ```
 
-Current systemDpiScale().
+Current systemDpiScale()

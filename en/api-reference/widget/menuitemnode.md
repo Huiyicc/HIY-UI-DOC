@@ -8,9 +8,9 @@ title: "MenuItemNode"
 
 **Namespace:** `hiyui`
 
-Internal runtime node of a menu item, flat array plus tree encoding.
+Internal runtime node of a menu item, flat array plus tree encoding
 
-All nodes are stored in MenuState::nodes in preorder traversal order. The tree structure is encoded through parentNodeIndex and childNodeIndices.
+All nodes are stored in MenuState::nodes in preorder traversal order, the tree structure is encoded through parentNodeIndex / childNodeIndices.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ All nodes are stored in MenuState::nodes in preorder traversal order. The tree s
 int parentNodeIndex
 ```
 
-Parent node index, -1 = top level.
+Parent node index, -1 = top level
 
 ### depth
 
@@ -28,7 +28,7 @@ Parent node index, -1 = top level.
 int depth
 ```
 
-Nesting depth, 0 = top level.
+Nesting depth, 0 = top level
 
 ### isParent
 
@@ -36,7 +36,7 @@ Nesting depth, 0 = top level.
 bool isParent
 ```
 
-Has child items.
+Has child items
 
 ### isSeparator
 
@@ -44,7 +44,7 @@ Has child items.
 bool isSeparator
 ```
 
-Is a separator line.
+Is a separator
 
 ### expanded
 
@@ -52,7 +52,7 @@ Is a separator line.
 bool expanded
 ```
 
-Current expanded state.
+Current expanded state
 
 ### rowObj
 
@@ -60,7 +60,7 @@ Current expanded state.
 lv_obj_t * rowObj
 ```
 
-Clickable row object.
+Clickable row object
 
 ### groupTagObj
 
@@ -68,7 +68,7 @@ Clickable row object.
 lv_obj_t * groupTagObj
 ```
 
-Group label object, separator nodes only.
+Group label object, separator nodes only
 
 ### childrenContainer
 
@@ -76,7 +76,7 @@ Group label object, separator nodes only.
 lv_obj_t * childrenContainer
 ```
 
-Children container, parent items only.
+Children container, parent items only
 
 ### chevronObj
 
@@ -84,7 +84,7 @@ Children container, parent items only.
 lv_obj_t * chevronObj
 ```
 
-Expand chevron, parent items only.
+Expand chevron, parent items only
 
 ### labelContainerObj
 
@@ -92,7 +92,7 @@ Expand chevron, parent items only.
 lv_obj_t * labelContainerObj
 ```
 
-Text container, target of the bounce animation.
+Text container, target of the bounce animation
 
 ### labelObj
 
@@ -100,7 +100,7 @@ Text container, target of the bounce animation.
 lv_obj_t * labelObj
 ```
 
-Text label.
+Text label
 
 ### iconContainerObj
 
@@ -108,7 +108,7 @@ Text label.
 lv_obj_t * iconContainerObj
 ```
 
-Icon container, target of the bounce animation.
+Icon container, target of the bounce animation
 
 ### iconObj
 
@@ -116,7 +116,7 @@ Icon container, target of the bounce animation.
 lv_obj_t * iconObj
 ```
 
-Current icon object.
+Current icon object
 
 ### iconObjOld
 
@@ -124,7 +124,7 @@ Current icon object.
 lv_obj_t * iconObjOld
 ```
 
-Old icon object during the transition, cross-fade.
+Old icon object during the transition, cross-fade
 
 ### iconCodepoint
 
@@ -132,7 +132,7 @@ Old icon object during the transition, cross-fade.
 uint32_t iconCodepoint
 ```
 
-Icon codepoint, used for dynamic fill switching.
+Icon codepoint, used for dynamic fill switching
 
 ### iconStyle
 
@@ -140,7 +140,7 @@ Icon codepoint, used for dynamic fill switching.
 FontIconStyle iconStyle
 ```
 
-Original icon style.
+Original icon style
 
 ### iconSize
 
@@ -148,7 +148,7 @@ Original icon style.
 uint32_t iconSize
 ```
 
-Icon size.
+Icon size
 
 ### iconScaleAnim
 
@@ -156,7 +156,7 @@ Icon size.
 lv_anim_t iconScaleAnim
 ```
 
-New icon expand animation, scale 128→256.
+New icon expand animation, scale 128 to 256
 
 ### iconFadeAnim
 
@@ -164,7 +164,7 @@ New icon expand animation, scale 128→256.
 lv_anim_t iconFadeAnim
 ```
 
-Old icon fade-out animation, opacity 255→0.
+Old icon fade out animation, opacity 255 to 0
 
 ### iconShrinkAnim
 
@@ -172,7 +172,7 @@ Old icon fade-out animation, opacity 255→0.
 lv_anim_t iconShrinkAnim
 ```
 
-Old icon shrink animation, scale 256→128.
+Old icon shrink animation, scale 256 to 128
 
 ### iconBounceAnim
 
@@ -180,7 +180,7 @@ Old icon shrink animation, scale 256→128.
 lv_anim_t iconBounceAnim
 ```
 
-Icon bounce animation, y offset.
+Icon bounce animation, y offset
 
 ### labelBounceAnim
 
@@ -188,7 +188,7 @@ Icon bounce animation, y offset.
 lv_anim_t labelBounceAnim
 ```
 
-Text bounce animation, y offset.
+Text bounce animation, y offset
 
 ### childNodeIndices
 
@@ -196,7 +196,7 @@ Text bounce animation, y offset.
 std::vector< int > childNodeIndices
 ```
 
-Direct child node indices.
+Direct child node indices
 
 ### leafIndex
 
@@ -204,7 +204,7 @@ Direct child node indices.
 int leafIndex
 ```
 
-Leaf node index, -1 = not a leaf.
+Leaf index, -1 = not a leaf
 
 ### data
 
@@ -212,7 +212,7 @@ Leaf node index, -1 = not a leaf.
 int data
 ```
 
-User data.
+User bound data
 
 ### chevronAngle
 
@@ -220,7 +220,7 @@ User data.
 int chevronAngle
 ```
 
-Chevron angle, 0=\/↓, 1800=/\↑, unit 0.1 degree.
+Chevron angle, 0 = \/ down, 1800 = /\ up, in 0.1 degree units
 
 ### textCache
 
@@ -228,7 +228,7 @@ Chevron angle, 0=\/↓, 1800=/\↑, unit 0.1 degree.
 std::string textCache
 ```
 
-Cached text content, used for popup panel rebuilds.
+Cached text content, used to rebuild the popup panel
 
 ### spacerObj
 
@@ -236,4 +236,4 @@ Cached text content, used for popup panel rebuilds.
 lv_obj_t * spacerObj
 ```
 
-Flexible spacer, used by parent items in wide mode.
+Flexible spacer, used by wide mode parent items

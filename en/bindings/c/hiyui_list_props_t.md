@@ -56,7 +56,7 @@ uint32_t radius
 int selected_index
 ```
 
-0 means the first item; HIYUI_NO_SELECTION means no selection.
+0 selects the first item, HIYUI_NO_SELECTION means no selection.
 
 ### layout_mode
 

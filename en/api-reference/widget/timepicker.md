@@ -8,9 +8,9 @@ title: "TimePicker"
 
 **Namespace:** `hiyui`
 
-Time picker widget
+Time picker component
 
-The popup panel holds hour/minute/second wheel columns and supports 12h/24h formats.
+The floating panel contains hour/minute/second scroll columns and supports 12h/24h formats.
 
 **Inherits:** `hiyui::Chainable< TimePicker >`
 
@@ -32,7 +32,7 @@ Time picker internal event types
 TimePicker & placeholder(const char *value) &
 ```
 
-Set the placeholder; nullptr restores the default; plain text removes the language binding and keeps the current value.
+Sets the placeholder text; nullptr restores the default. Plain text clears the language binding and keeps the current value.
 
 ### placeholder
 
@@ -40,7 +40,7 @@ Set the placeholder; nullptr restores the default; plain text removes the langua
 TimePicker & placeholder(LocalizedText value) &
 ```
 
-Bind the placeholder; copies text and parameters and updates with the language.
+Binds the placeholder text; text and parameters are copied and updated with the language.
 
 ### selection
 
@@ -48,7 +48,7 @@ Bind the placeholder; copies text and parameters and updates with the language.
 TimePickerValue selection() const
 ```
 
-Get the full committed selection; unconfirmed drafts in the panel do not change the return value.
+Returns the full committed selection; unconfirmed drafts inside the panel do not change the return value.
 
 ### rangeValue
 
@@ -56,7 +56,7 @@ Get the full committed selection; unconfirmed drafts in the panel do not change 
 TimePicker & rangeValue(const TimeValue &start, const TimeValue &end, Notify notify=Notify::No) &
 ```
 
-Set the range value, range mode only
+Sets the range value; only in range mode
 
 ### status
 
@@ -64,7 +64,7 @@ Set the range value, range mode only
 TimePicker & status(TimePickerStatus s) &
 ```
 
-Set the status at runtime
+Sets the status at runtime
 
 ### onChange
 
@@ -72,9 +72,9 @@ Set the status at runtime
 TimePicker & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the value-changed callback; repeated binds append; the callback argument is the current value
+Binds a value change callback; repeated bindings are appended and the callback receives the current value
 
-Optional out parameter receiving the unbind handle of this binding
+Optional output parameter receiving the unbind handle for this binding
 
 ### footer
 
@@ -92,4 +92,4 @@ Custom footer builder callback
 static lv_event_code_t eventCode(TimePickerEventType type)
 ```
 
-Get the internal event code of the time picker.
+Returns the internal event code of the time picker.

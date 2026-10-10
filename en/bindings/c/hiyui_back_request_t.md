@@ -6,7 +6,7 @@ title: "hiyui_back_request_t"
 
 **Header:** `#include <hiyui/c/types.h>`
 
-Synchronous back request; setting handled to non-zero in the callback stops later handling.
+Synchronous back request. Setting handled to non-zero in the callback stops further processing.
 
 ## Public Members
 

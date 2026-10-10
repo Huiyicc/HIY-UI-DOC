@@ -51,7 +51,7 @@ HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_carousel_create(hiyui_widget_t *paren
 HIYUI_API void HIYUI_CALL hiyui_carousel_add_image_page(hiyui_widget_t *w, const hiyui_carousel_image_page_t *page, hiyui_notify_t notify)
 ```
 
-Appends an image page. src is a file path or lv_image_dsc_t*; fit defaults to Cover.
+Appends an image page; src is a file path or an lv_image_dsc_t pointer, fit defaults to Cover
 
 ### hiyui_carousel_add_page
 
@@ -59,7 +59,7 @@ Appends an image page. src is a file path or lv_image_dsc_t*; fit defaults to Co
 HIYUI_API void HIYUI_CALL hiyui_carousel_add_page(hiyui_widget_t *w, hiyui_carousel_page_fn builder, void *ud, hiyui_notify_t notify)
 ```
 
-Appends a custom page. builder builds child widgets inside the page container.
+Appends a custom page; builder builds child widgets inside the page container
 
 ### hiyui_carousel_set_current
 

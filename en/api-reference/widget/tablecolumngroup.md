@@ -8,7 +8,7 @@ title: "TableColumnGroup"
 
 **Namespace:** `hiyui`
 
-Header group, multi-level header
+Header group for multi-level headers
 
 ## Public Members
 
@@ -34,4 +34,4 @@ Included column indices
 std::optional< LocalizedText > localizedTitle
 ```
 
-When set it overrides the original text and updates on language switch. The description is copied when passed to the widget.
+Overrides the original text and updates on language switch. The description is copied when passed to the widget.

@@ -6,7 +6,7 @@ title: "hiyui_diagnostics_reading_t"
 
 **Header:** `#include <hiyui/c/diagnostics.h>`
 
-When available is 0 the value is not used in computations.
+When available is 0, value is not used in calculations.
 
 ## Public Members
 

@@ -8,11 +8,11 @@ title: "Callback"
 
 **Namespace:** `hiyui`
 
-Bridges a parameterless callable to an LVGL C callback
+Bridges a callable without arguments to an LVGL C callback
 
 Created by Widget::on().
 
 
-Callable type with signature void(), usually a lambda or std::function&lt;void()&gt; Version of EventCallback taking an Event&amp;
+Callable type with signature void(), usually a lambda or std::function&lt;void()&gt;
 
 **Inherits:** `hiyui::EventBinding`

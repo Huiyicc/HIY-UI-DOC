@@ -16,11 +16,11 @@ Color picker widget
 
 ### ColorPickerEventType
 
-Internal color picker event types
+Color picker internal event types
 
 | Value | Description |
 |---|---|
-| `Changed` | Color or alpha changed |
+| `Changed` | Color or opacity changed |
 
 ## Public Methods
 
@@ -30,7 +30,7 @@ Internal color picker event types
 ColorPicker & color(uint32_t c, Notify notify=Notify::No) &
 ```
 
-Set the color at runtime
+Sets the color at runtime
 
 ### color
 
@@ -38,7 +38,7 @@ Set the color at runtime
 uint32_t color() const
 ```
 
-Get the current color
+Returns the current color
 
 ### alpha
 
@@ -46,7 +46,7 @@ Get the current color
 ColorPicker & alpha(uint8_t a, Notify notify=Notify::No) &
 ```
 
-Set the alpha at runtime
+Sets Alpha at runtime
 
 ### alpha
 
@@ -54,7 +54,7 @@ Set the alpha at runtime
 uint8_t alpha() const
 ```
 
-Get the current alpha
+Returns the current Alpha
 
 ### open
 
@@ -62,7 +62,7 @@ Get the current alpha
 ColorPicker & open() &
 ```
 
-Open the popup panel, non-panel mode
+Opens the popup panel, non-panel mode
 
 ### close
 
@@ -70,7 +70,7 @@ Open the popup panel, non-panel mode
 ColorPicker & close() &
 ```
 
-Close the popup panel
+Closes the popup panel
 
 ### onChange
 
@@ -78,9 +78,9 @@ Close the popup panel
 ColorPicker & onChange(F &&f, EventHandle *handle=nullptr) &
 ```
 
-Bind the color change callback, repeated binds append
+Binds the color change callback, repeated binding appends
 
-Callback, the arguments are the color and the alpha Optional out parameter receiving the unbind handle of this binding This component
+Callback, receives the color and Alpha Optional out parameter receiving the unbind handle for this binding This component
 
 ## Static Methods
 
@@ -90,4 +90,4 @@ Callback, the arguments are the color and the alpha Optional out parameter recei
 static lv_event_code_t eventCode(ColorPickerEventType type)
 ```
 
-Get the internal color picker event code.
+Returns the internal color picker event code.

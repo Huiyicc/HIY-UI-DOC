@@ -10,7 +10,7 @@ title: "Shadow"
 
 Shadow effect configuration
 
-The shadow is disabled when all values are 0.
+No shadow effect when all values are 0.
 
 ## Public Members
 
@@ -36,7 +36,7 @@ Vertical offset, positive downward
 int blur
 ```
 
-Blur radius, larger values blur more
+Blur radius, larger values are more blurred
 
 ### color
 
@@ -52,7 +52,7 @@ Shadow color, HIYUI_NONE = follow theme
 int opacity
 ```
 
-Shadow opacity [0,255]; HIYUI_NONE_INT = not set, 0 = not shown
+Shadow opacity [0,255], HIYUI_NONE_INT = not set, 0 = hidden
 
 ### sides
 
@@ -60,7 +60,7 @@ Shadow opacity [0,255]; HIYUI_NONE_INT = not set, 0 = not shown
 ShadowSide sides
 ```
 
-Effective edges, combinable with bitwise OR
+Effective edges, combinable with bitwise or
 
 ### placement
 
@@ -68,4 +68,4 @@ Effective edges, combinable with bitwise OR
 ShadowPlacement placement
 ```
 
-Shadow placement
+Shadow position

@@ -8,9 +8,9 @@ title: "pal::InputBackend"
 
 **Namespace:** `hiyui`
 
-Input backend interface encapsulating platform input device creation.
+Input backend interface encapsulating platform-specific input device creation
 
-Implemented by each platform. Obtain the current platform instance through pal::input().
+Implemented by each platform; obtain the current platform instance through pal::input().
 
 ## Public Members
 
@@ -20,7 +20,7 @@ Implemented by each platform. Obtain the current platform instance through pal::
 _lv_indev_t *(* createPointer
 ```
 
-Creates a pointer input device, mouse or touch, for the given display.
+Creates a pointer input device, mouse or touch, for the given display
 
 ### createKeyboard
 
@@ -28,4 +28,4 @@ Creates a pointer input device, mouse or touch, for the given display.
 _lv_indev_t *(* createKeyboard
 ```
 
-Creates a keyboard input device for the given display.
+Creates a keyboard input device for the given display

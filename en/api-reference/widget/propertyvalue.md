@@ -8,7 +8,7 @@ title: "PropertyValue"
 
 **Namespace:** `hiyui`
 
-Stores property data by value. Text and custom bytes are stored independently on copy. Date years range from 1 to 9999. An unset value uses an empty PropertyValue.
+Stores property data by value. Text and custom bytes are stored independently after copying. Date years range from 1 to 9999. An unset value uses an empty PropertyValue.
 
 ## Public Methods
 
@@ -18,4 +18,4 @@ Stores property data by value. Text and custom bytes are stored independently on
 const T * get() const
 ```
 
-Returns nullptr on a type mismatch. The pointer is borrowed until the value is modified or destroyed.
+Returns nullptr on type mismatch. The pointer is borrowed until the value is modified or destroyed.

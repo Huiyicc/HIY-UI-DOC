@@ -8,9 +8,9 @@ title: "Shape"
 
 **Namespace:** `hiyui`
 
-Shape handle with value semantics, sharing the implementation internally
+Shape handle with value semantics sharing an internal implementation
 
-Creates preset shapes or custom polygons through static factory methods. Supports combining shapes with boolean operations; takes effect automatically after attaching to a component.
+Creates preset shapes or custom polygons through static factory methods. Supports combining shapes with boolean operations and takes effect automatically once attached to a component.
 
 
 
@@ -26,7 +26,7 @@ void attach(_lv_obj_t *obj) const
 
 Attaches the shape to an LVGL object
 
-After attaching, render area clipping is applied and hit testing is replaced automatically.
+After attachment the render area is clipped and hit testing is replaced automatically.
 
 ### detach
 
@@ -42,7 +42,7 @@ Detaches the shape from an LVGL object
 static bool isAttached(_lv_obj_t *obj)
 ```
 
-Checks whether the object has a shape attached
+Checks whether an object has a shape attached
 
 ### rasterizeMask
 
@@ -50,7 +50,7 @@ Checks whether the object has a shape attached
 static void rasterizeMask(_lv_obj_t *obj, uint8_t *mask, int w, int h)
 ```
 
-Obtains the mask of the attached shape
+Gets the mask of the attached shape
 
 LVGL object with a shape attached Output buffer Mask width Mask height
 
@@ -64,7 +64,7 @@ void rasterize(uint8_t *mask, int w, int h) const
 
 Generates the shape mask
 
-Output buffer [0,255] Mask width Mask height
+Output buffer with values [0,255] Mask width Mask height
 
 ### contains
 
@@ -94,7 +94,7 @@ true = initialized
 static Shape Circle()
 ```
 
-Circle inscribed in the component rectangle
+Circle, inscribed in the component rectangle
 
 ### Ellipse
 
@@ -102,7 +102,7 @@ Circle inscribed in the component rectangle
 static Shape Ellipse()
 ```
 
-Ellipse inscribed in the component rectangle
+Ellipse, inscribed in the component rectangle
 
 ### Rect
 
@@ -110,7 +110,7 @@ Ellipse inscribed in the component rectangle
 static Shape Rect()
 ```
 
-Rectangle equal in size to the component, without rounded corners
+Rectangle, same size as the component, no corner radius
 
 ### RoundRect
 
@@ -128,7 +128,7 @@ Corner radius in pixels
 static Shape Triangle()
 ```
 
-Isosceles triangle with the apex pointing up
+Isosceles triangle, apex up
 
 ## 预设形状，扩展
 
@@ -138,9 +138,9 @@ Isosceles triangle with the apex pointing up
 static Shape Star(int points, float innerRatio=0.38f)
 ```
 
-Star shape
+Star
 
-Number of points, e.g. 5 = five-pointed star Inner/outer radius ratio, default 0.38
+Number of points, e.g. 5 = five-pointed star Inner to outer radius ratio, default 0.38
 
 ### RegularPolygon
 
@@ -170,7 +170,7 @@ static Shape Polygon(std::vector< Vec2 > vertices)
 
 Custom polygon
 
-Vertex list, normalized coordinates [0, 1], connected in order and closed
+Vertex list with normalized coordinates [0, 1], connected in order and closed
 
 ## 布尔运算
 

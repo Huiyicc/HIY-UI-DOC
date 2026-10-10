@@ -16,7 +16,7 @@ Creation properties of the responsive window frame.
 int wide_min_width
 ```
 
-Minimum content logical width for the wide layout, 0 uses 720.
+Minimum content logical width for the wide layout. 0 uses 720.
 
 ### narrow_navigation
 
@@ -48,7 +48,7 @@ Edge the navigation attaches to.
 int navigation_width
 ```
 
-Docked navigation logical width, 0 uses 196, HIYUI_AUTO follows content.
+Docked navigation logical width. 0 uses 196, HIYUI_AUTO follows the content.
 
 ### drawer_width
 
@@ -56,7 +56,7 @@ Docked navigation logical width, 0 uses 196, HIYUI_AUTO follows content.
 int drawer_width
 ```
 
-Maximum drawer logical width, 0 uses 320.
+Maximum drawer logical width. 0 uses 320.
 
 ### drawer_max_width_percent
 
@@ -64,7 +64,7 @@ Maximum drawer logical width, 0 uses 320.
 int drawer_max_width_percent
 ```
 
-Maximum drawer width percentage, 0 uses 82.
+Maximum drawer width percent. 0 uses 82.
 
 ### scrim_opacity
 
@@ -72,7 +72,7 @@ Maximum drawer width percentage, 0 uses 82.
 uint8_t scrim_opacity
 ```
 
-Scrim opacity, 0 uses 112.
+Scrim opacity. 0 uses 112.
 
 ### animated
 
@@ -80,7 +80,7 @@ Scrim opacity, 0 uses 112.
 hiyui_bool_t animated
 ```
 
-Whether drawer animation is enabled, enabled by default.
+Whether the drawer animation is enabled, enabled by default.
 
 ### docked_navigation_full_height
 

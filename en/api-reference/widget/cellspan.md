@@ -18,7 +18,7 @@ Cell span configuration
 int colSpan
 ```
 
-Column span. &gt;1 merges the columns to the right, 0 = merged away and not rendered
+Column span. &gt;1 merges columns to the right, 0 = spanned and not rendered
 
 ### rowSpan
 
@@ -26,4 +26,4 @@ Column span. &gt;1 merges the columns to the right, 0 = merged away and not rend
 int rowSpan
 ```
 
-Row span. &gt;1 merges the rows below, 0 = merged away and not rendered
+Row span. &gt;1 merges rows below, 0 = spanned and not rendered

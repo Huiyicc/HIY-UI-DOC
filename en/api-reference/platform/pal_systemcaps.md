@@ -8,9 +8,9 @@ title: "pal::SystemCaps"
 
 **Namespace:** `hiyui`
 
-System capability description reflecting the hardware and environment of the current platform.
+System capability description reflecting the hardware and environment of the current platform
 
-Obtained through pal::caps(). Fields are filled by the platform layer at compile or run time.
+Obtained through pal::caps(); each field is filled by the platform layer at compile or run time.
 
 ## Public Members
 
@@ -20,7 +20,7 @@ Obtained through pal::caps(). Fields are filled by the platform layer at compile
 bool hasFilesystem
 ```
 
-Whether file system access is available.
+Whether filesystem access is available
 
 ### hasGpu
 
@@ -28,7 +28,7 @@ Whether file system access is available.
 bool hasGpu
 ```
 
-Whether GPU acceleration is supported.
+Whether GPU acceleration is available
 
 ### hasTouch
 
@@ -36,7 +36,7 @@ Whether GPU acceleration is supported.
 bool hasTouch
 ```
 
-Whether touch input is available.
+Whether touch input is available
 
 ### hasWindowManager
 
@@ -44,7 +44,7 @@ Whether touch input is available.
 bool hasWindowManager
 ```
 
-Whether a window manager exists, desktop environments.
+Whether a window manager exists, desktop environments
 
 ### renderBackend
 
@@ -52,7 +52,7 @@ Whether a window manager exists, desktop environments.
 RenderBackend renderBackend
 ```
 
-Current render backend.
+Current render backend
 
 ### defaultDpi
 
@@ -60,7 +60,7 @@ Current render backend.
 int defaultDpi
 ```
 
-Default DPI.
+Default DPI
 
 ### screenWidth
 
@@ -68,7 +68,7 @@ Default DPI.
 int screenWidth
 ```
 
-Screen width in pixels.
+Screen width in pixels
 
 ### screenHeight
 
@@ -76,7 +76,7 @@ Screen width in pixels.
 int screenHeight
 ```
 
-Screen height in pixels.
+Screen height in pixels
 
 ### dpiScale
 
@@ -84,4 +84,4 @@ Screen height in pixels.
 float dpiScale
 ```
 
-Device pixel ratio, devicePixelRatio.
+Device pixel ratio, devicePixelRatio

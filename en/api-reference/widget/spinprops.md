@@ -18,7 +18,7 @@ Spin widget creation properties.
 SpinType type
 ```
 
-Spinner shape
+Appearance
 
 ### diameter
 
@@ -66,7 +66,7 @@ Rounded arc endpoints
 float speed
 ```
 
-Speed factor, 1.0 = normal
+Speed multiplier. 1.0 = normal
 
 ### color
 
@@ -74,7 +74,7 @@ Speed factor, 1.0 = normal
 uint32_t color
 ```
 
-Color, HIYUI_DEFAULT follows Primary
+Color. HIYUI_DEFAULT follows Primary
 
 ### spinning
 

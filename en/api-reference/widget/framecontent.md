@@ -8,7 +8,7 @@ title: "FrameContent"
 
 **Namespace:** `hiyui`
 
-Main content area of a WindowFrame.
+Main content area of WindowFrame.
 
 **Inherits:** `hiyui::Container< FrameContent >`
 
@@ -28,4 +28,4 @@ Wraps an existing main content area object.
 FrameContent & init(lv_obj_t *parent, const FrameRegionProps &props={}) &
 ```
 
-Creates the content area in a WindowFrame; no creation when the parent is invalid or the area already exists.
+Creates the content area in the WindowFrame, nothing is created when the parent is invalid or the area already exists.

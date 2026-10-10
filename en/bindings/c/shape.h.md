@@ -8,7 +8,7 @@ title: "shape.h"
 
 Shape clipping, aligned with hiyui::Shape
 
-Handles are created by factory functions. After attach, the shape replaces the widget clip area and hit testing. Boolean operations consume the input handles, destroying a and b and returning the combined shape.
+Handles are created by factories; after attach they replace the widget clip region and hit testing. Boolean operations consume their input handles, destroying a and b and returning the combined shape, which simplifies lifecycle management.
 
 ## Type Aliases
 
@@ -56,7 +56,7 @@ HIYUI_API hiyui_shape_t *HIYUI_CALL hiyui_shape_triangle(void)
 HIYUI_API hiyui_shape_t *HIYUI_CALL hiyui_shape_star(int points, float inner_ratio)
 ```
 
-inner_ratio &lt;= 0 uses the default 0.38
+An inner_ratio of 0 or less uses the default 0.38
 
 ### hiyui_shape_regular_polygon
 
@@ -106,7 +106,7 @@ Difference A-B; consumes a and b
 HIYUI_API void HIYUI_CALL hiyui_shape_attach(hiyui_widget_t *obj, hiyui_shape_t *shape)
 ```
 
-Attaches a shape to a widget, replacing its clip area and hit testing
+Attaches a shape to a widget, replacing its clip region and hit testing
 
 ### hiyui_shape_detach
 
@@ -114,7 +114,7 @@ Attaches a shape to a widget, replacing its clip area and hit testing
 HIYUI_API void HIYUI_CALL hiyui_shape_detach(hiyui_widget_t *obj)
 ```
 
-Detaches the shape from a widget
+Detaches the shape from the widget
 
 ### hiyui_shape_destroy
 

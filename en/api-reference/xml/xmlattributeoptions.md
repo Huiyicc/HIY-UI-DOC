@@ -8,4 +8,4 @@ title: "XmlAttributeOptions"
 
 **Namespace:** `hiyui`
 
-Common options for field-based and hand-written attribute descriptions.
+Common options for fields and hand-written attribute descriptions.

@@ -66,7 +66,7 @@ Active background color, HIYUI_DEFAULT = follow theme.
 uint32_t indicatorColor
 ```
 
-Indicator bar color, HIYUI_DEFAULT = use theme Primary.
+Indicator bar color, HIYUI_DEFAULT = use the theme Primary.
 
 ### indicatorSide
 
@@ -82,4 +82,4 @@ Indicator bar position.
 bool animated
 ```
 
-Whether active indicator and scroll-to-tab animations are enabled.
+Whether the activation indicator and positioning scroll animations are enabled.

@@ -42,7 +42,7 @@ Width; HIYUI_AUTO = fillWidth
 int height
 ```
 
-Height; HIYUI_AUTO = decided by size
+Height; HIYUI_AUTO = determined by size
 
 ### activeColor
 
@@ -82,7 +82,7 @@ Unselected item text color
 int fontSize
 ```
 
-Font size; 0 = decided by size
+Font size; 0 = determined by size
 
 ### radius
 
@@ -90,7 +90,7 @@ Font size; 0 = decided by size
 int radius
 ```
 
-Corner radius; HIYUI_NONE_INT = decided by size
+Corner radius; HIYUI_NONE_INT = determined by size
 
 ### animated
 
@@ -98,4 +98,4 @@ Corner radius; HIYUI_NONE_INT = decided by size
 bool animated
 ```
 
-Thumb switch animation, AND-ed with the global theme animation switch
+Thumb switch animation, ANDed with the global theme animation switch

@@ -67,7 +67,7 @@ typedef void(* hiyui_win_close_request_fn) (hiyui_win_close_event_t *event, void
 HIYUI_API int HIYUI_CALL hiyui_run(hiyui_setup_fn setup, void *user_data)
 ```
 
-Runs the application main loop, calls setup internally and then enters the LVGL event loop.
+Starts the application main loop. Calls setup internally, then enters the LVGL event loop.
 
 ### hiyui_quit
 
@@ -75,7 +75,7 @@ Runs the application main loop, calls setup internally and then enters the LVGL 
 HIYUI_API void HIYUI_CALL hiyui_quit(void)
 ```
 
-Quits the application, call from an event callback.
+Quits the application. Call from an event callback.
 
 ### hiyui_c_version
 
@@ -99,7 +99,7 @@ Numeric version, (major &lt;&lt; 16) | (minor &lt;&lt; 8) | patch.
 HIYUI_API hiyui_win_t *HIYUI_CALL hiyui_win_create(hiyui_app_t *app, const char *title, int width, int height)
 ```
 
-Creates a window, resizable and with border.
+Creates a resizable window with borders.
 
 ### hiyui_win_create_ex
 
@@ -123,7 +123,7 @@ Sets the window title.
 HIYUI_API void HIYUI_CALL hiyui_win_set_size(hiyui_win_t *win, int width, int height)
 ```
 
-Sets the window size, height is the content area height. In borderless mode the title bar and menu bar are added on top of it.
+Sets the window size. height is the content area height. For borderless windows the title bar and menu bar stack on top of it.
 
 ### hiyui_win_show
 
@@ -155,7 +155,7 @@ Queries whether the window is shown.
 HIYUI_API void HIYUI_CALL hiyui_win_set_root(hiyui_win_t *win, hiyui_widget_t *root)
 ```
 
-Sets the window root widget and takes ownership of widget.
+Sets the window root widget, taking ownership of widget.
 
 ### hiyui_win_close
 
@@ -171,9 +171,9 @@ Closes the window.
 HIYUI_API int HIYUI_CALL hiyui_win_request_back(hiyui_win_t *win)
 ```
 
-Synchronously handles popups, input cancel, partial regions and current page history. The root page does not quit the application.
+Synchronously handles overlays, input cancellation, local regions, and current page history. On the root page the application does not exit.
 
-Returns 1 when consumed. Returns 0 for NULL, closed, not shown, inactive shared page, re-entry or nothing handled.
+Returns 1 when consumed. Returns 0 for NULL, a closed window, a hidden window, an inactive shared page, re-entry, or nothing to handle.
 
 ### hiyui_win_screen
 
@@ -181,7 +181,7 @@ Returns 1 when consumed. Returns 0 for NULL, closed, not shown, inactive shared 
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_win_screen(hiyui_win_t *win)
 ```
 
-Gets the current screen object of the window.
+Returns the window's current screen object.
 
 ### hiyui_app_open_window
 
@@ -191,7 +191,7 @@ HIYUI_API hiyui_win_t *HIYUI_CALL hiyui_app_open_window(const hiyui_win_props_t 
 
 Creates a window at runtime, not necessarily inside setup, equivalent to C++ Application::openWindow.
 
-New window handle, NULL when no application is active. On non-per-pixel-alpha platforms Scale, ElasticScale and Flip3D degrade to None.
+Returns the new window handle. NULL when no application is active. On platforms without per-pixel alpha, Scale/ElasticScale/Flip3D degrade to None.
 
 ### hiyui_app_navigate
 
@@ -199,7 +199,7 @@ New window handle, NULL when no application is active. On non-per-pixel-alpha pl
 HIYUI_API int HIYUI_CALL hiyui_app_navigate(hiyui_win_t *win, hiyui_transition_t transition)
 ```
 
-Navigates pages and records history. Navigating to the current target again adds no history.
+Page navigation with history. Navigating again to the current target adds no history entry.
 
 ### hiyui_app_go_back
 
@@ -207,7 +207,7 @@ Navigates pages and records history. Navigating to the current target again adds
 HIYUI_API int HIYUI_CALL hiyui_app_go_back(hiyui_transition_t transition)
 ```
 
-Closes the current navigation page and restores the previous one, no effect on the root page.
+Closes the current navigation page and restores the previous one. No effect on the root page.
 
 ### hiyui_win_set_background
 
@@ -215,7 +215,7 @@ Closes the current navigation page and restores the previous one, no effect on t
 HIYUI_API void HIYUI_CALL hiyui_win_set_background(hiyui_win_t *win, const hiyui_win_background_t *background)
 ```
 
-Replaces the window background, NULL restores the theme base color.
+Replaces the window background. NULL restores the theme base color.
 
 ### hiyui_win_get_background_mode
 
@@ -223,7 +223,7 @@ Replaces the window background, NULL restores the theme base color.
 HIYUI_API hiyui_win_background_mode_t HIYUI_CALL hiyui_win_get_background_mode(hiyui_win_t *win)
 ```
 
-Queries the background mode adopted by the window.
+Queries the background mode in use by the window.
 
 Returns HIYUI_WIN_BACKGROUND_CONTENT after failed creation or removal.
 
@@ -233,7 +233,7 @@ Returns HIYUI_WIN_BACKGROUND_CONTENT after failed creation or removal.
 HIYUI_API void HIYUI_CALL hiyui_win_close_event_cancel(hiyui_win_close_event_t *event)
 ```
 
-Cancels this close request, event is valid only during the callback.
+Cancels the current close request. event is valid only during the callback.
 
 ### hiyui_win_on_close_request
 
@@ -241,9 +241,9 @@ Cancels this close request, event is valid only during the callback.
 HIYUI_API int HIYUI_CALL hiyui_win_on_close_request(hiyui_win_t *win, hiyui_win_close_request_fn cb, void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
-Binds a close request callback, repeated binding appends. Any callback cancel keeps the window. Bindings are released automatically when the window closes.
+Binds a close request callback; repeated binds append. If any callback cancels, the window is kept. The binding is released automatically when the window closes.
 
-Returns 1 on successful registration. Returns 0 for invalid arguments or when the window has already been requested to destroy.
+Returns 1 on successful registration. Returns 0 on invalid arguments or when the window is already requested for destruction.
 
 ### hiyui_win_menu
 
@@ -251,4 +251,4 @@ Returns 1 on successful registration. Returns 0 for invalid arguments or when th
 HIYUI_API void HIYUI_CALL hiyui_win_menu(hiyui_win_t *win, const hiyui_menu_bar_item_t *items, int count)
 ```
 
-Sets the window application menu, effective only on borderless desktop windows. Silently ignored on other platforms.
+Sets the window application menu. Effective only on borderless desktop windows. Silently ignored on other platforms.

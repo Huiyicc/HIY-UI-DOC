@@ -8,7 +8,7 @@ title: "hook::NativeMenuEntry"
 
 **Namespace:** `hiyui`
 
-Application-level native menu entry, platform-independent description for desktop.
+Application-level native menu entry, platform-independent description for desktop platforms
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Application-level native menu entry, platform-independent description for deskto
 const char * text
 ```
 
-Menu entry text, UTF-8.
+Menu entry text, UTF-8
 
 ### shortcut
 
@@ -26,7 +26,7 @@ Menu entry text, UTF-8.
 const char * shortcut
 ```
 
-Shortcut hint on the right, display only.
+Shortcut hint on the right, display only
 
 ### iconCodepoint
 
@@ -34,7 +34,7 @@ Shortcut hint on the right, display only.
 uint32_t iconCodepoint
 ```
 
-Font icon codepoint, 0 means no icon.
+Font icon codepoint, 0 means no icon
 
 ### iconStyle
 
@@ -42,7 +42,7 @@ Font icon codepoint, 0 means no icon.
 FontIconStyle iconStyle
 ```
 
-Font icon axis parameter.
+Font icon axis parameters
 
 ### accelerator
 
@@ -50,7 +50,7 @@ Font icon axis parameter.
 HotkeySpec accelerator
 ```
 
-Shortcut binding, sdlKey = 0 means none.
+Shortcut binding, sdlKey = 0 means none
 
 ### separator
 
@@ -58,7 +58,7 @@ Shortcut binding, sdlKey = 0 means none.
 bool separator
 ```
 
-Separator, other fields ignored.
+Separator, other fields ignored
 
 ### disabled
 
@@ -66,7 +66,7 @@ Separator, other fields ignored.
 bool disabled
 ```
 
-Disabled state.
+Disabled state
 
 ### action
 
@@ -74,7 +74,7 @@ Disabled state.
 std::function< void()> action
 ```
 
-Click callback.
+Click callback
 
 ### children
 
@@ -82,4 +82,4 @@ Click callback.
 std::vector< NativeMenuEntry > children
 ```
 
-Submenu entries.
+Submenu entries

@@ -18,7 +18,7 @@ Selection expressed in UTF-8 byte offsets.
 int32_t anchor
 ```
 
-Fixed end of the selection, byte offset.
+Fixed end of the selection, byte offset
 
 ### caret
 
@@ -26,4 +26,4 @@ Fixed end of the selection, byte offset.
 int32_t caret
 ```
 
-Moving end of the selection, byte offset.
+Active end of the caret, byte offset

@@ -8,7 +8,7 @@ title: "WindowBackground"
 
 **Namespace:** `hiyui`
 
-Window background; the caller keeps the image descriptor and pixels until the background is replaced or the window is destroyed.
+Window background; the caller keeps the image descriptor and pixels until the background changes or the window is destroyed.
 
 ## Public Members
 
@@ -18,7 +18,7 @@ Window background; the caller keeps the image descriptor and pixels until the ba
 BgImage image
 ```
 
-Effective only for Content; the file path is copied by the window, an empty src uses the theme background color.
+Effective only in Content mode; the window copies the file path, and the theme background color is used when src is empty.
 
 ### blur
 
@@ -26,7 +26,7 @@ Effective only for Content; the file path is copied by the window, an empty src 
 Backdrop blur
 ```
 
-Effective only for image blur; radius in logical pixels, HIYUI_NONE_INT = follow theme, 0 = show the original image.
+Effective only for image blur; radius is in logical pixels, HIYUI_NONE_INT = follow theme, 0 = show the original image.
 
 ### overlay
 
@@ -34,7 +34,7 @@ Effective only for image blur; radius in logical pixels, HIYUI_NONE_INT = follow
 Overlay overlay
 ```
 
-When unset, image and system blur use the theme tint color and transparent mode applies no tint; an explicit alpha of 0 applies no tint.
+When unset, image and system blur use the theme overlay color and transparent mode uses none; an explicit alpha of 0 means no overlay.
 
 ### mode
 
