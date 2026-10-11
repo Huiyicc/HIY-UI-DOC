@@ -52,6 +52,7 @@ export default defineConfig({
               items: [
                 { text: '概览', link: '/guide/introduction' },
                 { text: '快速开始', link: '/guide/quick-start' },
+                { text: 'SDK 打包与接入', link: '/guide/sdk' },
                 { text: '跨端任务与布局', link: '/guide/cross-platform' },
                 { text: '架构', link: '/guide/architecture' },
               ],
@@ -125,6 +126,7 @@ export default defineConfig({
               items: [
                 { text: '总览', link: '/build/' },
                 { text: '编译参数', link: '/build/options' },
+                { text: 'SDK 打包与接入', link: '/guide/sdk' },
                 { text: 'C++ 画廊', link: '/build/cpp-gallery' },
                 { text: 'C 画廊', link: '/build/c-gallery' },
                 { text: '安卓', link: '/build/android' },
@@ -180,6 +182,7 @@ export default defineConfig({
               items: [
                 { text: 'Overview', link: '/en/guide/introduction' },
                 { text: 'Quick Start', link: '/en/guide/quick-start' },
+                { text: 'SDK Packaging and Integration', link: '/en/guide/sdk' },
                 { text: 'Cross-Platform Tasks & Layout', link: '/en/guide/cross-platform' },
                 { text: 'Architecture', link: '/en/guide/architecture' },
               ],
@@ -258,6 +261,7 @@ export default defineConfig({
               items: [
                 { text: 'Build Overview', link: '/en/build/' },
                 { text: 'Build Options', link: '/en/build/options' },
+                { text: 'SDK Packaging and Integration', link: '/en/guide/sdk' },
                 { text: 'C++ Gallery', link: '/en/build/cpp-gallery' },
                 { text: 'C Gallery', link: '/en/build/c-gallery' },
                 { text: 'Android', link: '/en/build/android' },

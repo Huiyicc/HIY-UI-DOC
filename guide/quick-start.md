@@ -4,6 +4,8 @@ title: 快速开始
 
 # 快速开始
 
+预编译 C++ SDK、C SDK 和 Runtime 的构建、打包与接入见 [SDK 打包与接入](/guide/sdk)。
+
 ## 环境
 
 - CMake 3.20 或更高版本

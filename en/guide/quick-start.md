@@ -4,6 +4,8 @@ title: Quick Start
 
 # Quick Start
 
+For building, packaging, and consuming prebuilt C++ SDKs, C SDKs, and Runtimes, see [SDK Packaging and Integration](/en/guide/sdk).
+
 ## Environment
 
 - CMake 3.20 or later
