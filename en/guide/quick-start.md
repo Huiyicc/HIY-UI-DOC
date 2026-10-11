@@ -63,9 +63,10 @@ Task reuse, layout rules, and compact compositions across devices are described 
 | --- | --- | --- |
 | Windows + SDL | `ON` | Windows UI Automation |
 | macOS + SDL | `ON` | macOS accessibility services and VoiceOver |
+| Linux + SDL | `ON` | AT-SPI2; screen readers such as Orca |
 | Other combinations | `OFF` | No system accessibility backend; setting `ON` fails the CMake configuration |
 
-The option defaults to on when the backend is SDL and the system is Windows or macOS; to set it explicitly, use:
+The option defaults to on when the backend is SDL and the system is Windows, macOS or Linux; to set it explicitly, use:
 
 ```bash
 cmake -S test -B build -DHIYUI_BACKEND=SDL -DHIYUI_ENABLE_ACCESSIBILITY=ON

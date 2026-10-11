@@ -213,7 +213,7 @@ For the full member list see [Widget API](/en/api-reference/widget/widget).
 
 ## Tooltips and Accessibility Text
 
-SDL applications on Windows and macOS can provide widget information to system accessibility services; macOS supports VoiceOver. Platform coverage and build switches are described in [Accessibility Build](/en/guide/quick-start#accessibility-build).
+SDL applications on Windows, macOS and Linux can provide widget information to system accessibility services; macOS supports VoiceOver and Linux exposes AT-SPI2 for screen readers such as Orca. Platform coverage and build switches are described in [Accessibility Build](/en/guide/quick-start#accessibility-build).
 
 After including `<hiyui/accessibility/accessibility.h>`, `accessibilitySupported()` queries whether the current build contains the system accessibility backend. A `true` return does not mean a screen reader is active.
 

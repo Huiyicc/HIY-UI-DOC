@@ -213,7 +213,7 @@ control.themeStyle([] {
 
 ## 提示与无障碍文案
 
-Windows 和 macOS 的 SDL 应用可向系统无障碍服务提供组件信息，macOS 支持 VoiceOver。平台范围与构建开关见 [无障碍构建](/guide/quick-start#无障碍构建)。
+Windows、macOS 和 Linux 的 SDL 应用可向系统无障碍服务提供组件信息，macOS 支持 VoiceOver，Linux 通过 AT-SPI2 支持 Orca 等读屏器。平台范围与构建开关见 [无障碍构建](/guide/quick-start#无障碍构建)。
 
 包含 `<hiyui/accessibility/accessibility.h>` 后，可调用 `accessibilitySupported()` 查询当前构建是否包含系统无障碍后端。返回 `true` 不表示屏幕阅读器已开启。
 

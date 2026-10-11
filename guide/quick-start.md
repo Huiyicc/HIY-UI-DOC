@@ -63,9 +63,10 @@ cmake --build build --target demo_component_gallery
 | --- | --- | --- |
 | Windows + SDL | `ON` | Windows UI Automation |
 | macOS + SDL | `ON` | macOS 无障碍服务与 VoiceOver |
+| Linux + SDL | `ON` | AT-SPI2，Orca 等读屏器 |
 | 其他组合 | `OFF` | 无系统无障碍后端，设置为 `ON` 时 CMake 配置报错 |
 
-后端为 SDL 且系统为 Windows 或 macOS 时该选项默认开启；需要显式指定时使用以下命令。
+后端为 SDL 且系统为 Windows、macOS 或 Linux 时该选项默认开启；需要显式指定时使用以下命令。
 
 ```bash
 cmake -S test -B build -DHIYUI_BACKEND=SDL -DHIYUI_ENABLE_ACCESSIBILITY=ON
