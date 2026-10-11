@@ -142,6 +142,38 @@ lv_obj_t * editObj
 
 Editable mode text area
 
+### editFontSize
+
+```cpp
+int editFontSize
+```
+
+Font size request for the edit area, 0 = theme default
+
+### editTextColor
+
+```cpp
+RGBA editTextColor
+```
+
+Text color request for the edit area
+
+### editTextRole
+
+```cpp
+ThemeRole editTextRole
+```
+
+Theme role request for the edit area, takes priority when editTextRoleSet is set
+
+### editTextRoleSet
+
+```cpp
+bool editTextRoleSet
+```
+
+Whether the theme role request is used
+
 ### searchBox
 
 ```cpp

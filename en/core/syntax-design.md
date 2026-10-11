@@ -49,3 +49,16 @@ Button{.text = "Delete"}
 ```
 
 Bind a `Ref<T>` to keep accessing a widget after mounting; see [Container and Ref](/en/core/container-ref).
+
+## Override precedence
+
+When the same field is set multiple times, the setting applied later overrides the earlier one. The complete order from lowest to highest:
+
+1. `themeStyle(WidgetType)` widget theme
+2. `themeStyle(provider)` default style provider
+3. Explicit Props fields
+4. Chained methods and `style()` explicit styles
+
+Setting the default-state background explicitly (`bg()`, the background fields of `style()`) removes the `surface()` material binding. Explicit size and padding setters remove the `layoutRules()` control of the corresponding fields while other fields keep adapting; `clearLayoutRules()` does not restore removed fields.
+
+Color fields accept `HIYUI_DEFAULT` to restore the theme default. `fontSize()`, `radius()`, `padding()`, `margin()`, `opacity()`, `borderWidth()`, and per-side padding and margin methods accept `HIYUI_DEFAULT_INT` to restore the component default. Sentinel definitions are in [Constants and Sentinel Values](/en/core/constants).

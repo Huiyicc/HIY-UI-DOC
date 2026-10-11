@@ -137,7 +137,7 @@ HIYUI_API void HIYUI_CALL hiyui_icon_set_theme_color(hiyui_widget_t *icon, hiyui
 ### hiyui_icon_set_opacity
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_icon_set_opacity(hiyui_widget_t *icon, uint8_t opa)
+HIYUI_API void HIYUI_CALL hiyui_icon_set_opacity(hiyui_widget_t *icon, int opa)
 ```
 
 ### hiyui_icon_color_from

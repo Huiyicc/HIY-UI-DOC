@@ -31,6 +31,21 @@ widget.on(EventCode::Key, [](Event &event) {
 
 Repeated binding appends handlers and does not replace existing callbacks. `targetWidget()` returns the widget wrapper that actually triggered the event, and `currentTargetWidget()` returns the widget wrapper the callback is attached to; both are non-owning objects and are valid only inside the current callback. `data()` returns the event payload, can be null, and must not be stored beyond the callback.
 
+## Unbinding
+
+`on()` and the `on*` subscription methods of Widget and widgets accept an optional `EventHandle *handle` out parameter, including `onThemeChange()` and `onDpiChange()`. `PopupPanel::onClose()` and `Part::onActivate()` are replace-style single-slot entries without a handle; see the table below. `handle->off()` unbinds a single subscription: repeated calls are no-ops, calls after widget destruction are safe, calling it inside a callback removes the registration immediately and destroys the closure after the outermost callback returns, and calling it before mounting cancels a subscription that has not been connected yet. `ScopedEventHandle` unbinds when the scope ends, when rebound, or on move assignment.
+
+Event subscriptions are append-style. The semantics and clearing entries of binding-style APIs:
+
+| API | Semantics | Clearing |
+| --- | --- | --- |
+| `on()`, `on*()`, `onThemeChange()`, `onDpiChange()` | Append | `EventHandle::off()` or widget destruction |
+| `bindText()` | Replace | `clearTextBinding()` |
+| `tooltip()` | Replace | `tooltip(nullptr)` |
+| `surface()` | Replace | Setting the default-state background explicitly |
+| `themeStyle(provider)` | Append | Released when the widget is destroyed |
+| `PopupPanel::onClose()`, `Part::onActivate()` | Replace | A repeated call replaces the previous callback |
+
 `keyCode()` returns the key value in `EventCode::Key`, `inputKeyEventCode()`, and `keyPreviewEventCode()` callbacks and `KeyCode::None` for other events. `pointerPositionPx(Point&)` obtains local physical coordinates relative to the object currently propagating the event and returns `false` with a zeroed output when there is no pointer input.
 
 ## Common events

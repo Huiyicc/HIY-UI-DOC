@@ -52,7 +52,7 @@ Terminal & scrollLines(int lines) &
 Terminal & fontSize(int size) &
 ```
 
-修改正整数逻辑字号；自动网格随可用空间更新，固定网格保持行列数。
+修改正整数逻辑字号，HIYUI_DEFAULT_INT 恢复默认字号；自动网格随可用空间更新，固定网格保持行列数。
 
 ### terminalSize
 

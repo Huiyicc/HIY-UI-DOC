@@ -15,6 +15,7 @@ Sentinel values (fixed constants meaning "not set" or a special condition) apply
 | `HIYUI_NONE` | Color field not set |
 | `HIYUI_TRANSPARENT` | Color field forced transparent, overrides the theme setting |
 | `HIYUI_NONE_INT` | Integer field not set |
+| `HIYUI_DEFAULT_INT` | Integer field restored to the component default, value `-3`; used by `fontSize()`, `radius()`, `padding()`, `margin()`, `opacity()`, `borderWidth()`, and per-side padding and margin methods |
 | `HIYUI_NO_SELECTION` | No selected item; only for index interfaces declared to support this value |
 | `HIYUI_VIDEO_TIME_UNKNOWN` | Value `-1`, unknown video duration in milliseconds; provided by the C++ video component when FFmpeg is enabled |
 

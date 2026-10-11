@@ -15,6 +15,7 @@ title: 常量
 | `HIYUI_NONE` | 颜色字段未设置 |
 | `HIYUI_TRANSPARENT` | 颜色字段强制透明，覆盖主题设置 |
 | `HIYUI_NONE_INT` | 整型字段未设置 |
+| `HIYUI_DEFAULT_INT` | 整型字段恢复组件默认，值为 `-3`；用于 `fontSize()`、`radius()`、`padding()`、`margin()`、`opacity()`、`borderWidth()` 和单边内边距/外边距方法 |
 | `HIYUI_NO_SELECTION` | 没有选中项；仅用于声明支持该值的索引接口 |
 | `HIYUI_VIDEO_TIME_UNKNOWN` | 值为 `-1`，表示未知视频时长，单位为毫秒；启用 FFmpeg 的 C++ 视频组件提供 |
 

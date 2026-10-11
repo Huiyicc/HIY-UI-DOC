@@ -115,7 +115,7 @@ Parent to mount on; nullptr = the current active screen This component
 ### onConfirm
 
 ```cpp
-ConfirmDialog & onConfirm(F &&f) &
+ConfirmDialog & onConfirm(F &&f, EventHandle *handle=nullptr) &
 ```
 
 Binds the confirm button callback
@@ -123,12 +123,12 @@ Binds the confirm button callback
 Callbacks bound before show() take effect once the dialog is shown.
 
 
-Callable type with signature void() Callback function This component
+Callable type with signature void() Callback function Optional out parameter receiving the unbind handle for this binding This component
 
 ### onCancel
 
 ```cpp
-ConfirmDialog & onCancel(F &&f) &
+ConfirmDialog & onCancel(F &&f, EventHandle *handle=nullptr) &
 ```
 
 Binds the cancel button callback
@@ -136,7 +136,7 @@ Binds the cancel button callback
 Callbacks bound before show() take effect once the dialog is shown.
 
 
-Callable type with signature void() Callback function This component
+Callable type with signature void() Callback function Optional out parameter receiving the unbind handle for this binding This component
 
 ### close
 
@@ -147,6 +147,14 @@ ConfirmDialog & close() &
 Closes the dialog. Releases the current bindings; the dialog can be shown again afterwards. Callbacks must be bound again.
 
 This component
+
+### destroy
+
+```cpp
+virtual void destroy() override
+```
+
+Requests deletion of this widget and its subtree, immediately invalidating references; actual release happens in the UI main loop. Call on the UI thread, including from callbacks of this widget; repeated calls do nothing.
 
 ## Static Methods
 

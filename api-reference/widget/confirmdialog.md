@@ -122,7 +122,7 @@ ConfirmDialog & show(lv_obj_t *parent=nullptr) &
 ### onConfirm
 
 ```cpp
-ConfirmDialog & onConfirm(F &&f) &
+ConfirmDialog & onConfirm(F &&f, EventHandle *handle=nullptr) &
 ```
 
 绑定确认按钮回调
@@ -138,6 +138,7 @@ ConfirmDialog & onConfirm(F &&f) &
 | 参数 | 说明 |
 |---|---|
 | `f` | 回调函数 |
+| `handle` | 可选出参，接收该绑定的解绑句柄 |
 
 
 **返回值：** 当前组件
@@ -145,7 +146,7 @@ ConfirmDialog & onConfirm(F &&f) &
 ### onCancel
 
 ```cpp
-ConfirmDialog & onCancel(F &&f) &
+ConfirmDialog & onCancel(F &&f, EventHandle *handle=nullptr) &
 ```
 
 绑定取消按钮回调
@@ -161,6 +162,7 @@ ConfirmDialog & onCancel(F &&f) &
 | 参数 | 说明 |
 |---|---|
 | `f` | 回调函数 |
+| `handle` | 可选出参，接收该绑定的解绑句柄 |
 
 
 **返回值：** 当前组件
@@ -174,6 +176,14 @@ ConfirmDialog & close() &
 关闭弹窗 释放当前绑定，后续可再次 show；回调需重新绑定。
 
 **返回值：** 当前组件
+
+### destroy
+
+```cpp
+virtual void destroy() override
+```
+
+请求删除当前控件及其子树，立即使引用失效，实际释放在 UI 主循环中完成。 在 UI 线程调用，允许从当前控件的回调中调用；重复调用无操作。
 
 ## 静态方法
 

@@ -10,6 +10,8 @@ title: Widget
 
 组件通过 `init()` 挂载到父组件，子组件由父级管理。包装器析构不删除组件；`release()` 解除包装器绑定，不改变父子关系。`destroy()` 立即使自身及子树的引用失效，实际释放在 UI 主循环中完成。
 
+配置类链式方法（样式、尺寸、布局、事件、引用与提示）支持挂载前调用，挂载时按调用顺序应用；同一字段的 Props 先应用，挂载前的链式调用后应用，后应用者覆盖先应用者。动作类方法要求组件已挂载：`focus()`、`clean()`、`redraw()`、`moveToIndex()`、`scrollToX()/scrollToY()` 等在调试构建断言，发布构建无操作；`scrollByPx()`、`scrollToXPx()/scrollToYPx()`、`stopScroll()`、`scrollIntoView()` 和 `sendEvent()` 在未挂载或失效时静默无操作。查询类方法在未挂载时返回零值、空字符串或 `false`。
+
 创建并设置标签的主题文字色。
 
 ```cpp
@@ -173,6 +175,8 @@ item.scrollIntoView(false);
 `style()` 接收 `Style` 或 `StyleSet`。`bg()`、`textColor()`、`fontSize()`、`radius()`、`padding()`、`margin()` 和边框方法用于单项修改。
 
 固定颜色使用 `uint32_t` RGB 值。响应主题变化的颜色使用 `ThemeRole` 重载。
+
+颜色方法接受 `HIYUI_DEFAULT` 恢复主题默认。`fontSize()`、`radius()`、`padding()`、`margin()`、`opacity()`、`borderWidth()` 和单边内边距/外边距方法接受 `HIYUI_DEFAULT_INT` 恢复组件默认，恢复按当前 DPI 重算。哨兵值定义见 [常量与哨兵值](/core/constants)。
 
 `themeStyle(WidgetType)` 应在显式样式之前调用一次。`themeStyle(provider)` 追加默认样式提供者；提供者返回 `StyleSet`，立即应用并随主题和 DPI 更新。显式 `style()` 和单项样式覆盖默认样式。提供者返回的图片及路径须保持有效，直到图片被替换或组件销毁。
 

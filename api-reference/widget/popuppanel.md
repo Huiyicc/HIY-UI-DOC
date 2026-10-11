@@ -87,7 +87,7 @@ lv_obj_t * raw() const
 PopupPanel & onClose(CloseCallback cb)
 ```
 
-绑定关闭回调
+替换关闭回调
 
 ### onClose
 

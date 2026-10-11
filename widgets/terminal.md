@@ -53,7 +53,7 @@ terminal.write("\x1b[32mReady\x1b[0m\r\n");
 | `paste(text)` | `Terminal &` | 按括号粘贴模式发送输入，换行统一为回车；只读时无输入 |
 | `clearScrollback()` | `Terminal &` | 清除历史，保留当前屏幕 |
 | `scrollLines(lines)` | `Terminal &` | 正数向较早内容滚动；清除选区 |
-| `fontSize(size)` | `Terminal &` | 修改正整数逻辑字号 |
+| `fontSize(size)` | `Terminal &` | 修改正整数逻辑字号；`HIYUI_DEFAULT_INT` 恢复默认 `14` |
 | `terminalSize()` | `TerminalSize` | 当前网格；未挂载时为零行零列 |
 | `terminalSize(size)` | `Terminal &` | 固定网格；任一维非正恢复按可用空间自动计算 |
 | `readOnly(value)` | `Terminal &` | 切换用户输入权限；不阻止输出查询响应 |

@@ -31,6 +31,21 @@ widget.on(EventCode::Key, [](Event &event) {
 
 重复绑定追加处理器，不替换已有回调。`targetWidget()` 返回实际触发事件的组件包装器，`currentTargetWidget()` 返回挂载回调的组件包装器；两者均为非拥有对象，仅在当前回调内使用。`data()` 返回事件附加数据，可为空，不得保存到回调之外。
 
+## 解绑
+
+`on()` 与 Widget 及各组件的 `on*` 订阅方法接受可选的 `EventHandle *handle` 出参，包括 `onThemeChange()` 和 `onDpiChange()`。`PopupPanel::onClose()` 和 `Part::onActivate()` 为替换式单槽入口，不提供句柄，见下表。`handle->off()` 解绑单个订阅：重复调用无操作，组件销毁后调用安全，回调内部调用时注册立即移除、闭包延迟到最外层回调返回后销毁，挂载前调用取消尚未连接的订阅。`ScopedEventHandle` 在作用域结束、重新绑定或移动赋值时解绑。
+
+事件订阅为追加式。以下绑定类 API 的语义与清除入口：
+
+| API | 语义 | 清除方式 |
+| --- | --- | --- |
+| `on()`、`on*()`、`onThemeChange()`、`onDpiChange()` | 追加 | `EventHandle::off()` 或组件销毁 |
+| `bindText()` | 替换 | `clearTextBinding()` |
+| `tooltip()` | 替换 | `tooltip(nullptr)` |
+| `surface()` | 替换 | 显式设置默认状态背景 |
+| `themeStyle(provider)` | 追加 | 组件销毁时释放 |
+| `PopupPanel::onClose()`、`Part::onActivate()` | 替换 | 重复调用替换原回调 |
+
 `keyCode()` 在 `EventCode::Key`、`inputKeyEventCode()` 和 `keyPreviewEventCode()` 回调中返回按键值，其他事件返回 `KeyCode::None`。`pointerPositionPx(Point&)` 获取相对当前传播对象的局部物理坐标，无指针输入时返回 `false` 并清零输出。
 
 ## 常用事件

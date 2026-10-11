@@ -215,6 +215,56 @@ Sets the search matcher slot
 
 Return true to keep the option, passing empty restores the default matcher This component
 
+### textColor
+
+```cpp
+uint32_t textColor() const
+```
+
+Queries the text color
+
+Current text color of the root
+
+### textColor
+
+```cpp
+Dropdown & textColor(uint32_t color) &
+```
+
+Sets the text color
+
+Color, HIYUI_DEFAULT = restore the default This component In editable mode the internal input area is updated as well.
+
+### textColor
+
+```cpp
+Dropdown & textColor(ThemeRole role) &
+```
+
+Sets the text color from a theme role
+
+This component In editable mode the internal input area is updated as well.
+
+### fontSize
+
+```cpp
+Dropdown & fontSize(int size) &
+```
+
+Sets the font size
+
+Font size, HIYUI_DEFAULT_INT = restore the default This component In editable mode the internal input area is updated as well.
+
+### style
+
+```cpp
+Dropdown & style(const Style &s) &
+```
+
+Applies a style
+
+This component Font size and text color fields are synced to the internal input area.
+
 ### text
 
 ```cpp

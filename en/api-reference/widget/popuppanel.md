@@ -87,7 +87,7 @@ Panel object pointer, nullptr when not open
 PopupPanel & onClose(CloseCallback cb)
 ```
 
-Binds the close callback
+Replaces the close callback
 
 ### onClose
 

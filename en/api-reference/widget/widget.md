@@ -63,7 +63,7 @@ Underlying object; nullptr when unmounted, delete requested, or already deleted.
 ### destroy
 
 ```cpp
-void destroy()
+virtual void destroy()
 ```
 
 Requests deletion of this widget and its subtree, immediately invalidating references; actual release happens in the UI main loop. Call on the UI thread, including from callbacks of this widget; repeated calls do nothing.
@@ -793,6 +793,14 @@ Widget & surface(SurfaceRole role)
 
 Binds a surface material that updates with theme and DPI; text and layout are unchanged. A repeated call replaces the previous binding; a later explicit default-state background releases the material binding. Can be configured before mounting; unbinds automatically when the object is deleted.
 
+### isBgOverridden
+
+```cpp
+static bool isBgOverridden(lv_obj_t *obj)
+```
+
+Queries whether the object uses a fixed background color
+
 ## 样式快捷方法
 
 ### bg
@@ -839,7 +847,7 @@ Widget & fontSize(int size)
 
 Sets the font size
 
-Font size in pixels; 0 = theme default size
+Font size in pixels; 0 = theme default size, HIYUI_DEFAULT_INT = restore the component default
 
 ### lineHeight
 
@@ -857,7 +865,7 @@ Widget & radius(int r)
 
 Sets the corner radius
 
-Corner radius in pixels; HIYUI_NONE_INT = no change
+Corner radius in pixels; HIYUI_NONE_INT = no change, HIYUI_DEFAULT_INT = restore the component default
 
 ### padding
 
@@ -867,7 +875,7 @@ Widget & padding(int all)
 
 Sets equal padding on all four sides
 
-Padding for all four sides in pixels
+Padding for all four sides in pixels; HIYUI_DEFAULT_INT = restore the component default
 
 ### padding
 
@@ -877,7 +885,7 @@ Widget & padding(int h, int v)
 
 Sets horizontal and vertical padding separately
 
-Horizontal padding, left and right, in pixels Vertical padding, top and bottom, in pixels
+Horizontal padding, left and right, in pixels; HIYUI_DEFAULT_INT = restore the component default Vertical padding, top and bottom, in pixels; HIYUI_DEFAULT_INT = restore the component default
 
 ### padLeft
 
@@ -890,7 +898,7 @@ Sets padding on one side
 Uses DPI scaling like padding(); recalculated automatically on theme or DPI switch.
 
 
-Padding for one side in pixels
+Padding for one side in pixels; HIYUI_DEFAULT_INT = restore the component default of that side
 
 ### padRight
 
@@ -927,7 +935,7 @@ Sets equal margins on all four sides
 The margin is the outer space the component occupies in its parent, including within Flex; semantics match CSS margin. Uses DPI scaling; recalculated automatically on theme or DPI switch.
 
 
-Margin for all four sides in pixels
+Margin for all four sides in pixels; HIYUI_DEFAULT_INT = restore the component default
 
 ### margin
 
@@ -937,7 +945,7 @@ Widget & margin(int h, int v)
 
 Sets horizontal and vertical margins separately
 
-Horizontal margin, left and right, in pixels Vertical margin, top and bottom, in pixels
+Horizontal margin, left and right, in pixels; HIYUI_DEFAULT_INT = restore the component default Vertical margin, top and bottom, in pixels; HIYUI_DEFAULT_INT = restore the component default
 
 ### marginLeft
 
@@ -947,7 +955,7 @@ Widget & marginLeft(int v)
 
 Sets the margin on one side
 
-Margin for one side in pixels
+Margin for one side in pixels; HIYUI_DEFAULT_INT = restore the component default of that side
 
 ### marginRight
 
@@ -976,12 +984,12 @@ Sets bottom margin, same semantics as marginLeft
 ### opacity
 
 ```cpp
-Widget & opacity(uint8_t opa)
+Widget & opacity(int opa)
 ```
 
 Sets the overall opacity
 
-Opacity in [0,255]; 0 = fully transparent, 255 = opaque
+Opacity in [0,255]; 0 = fully transparent, 255 = opaque, HIYUI_DEFAULT_INT = restore the component default
 
 ### borderWidth
 
@@ -991,7 +999,7 @@ Widget & borderWidth(int w)
 
 Sets the border width
 
-Border width in pixels
+Border width in pixels; HIYUI_DEFAULT_INT = restore the component default
 
 ### borderColor
 
@@ -1287,28 +1295,28 @@ Optional out parameter; off can be repeated, destruction does not unbind, and sc
 ### onDpiChange
 
 ```cpp
-Widget & onDpiChange(F &&f)
+Widget & onDpiChange(F &&f, EventHandle *handle=nullptr)
 ```
 
 Binds a DPI change callback
 
-The callback runs after DPI recalculation of local style scaling and layout updates completes; repeated binds are appended; unbinds automatically when the component is deleted. Can be bound before mounting; move-only closures are supported.
+The callback runs after DPI recalculation of local style scaling, layout updates and explicit style reapplication completes; repeated binds are appended; unbinds automatically when the component is deleted. Responds only to dispatches targeting this component; the same notification bubbling from a child does not invoke the callback. Can be bound before mounting; move-only closures are supported.
 
 
-Callable type with signature void()
+Callable type with signature void() Optional out parameter receiving the unbind handle for this binding
 
 ### onThemeChange
 
 ```cpp
-Widget & onThemeChange(F &&f)
+Widget & onThemeChange(F &&f, EventHandle *handle=nullptr)
 ```
 
 Binds a theme change callback
 
-Runs after setTheme() refreshes the component styles; repeated binds are appended; unbinds automatically when the component is deleted. The callback must not capture the Widget wrapper; use a Ref proxy. Can be bound before mounting; move-only closures are supported.
+Runs after setTheme() refreshes the component styles; repeated binds are appended; unbinds automatically when the component is deleted. Responds only to dispatches targeting this component; the same notification bubbling from a child does not invoke the callback. The callback must not capture the Widget wrapper; use a Ref proxy. Can be bound before mounting; move-only closures are supported.
 
 
-Callable type with signature void()
+Callable type with signature void() Optional out parameter receiving the unbind handle for this binding
 
 ### onRightClick
 
@@ -1514,14 +1522,6 @@ void applyCommonProps(int width, int height, uint32_t bg, uint32_t textColor, in
 Applies common properties from Props; internal use
 
 ## protected-static-func
-
-### isBgOverridden
-
-```cpp
-static bool isBgOverridden(lv_obj_t *obj)
-```
-
-Queries whether the object uses a fixed background color
 
 ### setCursorForObj
 

@@ -142,6 +142,38 @@ lv_obj_t * editObj
 
 可编辑模式文本区
 
+### editFontSize
+
+```cpp
+int editFontSize
+```
+
+编辑区字号请求，0 = 主题默认
+
+### editTextColor
+
+```cpp
+RGBA editTextColor
+```
+
+编辑区文字色请求
+
+### editTextRole
+
+```cpp
+ThemeRole editTextRole
+```
+
+编辑区主题角色请求，editTextRoleSet 有效时优先
+
+### editTextRoleSet
+
+```cpp
+bool editTextRoleSet
+```
+
+是否使用主题角色请求
+
 ### searchBox
 
 ```cpp

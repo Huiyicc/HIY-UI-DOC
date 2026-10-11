@@ -99,7 +99,7 @@ Whether a displayable icon image is available; returns false when unmounted or w
 ### opacity
 
 ```cpp
-Icon & opacity(uint8_t opa) &
+Icon & opacity(int opa) &
 ```
 
-Sets the icon opacity, 0 = fully transparent, 255 = opaque, default 255
+Sets the icon opacity, 0 = fully transparent, 255 = opaque, HIYUI_DEFAULT_INT = restore the default 255

@@ -259,6 +259,74 @@ Dropdown & searchMatcher(SearchMatcher matcher) &
 
 **返回值：** 当前组件
 
+### textColor
+
+```cpp
+uint32_t textColor() const
+```
+
+查询文字颜色
+
+**返回值：** 当前根节点文字颜色
+
+### textColor
+
+```cpp
+Dropdown & textColor(uint32_t color) &
+```
+
+设置文字颜色
+
+| 参数 | 说明 |
+|---|---|
+| `color` | 颜色，HIYUI_DEFAULT = 恢复默认 |
+
+
+**返回值：** 当前组件
+
+可编辑模式同时更新内部输入区。
+
+### textColor
+
+```cpp
+Dropdown & textColor(ThemeRole role) &
+```
+
+设置主题角色文字颜色
+
+**返回值：** 当前组件
+
+可编辑模式同时更新内部输入区。
+
+### fontSize
+
+```cpp
+Dropdown & fontSize(int size) &
+```
+
+设置字体大小
+
+| 参数 | 说明 |
+|---|---|
+| `size` | 字号，HIYUI_DEFAULT_INT = 恢复默认 |
+
+
+**返回值：** 当前组件
+
+可编辑模式同时更新内部输入区。
+
+### style
+
+```cpp
+Dropdown & style(const Style &s) &
+```
+
+应用样式
+
+**返回值：** 当前组件
+
+字号与文字色字段同步到内部输入区。
+
 ### text
 
 ```cpp

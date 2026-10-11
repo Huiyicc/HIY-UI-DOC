@@ -10,6 +10,8 @@ title: Widget
 
 Widgets mount to a parent through `init()`, and children are managed by the parent. Destroying the wrapper does not delete the widget; `release()` unbinds the wrapper without changing the parent-child relation. `destroy()` immediately invalidates references to itself and its subtree; actual release completes in the UI main loop.
 
+Configuration chained methods (styles, sizes, layout, events, references, and tooltips) can be called before mounting and are applied in call order at mount time; for the same field, Props apply first and pre-mount chained calls apply later, so the later setting overrides the earlier one. Action methods require a mounted widget: `focus()`, `clean()`, `redraw()`, `moveToIndex()`, `scrollToX()`/`scrollToY()` and similar assert in debug builds and are no-ops in release builds; `scrollByPx()`, `scrollToXPx()`/`scrollToYPx()`, `stopScroll()`, `scrollIntoView()`, and `sendEvent()` silently do nothing when unmounted or invalidated. Query methods return zero values, empty strings, or `false` when unmounted.
+
 Creates a label and sets its theme text color.
 
 ```cpp
@@ -173,6 +175,8 @@ item.scrollIntoView(false);
 `style()` accepts a `Style` or a `StyleSet`. `bg()`, `textColor()`, `fontSize()`, `radius()`, `padding()`, `margin()`, and the border methods modify single properties.
 
 Fixed colors use `uint32_t` RGB values. Colors that follow theme changes use the `ThemeRole` overloads.
+
+Color methods accept `HIYUI_DEFAULT` to restore the theme default. `fontSize()`, `radius()`, `padding()`, `margin()`, `opacity()`, `borderWidth()`, and per-side padding and margin methods accept `HIYUI_DEFAULT_INT` to restore the component default; restored values are recomputed at the current DPI. Sentinel definitions are in [Constants and Sentinel Values](/en/core/constants).
 
 `themeStyle(WidgetType)` is called once before explicit styles. `themeStyle(provider)` appends a default style provider; the provider returns a `StyleSet`, which is applied immediately and updated with theme and DPI. Explicit `style()` and single-property styles override default styles. Images and paths returned by the provider must stay valid until the image is replaced or the widget is destroyed.
 

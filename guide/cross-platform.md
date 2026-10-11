@@ -73,8 +73,8 @@ const LayoutRule rules[] = {
      .values = {.fields = LayoutField::Flow, .flow = FlexFlow::RowWrap}},
 };
 auto actions = VBox{.gap = 8}(
-    Button{.text = "保存"}.minimumSize(0, 44),
-    Button{.text = "取消"}.minimumSize(0, 44)
+    Button({.text = "保存"}).minimumSize(0, 44),
+    Button({.text = "取消"}).minimumSize(0, 44)
 );
 actions.init(parent).fillWidth().layoutRules({
     .base = {.fields = LayoutField::Flow, .flow = FlexFlow::Column},

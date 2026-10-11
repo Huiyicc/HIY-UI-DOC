@@ -97,7 +97,7 @@ Parent object to attach to, nullptr = current active screen
 ### onConfirm
 
 ```cpp
-MessageBox & onConfirm(F &&f) &
+MessageBox & onConfirm(F &&f, EventHandle *handle=nullptr) &
 ```
 
 Binds the confirm button callback
@@ -105,7 +105,7 @@ Binds the confirm button callback
 Callbacks bound before show() take effect once the dialog is shown.
 
 
-Callable type, signature void()
+Callable type, signature void() Callback function Optional out parameter receiving the unbind handle for this binding
 
 ### close
 
@@ -114,3 +114,11 @@ MessageBox & close() &
 ```
 
 Closes the dialog Releases current bindings; show() can be called again and callbacks must be rebound.
+
+### destroy
+
+```cpp
+virtual void destroy() override
+```
+
+Requests deletion of this widget and its subtree, immediately invalidating references; actual release happens in the UI main loop. Call on the UI thread, including from callbacks of this widget; repeated calls do nothing.

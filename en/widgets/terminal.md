@@ -53,7 +53,7 @@ After destruction, writes and settings are no-ops and queries return empty value
 | `paste(text)` | `Terminal &` | Sends input following bracketed paste mode, normalizing line breaks to carriage return; no input while read-only |
 | `clearScrollback()` | `Terminal &` | Clears the scrollback and keeps the current screen |
 | `scrollLines(lines)` | `Terminal &` | Positive values scroll toward earlier content; clears the selection |
-| `fontSize(size)` | `Terminal &` | Changes the positive logical font size |
+| `fontSize(size)` | `Terminal &` | Changes the positive logical font size; `HIYUI_DEFAULT_INT` restores the default `14` |
 | `terminalSize()` | `TerminalSize` | Current grid; zero rows and zero columns while unmounted |
 | `terminalSize(size)` | `Terminal &` | Fixes the grid; a non-positive dimension restores automatic sizing from the available space |
 | `readOnly(value)` | `Terminal &` | Toggles the user input permission; does not block output query responses |

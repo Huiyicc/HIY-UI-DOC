@@ -65,7 +65,7 @@ lv_obj_t * raw() const
 ### destroy
 
 ```cpp
-void destroy()
+virtual void destroy()
 ```
 
 请求删除当前控件及其子树，立即使引用失效，实际释放在 UI 主循环中完成。 在 UI 线程调用，允许从当前控件的回调中调用；重复调用无操作。
@@ -824,6 +824,14 @@ Widget & surface(SurfaceRole role)
 
 绑定随主题和 DPI 更新的表面材质，文字与布局保持不变。 重复调用替换原绑定；后续显式设置默认状态背景解除材质绑定。 可在挂载前配置，对象删除时自动解绑。
 
+### isBgOverridden
+
+```cpp
+static bool isBgOverridden(lv_obj_t *obj)
+```
+
+查询对象是否使用固定背景色
+
 ## 样式快捷方法
 
 ### bg
@@ -876,7 +884,7 @@ Widget & fontSize(int size)
 
 | 参数 | 说明 |
 |---|---|
-| `size` | 字体大小，单位像素，0 = 主题默认字号 |
+| `size` | 字体大小，单位像素，0 = 主题默认字号，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### lineHeight
 
@@ -896,7 +904,7 @@ Widget & radius(int r)
 
 | 参数 | 说明 |
 |---|---|
-| `r` | 圆角半径，单位像素，HIYUI_NONE_INT = 不修改 |
+| `r` | 圆角半径，单位像素，HIYUI_NONE_INT = 不修改，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### padding
 
@@ -908,7 +916,7 @@ Widget & padding(int all)
 
 | 参数 | 说明 |
 |---|---|
-| `all` | 四边内边距，单位像素 |
+| `all` | 四边内边距，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### padding
 
@@ -920,8 +928,8 @@ Widget & padding(int h, int v)
 
 | 参数 | 说明 |
 |---|---|
-| `h` | 水平内边距，左右，单位像素 |
-| `v` | 垂直内边距，上下，单位像素 |
+| `h` | 水平内边距，左右，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
+| `v` | 垂直内边距，上下，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### padLeft
 
@@ -937,7 +945,7 @@ Widget & padLeft(int v)
 
 | 参数 | 说明 |
 |---|---|
-| `v` | 单边内边距，单位像素 |
+| `v` | 单边内边距，单位像素，HIYUI_DEFAULT_INT = 恢复该边组件默认 |
 
 ### padRight
 
@@ -977,7 +985,7 @@ Widget & margin(int all)
 
 | 参数 | 说明 |
 |---|---|
-| `all` | 四边外边距，单位像素 |
+| `all` | 四边外边距，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### margin
 
@@ -989,8 +997,8 @@ Widget & margin(int h, int v)
 
 | 参数 | 说明 |
 |---|---|
-| `h` | 水平外边距，左右，单位像素 |
-| `v` | 垂直外边距，上下，单位像素 |
+| `h` | 水平外边距，左右，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
+| `v` | 垂直外边距，上下，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### marginLeft
 
@@ -1002,7 +1010,7 @@ Widget & marginLeft(int v)
 
 | 参数 | 说明 |
 |---|---|
-| `v` | 单边外边距，单位像素 |
+| `v` | 单边外边距，单位像素，HIYUI_DEFAULT_INT = 恢复该边组件默认 |
 
 ### marginRight
 
@@ -1031,14 +1039,14 @@ Widget & marginBottom(int v)
 ### opacity
 
 ```cpp
-Widget & opacity(uint8_t opa)
+Widget & opacity(int opa)
 ```
 
 设置整体透明度
 
 | 参数 | 说明 |
 |---|---|
-| `opa` | 透明度 [0,255]，0 = 全透明，255 = 不透明 |
+| `opa` | 透明度 [0,255]，0 = 全透明，255 = 不透明，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### borderWidth
 
@@ -1050,7 +1058,7 @@ Widget & borderWidth(int w)
 
 | 参数 | 说明 |
 |---|---|
-| `w` | 边框宽度，单位像素 |
+| `w` | 边框宽度，单位像素，HIYUI_DEFAULT_INT = 恢复组件默认 |
 
 ### borderColor
 
@@ -1394,34 +1402,42 @@ Widget & onEnvironmentChange(F &&handler, EventHandle *handle=nullptr)
 ### onDpiChange
 
 ```cpp
-Widget & onDpiChange(F &&f)
+Widget & onDpiChange(F &&f, EventHandle *handle=nullptr)
 ```
 
 绑定 DPI 变更回调
 
-回调在 DPI 重算（本地样式缩放与布局更新）完成后执行；重复绑定追加； 组件删除时自动解绑。 可在挂载前绑定，支持只可移动闭包。
+回调在 DPI 重算（本地样式缩放、布局更新与显式样式重应用）完成后执行； 重复绑定追加；组件删除时自动解绑。 仅响应以本组件为目标的派发，冒泡自子组件的同类通知不触发回调。 可在挂载前绑定，支持只可移动闭包。
 
 
 
 | 名称 | 说明 |
 |---|---|
 | `F` | 可调用对象类型，签名为 void() |
+
+| 参数 | 说明 |
+|---|---|
+| `handle` | 可选出参，接收该绑定的解绑句柄 |
 
 ### onThemeChange
 
 ```cpp
-Widget & onThemeChange(F &&f)
+Widget & onThemeChange(F &&f, EventHandle *handle=nullptr)
 ```
 
 绑定主题变更回调
 
-`setTheme()` 刷新组件样式后执行；重复绑定追加； 组件删除时自动解绑。 回调不得捕获 `Widget` 包装对象，使用 `Ref` 代理。 可在挂载前绑定，支持只可移动闭包。
+`setTheme()` 刷新组件样式后执行；重复绑定追加； 组件删除时自动解绑。 仅响应以本组件为目标的派发，冒泡自子组件的同类通知不触发回调。 回调不得捕获 `Widget` 包装对象，使用 `Ref` 代理。 可在挂载前绑定，支持只可移动闭包。
 
 
 
 | 名称 | 说明 |
 |---|---|
 | `F` | 可调用对象类型，签名为 void() |
+
+| 参数 | 说明 |
+|---|---|
+| `handle` | 可选出参，接收该绑定的解绑句柄 |
 
 ### onRightClick
 
@@ -1645,14 +1661,6 @@ void applyCommonProps(int width, int height, uint32_t bg, uint32_t textColor, in
 应用 Props 中的通用属性，内部使用
 
 ## protected-static-func
-
-### isBgOverridden
-
-```cpp
-static bool isBgOverridden(lv_obj_t *obj)
-```
-
-查询对象是否使用固定背景色
 
 ### setCursorForObj
 

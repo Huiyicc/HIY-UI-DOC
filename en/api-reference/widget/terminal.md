@@ -52,7 +52,7 @@ Scrolls the history relatively; positive values move toward older content. Scrol
 Terminal & fontSize(int size) &
 ```
 
-Changes the logical font size, which must be a positive integer. An automatic grid updates with the available space; a fixed grid keeps its rows and columns.
+Changes the logical font size, which must be a positive integer; HIYUI_DEFAULT_INT restores the default size. An automatic grid updates with the available space; a fixed grid keeps its rows and columns.
 
 ### terminalSize
 

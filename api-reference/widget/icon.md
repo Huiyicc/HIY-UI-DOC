@@ -99,7 +99,7 @@ bool rendered() const
 ### opacity
 
 ```cpp
-Icon & opacity(uint8_t opa) &
+Icon & opacity(int opa) &
 ```
 
-设置图标透明度，0=全透明，255=不透明，默认255
+设置图标透明度，0=全透明，255=不透明，HIYUI_DEFAULT_INT = 恢复默认 255

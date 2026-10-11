@@ -99,7 +99,7 @@ MessageBox & show(lv_obj_t *parent=nullptr) &
 ### onConfirm
 
 ```cpp
-MessageBox & onConfirm(F &&f) &
+MessageBox & onConfirm(F &&f, EventHandle *handle=nullptr) &
 ```
 
 绑定确认按钮回调
@@ -112,6 +112,11 @@ MessageBox & onConfirm(F &&f) &
 |---|---|
 | `F` | 可调用对象类型，签名 void() |
 
+| 参数 | 说明 |
+|---|---|
+| `f` | 回调函数 |
+| `handle` | 可选出参，接收该绑定的解绑句柄 |
+
 ### close
 
 ```cpp
@@ -119,3 +124,11 @@ MessageBox & close() &
 ```
 
 关闭弹窗 释放当前绑定，后续可再次 show；回调需重新绑定。
+
+### destroy
+
+```cpp
+virtual void destroy() override
+```
+
+请求删除当前控件及其子树，立即使引用失效，实际释放在 UI 主循环中完成。 在 UI 线程调用，允许从当前控件的回调中调用；重复调用无操作。

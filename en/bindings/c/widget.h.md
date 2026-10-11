@@ -942,7 +942,7 @@ HIYUI_API void HIYUI_CALL hiyui_wdg_pad_bottom(hiyui_widget_t *w, int v)
 ### hiyui_wdg_opacity
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_wdg_opacity(hiyui_widget_t *w, uint8_t opa)
+HIYUI_API void HIYUI_CALL hiyui_wdg_opacity(hiyui_widget_t *w, int opa)
 ```
 
 ### hiyui_wdg_underline
