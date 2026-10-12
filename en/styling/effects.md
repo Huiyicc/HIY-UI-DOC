@@ -30,6 +30,32 @@ GlassEffect::detach(panel.raw());
 
 The blur cache is rebuilt automatically when the object size changes. In background sampling mode, the sampling updates on the next draw after the content below redraws; `GlassEffect::invalidateCache(obj)` explicitly requests a rebuild. `GlassEffect::isAttached(obj)` queries the attached state.
 
+## 3D tilt hover
+
+`TiltEffect::attach` attaches a mouse-follow 3D tilt effect to any widget. After the pointer enters the widget's layout rectangle, the widget subtree tilts in perspective around its center and follows the pointer; it springs back after the pointer leaves.
+
+```cpp
+TiltEffect::attach(card.raw(), {
+    .maxAngleX = 12,
+    .maxAngleY = 12,
+    .perspective = 900,
+});
+TiltEffect::detach(card.raw());
+```
+
+`TiltParams` fields:
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| maxAngleX | float | 10 | Maximum tilt around the X axis in degrees |
+| maxAngleY | float | 10 | Maximum tilt around the Y axis in degrees |
+| perspective | float | 900 | View distance in pixels; larger values weaken the perspective |
+| followDurationMs | uint32_t | 160 | Follow easing duration in milliseconds |
+| releaseDurationMs | uint32_t | 450 | Release bounce duration in milliseconds |
+| animate | bool | true | When false, angles jump to targets immediately and reset to zero on leave |
+
+Layout stays unchanged and pointer hit positions map onto the tilted visual. While tilting, the widget subtree re-renders at the refresh period; input and state changes on child widgets take effect immediately. Popups anchor to the widget's layout position, deviating from the tilted visual by no more than the perspective offset of the current angle. `TiltEffect::reset(obj)` flattens immediately and the effect stays attached. `GlassEffect` can be attached at the same time; the tilted visual includes the blur result. The effect auto-restores on widget size or style changes, and the tilted visual follows parent scrolling. Repeated `attach` calls only update parameters; `TiltEffect::isAttached(obj)` queries the attached state. The effect responds to mouse movement only; touch input does not trigger it.
+
 ## Theme switch transition
 
 `ThemeTransition::play(newTheme, dir)` runs the full sequence of screenshot → theme switch → animated reveal; when global animation is off, the theme switches directly without a transition visual. The default effect is `SlideRevealEffect` (the old visual slides out in the transition direction); a custom `TransitionEffect` subclass is installed through `ThemeTransition::setEffect()`.

@@ -30,6 +30,32 @@ GlassEffect::detach(panel.raw());
 
 对象尺寸变化时自动重建模糊缓存。背景采样模式下，下方内容重绘后下次绘制更新采样；`GlassEffect::invalidateCache(obj)` 可主动请求重建。`GlassEffect::isAttached(obj)` 查询挂载状态。
 
+## 3D 倾斜悬停
+
+`TiltEffect::attach` 为任意组件挂载鼠标跟随的 3D 倾斜效果。指针进入组件布局矩形后，组件子树绕中心做透视倾斜并跟随光标，指针移出后回弹复原。
+
+```cpp
+TiltEffect::attach(card.raw(), {
+    .maxAngleX = 12,
+    .maxAngleY = 12,
+    .perspective = 900,
+});
+TiltEffect::detach(card.raw());
+```
+
+`TiltParams` 字段：
+
+| 字段 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| maxAngleX | float | 10 | 绕 X 轴最大倾角，度 |
+| maxAngleY | float | 10 | 绕 Y 轴最大倾角，度 |
+| perspective | float | 900 | 视距，像素，值越大透视越弱 |
+| followDurationMs | uint32_t | 160 | 跟随缓动时长，毫秒 |
+| releaseDurationMs | uint32_t | 450 | 移出回弹时长，毫秒 |
+| animate | bool | true | false 时角度立即到位，移出立即归零 |
+
+布局保持不变，指针命中位置随倾斜画面映射。倾斜期间组件子树按刷新周期持续重新渲染，子组件的输入与状态变化即时生效。弹出层按对象布局位置锚定，与倾斜画面的偏差不超过当前倾角的透视偏移。`TiltEffect::reset(obj)` 立即回平，效果保持挂载。`GlassEffect` 可与倾斜效果同时挂载，倾斜画面包含模糊结果。组件尺寸或样式变化时效果自动复原，父容器滚动时倾斜画面跟随移动。重复 `attach` 仅更新参数，`TiltEffect::isAttached(obj)` 查询挂载状态。效果仅响应鼠标移动，触摸输入不触发。
+
 ## 主题切换过渡
 
 `ThemeTransition::play(newTheme, dir)` 执行截图 → 切换主题 → 动画揭露的完整流程；全局动画关闭时直接切换主题，无过渡画面。默认效果为 `SlideRevealEffect`（旧画面按方向滑出），可用 `ThemeTransition::setEffect()` 换成自定义 `TransitionEffect` 子类。
