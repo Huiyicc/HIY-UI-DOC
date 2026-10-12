@@ -34,13 +34,16 @@ The blur cache is rebuilt automatically when the object size changes. In backgro
 
 `TiltEffect::attach` attaches a mouse-follow 3D tilt effect to any widget. After the pointer enters the widget's layout rectangle, the widget subtree tilts in perspective around its center and follows the pointer; it springs back after the pointer leaves.
 
+### C++ API
+
+Include `<hiyui/effect/tilt_effect.h>`. Set the maximum angles for an existing `card`:
+
 ```cpp
 TiltEffect::attach(card.raw(), {
     .maxAngleX = 12,
     .maxAngleY = 12,
     .perspective = 900,
 });
-TiltEffect::detach(card.raw());
 ```
 
 `TiltParams` fields:
@@ -54,7 +57,54 @@ TiltEffect::detach(card.raw());
 | releaseDurationMs | uint32_t | 450 | Release bounce duration in milliseconds |
 | animate | bool | true | When false, angles jump to targets immediately and reset to zero on leave |
 
-Layout stays unchanged and pointer hit positions map onto the tilted visual. While tilting, the widget subtree re-renders at the refresh period; input and state changes on child widgets take effect immediately. Popups anchor to the widget's layout position, deviating from the tilted visual by no more than the perspective offset of the current angle. `TiltEffect::reset(obj)` flattens immediately and the effect stays attached. `GlassEffect` can be attached at the same time; the tilted visual includes the blur result. The effect auto-restores on widget size or style changes, and the tilted visual follows parent scrolling. Repeated `attach` calls only update parameters; `TiltEffect::isAttached(obj)` queries the attached state. The effect responds to mouse movement only; touch input does not trigger it.
+Runtime methods:
+
+| Method | Returns | Description |
+|---|---|---|
+| `TiltEffect::attach(obj, params)` | `void` | Attaches the effect; omitted parameters use defaults, and repeated calls update parameters |
+| `TiltEffect::detach(obj)` | `void` | Removes the effect and restores immediately while tilted; no-op when unattached |
+| `TiltEffect::reset(obj)` | `void` | Flattens immediately while staying attached; subsequent mouse movement can trigger tilt again; no-op when unattached |
+| `TiltEffect::isAttached(obj)` | `bool` | Returns `true` when attached |
+
+Layout stays unchanged and pointer hit positions map onto the tilted visual. Input and state changes on child widgets appear immediately while tilting; input carets and drag selections follow the tilted text. Popups anchor to the widget's layout position, deviating from the tilted visual by no more than the perspective offset of the current angle.
+
+The tilted visual preserves widget opacity, and leaving the effect restores the original transform matrix and layered opacity. The effect restores when the widget's size, style, or parent changes; the tilted visual follows parent scrolling. Widget destruction cleans up the effect automatically, and detaching preserves other mouse move listeners on the widget. `GlassEffect` can be attached at the same time; the tilted visual includes the blur result.
+
+Only mouse movement triggers the effect; touch input does not. In desktop SDL windows, leaving the window or losing window focus flattens the widget. Setting `animate` to `false` and calling `attach` again applies the target angles immediately while hovering, or flattens immediately during release.
+
+### C API
+
+Include `<hiyui/c/tilt.h>`, which is also included by `<hiyui/c/hiyui.h>`. Disable tilt easing for an existing `hiyui_widget_t *card`:
+
+```c
+#include <hiyui/c/tilt.h>
+
+hiyui_tilt_params_t params;
+hiyui_tilt_params_init(&params);
+params.animate = 0;
+hiyui_tilt_attach(card, &params);
+```
+
+`hiyui_tilt_params_init` fills `hiyui_tilt_params_t` with these defaults:
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| max_angle_x | float | 10 | Maximum tilt around the X axis in degrees; 0 keeps this axis fixed |
+| max_angle_y | float | 10 | Maximum tilt around the Y axis in degrees; 0 keeps this axis fixed |
+| perspective | float | 900 | View distance in pixels; larger values weaken perspective |
+| follow_duration_ms | uint32_t | 160 | Follow easing duration in milliseconds |
+| release_duration_ms | uint32_t | 450 | Release duration in milliseconds |
+| animate | int | 1 | 0 applies angles immediately and resets on leave; nonzero enables easing |
+
+| Method | Returns | Description |
+|---|---|---|
+| `hiyui_tilt_params_init(params)` | `void` | Fills in defaults; no-op for `NULL` |
+| `hiyui_tilt_attach(obj, params)` | `void` | Attaches or updates all parameters; `NULL` parameters use defaults |
+| `hiyui_tilt_detach(obj)` | `void` | Removes the effect and restores immediately while tilted; no-op when unattached |
+| `hiyui_tilt_reset(obj)` | `void` | Flattens immediately while staying attached; no-op when unattached |
+| `hiyui_tilt_is_attached(obj)` | `int` | Returns 1 when attached or 0 when unattached |
+
+When parameters are non-NULL, all fields are copied before `attach` returns and zero values are applied as supplied. Initialize custom parameters before changing fields. Widget operations must run on the UI thread with live widget handles; handles must not be used after destruction. For a `NULL` widget, mutating operations are no-ops and the query returns 0.
 
 ## Theme switch transition
 

@@ -34,13 +34,16 @@ GlassEffect::detach(panel.raw());
 
 `TiltEffect::attach` 为任意组件挂载鼠标跟随的 3D 倾斜效果。指针进入组件布局矩形后，组件子树绕中心做透视倾斜并跟随光标，指针移出后回弹复原。
 
+### C++ API
+
+头文件为 `<hiyui/effect/tilt_effect.h>`。为已创建的 `card` 设置两轴最大倾角：
+
 ```cpp
 TiltEffect::attach(card.raw(), {
     .maxAngleX = 12,
     .maxAngleY = 12,
     .perspective = 900,
 });
-TiltEffect::detach(card.raw());
 ```
 
 `TiltParams` 字段：
@@ -54,7 +57,54 @@ TiltEffect::detach(card.raw());
 | releaseDurationMs | uint32_t | 450 | 移出回弹时长，毫秒 |
 | animate | bool | true | false 时角度立即到位，移出立即归零 |
 
-布局保持不变，指针命中位置随倾斜画面映射。倾斜期间组件子树按刷新周期持续重新渲染，子组件的输入与状态变化即时生效。弹出层按对象布局位置锚定，与倾斜画面的偏差不超过当前倾角的透视偏移。`TiltEffect::reset(obj)` 立即回平，效果保持挂载。`GlassEffect` 可与倾斜效果同时挂载，倾斜画面包含模糊结果。组件尺寸或样式变化时效果自动复原，父容器滚动时倾斜画面跟随移动。重复 `attach` 仅更新参数，`TiltEffect::isAttached(obj)` 查询挂载状态。效果仅响应鼠标移动，触摸输入不触发。
+运行时方法：
+
+| 方法 | 返回 | 说明 |
+|---|---|---|
+| `TiltEffect::attach(obj, params)` | `void` | 挂载效果；省略参数使用默认值，重复调用更新参数 |
+| `TiltEffect::detach(obj)` | `void` | 移除效果，倾斜中立即复原；未挂载时无操作 |
+| `TiltEffect::reset(obj)` | `void` | 立即回平并保持挂载，后续鼠标移动可再次触发；未挂载时无操作 |
+| `TiltEffect::isAttached(obj)` | `bool` | 已挂载时返回 `true` |
+
+布局保持不变，指针命中位置随倾斜画面映射。倾斜期间子组件的输入与状态变化即时显示，输入框光标和拖选跟随倾斜后的文字位置。弹出层按对象布局位置锚定，与倾斜画面的偏差不超过当前倾角的透视偏移。
+
+倾斜画面保留组件透明度，退出时恢复原有变换矩阵和分层透明度。组件尺寸、样式或父容器变化时效果复原，父容器滚动时倾斜画面跟随移动。组件销毁时自动清理效果；解绑保留组件的其他鼠标移动监听。`GlassEffect` 可与倾斜效果同时挂载，倾斜画面包含模糊结果。
+
+效果仅响应鼠标移动，触摸输入不触发。桌面 SDL 窗口中，鼠标移出窗口或窗口失焦后回平。运行中将 `animate` 改为 `false` 并重新调用 `attach`，悬停时立即到达目标角度，回弹时立即回平。
+
+### C API
+
+头文件为 `<hiyui/c/tilt.h>`，统一头文件 `<hiyui/c/hiyui.h>` 已包含它。为已创建的 `hiyui_widget_t *card` 关闭倾斜缓动：
+
+```c
+#include <hiyui/c/tilt.h>
+
+hiyui_tilt_params_t params;
+hiyui_tilt_params_init(&params);
+params.animate = 0;
+hiyui_tilt_attach(card, &params);
+```
+
+`hiyui_tilt_params_t` 的默认值由 `hiyui_tilt_params_init` 填入：
+
+| 字段 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| max_angle_x | float | 10 | 绕 X 轴最大倾角，度；0 固定此轴 |
+| max_angle_y | float | 10 | 绕 Y 轴最大倾角，度；0 固定此轴 |
+| perspective | float | 900 | 视距，像素，值越大透视越弱 |
+| follow_duration_ms | uint32_t | 160 | 跟随缓动时长，毫秒 |
+| release_duration_ms | uint32_t | 450 | 移出回弹时长，毫秒 |
+| animate | int | 1 | 0 时角度立即到位、移出立即归零，非 0 启用缓动 |
+
+| 方法 | 返回 | 说明 |
+|---|---|---|
+| `hiyui_tilt_params_init(params)` | `void` | 填入默认参数；`NULL` 时无操作 |
+| `hiyui_tilt_attach(obj, params)` | `void` | 挂载或更新全部参数；`params` 为 `NULL` 时使用默认值 |
+| `hiyui_tilt_detach(obj)` | `void` | 移除效果，倾斜中立即复原；未挂载时无操作 |
+| `hiyui_tilt_reset(obj)` | `void` | 立即回平并保持挂载；未挂载时无操作 |
+| `hiyui_tilt_is_attached(obj)` | `int` | 已挂载返回 1，未挂载返回 0 |
+
+非空参数在 `attach` 返回前复制全部字段，零值按原值生效；自定义参数使用初始化函数后再修改字段。组件操作须在 UI 线程调用，非空句柄须指向存活组件，销毁后不得继续使用。`obj` 为 `NULL` 时修改操作无效果，查询返回 0。
 
 ## 主题切换过渡
 
