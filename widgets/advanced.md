@@ -94,7 +94,7 @@ pagination.onChange([](int page) { loadPage(page); });
 
 面板打开期间，窗口尺寸或可用区域变化只重新布局当前呈现方式，受约束内容可滚动。可用区域为空、锚点销毁、隐藏或移到另一窗口时关闭。关闭后再次打开时，`Auto` 重新读取可用宽度。`ColorPickerProps::panelMode` 为 `true` 时面板直接嵌入父容器，并忽略 `presentation`。
 
-窗口返回请求关闭当前 Picker，关闭期间不触发后方页面返回。主题切换关闭日期、时间和颜色面板；DPI 变化关闭日期、时间面板，颜色面板重新布局。
+窗口返回请求关闭当前 Picker，关闭期间不触发后方页面返回。主题切换关闭日期、时间面板，以及未调用过 `palette()` 的颜色弹层；已设置实例配色的 ColorPicker 更新现有控件并保留草稿、输入模式和弹层状态。DPI 变化关闭日期、时间面板，颜色面板重新布局。
 
 以下日期选择器在窄可用区域中使用底部滑窗，在宽可用区域中使用右对齐锚点弹层。
 
@@ -114,6 +114,38 @@ dropdown.init(parent);
 dropdown.items({{"Small"}, {"Medium"}, {"Large"}});
 dropdown.onChange([&] { setSize(dropdown.selectedIndex()); });
 ```
+
+### ColorPicker 实例配色
+
+`<hiyui/widget/color_picker.h>` 中的 `ColorPickerPalette` 设置当前实例的面板、输入框及模式按钮颜色。各字段接受 `0xRRGGBB`，`HIYUI_DEFAULT` 跟随全局主题，定义见[常量与哨兵值](/core/constants)。
+
+| 字段 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `bg` | `uint32_t` | `HIYUI_DEFAULT` | 弹层或内嵌面板底色 |
+| `inputBg` | `uint32_t` | `HIYUI_DEFAULT` | 输入框和未选中模式按钮底色 |
+| `textColor` | `uint32_t` | `HIYUI_DEFAULT` | 输入文字颜色 |
+| `secondaryTextColor` | `uint32_t` | `HIYUI_DEFAULT` | 标签和未选中模式文字颜色 |
+| `borderColor` | `uint32_t` | `HIYUI_DEFAULT` | 面板、色块及输入框边框色 |
+| `accentColor` | `uint32_t` | `HIYUI_DEFAULT` | 聚焦边框和选中模式按钮底色 |
+
+| 方法 | 返回 | 说明 |
+|---|---|---|
+| `palette(const ColorPickerPalette &)` | `ColorPicker &` / `ColorPicker &&` | 复制配色，保留选中颜色、草稿、输入模式和弹层状态；挂载前可调用，失效对象无操作 |
+
+为单个选择器设置深色面板，当前选中颜色仍为蓝色：
+
+```cpp
+ColorPicker picker({.color = 0x2196F3});
+picker.init(parent).palette({
+    .bg = 0x252526, .inputBg = 0x1e1e1e, .textColor = 0xcccccc,
+    .secondaryTextColor = 0x9d9d9d, .borderColor = 0x3f3f46,
+    .accentColor = 0x0078d4,
+});
+```
+
+调用 `picker.palette({})` 将全部字段恢复为跟随主题。重复调用可更新已打开的弹层，不改变全局主题或其他组件配色。
+
+C 接口为 `hiyui_color_picker_set_palette`。配色结构使用 `HIYUI_COLOR_PICKER_PALETTE_INIT` 初始化，字段采用下划线命名；传入 `NULL` 恢复主题配色，显式 `0` 表示黑色。
 
 ### 选择器与菜单文案
 

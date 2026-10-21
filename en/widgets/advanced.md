@@ -94,7 +94,7 @@ The available area uses `WindowArea.availableArea`, which already excludes known
 
 While the panel is open, window size or available area changes only relayout the current presentation, and constrained content can scroll. The panel closes when the available area becomes empty or the anchor is destroyed, hidden, or moved to another window. When it is opened again after closing, `Auto` reads the available width again. With `ColorPickerProps::panelMode` set to `true`, the panel is embedded directly in the parent container and `presentation` is ignored.
 
-A window back request closes the current Picker; the page behind it does not navigate back during the close. Theme switches close the date, time, and color panels; DPI changes close the date and time panels, and the color panel relayouts.
+A window back request closes the current Picker; the page behind it does not navigate back during the close. Theme switches close date and time panels, and color popups that have never received a `palette()` call. A ColorPicker with an instance palette updates its existing controls and keeps its drafts, input mode, and popup state. DPI changes close date and time panels, and the color panel relayouts.
 
 The following date picker uses a bottom sheet in a narrow available area and a right-aligned anchored popup in a wide available area.
 
@@ -114,6 +114,38 @@ dropdown.init(parent);
 dropdown.items({{"Small"}, {"Medium"}, {"Large"}});
 dropdown.onChange([&] { setSize(dropdown.selectedIndex()); });
 ```
+
+### ColorPicker instance palette
+
+`ColorPickerPalette` in `<hiyui/widget/color_picker.h>` sets panel, input, and mode button colors for one instance. Each field accepts `0xRRGGBB`; `HIYUI_DEFAULT` follows the global theme, as defined in [Constants and Sentinel Values](/en/core/constants).
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `bg` | `uint32_t` | `HIYUI_DEFAULT` | Popup or embedded panel background |
+| `inputBg` | `uint32_t` | `HIYUI_DEFAULT` | Input and inactive mode button background |
+| `textColor` | `uint32_t` | `HIYUI_DEFAULT` | Input text color |
+| `secondaryTextColor` | `uint32_t` | `HIYUI_DEFAULT` | Label and inactive mode text color |
+| `borderColor` | `uint32_t` | `HIYUI_DEFAULT` | Panel, swatch, and input border color |
+| `accentColor` | `uint32_t` | `HIYUI_DEFAULT` | Focused border and active mode button background |
+
+| Method | Returns | Description |
+|---|---|---|
+| `palette(const ColorPickerPalette &)` | `ColorPicker &` / `ColorPicker &&` | Copies the palette, keeping the selected color, drafts, input mode, and popup state; callable before mounting, no-op on an invalid object |
+
+Set a dark panel for one picker while its selected color remains blue:
+
+```cpp
+ColorPicker picker({.color = 0x2196F3});
+picker.init(parent).palette({
+    .bg = 0x252526, .inputBg = 0x1e1e1e, .textColor = 0xcccccc,
+    .secondaryTextColor = 0x9d9d9d, .borderColor = 0x3f3f46,
+    .accentColor = 0x0078d4,
+});
+```
+
+Call `picker.palette({})` to restore theme colors for all fields. Repeated calls update an open popup without changing the global theme or other widgets.
+
+The C function is `hiyui_color_picker_set_palette`. Initialize its palette struct with `HIYUI_COLOR_PICKER_PALETTE_INIT`; field names use underscores. Passing `NULL` restores theme colors, and an explicit `0` means black.
 
 ### Picker and menu text
 

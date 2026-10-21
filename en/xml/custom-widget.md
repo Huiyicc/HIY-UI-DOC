@@ -33,16 +33,44 @@ Field helpers extract default values from `Props{}` and generate type, range, an
 | `xmlColorField` | `uint32_t` |
 | `xmlEnumField` | Enumeration |
 
+Set display names and descriptions for fields:
+
 ```cpp
 const XmlField badgeFields[] = {
     xmlStringField<BadgeProps, &BadgeProps::text>(
-        "text", {.bindable = true}),
-    xmlColorField<BadgeProps, &BadgeProps::bg>("bg"),
-    xmlIntField<BadgeProps, &BadgeProps::fontSize>("fontSize", 0, 72),
+        "text", {.bindable = true, .description = "Displayed text.", .displayName = "Text"}),
+    xmlColorField<BadgeProps, &BadgeProps::bg>("bg", nullptr,
+        {.description = "Background color.", .displayName = "Background"}),
+    xmlIntField<BadgeProps, &BadgeProps::fontSize>("fontSize", 0, 72,
+        {.description = "Text font size.", .displayName = "Font size"}),
 };
 ```
 
-`XmlAttributeOptions` can set `required`, `bindable`, and `description`. Enum fields use an explicit `XmlEnumValue` table, and the Registry snapshot keeps the enum names and values.
+`XmlAttributeOptions` accepts `required`, `bindable`, `description`, and `displayName`. The resulting `XmlAttributeSpec` stores the type in `kind`, the display name, description, default value, and range. When the display name is empty, tools show the original `name`; XML attribute names always use `name`.
+
+An enum table declares the XML name, numeric value, and display text separately:
+
+```cpp
+const XmlEnumValue alignments[] = {
+    {"Start", static_cast<int64_t>(Align::Start), "Start alignment"},
+    {"Center", static_cast<int64_t>(Align::Center), "Centered"},
+};
+const XmlAttributeSpec alignment = xmlEnumAttribute("align", alignments,
+    {.description = "Content alignment.", .displayName = "Alignment"});
+```
+
+When `XmlEnumValue::displayName` is empty, tools show that option's `name`. Registry snapshots deep-copy all annotations; the designer still saves XML enum names such as `Start` and `Center`.
+
+HIYDesignUI selects property editors from `kind`:
+
+| Attribute type | Editor |
+|---|---|
+| String, Identifier, Command, Resource, Source | Text input |
+| Integer, UnsignedInteger, Number | Raw text with numeric step buttons |
+| Boolean, Enumeration | Choice list with separate display labels and saved values |
+| Color | Color picker and raw value input, preserving theme colors, sentinel values, and expressions |
+
+After new widget annotations are registered and the designer is rebuilt with the library, HIYDesignUI reads these fields automatically without additional property name mappings. Annotations control property presentation; loading still enforces the existing type, range, and binding contracts.
 
 ## Module and Widget Registration
 

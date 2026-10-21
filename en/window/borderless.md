@@ -22,6 +22,29 @@ auto &window = createWindow({
 
 `WindowProps::titleBar` (`TitleBarProps`) controls the title bar height, text, icons, button layout, and window buttons. Title bar buttons connect to the window minimize, maximize, restore, and close actions. For the field list, see the component's `TitleBarProps` definition (`<hiyui/widget/title_bar.h>`).
 
+`layout` controls button placement and title alignment. Its default, `TitleBarLayout::PlatformDefault`, lets Window choose for the current platform. `Right` places the title on the left and Min/Max/Close on the right; `Left` places Close/Min/Max on the left and centers the icon and title as a group.
+
+`buttonStyle` controls the button appearance and defaults to `TitleBarButtonStyle::PlatformDefault`.
+
+| Value | Description |
+|---|---|
+| `PlatformDefault` | Traffic lights for a Left layout on Apple platforms; standard buttons otherwise |
+| `Standard` | Standard window buttons on every platform |
+| `MacOS` | Traffic light buttons on every platform |
+
+Request a macOS custom title bar on a host that supports borderless windows:
+
+```cpp
+auto &window = createWindow({
+    .title = "Preview",
+    .borderless = true,
+    .titleBar = {.layout = TitleBarLayout::Left,
+                 .buttonStyle = TitleBarButtonStyle::MacOS},
+});
+```
+
+These settings affect the custom title bar. The current operating system draws the frame of a window with system borders. XML windows use `titleBarLayout` and `titleBarButtonStyle`; see [XML Windows](/en/xml/quick-start#xml-windows).
+
 ## Application menu bar
 
 Menu items are set through the runtime method `Window::menu(items)`, which takes a `std::vector<MenuBarItem>`; calling it again replaces all menu items, and an empty list clears the menu. `WindowProps::menuBar` (`MenuBarProps`) controls the menu bar height and colors. The menu takes effect only on borderless desktop windows and is silently ignored on other windows.

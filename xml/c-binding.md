@@ -28,13 +28,15 @@ if (module_reg.status != HIYUI_XML_REGISTRATION_SUCCESS)
 
 ## 属性元数据
 
-`hiyui_xml_attribute_spec_t` 描述属性名称、类型、必填状态、可绑定性、默认值、范围、枚举值和说明。
+`hiyui_xml_attribute_spec_t` 描述属性名称、类型、必填状态、可绑定性、默认值、范围、枚举值、说明和显示名。属性及枚举项的 `display_name` 只用于展示，为 `NULL` 或空字符串时显示 `name`；注册时复制这些字符串。
+
+注册带显示名和枚举标签的属性：
 
 ```c
 static const hiyui_xml_enum_value_t size_values[] = {
-    {"Small", 0},
-    {"Medium", 1},
-    {"Large", 2},
+    {"Small", 0, "小"},
+    {"Medium", 1, "中"},
+    {"Large", 2, "大"},
 };
 
 hiyui_xml_attribute_spec_t attributes[2] = {
@@ -44,7 +46,10 @@ hiyui_xml_attribute_spec_t attributes[2] = {
 attributes[0].name = "text";
 attributes[0].required = 1;
 attributes[0].bindable = 1;
+attributes[0].display_name = "文本";
+attributes[0].description = "组件显示的文字。";
 attributes[1].name = "size";
+attributes[1].display_name = "尺寸";
 attributes[1].kind = HIYUI_XML_ATTRIBUTE_ENUMERATION;
 attributes[1].enum_values = size_values;
 attributes[1].enum_value_count = 3;
@@ -161,6 +166,8 @@ static hiyui_xml_widget_result_t badge_factory(
 | `hiyui_xml_registry_snapshot_get_widget_enum_value` | 属性枚举项 |
 
 已有 snapshot 在模块或组件注销后保持有效，直到 `hiyui_xml_registry_snapshot_destroy`。
+
+`hiyui_xml_attribute_metadata_t::display_name` 和 `hiyui_xml_enum_value_metadata_t::display_name` 返回借用字符串，未设置时为 `NULL`，有效期至 snapshot 销毁。更新库后，C 调用方须使用对应版本的头文件重新构建，使属性描述和元数据结构大小一致。
 
 ## 上下文与加载
 

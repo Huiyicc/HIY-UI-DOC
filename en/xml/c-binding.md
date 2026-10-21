@@ -28,13 +28,15 @@ if (module_reg.status != HIYUI_XML_REGISTRATION_SUCCESS)
 
 ## Attribute Metadata
 
-`hiyui_xml_attribute_spec_t` describes the attribute name, type, required state, bindability, default value, range, enum values, and description.
+`hiyui_xml_attribute_spec_t` describes the attribute name, type, required state, bindability, default value, range, enum values, description, and display name. The `display_name` fields of attributes and enum entries affect display only; `NULL` or an empty string uses `name`. These strings are copied during registration.
+
+Register attributes with display names and enum labels:
 
 ```c
 static const hiyui_xml_enum_value_t size_values[] = {
-    {"Small", 0},
-    {"Medium", 1},
-    {"Large", 2},
+    {"Small", 0, "Small size"},
+    {"Medium", 1, "Medium size"},
+    {"Large", 2, "Large size"},
 };
 
 hiyui_xml_attribute_spec_t attributes[2] = {
@@ -44,7 +46,10 @@ hiyui_xml_attribute_spec_t attributes[2] = {
 attributes[0].name = "text";
 attributes[0].required = 1;
 attributes[0].bindable = 1;
+attributes[0].display_name = "Text";
+attributes[0].description = "Text displayed by the widget.";
 attributes[1].name = "size";
+attributes[1].display_name = "Size";
 attributes[1].kind = HIYUI_XML_ATTRIBUTE_ENUMERATION;
 attributes[1].enum_values = size_values;
 attributes[1].enum_value_count = 3;
@@ -161,6 +166,8 @@ The factory must create one direct child widget of `parent`. When `child_host` i
 | `hiyui_xml_registry_snapshot_get_widget_enum_value` | Attribute enum entries |
 
 An existing snapshot stays valid after modules or widgets are unregistered, until `hiyui_xml_registry_snapshot_destroy`.
+
+`hiyui_xml_attribute_metadata_t::display_name` and `hiyui_xml_enum_value_metadata_t::display_name` return borrowed strings, or `NULL` when unset, valid until snapshot destruction. After updating the library, rebuild C callers with its matching headers so attribute description and metadata struct sizes agree.
 
 ## Context and Loading
 

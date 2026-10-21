@@ -39,6 +39,27 @@ XmlLayout layout = XmlLayout::fromFile(parent, "ui/panel.xml", context);
 
 `XmlLayout` observes the mounted widget tree and does not own it. Destroying `XmlLayout` does not destroy widgets; after a widget is destroyed, lookup by ID returns an empty reference.
 
+## XML Windows
+
+`XmlWindowLayout::fromFile` and `fromString` accept documents rooted at `Window`. Borderless windows can configure their custom title bar explicitly; both attributes default to `PlatformDefault` when omitted.
+
+| Attribute | Values | Description |
+|---|---|---|
+| `titleBarLayout` | `PlatformDefault`, `Right`, `Left` | Button placement and title alignment |
+| `titleBarButtonStyle` | `PlatformDefault`, `Standard`, `MacOS` | Button appearance, independent of the host platform |
+
+Create a borderless window with traffic lights on the left and a centered icon and title:
+
+```xml
+<Window xmlns="urn:hiyui:ui" title="Platform preview"
+        width="960" height="640" borderless="true"
+        titleBarLayout="Left" titleBarButtonStyle="MacOS">
+  <VBox fill="both"><Label text="Shared content"/></VBox>
+</Window>
+```
+
+`Standard` and `MacOS` select the corresponding custom buttons on every platform; default appearance and layout rules are described in [Borderless Window](/en/window/borderless#title-bar). With `borderless="false"`, the current operating system draws the frame. A standalone `TitleBar` widget uses the XML attribute names `layout` and `buttonStyle`.
+
 ## Transactional Reload
 
 `XmlReloadHost` keeps the mount parent fixed and owns the currently committed XML root tree. The file, string, and reader reload entry points all enforce strict mode.

@@ -33,16 +33,44 @@ struct BadgeProps {
 | `xmlColorField` | `uint32_t` |
 | `xmlEnumField` | 枚举 |
 
+为字段设置显示名称和说明：
+
 ```cpp
 const XmlField badgeFields[] = {
     xmlStringField<BadgeProps, &BadgeProps::text>(
-        "text", {.bindable = true}),
-    xmlColorField<BadgeProps, &BadgeProps::bg>("bg"),
-    xmlIntField<BadgeProps, &BadgeProps::fontSize>("fontSize", 0, 72),
+        "text", {.bindable = true, .description = "显示文本。", .displayName = "文本"}),
+    xmlColorField<BadgeProps, &BadgeProps::bg>("bg", nullptr,
+        {.description = "背景颜色。", .displayName = "背景色"}),
+    xmlIntField<BadgeProps, &BadgeProps::fontSize>("fontSize", 0, 72,
+        {.description = "文字字号。", .displayName = "字号"}),
 };
 ```
 
-`XmlAttributeOptions` 可设置 `required`、`bindable` 和 `description`。枚举字段使用显式 `XmlEnumValue` 表，Registry snapshot 会保留枚举名称和值。
+`XmlAttributeOptions` 可设置 `required`、`bindable`、`description` 和 `displayName`。注册结果中的 `XmlAttributeSpec` 保存类型 `kind`、显示名、说明、默认值和范围。显示名为空时，工具显示原始 `name`；XML 属性名始终使用 `name`。
+
+枚举表分别声明 XML 值、对应数值和展示文字：
+
+```cpp
+const XmlEnumValue alignments[] = {
+    {"Start", static_cast<int64_t>(Align::Start), "起始对齐"},
+    {"Center", static_cast<int64_t>(Align::Center), "居中对齐"},
+};
+const XmlAttributeSpec alignment = xmlEnumAttribute("align", alignments,
+    {.description = "内容对齐方式。", .displayName = "对齐"});
+```
+
+`XmlEnumValue::displayName` 为空时显示该选项的 `name`。Registry snapshot 深拷贝全部注解，设计器保存枚举值时仍写入 `Start`、`Center` 等 XML 名称。
+
+HIYDesignUI 根据 `kind` 选择属性编辑器：
+
+| 属性类型 | 编辑方式 |
+|---|---|
+| String、Identifier、Command、Resource、Source | 文本输入 |
+| Integer、UnsignedInteger、Number | 原始文本与数值步进 |
+| Boolean、Enumeration | 选择器，展示文字与保存值分离 |
+| Color | 色板与原始值输入，可保留主题色、特殊色值和表达式 |
+
+新组件填写注册注解并随库重新构建后，HIYDesignUI 自动读取这些字段，无需增加属性名映射代码。注册注解只控制属性展示，加载校验仍遵守原有类型、范围和绑定契约。
 
 ## 模块与组件注册
 

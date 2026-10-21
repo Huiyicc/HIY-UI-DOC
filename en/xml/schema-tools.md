@@ -17,6 +17,8 @@ title: Schema and Offline Validation
 
 The dedicated Schema XML uses the namespace URI `urn:hiyui:xml-schema` and is the storage format for the complete metadata. An XSD exports one namespace at a time and does not replace the dedicated Schema XML.
 
+Attribute and enum display names are stored in optional `DisplayName` child elements, and attribute descriptions in `Description`. Older Schemas without display names remain readable and use the original names for display. XSD exports labels and descriptions as annotations while retaining XML names for enum restrictions; Markdown attribute tables show both names. Schema merging includes display names when comparing metadata.
+
 ## Build Tools
 
 Enable the XML layout and XML tools targets:
@@ -107,6 +109,8 @@ The XSD projection includes resource child elements and Template child element s
 The source resolver and resource limits of `XmlLoadOptions` apply to `xmlValidate` and `xmlValidateFile` as well. The `dependencies` of a validation result returns the deduplicated Include source IDs, which a host file watcher can use to build dependency relations.
 
 ## Designer Integration
+
+HIYDesignUI builds its property panel from registered display names, descriptions, types, ranges, and defaults. Display labels do not change the XML attribute names or enum values saved in a project; see [Attribute Annotations](/en/xml/custom-widget#props-and-fields).
 
 `hiyui-xml schema` registers only the Hiy-UI built-in widgets. A designer can save this Schema separately and pass each extension's exported Schema to `merge` as an independent input. The designer's widget palette reads module, namespace, preferred prefix, widget, and attribute metadata from the merge result and does not need to link extension widget types.
 

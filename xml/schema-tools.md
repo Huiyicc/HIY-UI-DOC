@@ -17,6 +17,8 @@ title: Schema 与离线校验
 
 专用 Schema XML 使用 namespace URI `urn:hiyui:xml-schema`，是完整元数据的保存格式。XSD 每次只导出一个 namespace，不替代专用 Schema XML。
 
+属性与枚举项的显示名分别保存在可选 `DisplayName` 子元素中，属性说明保存在 `Description` 中。未包含显示名的旧 Schema 仍可读取，显示时使用原始名称。XSD 将显示名和说明写入注解，枚举限制仍使用 XML 原名；Markdown 属性表同时列出原名和显示名。Schema 合并时，显示名也参与元数据一致性比较。
+
 ## 构建工具
 
 启用 XML 布局和 XML 工具目标：
@@ -107,6 +109,8 @@ XSD 投影包含资源子元素和 Template 子元素结构。namespace 间引�
 `XmlLoadOptions` 的 source resolver 和资源限制同样适用于 `xmlValidate` 与 `xmlValidateFile`。校验结果的 `dependencies` 返回去重后的 Include source ID，可供上层文件监听器建立依赖关系。
 
 ## 设计器集成
+
+HIYDesignUI 从注册元数据读取属性显示名、说明、类型、范围和默认值，并据此生成属性面板。中文展示文字不改变保存的 XML 属性名和枚举值；注册方式见[属性注解](/xml/custom-widget#props-与字段)。
 
 `hiyui-xml schema` 只注册 Hiy-UI 内置组件。设计器可以单独保存该 Schema，并将每个扩展导出的 Schema 作为独立输入交给 `merge`。设计器的组件面板读取合并结果中的 module、namespace、preferred prefix、widget 和 attribute 元数据，不需要链接扩展组件类型。
 

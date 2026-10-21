@@ -39,6 +39,27 @@ XmlLayout layout = XmlLayout::fromFile(parent, "ui/panel.xml", context);
 
 `XmlLayout` 观察已挂载组件树，不拥有该组件树。销毁 `XmlLayout` 不销毁组件；组件销毁后，按 ID 查询返回空引用。
 
+## XML 窗口
+
+`XmlWindowLayout::fromFile` 或 `fromString` 接受以 `Window` 为根的文档。无边框窗口可显式配置自绘标题栏；两个属性省略时均使用 `PlatformDefault`。
+
+| 属性 | 可选值 | 说明 |
+|---|---|---|
+| `titleBarLayout` | `PlatformDefault`、`Right`、`Left` | 按钮位置与标题对齐方式 |
+| `titleBarButtonStyle` | `PlatformDefault`、`Standard`、`MacOS` | 按钮外观，可独立于运行平台指定 |
+
+创建使用左侧交通灯、图标标题居中的无边框窗口：
+
+```xml
+<Window xmlns="urn:hiyui:ui" title="跨平台预览"
+        width="960" height="640" borderless="true"
+        titleBarLayout="Left" titleBarButtonStyle="MacOS">
+  <VBox fill="both"><Label text="共享内容"/></VBox>
+</Window>
+```
+
+`Standard` 和 `MacOS` 在所有平台指定对应的自绘按钮；默认外观与布局规则见[无边框窗口](/window/borderless#标题栏)。`borderless="false"` 时，外框由当前操作系统绘制。独立 `TitleBar` 组件的对应 XML 属性名为 `layout` 和 `buttonStyle`。
+
 ## 事务重载
 
 `XmlReloadHost` 固定挂载父组件并拥有当前提交的 XML 根树。文件、字符串和 reader 三个重载入口都强制使用严格模式。
