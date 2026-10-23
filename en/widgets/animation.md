@@ -46,7 +46,7 @@ Anim(&value, apply).values(0, 100).duration(200).start();
 
 `AnimTargetCb` has the signature `void(void *)`, and its argument is the target used when creating the animation. The target address must stay valid until the animation is removed; call `Anim::stop()` before releasing the target, or reclaim target resources in `onRemoved()`. On natural completion, `onFinished()` is called first, then `onRemoved()`.
 
-`Anim` itself does not skip animations based on the theme switch; when the caller disables animations, set the final value directly. Menu, Tabs, and Pagination follow the theme animation switch; TabsEx and Segmented are additionally controlled by their own Props `animated` field.
+> `Anim` itself does not skip animations based on the theme switch; when the caller disables animations, set the final value directly.
 
 ## C interface
 

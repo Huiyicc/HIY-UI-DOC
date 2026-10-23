@@ -46,7 +46,7 @@ Anim(&value, apply).values(0, 100).duration(200).start();
 
 `AnimTargetCb` 的签名为 `void(void *)`，参数是创建动画时的目标。目标地址必须保持有效到动画移除；释放目标前调用 `Anim::stop()`，或在 `onRemoved()` 中回收目标资源。自然完成时先调用 `onFinished()`，再调用 `onRemoved()`。
 
-`Anim` 本身不会根据主题开关跳过动画；调用方关闭动画时应直接设置最终值。Menu、Tabs、Pagination 使用主题动画开关，TabsEx、Segmented 还受各自 Props 的 `animated` 控制。
+> `Anim` 本身不会根据主题开关跳过动画；调用方关闭动画时应直接设置最终值。
 
 ## C 接口
 
