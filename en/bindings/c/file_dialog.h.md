@@ -34,7 +34,7 @@ Call on the Application UI thread; input texts and filters are copied during the
 ### hiyui_file_dialog_result_fn
 
 ```c
-typedef void(* hiyui_file_dialog_result_fn) (hiyui_file_dialog_status_t status, const char *const *paths, int count, void *ud)
+typedef void(HIYUI_CALL * hiyui_file_dialog_result_fn) (hiyui_file_dialog_status_t status, const char *const *paths, int count, void *ud)
 ```
 
 Result callback; the paths array is valid inside the callback, deep-copy it to keep it

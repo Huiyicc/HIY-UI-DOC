@@ -186,7 +186,7 @@ Overrides Dropdown part styles and binds the activation callback invoked before 
 ### hiyui_dropdown_set_search_matcher
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_dropdown_set_search_matcher(hiyui_widget_t *dd, int(*matcher)(const char *item_text, const char *query, void *ud), void *ud, hiyui_destroy_fn destroy)
+HIYUI_API void HIYUI_CALL hiyui_dropdown_set_search_matcher(hiyui_widget_t *dd, int(HIYUI_CALL *matcher)(const char *item_text, const char *query, void *ud), void *ud, hiyui_destroy_fn destroy)
 ```
 
 Custom search matcher; a non-zero return means a match. A NULL matcher restores the default substring match.

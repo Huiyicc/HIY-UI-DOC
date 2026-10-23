@@ -28,6 +28,14 @@ Frameless window title bar
 | `HIYUI_TITLE_BAR_LAYOUT_RIGHT` |  |
 | `HIYUI_TITLE_BAR_LAYOUT_LEFT` |  |
 
+### hiyui_title_bar_button_style_t
+
+| Value | Description |
+|---|---|
+| `HIYUI_TITLE_BAR_BUTTON_STYLE_PLATFORM_DEFAULT` = 0 |  |
+| `HIYUI_TITLE_BAR_BUTTON_STYLE_STANDARD` |  |
+| `HIYUI_TITLE_BAR_BUTTON_STYLE_MACOS` |  |
+
 ### hiyui_title_bar_icon_t
 
 | Value | Description |

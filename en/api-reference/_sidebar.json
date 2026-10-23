@@ -183,6 +183,14 @@
         "link": "/en/api-reference/effect/themetransition_animstate"
       },
       {
+        "text": "TiltEffect",
+        "link": "/en/api-reference/effect/tilteffect"
+      },
+      {
+        "text": "TiltParams",
+        "link": "/en/api-reference/effect/tiltparams"
+      },
+      {
         "text": "TransitionEffect",
         "link": "/en/api-reference/effect/transitioneffect"
       }
@@ -338,6 +346,10 @@
         "link": "/en/api-reference/misc/timer_state"
       },
       {
+        "text": "detail::ImageSourceRef",
+        "link": "/en/api-reference/misc/detail_imagesourceref"
+      },
+      {
         "text": "detail::UiTask",
         "link": "/en/api-reference/misc/detail_uitask"
       },
@@ -352,6 +364,14 @@
       {
         "text": "diagnostics::Frame",
         "link": "/en/api-reference/misc/diagnostics_frame"
+      },
+      {
+        "text": "diagnostics::MemoryPeak",
+        "link": "/en/api-reference/misc/diagnostics_memorypeak"
+      },
+      {
+        "text": "diagnostics::MemoryReadings",
+        "link": "/en/api-reference/misc/diagnostics_memoryreadings"
       },
       {
         "text": "diagnostics::Reading",
@@ -712,6 +732,10 @@
         "link": "/en/api-reference/widget/colorpicker"
       },
       {
+        "text": "ColorPickerPalette",
+        "link": "/en/api-reference/widget/colorpickerpalette"
+      },
+      {
         "text": "ColorPickerProps",
         "link": "/en/api-reference/widget/colorpickerprops"
       },
@@ -734,6 +758,10 @@
       {
         "text": "ContextMenuItem",
         "link": "/en/api-reference/widget/contextmenuitem"
+      },
+      {
+        "text": "ContextMenuPalette",
+        "link": "/en/api-reference/widget/contextmenupalette"
       },
       {
         "text": "CustomDraw",
@@ -1008,6 +1036,10 @@
         "link": "/en/api-reference/widget/menubaritem"
       },
       {
+        "text": "MenuBarPalette",
+        "link": "/en/api-reference/widget/menubarpalette"
+      },
+      {
         "text": "MenuBarProps",
         "link": "/en/api-reference/widget/menubarprops"
       },
@@ -1142,6 +1174,10 @@
       {
         "text": "PropertyGrid",
         "link": "/en/api-reference/widget/propertygrid"
+      },
+      {
+        "text": "PropertyGridPalette",
+        "link": "/en/api-reference/widget/propertygridpalette"
       },
       {
         "text": "PropertyGridProps",
@@ -1412,6 +1448,10 @@
         "link": "/en/api-reference/widget/titlebar"
       },
       {
+        "text": "TitleBarPalette",
+        "link": "/en/api-reference/widget/titlebarpalette"
+      },
+      {
         "text": "TitleBarProps",
         "link": "/en/api-reference/widget/titlebarprops"
       },
@@ -1486,6 +1526,10 @@
       {
         "text": "TreeNodeData",
         "link": "/en/api-reference/widget/treenodedata"
+      },
+      {
+        "text": "TreePalette",
+        "link": "/en/api-reference/widget/treepalette"
       },
       {
         "text": "TreeProps",
@@ -1685,6 +1729,14 @@
     "text": "xml",
     "items": [
       {
+        "text": "XmlActivation",
+        "link": "/en/api-reference/xml/xmlactivation"
+      },
+      {
+        "text": "XmlActivationResult",
+        "link": "/en/api-reference/xml/xmlactivationresult"
+      },
+      {
         "text": "XmlAttributeOptions",
         "link": "/en/api-reference/xml/xmlattributeoptions"
       },
@@ -1727,6 +1779,10 @@
       {
         "text": "XmlDefaultValue",
         "link": "/en/api-reference/xml/xmldefaultvalue"
+      },
+      {
+        "text": "XmlDesignSpec",
+        "link": "/en/api-reference/xml/xmldesignspec"
       },
       {
         "text": "XmlDiagnostic",
@@ -1827,6 +1883,14 @@
       {
         "text": "XmlStringStorage",
         "link": "/en/api-reference/xml/xmlstringstorage"
+      },
+      {
+        "text": "XmlStructureSpec",
+        "link": "/en/api-reference/xml/xmlstructurespec"
+      },
+      {
+        "text": "XmlTemplate",
+        "link": "/en/api-reference/xml/xmltemplate"
       },
       {
         "text": "XmlValidationResult",

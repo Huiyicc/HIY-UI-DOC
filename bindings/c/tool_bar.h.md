@@ -70,7 +70,7 @@ typedef struct hiyui_tool_menu_item_s hiyui_tool_menu_item_t
 ### hiyui_tool_activate_fn
 
 ```c
-typedef void(* hiyui_tool_activate_fn) (const hiyui_tool_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tool_activate_fn) (const hiyui_tool_event_t *event, void *user_data)
 ```
 
 event 仅在回调期间有效，可按值复制。
@@ -78,7 +78,7 @@ event 仅在回调期间有效，可按值复制。
 ### hiyui_tool_change_fn
 
 ```c
-typedef void(* hiyui_tool_change_fn) (hiyui_tool_check_state_t value, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tool_change_fn) (hiyui_tool_check_state_t value, void *user_data)
 ```
 
 ### hiyui_tool_menu_snapshot_t

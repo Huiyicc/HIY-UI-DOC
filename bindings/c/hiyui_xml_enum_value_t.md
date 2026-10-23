@@ -19,3 +19,11 @@ const char * name
 ```c
 int64_t value
 ```
+
+### display_name
+
+```c
+const char * display_name
+```
+
+显示名，NULL 时显示 name。

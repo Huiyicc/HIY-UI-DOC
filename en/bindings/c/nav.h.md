@@ -20,6 +20,13 @@ Navigation widgets: Tabs / Menu / Segmented
 | `HIYUI_SEGMENTED_SIZE_LARGE` |  |
 | `HIYUI_SEGMENTED_SIZE_FIT` |  |
 
+### hiyui_segmented_display_t
+
+| Value | Description |
+|---|---|
+| `HIYUI_SEGMENTED_DISPLAY_DEFAULT` = 0 |  |
+| `HIYUI_SEGMENTED_DISPLAY_ICON_ONLY` |  |
+
 ### hiyui_tab_position_t
 
 | Value | Description |
@@ -57,7 +64,7 @@ typedef struct hiyui_menu_item hiyui_menu_item_t
 ### hiyui_menu_expand_fn
 
 ```c
-typedef void(* hiyui_menu_expand_fn) (int node_index, int expanded, void *user_data)
+typedef void(HIYUI_CALL * hiyui_menu_expand_fn) (int node_index, int expanded, void *user_data)
 ```
 
 ## Functions

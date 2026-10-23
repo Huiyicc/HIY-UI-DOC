@@ -28,7 +28,7 @@ Corresponds to the C++ LineChart, BarChart, PieChart, GaugeChart, and WaveformCh
 ### hiyui_chart_tooltip_fn
 
 ```c
-typedef void(* hiyui_chart_tooltip_fn) (hiyui_widget_t *content, const hiyui_chart_hit_t *hits, int count, void *user_data)
+typedef void(HIYUI_CALL * hiyui_chart_tooltip_fn) (hiyui_widget_t *content, const hiyui_chart_hit_t *hits, int count, void *user_data)
 ```
 
 Custom tooltip build callback; creates child widgets on content

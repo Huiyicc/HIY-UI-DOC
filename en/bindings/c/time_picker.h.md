@@ -40,7 +40,7 @@ Time picker, aligned with hiyui::TimePicker
 ### hiyui_time_change_fn
 
 ```c
-typedef void(* hiyui_time_change_fn) (const hiyui_time_picker_value_t *v, void *ud)
+typedef void(HIYUI_CALL * hiyui_time_change_fn) (const hiyui_time_picker_value_t *v, void *ud)
 ```
 
 ## Functions

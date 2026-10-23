@@ -8,7 +8,7 @@ title: "diagnostics::Sample"
 
 **命名空间：** `hiyui`
 
-进程与 LVGL 读数；各内存口径有重叠，不可求和。
+进程、LVGL 和资源读数；各内存口径有重叠，不可求和。
 
 ## 公开成员
 

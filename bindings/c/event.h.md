@@ -88,7 +88,7 @@ typedef struct hiyui_event_handle_s hiyui_event_handle_t
 ### hiyui_event_fn
 
 ```c
-typedef void(* hiyui_event_fn) (hiyui_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_event_fn) (hiyui_event_t *event, void *user_data)
 ```
 
 在 UI 线程同步调用；事件及其借用对象不得保存到回调之外。
@@ -96,13 +96,13 @@ typedef void(* hiyui_event_fn) (hiyui_event_t *event, void *user_data)
 ### hiyui_mouse_move_fn
 
 ```c
-typedef void(* hiyui_mouse_move_fn) (int screen_x, int screen_y, int local_x, int local_y, void *user_data)
+typedef void(HIYUI_CALL * hiyui_mouse_move_fn) (int screen_x, int screen_y, int local_x, int local_y, void *user_data)
 ```
 
 ### hiyui_mouse_wheel_fn
 
 ```c
-typedef void(* hiyui_mouse_wheel_fn) (int local_x, int local_y, int delta_y, void *user_data)
+typedef void(HIYUI_CALL * hiyui_mouse_wheel_fn) (int local_x, int local_y, int delta_y, void *user_data)
 ```
 
 ## 函数

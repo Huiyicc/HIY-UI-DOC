@@ -44,7 +44,7 @@ title: "tabs_ex.h"
 ### hiyui_tabs_ex_event_fn
 
 ```c
-typedef void(* hiyui_tabs_ex_event_fn) (const hiyui_tabs_ex_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tabs_ex_event_fn) (const hiyui_tabs_ex_event_t *event, void *user_data)
 ```
 
 事件回调。`event->text` 仅在回调执行期间有效。

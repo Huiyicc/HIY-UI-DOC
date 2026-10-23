@@ -32,6 +32,14 @@ MenuBar(MenuBarProps props={})
 
 通过属性聚合构造
 
+### palette
+
+```cpp
+MenuBar & palette(const MenuBarPalette &value) &
+```
+
+复制并应用实例配色，保留菜单项和快捷键；可在挂载前调用，失效对象无操作。
+
 ### init
 
 ```cpp

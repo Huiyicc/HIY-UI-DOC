@@ -88,7 +88,7 @@ Event subscription handle, released by hiyui_event_handle_destroy.
 ### hiyui_event_fn
 
 ```c
-typedef void(* hiyui_event_fn) (hiyui_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_event_fn) (hiyui_event_t *event, void *user_data)
 ```
 
 Called synchronously on the UI thread. The event and its borrowed objects must not be kept beyond the callback.
@@ -96,13 +96,13 @@ Called synchronously on the UI thread. The event and its borrowed objects must n
 ### hiyui_mouse_move_fn
 
 ```c
-typedef void(* hiyui_mouse_move_fn) (int screen_x, int screen_y, int local_x, int local_y, void *user_data)
+typedef void(HIYUI_CALL * hiyui_mouse_move_fn) (int screen_x, int screen_y, int local_x, int local_y, void *user_data)
 ```
 
 ### hiyui_mouse_wheel_fn
 
 ```c
-typedef void(* hiyui_mouse_wheel_fn) (int local_x, int local_y, int delta_y, void *user_data)
+typedef void(HIYUI_CALL * hiyui_mouse_wheel_fn) (int local_x, int local_y, int delta_y, void *user_data)
 ```
 
 ## Functions

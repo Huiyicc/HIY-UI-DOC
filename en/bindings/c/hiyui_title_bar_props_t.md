@@ -97,3 +97,9 @@ int transition_ms
 ```c
 hiyui_bool_t bottom_shadow
 ```
+
+### button_style
+
+```c
+hiyui_title_bar_button_style_t button_style
+```

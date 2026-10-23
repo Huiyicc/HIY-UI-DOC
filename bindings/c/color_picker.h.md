@@ -23,7 +23,7 @@ title: "color_picker.h"
 ### hiyui_color_picker_change_fn
 
 ```c
-typedef void(* hiyui_color_picker_change_fn) (uint32_t color, uint8_t alpha, void *ud)
+typedef void(HIYUI_CALL * hiyui_color_picker_change_fn) (uint32_t color, uint8_t alpha, void *ud)
 ```
 
 ## 函数
@@ -33,6 +33,14 @@ typedef void(* hiyui_color_picker_change_fn) (uint32_t color, uint8_t alpha, voi
 ```c
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_color_picker_create(hiyui_widget_t *parent, const hiyui_color_picker_props_t *props)
 ```
+
+### hiyui_color_picker_set_palette
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_color_picker_set_palette(hiyui_widget_t *w, const hiyui_color_picker_palette_t *palette)
+```
+
+复制并应用实例配色，保留输入与弹层状态；palette 为 NULL 时恢复主题配色。
 
 ### hiyui_color_picker_set_color
 

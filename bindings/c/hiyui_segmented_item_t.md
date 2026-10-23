@@ -43,3 +43,9 @@ hiyui_font_icon_style_t icon_style
 ```c
 int data
 ```
+
+### tooltip
+
+```c
+const char * tooltip
+```

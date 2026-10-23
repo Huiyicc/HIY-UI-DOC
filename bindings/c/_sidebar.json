@@ -3,6 +3,10 @@
     "text": "C 绑定",
     "items": [
       {
+        "text": "abi.h",
+        "link": "/bindings/c/abi.h"
+      },
+      {
         "text": "anim.h",
         "link": "/bindings/c/anim.h"
       },
@@ -107,6 +111,10 @@
         "link": "/bindings/c/hiyui_accessibility_props_t"
       },
       {
+        "text": "hiyui_anim_props_ex_t",
+        "link": "/bindings/c/hiyui_anim_props_ex_t"
+      },
+      {
         "text": "hiyui_anim_props_t",
         "link": "/bindings/c/hiyui_anim_props_t"
       },
@@ -201,6 +209,10 @@
       {
         "text": "hiyui_checkbox_props_t",
         "link": "/bindings/c/hiyui_checkbox_props_t"
+      },
+      {
+        "text": "hiyui_color_picker_palette_t",
+        "link": "/bindings/c/hiyui_color_picker_palette_t"
       },
       {
         "text": "hiyui_color_picker_props_t",
@@ -487,6 +499,10 @@
         "link": "/bindings/c/hiyui_property_constraints_t"
       },
       {
+        "text": "hiyui_property_grid_palette_t",
+        "link": "/bindings/c/hiyui_property_grid_palette_t"
+      },
+      {
         "text": "hiyui_property_grid_props_t",
         "link": "/bindings/c/hiyui_property_grid_props_t"
       },
@@ -641,6 +657,10 @@
       {
         "text": "hiyui_text_arg_t",
         "link": "/bindings/c/hiyui_text_arg_t"
+      },
+      {
+        "text": "hiyui_tilt_params_t",
+        "link": "/bindings/c/hiyui_tilt_params_t"
       },
       {
         "text": "hiyui_time_picker_props_t",
@@ -921,6 +941,10 @@
       {
         "text": "theme.h",
         "link": "/bindings/c/theme.h"
+      },
+      {
+        "text": "tilt.h",
+        "link": "/bindings/c/tilt.h"
       },
       {
         "text": "time_picker.h",

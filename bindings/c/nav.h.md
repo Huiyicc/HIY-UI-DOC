@@ -20,6 +20,13 @@ title: "nav.h"
 | `HIYUI_SEGMENTED_SIZE_LARGE` |  |
 | `HIYUI_SEGMENTED_SIZE_FIT` |  |
 
+### hiyui_segmented_display_t
+
+| 值 | 说明 |
+|---|---|
+| `HIYUI_SEGMENTED_DISPLAY_DEFAULT` = 0 |  |
+| `HIYUI_SEGMENTED_DISPLAY_ICON_ONLY` |  |
+
 ### hiyui_tab_position_t
 
 | 值 | 说明 |
@@ -57,7 +64,7 @@ typedef struct hiyui_menu_item hiyui_menu_item_t
 ### hiyui_menu_expand_fn
 
 ```c
-typedef void(* hiyui_menu_expand_fn) (int node_index, int expanded, void *user_data)
+typedef void(HIYUI_CALL * hiyui_menu_expand_fn) (int node_index, int expanded, void *user_data)
 ```
 
 ## 函数

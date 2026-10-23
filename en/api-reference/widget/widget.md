@@ -329,6 +329,24 @@ Widget & imageScale(int value)
 
 Scales an image node around its center; 256 is the original size; non-image nodes do nothing.
 
+### zoom
+
+```cpp
+Widget & zoom(float factor)
+```
+
+Scales display and hit areas of the widget and descendants around the top-left without changing layout size; may be set before mounting.
+
+Finite factor from 0.1 to 4; 1 restores original display; invalid values or objects do nothing.
+
+### zoom
+
+```cpp
+float zoom() const
+```
+
+Returns the effective zoom factor, or 1 when unmounted or invalid.
+
 ### minimumSize
 
 ```cpp

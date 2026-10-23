@@ -59,25 +59,25 @@ title: "date_picker.h"
 ### hiyui_date_change_fn
 
 ```c
-typedef void(* hiyui_date_change_fn) (const hiyui_date_picker_value_t *v, void *ud)
+typedef void(HIYUI_CALL * hiyui_date_change_fn) (const hiyui_date_picker_value_t *v, void *ud)
 ```
 
 ### hiyui_date_calendar_fn
 
 ```c
-typedef void(* hiyui_date_calendar_fn) (const hiyui_date_value_t *v, void *ud)
+typedef void(HIYUI_CALL * hiyui_date_calendar_fn) (const hiyui_date_value_t *v, void *ud)
 ```
 
 ### hiyui_date_disabled_fn
 
 ```c
-typedef int(* hiyui_date_disabled_fn) (const hiyui_date_value_t *v, void *ud)
+typedef int(HIYUI_CALL * hiyui_date_disabled_fn) (const hiyui_date_value_t *v, void *ud)
 ```
 
 ### hiyui_date_panel_fn
 
 ```c
-typedef void(* hiyui_date_panel_fn) (hiyui_date_panel_mode_t mode, const hiyui_date_value_t *v, void *ud)
+typedef void(HIYUI_CALL * hiyui_date_panel_fn) (hiyui_date_panel_mode_t mode, const hiyui_date_value_t *v, void *ud)
 ```
 
 ## 函数

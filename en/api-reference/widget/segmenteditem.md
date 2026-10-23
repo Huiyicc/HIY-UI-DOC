@@ -20,6 +20,14 @@ const char * text
 
 Display text, UTF-8 encoded
 
+### tooltip
+
+```cpp
+const char * tooltip
+```
+
+Tooltip text, UTF-8 encoded
+
 ### iconCodepoint
 
 ```cpp

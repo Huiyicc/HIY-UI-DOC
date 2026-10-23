@@ -68,7 +68,7 @@ UI 线程使用的编辑会话；编辑结束、区域回收或数据结构变�
 ### hiyui_table_editor_factory_fn
 
 ```c
-typedef void(* hiyui_table_editor_factory_fn) (hiyui_widget_t *host, const hiyui_table_editor_t *editor, void *user_data)
+typedef void(HIYUI_CALL * hiyui_table_editor_factory_fn) (hiyui_widget_t *host, const hiyui_table_editor_t *editor, void *user_data)
 ```
 
 在表格拥有的 host 中构建子组件。 editor 仅在调用期间借用，跨回调使用前调用 hiyui_table_editor_clone。 不得销毁 host 或改变其父组件。 工厂只配置 host 子树，不得修改或销毁表格及其祖先。
@@ -374,7 +374,7 @@ HIYUI_API int HIYUI_CALL hiyui_table_get_selected_row_indices(hiyui_widget_t *t,
 ### hiyui_table_on_row_click
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_row_click(hiyui_widget_t *t, void(*cb)(int row_idx, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_row_click(hiyui_widget_t *t, void(HIYUI_CALL *cb)(int row_idx, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 行点击回调
@@ -382,7 +382,7 @@ HIYUI_API int HIYUI_CALL hiyui_table_on_row_click(hiyui_widget_t *t, void(*cb)(i
 ### hiyui_table_on_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_change(hiyui_widget_t *widget, void(*cb)(const int *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_change(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(const int *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 选择变化回调，indices 仅在回调内有效
@@ -390,7 +390,7 @@ HIYUI_API int HIYUI_CALL hiyui_table_on_change(hiyui_widget_t *widget, void(*cb)
 ### hiyui_table_on_sort_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_sort_change(hiyui_widget_t *t, void(*cb)(const char *data_index, hiyui_sort_direction_t dir, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_sort_change(hiyui_widget_t *t, void(HIYUI_CALL *cb)(const char *data_index, hiyui_sort_direction_t dir, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 排序变化回调
@@ -398,7 +398,7 @@ HIYUI_API int HIYUI_CALL hiyui_table_on_sort_change(hiyui_widget_t *t, void(*cb)
 ### hiyui_table_on_cell_edit
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_cell_edit(hiyui_widget_t *t, void(*cb)(int row, int col, const char *old_val, const char *new_val, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_cell_edit(hiyui_widget_t *t, void(HIYUI_CALL *cb)(int row, int col, const char *old_val, const char *new_val, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 单元格编辑回调，old_val/new_val 仅在回调内有效

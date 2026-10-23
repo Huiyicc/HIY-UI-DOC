@@ -26,12 +26,24 @@ typedef void(* hiyui_anim_notify_fn) (void *var)
 
 Receives the animation target.
 
+### hiyui_anim_exec_ex_fn
+
+```c
+typedef void(HIYUI_CALL * hiyui_anim_exec_ex_fn) (void *var, int32_t value)
+```
+
+### hiyui_anim_notify_ex_fn
+
+```c
+typedef void(HIYUI_CALL * hiyui_anim_notify_ex_fn) (void *var)
+```
+
 ## 函数
 
 ### hiyui_anim_start
 
 ```c
-void hiyui_anim_start(void *var, const hiyui_anim_props_t *props)
+HIYUI_API void HIYUI_CALL hiyui_anim_start(void *var, const hiyui_anim_props_t *props)
 ```
 
 启动动画；启动后由底层管理，无需调用方维护句柄。
@@ -44,7 +56,7 @@ void hiyui_anim_start(void *var, const hiyui_anim_props_t *props)
 ### hiyui_anim_stop
 
 ```c
-void hiyui_anim_stop(void *var, hiyui_anim_exec_fn cb)
+HIYUI_API void HIYUI_CALL hiyui_anim_stop(void *var, hiyui_anim_exec_fn cb)
 ```
 
 停止目标上匹配 exec_cb 的所有动画；var 或 cb 为空时无操作。
@@ -52,7 +64,7 @@ void hiyui_anim_stop(void *var, hiyui_anim_exec_fn cb)
 ### hiyui_anim_running
 
 ```c
-int hiyui_anim_running(void *var, hiyui_anim_exec_fn cb)
+HIYUI_API int HIYUI_CALL hiyui_anim_running(void *var, hiyui_anim_exec_fn cb)
 ```
 
 Includes delayed animations; NULL cb matches all animations for var.
@@ -60,7 +72,7 @@ Includes delayed animations; NULL cb matches all animations for var.
 ### hiyui_anim_stop_all
 
 ```c
-void hiyui_anim_stop_all(void *var)
+HIYUI_API void HIYUI_CALL hiyui_anim_stop_all(void *var)
 ```
 
 Stop all animations for a target; NULL is ignored.
@@ -68,5 +80,21 @@ Stop all animations for a target; NULL is ignored.
 ### hiyui_anim_retarget
 
 ```c
-int hiyui_anim_retarget(void *var, hiyui_anim_exec_fn cb, int32_t end)
+HIYUI_API int HIYUI_CALL hiyui_anim_retarget(void *var, hiyui_anim_exec_fn cb, int32_t end)
 ```
+
+### hiyui_anim_start_ex
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_anim_start_ex(void *var, const hiyui_anim_props_ex_t *props)
+```
+
+启动动画，回调以 stdcall 调用，字段语义同 hiyui_anim_props_t。
+
+### hiyui_anim_start_to
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_anim_start_to(void *var, int32_t start, int32_t end, uint32_t duration, hiyui_ease_t ease, uint32_t delay, uint32_t playback, int32_t repeat_count, hiyui_anim_exec_ex_fn exec_cb, hiyui_anim_notify_ex_fn finished_cb, hiyui_anim_notify_ex_fn removed_cb)
+```
+
+hiyui_anim_start_ex 的平铺参数版，内部组装属性结构体。

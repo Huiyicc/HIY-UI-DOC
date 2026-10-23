@@ -90,9 +90,15 @@ HIYUI_API void HIYUI_CALL hiyui_timer_set_period(hiyui_timer_t *t, uint32_t peri
 HIYUI_API hiyui_post_status_t HIYUI_CALL hiyui_post_ui(hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-投递回调到 UI 线程，可从普通线程调用。 回调至多执行一次；入队后回调与 destroy 在 UI 线程执行和释放， 拒绝时 destroy 在投递线程释放。不阻塞等待回调执行。
+投递回调到 UI 线程，可从普通线程调用。 回调至多执行一次；入队后 cb 与 destroy 均在 UI 线程调用，回调返回后释放，主循环停止时尚未执行的任务只释放。 拒绝时不调用 cb，并在本函数返回前于投递线程释放状态。 不等待回调执行完成；从其他线程投递时，回调及释放可能早于本函数返回。cb 与 destroy 均不得抛出异常。
 
-**返回值：** 投递结果；cb 为 NULL 时视为拒绝并返回 HIYUI_POST_STOPPED。
+| 参数 | 说明 |
+|---|---|
+| `ud` | 可为 NULL，仍原样传给 cb 和 destroy。 |
+| `destroy` | 非 NULL 时，调用即接管 ud，包含拒绝路径在内恰好释放一次，调用方不得再次释放或复用同一份状态重试；为 NULL 时不释放 ud，由调用方保证其在回调期间有效。 |
+
+
+**返回值：** 入队成功返回 HIYUI_POST_ACCEPTED，队列满返回 HIYUI_POST_QUEUE_FULL；cb 为 NULL、调度器未启动或已停止、内部分配或入队异常时返回 HIYUI_POST_STOPPED。
 
 ### hiyui_hotkey_text
 

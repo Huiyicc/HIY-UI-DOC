@@ -14,6 +14,14 @@ title: "PropertyGrid"
 
 ## 公开方法
 
+### palette
+
+```cpp
+PropertyGrid & palette(const PropertyGridPalette &value) &
+```
+
+复制并应用实例配色，保留内容与编辑状态；可在挂载前调用，失效对象无操作。
+
 ### properties
 
 ```cpp

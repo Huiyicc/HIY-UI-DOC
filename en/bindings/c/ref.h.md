@@ -19,7 +19,7 @@ Non-owning widget reference. All operations must run on the UI thread.
 ### hiyui_ref_fn
 
 ```c
-typedef void(* hiyui_ref_fn) (hiyui_widget_t *widget, void *user_data)
+typedef void(HIYUI_CALL * hiyui_ref_fn) (hiyui_widget_t *widget, void *user_data)
 ```
 
 ## Functions

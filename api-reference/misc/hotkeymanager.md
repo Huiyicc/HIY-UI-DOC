@@ -32,6 +32,14 @@ static HotkeyManager & instance()
 
 获取单例实例
 
+### ctrlPressed
+
+```cpp
+static bool ctrlPressed()
+```
+
+查询左右物理 Ctrl 是否有任一按下；UI 线程调用，macOS Command 不计入。
+
 ### eventCode
 
 ```cpp

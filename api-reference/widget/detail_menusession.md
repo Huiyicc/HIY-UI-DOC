@@ -29,3 +29,11 @@ bool anchorPressToggles
 ```
 
 锚点按压走 toggle 关闭，不按外部点击处理
+
+### ownerDeleteDsc
+
+```cpp
+lv_event_dsc_t * ownerDeleteDsc
+```
+
+owner 删除事件回调，会话随 owner 关闭

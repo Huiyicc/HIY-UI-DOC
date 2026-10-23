@@ -183,39 +183,39 @@ typedef struct hiyui_localized_text_s hiyui_localized_text_t
 ### hiyui_setup_fn
 
 ```c
-typedef void(* hiyui_setup_fn) (hiyui_app_t *app, void *user_data)
+typedef void( * hiyui_setup_fn) (hiyui_app_t *app, void *user_data)
 ```
 
 ### hiyui_callback_fn
 
 ```c
-typedef void(* hiyui_callback_fn) (void *user_data)
+typedef void( * hiyui_callback_fn) (void *user_data)
 ```
 
 ### hiyui_int_fn
 
 ```c
-typedef void(* hiyui_int_fn) (int value, void *user_data)
+typedef void( * hiyui_int_fn) (int value, void *user_data)
 ```
 
 ### hiyui_string_fn
 
 ```c
-typedef void(* hiyui_string_fn) (const char *text, void *user_data)
+typedef void( * hiyui_string_fn) (const char *text, void *user_data)
 ```
 
 ### hiyui_destroy_fn
 
 ```c
-typedef void(* hiyui_destroy_fn) (void *user_data)
+typedef void( * hiyui_destroy_fn) (void *user_data)
 ```
 
-释放回调状态，在 UI 线程调用一次；不得抛出异常或操作正在销毁的组件。
+释放回调状态，按接收该回调的 API 约定的线程调用一次；不得抛出异常或操作正在销毁的组件。
 
 ### hiyui_environment_fn
 
 ```c
-typedef void(* hiyui_environment_fn) (const hiyui_layout_environment_t *value, void *user_data)
+typedef void( * hiyui_environment_fn) (const hiyui_layout_environment_t *value, void *user_data)
 ```
 
 value 仅在回调期间有效，可复制保存。
@@ -223,7 +223,7 @@ value 仅在回调期间有效，可复制保存。
 ### hiyui_back_request_fn
 
 ```c
-typedef void(* hiyui_back_request_fn) (hiyui_back_request_t *request, void *user_data)
+typedef void( * hiyui_back_request_fn) (hiyui_back_request_t *request, void *user_data)
 ```
 
 request 仅在回调期间有效。
@@ -237,7 +237,7 @@ typedef struct hiyui_part_event_s hiyui_part_event_t
 ### hiyui_part_event_fn
 
 ```c
-typedef void(* hiyui_part_event_fn) (hiyui_part_event_t *event, void *user_data)
+typedef void( * hiyui_part_event_fn) (hiyui_part_event_t *event, void *user_data)
 ```
 
 ### hiyui_draw_ctx_t

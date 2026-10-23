@@ -204,7 +204,7 @@ typedef struct hiyui_xml_registry_snapshot_s hiyui_xml_registry_snapshot_t
 ### hiyui_xml_resolve_fn
 
 ```c
-typedef int(* hiyui_xml_resolve_fn) (const char *referring_source, const char *requested_source, size_t max_bytes, hiyui_xml_source_t *out, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_resolve_fn) (const char *referring_source, const char *requested_source, size_t max_bytes, hiyui_xml_source_t *out, void *user_data)
 ```
 
 成功返回非零；内容可用 max_bytes + 1 字节报告超限。
@@ -220,13 +220,13 @@ ItemTree 的只读递归视图；全部指针仅在 collector 回调期间有效
 ### hiyui_xml_userdata_destroy_fn
 
 ```c
-typedef void(* hiyui_xml_userdata_destroy_fn) (void *user_data)
+typedef void(HIYUI_CALL * hiyui_xml_userdata_destroy_fn) (void *user_data)
 ```
 
 ### hiyui_xml_factory_fn
 
 ```c
-typedef hiyui_xml_widget_result_t(* hiyui_xml_factory_fn) (hiyui_widget_t *parent, const hiyui_xml_attr_t *attrs, size_t attr_count, hiyui_xml_factory_context_t *context, void *user_data)
+typedef hiyui_xml_widget_result_t(HIYUI_CALL * hiyui_xml_factory_fn) (hiyui_widget_t *parent, const hiyui_xml_attr_t *attrs, size_t attr_count, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 加载器在工厂返回后统一应用通用 XML 属性，工厂不得重复应用。
@@ -234,13 +234,13 @@ typedef hiyui_xml_widget_result_t(* hiyui_xml_factory_fn) (hiyui_widget_t *paren
 ### hiyui_xml_item_collector_fn
 
 ```c
-typedef int(* hiyui_xml_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_item_t *items, size_t item_count, hiyui_xml_item_result_t *results, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_item_t *items, size_t item_count, hiyui_xml_item_result_t *results, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 ### hiyui_xml_tree_item_collector_fn
 
 ```c
-typedef int(* hiyui_xml_tree_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_tree_item_t *items, size_t item_count, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_tree_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_tree_item_t *items, size_t item_count, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 接收顶层 item 及其递归 children。
@@ -248,7 +248,7 @@ typedef int(* hiyui_xml_tree_item_collector_fn) (hiyui_widget_t *widget, const h
 ### hiyui_xml_property_validator_fn
 
 ```c
-typedef int(* hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 验证运行时绑定值；回调不得修改组件或外部状态。
@@ -256,7 +256,7 @@ typedef int(* hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const ch
 ### hiyui_xml_property_setter_fn
 
 ```c
-typedef int(* hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 应用已经通过同一注册描述 validator 的运行时绑定值。
@@ -264,7 +264,7 @@ typedef int(* hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char 
 ### hiyui_xml_value_reader_fn
 
 ```c
-typedef int(* hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_value_writer_t *writer, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_value_writer_t *writer, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 回调成功时必须写入注册描述声明的值类型；writer 仅在回调期间有效。
@@ -272,13 +272,13 @@ typedef int(* hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_valu
 ### hiyui_xml_command_fn
 
 ```c
-typedef void(* hiyui_xml_command_fn) (const hiyui_xml_command_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_xml_command_fn) (const hiyui_xml_command_event_t *event, void *user_data)
 ```
 
 ### hiyui_xml_read_fn
 
 ```c
-typedef ptrdiff_t(* hiyui_xml_read_fn) (char *buffer, size_t capacity, void *user_data)
+typedef ptrdiff_t(HIYUI_CALL * hiyui_xml_read_fn) (char *buffer, size_t capacity, void *user_data)
 ```
 
 返回 0 表示结束，负值表示失败，正值不得超过 capacity。

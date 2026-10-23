@@ -15,7 +15,7 @@ Shared by TimePicker / DatePicker. A year of 0 means no selection.
 ### hiyui_picker_footer_fn
 
 ```c
-typedef void(* hiyui_picker_footer_fn) (hiyui_widget_t *panel, void *ud)
+typedef void(HIYUI_CALL * hiyui_picker_footer_fn) (hiyui_widget_t *panel, void *ud)
 ```
 
 Popup footer build callback; builds custom child widgets inside the popup bottom container

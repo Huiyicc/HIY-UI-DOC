@@ -28,6 +28,14 @@ SegmentedSize size
 
 尺寸预设
 
+### display
+
+```cpp
+SegmentedDisplay display
+```
+
+内容形态
+
 ### width
 
 ```cpp

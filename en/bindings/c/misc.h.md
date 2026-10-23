@@ -86,9 +86,9 @@ Changes the timer period.
 HIYUI_API hiyui_post_status_t HIYUI_CALL hiyui_post_ui(hiyui_callback_fn cb, void *ud, hiyui_destroy_fn destroy)
 ```
 
-Posts a callback to the UI thread; callable from ordinary threads. The callback runs at most once. After enqueueing, the callback and destroy run and are released on the UI thread. When rejected, destroy is released on the posting thread. Does not block waiting for the callback to run.
+Posts a callback to the UI thread; callable from ordinary threads. The callback runs at most once. After enqueueing, cb and destroy run on the UI thread. State is released after the callback returns, or without invoking it if still pending when the main loop stops. Rejected tasks do not invoke cb and release their state on the posting thread before this function returns. Does not wait for callback completion. When posted from another thread, the callback and cleanup may finish before this function returns. Neither cb nor destroy may throw exceptions.
 
-Posting result. A NULL cb counts as rejected and returns HIYUI_POST_STOPPED.
+May be NULL; passed unchanged to cb and destroy. When non-NULL, this call takes ownership of ud and releases it exactly once, including rejection paths; the caller must not free it again or reuse the same state for a retry. When NULL, ud is not released and the caller must keep it valid throughout the callback. Returns HIYUI_POST_ACCEPTED when queued, HIYUI_POST_QUEUE_FULL when full, or HIYUI_POST_STOPPED for a NULL cb, a scheduler that has not started or has stopped, or an internal allocation or enqueue exception.
 
 ### hiyui_hotkey_text
 

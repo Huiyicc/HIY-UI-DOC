@@ -73,3 +73,9 @@ int radius
 ```c
 hiyui_bool_t animated
 ```
+
+### display
+
+```c
+hiyui_segmented_display_t display
+```

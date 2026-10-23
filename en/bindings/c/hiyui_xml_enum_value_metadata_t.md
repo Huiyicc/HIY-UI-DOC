@@ -31,3 +31,11 @@ const char * name
 ```c
 int64_t value
 ```
+
+### display_name
+
+```c
+const char * display_name
+```
+
+借用至注册快照销毁，未设置时为 NULL。

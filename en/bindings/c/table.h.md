@@ -68,7 +68,7 @@ Editing session used on the UI thread. It becomes invalid when editing ends, the
 ### hiyui_table_editor_factory_fn
 
 ```c
-typedef void(* hiyui_table_editor_factory_fn) (hiyui_widget_t *host, const hiyui_table_editor_t *editor, void *user_data)
+typedef void(HIYUI_CALL * hiyui_table_editor_factory_fn) (hiyui_widget_t *host, const hiyui_table_editor_t *editor, void *user_data)
 ```
 
 Builds child widgets inside a host owned by the table. editor is borrowed only for the duration of the call. Call hiyui_table_editor_clone before using it across callbacks. Must not destroy the host or change its parent. The factory only configures the host subtree and must not modify or destroy the table or its ancestors.
@@ -374,7 +374,7 @@ Fills original indices of selected rows and returns the total count. At most max
 ### hiyui_table_on_row_click
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_row_click(hiyui_widget_t *t, void(*cb)(int row_idx, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_row_click(hiyui_widget_t *t, void(HIYUI_CALL *cb)(int row_idx, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Row click callback.
@@ -382,7 +382,7 @@ Row click callback.
 ### hiyui_table_on_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_change(hiyui_widget_t *widget, void(*cb)(const int *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_change(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(const int *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Selection change callback. indices is valid only inside the callback.
@@ -390,7 +390,7 @@ Selection change callback. indices is valid only inside the callback.
 ### hiyui_table_on_sort_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_sort_change(hiyui_widget_t *t, void(*cb)(const char *data_index, hiyui_sort_direction_t dir, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_sort_change(hiyui_widget_t *t, void(HIYUI_CALL *cb)(const char *data_index, hiyui_sort_direction_t dir, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Sort change callback.
@@ -398,7 +398,7 @@ Sort change callback.
 ### hiyui_table_on_cell_edit
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_table_on_cell_edit(hiyui_widget_t *t, void(*cb)(int row, int col, const char *old_val, const char *new_val, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_table_on_cell_edit(hiyui_widget_t *t, void(HIYUI_CALL *cb)(int row, int col, const char *old_val, const char *new_val, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Cell edit callback. old_val/new_val are valid only inside the callback.

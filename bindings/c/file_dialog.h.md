@@ -34,7 +34,7 @@ title: "file_dialog.h"
 ### hiyui_file_dialog_result_fn
 
 ```c
-typedef void(* hiyui_file_dialog_result_fn) (hiyui_file_dialog_status_t status, const char *const *paths, int count, void *ud)
+typedef void(HIYUI_CALL * hiyui_file_dialog_result_fn) (hiyui_file_dialog_status_t status, const char *const *paths, int count, void *ud)
 ```
 
 结果回调，paths 数组在回调内有效，需持有请深拷贝

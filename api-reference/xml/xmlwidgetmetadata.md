@@ -19,3 +19,11 @@ bool itemAllowsChildren
 ```
 
 ItemList 的 item 是否允许包含组件子树。
+
+### extensions
+
+```cpp
+std::map< std::string, std::string > extensions
+```
+
+工具扩展元数据的独立副本，未知字段保留在专用 schema XML 中。

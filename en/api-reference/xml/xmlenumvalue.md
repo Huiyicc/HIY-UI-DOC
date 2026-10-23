@@ -9,3 +9,13 @@ title: "XmlEnumValue"
 **Namespace:** `hiyui`
 
 One enum name and value usable in XML.
+
+## Public Members
+
+### displayName
+
+```cpp
+std::string displayName
+```
+
+选项显示名，空时显示 name；不改变 XML 枚举值。

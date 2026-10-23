@@ -51,3 +51,59 @@ int narrowWidth
 ```
 
 小于此内容宽度时名称和值分行，0 禁用。
+
+### headerBg
+
+```cpp
+uint32_t headerBg
+```
+
+表头底色，HIYUI_DEFAULT 跟随主题。
+
+### groupBg
+
+```cpp
+uint32_t groupBg
+```
+
+分组行底色，HIYUI_DEFAULT 跟随主题。
+
+### selectedBg
+
+```cpp
+uint32_t selectedBg
+```
+
+选中行底色，HIYUI_DEFAULT 跟随主题。
+
+### hoverBg
+
+```cpp
+uint32_t hoverBg
+```
+
+行和操作控件的悬停底色，HIYUI_DEFAULT 跟随主题。
+
+### pressedBg
+
+```cpp
+uint32_t pressedBg
+```
+
+行和操作控件的按下底色，HIYUI_DEFAULT 跟随主题。
+
+### borderColor
+
+```cpp
+uint32_t borderColor
+```
+
+边框及分隔线颜色，HIYUI_DEFAULT 跟随主题。
+
+### secondaryTextColor
+
+```cpp
+uint32_t secondaryTextColor
+```
+
+说明、只读值和禁用操作的文字色，HIYUI_DEFAULT 跟随主题。

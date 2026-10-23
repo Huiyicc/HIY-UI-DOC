@@ -127,6 +127,14 @@ Top-level menu item list
 
 ## 状态查询
 
+### titleBarPalette
+
+```cpp
+Window & titleBarPalette(const TitleBarPalette &value)
+```
+
+Updates the custom title bar palette; no action without a custom title bar.
+
 ### titleBarHeight
 
 ```cpp

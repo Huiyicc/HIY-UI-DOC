@@ -19,7 +19,7 @@ typedef struct hiyui_ref_s hiyui_ref_t
 ### hiyui_ref_fn
 
 ```c
-typedef void(* hiyui_ref_fn) (hiyui_widget_t *widget, void *user_data)
+typedef void(HIYUI_CALL * hiyui_ref_fn) (hiyui_widget_t *widget, void *user_data)
 ```
 
 ## 函数

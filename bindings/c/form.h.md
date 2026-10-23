@@ -188,7 +188,7 @@ HIYUI_API void HIYUI_CALL hiyui_dropdown_set_part(hiyui_widget_t *dd, hiyui_drop
 ### hiyui_dropdown_set_search_matcher
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_dropdown_set_search_matcher(hiyui_widget_t *dd, int(*matcher)(const char *item_text, const char *query, void *ud), void *ud, hiyui_destroy_fn destroy)
+HIYUI_API void HIYUI_CALL hiyui_dropdown_set_search_matcher(hiyui_widget_t *dd, int(HIYUI_CALL *matcher)(const char *item_text, const char *query, void *ud), void *ud, hiyui_destroy_fn destroy)
 ```
 
 自定义搜索匹配；返回非 0 表示命中。matcher 为 NULL 恢复默认子串匹配。

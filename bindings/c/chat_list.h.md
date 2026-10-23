@@ -125,7 +125,7 @@ HIYUI_API int HIYUI_CALL hiyui_chat_is_at_bottom(hiyui_widget_t *cl)
 ### hiyui_chat_on_bubble_click
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(*cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
 ```
 
 气泡点击回调，item 字段借用内部，回调内有效
@@ -133,7 +133,7 @@ HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(*c
 ### hiyui_chat_on_bubble_long_press
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_long_press(hiyui_widget_t *cl, void(*cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_long_press(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
 ```
 
 气泡长按回调
@@ -141,7 +141,7 @@ HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_long_press(hiyui_widget_t *cl, vo
 ### hiyui_chat_on_scroll_to_top
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_scroll_to_top(hiyui_widget_t *cl, void(*cb)(void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_scroll_to_top(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(void *ud), void *ud)
 ```
 
 滚动到顶部回调（用于加载更多历史）

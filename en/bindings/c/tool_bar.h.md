@@ -70,7 +70,7 @@ The menu input is copied recursively during the set_menu call. Non-separator ids
 ### hiyui_tool_activate_fn
 
 ```c
-typedef void(* hiyui_tool_activate_fn) (const hiyui_tool_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tool_activate_fn) (const hiyui_tool_event_t *event, void *user_data)
 ```
 
 event is valid only during the callback and can be copied by value.
@@ -78,7 +78,7 @@ event is valid only during the callback and can be copied by value.
 ### hiyui_tool_change_fn
 
 ```c
-typedef void(* hiyui_tool_change_fn) (hiyui_tool_check_state_t value, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tool_change_fn) (hiyui_tool_check_state_t value, void *user_data)
 ```
 
 ### hiyui_tool_menu_snapshot_t

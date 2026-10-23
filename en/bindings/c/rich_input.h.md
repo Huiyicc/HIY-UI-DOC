@@ -183,7 +183,7 @@ HIYUI_API void HIYUI_CALL hiyui_rich_input_set_placeholder(hiyui_widget_t *ri, c
 ### hiyui_rich_input_on_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_rich_input_on_change(hiyui_widget_t *widget, void(*cb)(void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_rich_input_on_change(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Content change callback

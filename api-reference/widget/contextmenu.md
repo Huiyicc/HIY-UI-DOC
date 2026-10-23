@@ -14,6 +14,14 @@ title: "ContextMenu"
 
 ## 静态方法
 
+### palette
+
+```cpp
+static void palette(Widget &owner, const ContextMenuPalette &value)
+```
+
+为已挂载节点及后代复制菜单配色，最近祖先的配置生效；更新关闭该作用域内的菜单，节点删除时自动清理，失效节点无操作。
+
 ### open
 
 ```cpp

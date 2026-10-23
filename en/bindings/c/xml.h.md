@@ -204,7 +204,7 @@ typedef struct hiyui_xml_registry_snapshot_s hiyui_xml_registry_snapshot_t
 ### hiyui_xml_resolve_fn
 
 ```c
-typedef int(* hiyui_xml_resolve_fn) (const char *referring_source, const char *requested_source, size_t max_bytes, hiyui_xml_source_t *out, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_resolve_fn) (const char *referring_source, const char *requested_source, size_t max_bytes, hiyui_xml_source_t *out, void *user_data)
 ```
 
 Returns non-zero on success; content may report oversize with max_bytes + 1 bytes.
@@ -220,13 +220,13 @@ Read-only recursive view for ItemTree; all pointers are valid only during the co
 ### hiyui_xml_userdata_destroy_fn
 
 ```c
-typedef void(* hiyui_xml_userdata_destroy_fn) (void *user_data)
+typedef void(HIYUI_CALL * hiyui_xml_userdata_destroy_fn) (void *user_data)
 ```
 
 ### hiyui_xml_factory_fn
 
 ```c
-typedef hiyui_xml_widget_result_t(* hiyui_xml_factory_fn) (hiyui_widget_t *parent, const hiyui_xml_attr_t *attrs, size_t attr_count, hiyui_xml_factory_context_t *context, void *user_data)
+typedef hiyui_xml_widget_result_t(HIYUI_CALL * hiyui_xml_factory_fn) (hiyui_widget_t *parent, const hiyui_xml_attr_t *attrs, size_t attr_count, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 The loader applies common XML attributes uniformly after the factory returns; factories must not apply them again.
@@ -234,13 +234,13 @@ The loader applies common XML attributes uniformly after the factory returns; fa
 ### hiyui_xml_item_collector_fn
 
 ```c
-typedef int(* hiyui_xml_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_item_t *items, size_t item_count, hiyui_xml_item_result_t *results, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_item_t *items, size_t item_count, hiyui_xml_item_result_t *results, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 ### hiyui_xml_tree_item_collector_fn
 
 ```c
-typedef int(* hiyui_xml_tree_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_tree_item_t *items, size_t item_count, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_tree_item_collector_fn) (hiyui_widget_t *widget, const hiyui_xml_tree_item_t *items, size_t item_count, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 Receives top-level items and their recursive children.
@@ -248,7 +248,7 @@ Receives top-level items and their recursive children.
 ### hiyui_xml_property_validator_fn
 
 ```c
-typedef int(* hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_property_validator_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 Validates a runtime bound value; the callback must not modify widgets or external state.
@@ -256,7 +256,7 @@ Validates a runtime bound value; the callback must not modify widgets or externa
 ### hiyui_xml_property_setter_fn
 
 ```c
-typedef int(* hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_property_setter_fn) (hiyui_widget_t *widget, const char *attribute, const char *value, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 Applies a runtime bound value that already passed the validator of the same registration description.
@@ -264,7 +264,7 @@ Applies a runtime bound value that already passed the validator of the same regi
 ### hiyui_xml_value_reader_fn
 
 ```c
-typedef int(* hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_value_writer_t *writer, hiyui_xml_factory_context_t *context, void *user_data)
+typedef int(HIYUI_CALL * hiyui_xml_value_reader_fn) (hiyui_widget_t *widget, hiyui_xml_value_writer_t *writer, hiyui_xml_factory_context_t *context, void *user_data)
 ```
 
 On success the callback must write the value kind declared in the registration description; writer is valid only during the callback.
@@ -272,13 +272,13 @@ On success the callback must write the value kind declared in the registration d
 ### hiyui_xml_command_fn
 
 ```c
-typedef void(* hiyui_xml_command_fn) (const hiyui_xml_command_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_xml_command_fn) (const hiyui_xml_command_event_t *event, void *user_data)
 ```
 
 ### hiyui_xml_read_fn
 
 ```c
-typedef ptrdiff_t(* hiyui_xml_read_fn) (char *buffer, size_t capacity, void *user_data)
+typedef ptrdiff_t(HIYUI_CALL * hiyui_xml_read_fn) (char *buffer, size_t capacity, void *user_data)
 ```
 
 Returns 0 for end, a negative value for failure, and a positive value that must not exceed capacity.

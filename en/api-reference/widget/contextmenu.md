@@ -14,6 +14,14 @@ Not a Widget subclass; controlled through the static methods show and close.
 
 ## Static Methods
 
+### palette
+
+```cpp
+static void palette(Widget &owner, const ContextMenuPalette &value)
+```
+
+Copies a menu palette for a mounted node and its descendants; the nearest ancestor wins. Updating closes menus in that scope, deletion cleans up automatically, invalid nodes do nothing.
+
 ### open
 
 ```cpp

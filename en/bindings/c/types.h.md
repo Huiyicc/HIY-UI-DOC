@@ -183,39 +183,39 @@ typedef struct hiyui_localized_text_s hiyui_localized_text_t
 ### hiyui_setup_fn
 
 ```c
-typedef void(* hiyui_setup_fn) (hiyui_app_t *app, void *user_data)
+typedef void( * hiyui_setup_fn) (hiyui_app_t *app, void *user_data)
 ```
 
 ### hiyui_callback_fn
 
 ```c
-typedef void(* hiyui_callback_fn) (void *user_data)
+typedef void( * hiyui_callback_fn) (void *user_data)
 ```
 
 ### hiyui_int_fn
 
 ```c
-typedef void(* hiyui_int_fn) (int value, void *user_data)
+typedef void( * hiyui_int_fn) (int value, void *user_data)
 ```
 
 ### hiyui_string_fn
 
 ```c
-typedef void(* hiyui_string_fn) (const char *text, void *user_data)
+typedef void( * hiyui_string_fn) (const char *text, void *user_data)
 ```
 
 ### hiyui_destroy_fn
 
 ```c
-typedef void(* hiyui_destroy_fn) (void *user_data)
+typedef void( * hiyui_destroy_fn) (void *user_data)
 ```
 
-Releases callback state, called once on the UI thread. Must not throw exceptions or touch widgets being destroyed.
+Releases callback state once on the thread specified by the receiving API. Must not throw exceptions or touch widgets being destroyed.
 
 ### hiyui_environment_fn
 
 ```c
-typedef void(* hiyui_environment_fn) (const hiyui_layout_environment_t *value, void *user_data)
+typedef void( * hiyui_environment_fn) (const hiyui_layout_environment_t *value, void *user_data)
 ```
 
 value is valid only during the callback and can be copied for later use.
@@ -223,7 +223,7 @@ value is valid only during the callback and can be copied for later use.
 ### hiyui_back_request_fn
 
 ```c
-typedef void(* hiyui_back_request_fn) (hiyui_back_request_t *request, void *user_data)
+typedef void( * hiyui_back_request_fn) (hiyui_back_request_t *request, void *user_data)
 ```
 
 request is valid only during the callback.
@@ -237,7 +237,7 @@ typedef struct hiyui_part_event_s hiyui_part_event_t
 ### hiyui_part_event_fn
 
 ```c
-typedef void(* hiyui_part_event_fn) (hiyui_part_event_t *event, void *user_data)
+typedef void( * hiyui_part_event_fn) (hiyui_part_event_t *event, void *user_data)
 ```
 
 ### hiyui_draw_ctx_t

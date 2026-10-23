@@ -32,6 +32,22 @@ lv_obj_t * getRaw(const char *id) const
 
 Gets the underlying object by ID without checking the component type.
 
+### itemHost
+
+```cpp
+Ref< Widget > itemHost(const char *id, size_t index) const
+```
+
+查询 ItemList 条目的内容宿主；索引越界、没有宿主或宿主已销毁时返回空引用。
+
+### activate
+
+```cpp
+XmlActivation activate(const char *id, Widget &anchor) const
+```
+
+展示锚点作用域内的配置对象；同名 ID 使用最近祖先的声明，失败原因保留在返回值中。
+
 ### diagnostics
 
 ```cpp

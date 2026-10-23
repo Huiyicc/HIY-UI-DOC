@@ -58,12 +58,6 @@ const struct hiyui_context_menu_item_t * children
 int child_count
 ```
 
-### action
-
-```c
-void(* action
-```
-
 ### icon_style
 
 ```c
@@ -76,14 +70,28 @@ hiyui_font_icon_style_t icon_style
 hiyui_hotkey_t accelerator
 ```
 
-### action_ex
+### user_data
 
 ```c
-void(* action_ex
+void * user_data
 ```
 
 ### action_ud
 
 ```c
 void * action_ud
+```
+
+## 公开方法
+
+### void
+
+```c
+void(HIYUI_CALL *action)(hiyui_widget_t *owner)
+```
+
+### void
+
+```c
+void(HIYUI_CALL *action_ex)(hiyui_widget_t *owner
 ```

@@ -125,7 +125,7 @@ Whether the list is already at the bottom
 ### hiyui_chat_on_bubble_click
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(*cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_click(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
 ```
 
 Bubble click callback; item fields borrow internal storage and are valid inside the callback
@@ -133,7 +133,7 @@ Bubble click callback; item fields borrow internal storage and are valid inside 
 ### hiyui_chat_on_bubble_long_press
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_long_press(hiyui_widget_t *cl, void(*cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_bubble_long_press(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(const hiyui_chat_item_t *item, int idx, void *ud), void *ud)
 ```
 
 Bubble long-press callback
@@ -141,7 +141,7 @@ Bubble long-press callback
 ### hiyui_chat_on_scroll_to_top
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_chat_on_scroll_to_top(hiyui_widget_t *cl, void(*cb)(void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_chat_on_scroll_to_top(hiyui_widget_t *cl, void(HIYUI_CALL *cb)(void *ud), void *ud)
 ```
 
 Scroll-to-top callback, used to load more history

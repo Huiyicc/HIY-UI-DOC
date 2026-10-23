@@ -32,6 +32,14 @@ static HotkeyManager & instance()
 
 Returns the singleton instance
 
+### ctrlPressed
+
+```cpp
+static bool ctrlPressed()
+```
+
+Returns whether either physical Ctrl key is held; call on the UI thread, macOS Command is not included.
+
 ### eventCode
 
 ```cpp

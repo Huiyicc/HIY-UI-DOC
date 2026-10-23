@@ -28,6 +28,14 @@ SegmentedSize size
 
 Size preset
 
+### display
+
+```cpp
+SegmentedDisplay display
+```
+
+Content display mode
+
 ### width
 
 ```cpp

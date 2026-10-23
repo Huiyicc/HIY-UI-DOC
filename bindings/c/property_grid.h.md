@@ -124,7 +124,7 @@ typedef struct hiyui_property_request_t hiyui_property_request_t
 ### hiyui_property_commit_fn
 
 ```c
-typedef void(* hiyui_property_commit_fn) (hiyui_property_request_t *request, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_commit_fn) (hiyui_property_request_t *request, void *user_data)
 ```
 
 回调参数仅在回调期间有效，异步处理通过 request_defer 保存应答句柄。
@@ -132,7 +132,7 @@ typedef void(* hiyui_property_commit_fn) (hiyui_property_request_t *request, voi
 ### hiyui_property_editor_factory_fn
 
 ```c
-typedef void(* hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hiyui_property_editor_t *editor, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hiyui_property_editor_t *editor, void *user_data)
 ```
 
 只构建 host 子树，不得修改设计器或改变 host 所有权；保留 editor 前须 clone。
@@ -140,7 +140,7 @@ typedef void(* hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hi
 ### hiyui_property_formatter_fn
 
 ```c
-typedef const char *(* hiyui_property_formatter_fn) (const hiyui_property_item_t *item, const hiyui_property_value_t *value, void *user_data)
+typedef const char *(HIYUI_CALL * hiyui_property_formatter_fn) (const hiyui_property_item_t *item, const hiyui_property_value_t *value, void *user_data)
 ```
 
 返回的字符串在回调返回时复制；回调期间不得修改设计器。
@@ -148,13 +148,13 @@ typedef const char *(* hiyui_property_formatter_fn) (const hiyui_property_item_t
 ### hiyui_property_change_fn
 
 ```c
-typedef void(* hiyui_property_change_fn) (const hiyui_property_change_t *change, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_change_fn) (const hiyui_property_change_t *change, void *user_data)
 ```
 
 ### hiyui_property_id_fn
 
 ```c
-typedef void(* hiyui_property_id_fn) (hiyui_property_id_t id, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_id_fn) (hiyui_property_id_t id, void *user_data)
 ```
 
 ## 函数
@@ -178,6 +178,14 @@ HIYUI_API void HIYUI_CALL hiyui_property_item_init(hiyui_property_item_t *item)
 ```c
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_property_grid_create(hiyui_widget_t *parent, const hiyui_property_grid_props_t *props)
 ```
+
+### hiyui_property_grid_set_palette
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_property_grid_set_palette(hiyui_widget_t *grid, const hiyui_property_grid_palette_t *palette)
+```
+
+复制并应用配色，保留内容与编辑状态；grid 为 NULL 时无操作，palette 为 NULL 时恢复主题配色。
 
 ### hiyui_property_grid_set_properties
 
@@ -538,3 +546,59 @@ HIYUI_API int HIYUI_CALL hiyui_property_reply_accept_value(const hiyui_property_
 ```c
 HIYUI_API int HIYUI_CALL hiyui_property_reply_reject(const hiyui_property_reply_t *reply, const char *message)
 ```
+
+### hiyui_property_value_snapshot_view_ptr
+
+```c
+HIYUI_API const hiyui_property_value_t *HIYUI_CALL hiyui_property_value_snapshot_view_ptr(const hiyui_property_value_snapshot_t *snapshot)
+```
+
+快照值视图的指针形态，供无法按值接收结构体的外部语言使用；snapshot 为 NULL 时返回 NULL，视图随快照销毁失效。
+
+### hiyui_property_value_view_kind
+
+```c
+HIYUI_API hiyui_property_value_kind_t HIYUI_CALL hiyui_property_value_view_kind(const hiyui_property_value_t *view)
+```
+
+读取值类型；view 为 NULL 时返回 HIYUI_PROPERTY_VALUE_EMPTY。
+
+### hiyui_property_value_view_integer
+
+```c
+HIYUI_API int64_t HIYUI_CALL hiyui_property_value_view_integer(const hiyui_property_value_t *view)
+```
+
+读取整数或无符号值，类型不符或 view 为 NULL 时返回 0。
+
+### hiyui_property_value_view_number
+
+```c
+HIYUI_API double HIYUI_CALL hiyui_property_value_view_number(const hiyui_property_value_t *view)
+```
+
+读取数值，类型不符或 view 为 NULL 时返回 0。
+
+### hiyui_property_value_view_boolean
+
+```c
+HIYUI_API int HIYUI_CALL hiyui_property_value_view_boolean(const hiyui_property_value_t *view)
+```
+
+读取布尔值，类型不符或 view 为 NULL 时返回 0。
+
+### hiyui_property_value_view_text
+
+```c
+HIYUI_API const char *HIYUI_CALL hiyui_property_value_view_text(const hiyui_property_value_t *view)
+```
+
+读取文本，类型不符或 view 为 NULL 时返回 NULL，文本随快照失效。
+
+### hiyui_property_value_snapshot_view_to
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_property_value_snapshot_view_to(const hiyui_property_value_snapshot_t *snapshot, hiyui_property_value_kind_t *kind, int64_t *integer, double *number, int *boolean, const char **text)
+```
+
+一次调用写出快照值的常用字段，各输出指针可为 NULL。

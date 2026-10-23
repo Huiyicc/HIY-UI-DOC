@@ -9,3 +9,21 @@ title: "XmlDocumentMetadata"
 **Namespace:** `hiyui`
 
 Schema description of document-level XML elements.
+
+## Public Members
+
+### layoutRules
+
+```cpp
+XmlWidgetMetadata layoutRules
+```
+
+Layout attachment metadata; empty with layoutRule when rules are not declared.
+
+### layoutRule
+
+```cpp
+XmlWidgetMetadata layoutRule
+```
+
+A host size condition.

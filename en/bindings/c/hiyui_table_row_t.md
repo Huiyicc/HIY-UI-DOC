@@ -56,14 +56,28 @@ const struct hiyui_table_row_t * children
 int child_count
 ```
 
-### expanded_content
+### flat_row_idx
 
 ```c
-int(* expanded_content
+int flat_row_idx
+```
+
+### user_data
+
+```c
+int void * user_data
 ```
 
 ### expanded_content_ud
 
 ```c
 void * expanded_content_ud
+```
+
+## Public Methods
+
+### int
+
+```c
+int(HIYUI_CALL *expanded_content)(hiyui_widget_t *parent
 ```

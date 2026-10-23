@@ -19,3 +19,11 @@ bool itemAllowsChildren
 ```
 
 Whether ItemList items may contain component subtrees.
+
+### extensions
+
+```cpp
+std::map< std::string, std::string > extensions
+```
+
+工具扩展元数据的独立副本，未知字段保留在专用 schema XML 中。

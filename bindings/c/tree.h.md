@@ -153,7 +153,7 @@ HIYUI_API void HIYUI_CALL hiyui_tree_clear_nodes(hiyui_widget_t *t, hiyui_notify
 ### hiyui_tree_on_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_change(hiyui_widget_t *widget, void(*cb)(const uint32_t *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_change(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(const uint32_t *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 选中变化回调
@@ -161,7 +161,7 @@ HIYUI_API int HIYUI_CALL hiyui_tree_on_change(hiyui_widget_t *widget, void(*cb)(
 ### hiyui_tree_on_check
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(*cb)(uint32_t id, int checked, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t id, int checked, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 勾选变化回调
@@ -169,7 +169,7 @@ HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(*cb)(uint32
 ### hiyui_tree_on_expand
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(*cb)(uint32_t id, int expanded, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t id, int expanded, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 展开变化回调
@@ -177,7 +177,7 @@ HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(*cb)(uint3
 ### hiyui_tree_on_drop
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_drop(hiyui_widget_t *t, void(*cb)(uint32_t src, uint32_t target, hiyui_tree_drop_position_t pos, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_drop(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t src, uint32_t target, hiyui_tree_drop_position_t pos, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 拖拽完成回调
@@ -185,7 +185,7 @@ HIYUI_API int HIYUI_CALL hiyui_tree_on_drop(hiyui_widget_t *t, void(*cb)(uint32_
 ### hiyui_tree_set_custom_field
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_tree_set_custom_field(hiyui_widget_t *t, void(*cb)(hiyui_widget_t *area, const hiyui_tree_node_view_t *node, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_tree_set_custom_field(hiyui_widget_t *t, void(HIYUI_CALL *cb)(hiyui_widget_t *area, const hiyui_tree_node_view_t *node, void *ud), void *ud)
 ```
 
 自定义字段渲染回调，node 视图借用内部，回调内有效
@@ -241,5 +241,5 @@ HIYUI_API int HIYUI_CALL hiyui_tree_get_selected_nodes(hiyui_widget_t *t, uint32
 ### hiyui_tree_on_activate
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_activate(hiyui_widget_t *widget, void(*cb)(uint32_t, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_activate(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(uint32_t, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```

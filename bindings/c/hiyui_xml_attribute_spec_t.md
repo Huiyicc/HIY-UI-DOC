@@ -133,3 +133,11 @@ size_t enum_value_count
 ```c
 const char * description
 ```
+
+### display_name
+
+```c
+const char * display_name
+```
+
+显示名，NULL 时显示 name。

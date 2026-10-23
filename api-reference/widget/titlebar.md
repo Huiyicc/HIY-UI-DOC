@@ -39,6 +39,14 @@ TitleBar(TitleBarProps props={})
 
 通过属性聚合构造
 
+### palette
+
+```cpp
+TitleBar & palette(const TitleBarPalette &value) &
+```
+
+复制并应用实例配色；可在挂载前调用，失效对象无操作。
+
 ### init
 
 ```cpp

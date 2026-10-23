@@ -29,3 +29,11 @@ bool anchorPressToggles
 ```
 
 Anchor press closes via toggle instead of being handled as an outside click
+
+### ownerDeleteDsc
+
+```cpp
+lv_event_dsc_t * ownerDeleteDsc
+```
+
+Delete-event callback on the owner; the session closes with its owner

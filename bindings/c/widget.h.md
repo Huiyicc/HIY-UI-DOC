@@ -90,6 +90,15 @@ title: "widget.h"
 | `HIYUI_ACCESSIBILITY_SLIDER` |  |
 | `HIYUI_ACCESSIBILITY_PROGRESS` |  |
 | `HIYUI_ACCESSIBILITY_EDIT` |  |
+| `HIYUI_ACCESSIBILITY_COMBO_BOX` |  |
+| `HIYUI_ACCESSIBILITY_TAB` |  |
+| `HIYUI_ACCESSIBILITY_MENU_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_TREE_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_LIST_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_IMAGE` |  |
+| `HIYUI_ACCESSIBILITY_DIALOG` |  |
+| `HIYUI_ACCESSIBILITY_TABLE` |  |
+| `HIYUI_ACCESSIBILITY_CELL` |  |
 
 ### hiyui_cursor_t
 
@@ -122,7 +131,7 @@ title: "widget.h"
 ### hiyui_text_binding_fn
 
 ```c
-typedef void(* hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text, void *user_data)
+typedef void(HIYUI_CALL * hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text, void *user_data)
 ```
 
 文案借用至回调返回；回调在 UI 线程调用，可用 set_text_content 更新节点。
@@ -130,7 +139,7 @@ typedef void(* hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text,
 ### hiyui_theme_style_fn
 
 ```c
-typedef void(* hiyui_theme_style_fn) (hiyui_style_spec_set_t *out, void *user_data)
+typedef void(HIYUI_CALL * hiyui_theme_style_fn) (hiyui_style_spec_set_t *out, void *user_data)
 ```
 
 填写已初始化的默认样式，out 仅在回调内有效；回调不得改变主题或删除组件。 输出的图片源及路径为借用值，须保持有效至替换该图片或组件销毁。

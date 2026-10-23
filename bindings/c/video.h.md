@@ -64,19 +64,19 @@ HIYUI_API int HIYUI_CALL hiyui_video_on_error(hiyui_widget_t *widget, hiyui_vide
 ### hiyui_video_state_fn
 
 ```c
-typedef void(* hiyui_video_state_fn) (hiyui_video_playback_state_t state, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_state_fn) (hiyui_video_playback_state_t state, void *user_data)
 ```
 
 ### hiyui_video_position_fn
 
 ```c
-typedef void(* hiyui_video_position_fn) (int64_t position_ms, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_position_fn) (int64_t position_ms, void *user_data)
 ```
 
 ### hiyui_video_error_fn
 
 ```c
-typedef void(* hiyui_video_error_fn) (const char *message, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_error_fn) (const char *message, void *user_data)
 ```
 
 message 仅在当前回调内有效，不得保存该指针。

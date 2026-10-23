@@ -141,6 +141,14 @@ Window & menu(std::vector< MenuBarItem > items)
 
 ## 状态查询
 
+### titleBarPalette
+
+```cpp
+Window & titleBarPalette(const TitleBarPalette &value)
+```
+
+更新自绘标题栏配色；没有自绘标题栏时无操作。
+
 ### titleBarHeight
 
 ```cpp

@@ -34,7 +34,7 @@ typedef struct hiyui_popup_panel_s hiyui_popup_panel_t
 ### hiyui_popup_panel_build_fn
 
 ```c
-typedef void(* hiyui_popup_panel_build_fn) (hiyui_widget_t *panel, void *ud)
+typedef void(HIYUI_CALL * hiyui_popup_panel_build_fn) (hiyui_widget_t *panel, void *ud)
 ```
 
 内容构造回调，panel 为面板内容容器
@@ -72,7 +72,7 @@ HIYUI_API int HIYUI_CALL hiyui_popup_panel_is_open(hiyui_popup_panel_t *pp)
 ### hiyui_popup_panel_on_close
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_popup_panel_on_close(hiyui_popup_panel_t *pp, void(*cb)(void *), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_popup_panel_on_close(hiyui_popup_panel_t *pp, void(HIYUI_CALL *cb)(void *), void *ud)
 ```
 
 ### hiyui_popup_panel_destroy

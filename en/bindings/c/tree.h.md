@@ -153,7 +153,7 @@ HIYUI_API void HIYUI_CALL hiyui_tree_clear_nodes(hiyui_widget_t *t, hiyui_notify
 ### hiyui_tree_on_change
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_change(hiyui_widget_t *widget, void(*cb)(const uint32_t *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_change(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(const uint32_t *, int, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Selection change callback
@@ -161,7 +161,7 @@ Selection change callback
 ### hiyui_tree_on_check
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(*cb)(uint32_t id, int checked, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_check(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t id, int checked, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Check state change callback
@@ -169,7 +169,7 @@ Check state change callback
 ### hiyui_tree_on_expand
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(*cb)(uint32_t id, int expanded, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_expand(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t id, int expanded, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Expand state change callback
@@ -177,7 +177,7 @@ Expand state change callback
 ### hiyui_tree_on_drop
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_drop(hiyui_widget_t *t, void(*cb)(uint32_t src, uint32_t target, hiyui_tree_drop_position_t pos, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_drop(hiyui_widget_t *t, void(HIYUI_CALL *cb)(uint32_t src, uint32_t target, hiyui_tree_drop_position_t pos, void *ud), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```
 
 Drop completion callback
@@ -185,7 +185,7 @@ Drop completion callback
 ### hiyui_tree_set_custom_field
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_tree_set_custom_field(hiyui_widget_t *t, void(*cb)(hiyui_widget_t *area, const hiyui_tree_node_view_t *node, void *ud), void *ud)
+HIYUI_API void HIYUI_CALL hiyui_tree_set_custom_field(hiyui_widget_t *t, void(HIYUI_CALL *cb)(hiyui_widget_t *area, const hiyui_tree_node_view_t *node, void *ud), void *ud)
 ```
 
 Custom field render callback; the node view borrows internal storage and is valid inside the callback
@@ -241,5 +241,5 @@ Fills selected node ids and returns the total; at most max_count entries are wri
 ### hiyui_tree_on_activate
 
 ```c
-HIYUI_API int HIYUI_CALL hiyui_tree_on_activate(hiyui_widget_t *widget, void(*cb)(uint32_t, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
+HIYUI_API int HIYUI_CALL hiyui_tree_on_activate(hiyui_widget_t *widget, void(HIYUI_CALL *cb)(uint32_t, void *), void *ud, hiyui_destroy_fn destroy, hiyui_event_handle_t **out_handle)
 ```

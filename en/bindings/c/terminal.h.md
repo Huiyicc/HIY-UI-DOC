@@ -56,7 +56,7 @@ title: "terminal.h"
 ### hiyui_terminal_input_fn
 
 ```c
-typedef void(* hiyui_terminal_input_fn) (const hiyui_terminal_input_t *input, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_input_fn) (const hiyui_terminal_input_t *input, void *user_data)
 ```
 
 ### hiyui_terminal_model_t
@@ -68,7 +68,7 @@ typedef struct hiyui_terminal_model hiyui_terminal_model_t
 ### hiyui_terminal_data_fn
 
 ```c
-typedef void(* hiyui_terminal_data_fn) (const char *data, size_t size, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_data_fn) (const char *data, size_t size, void *user_data)
 ```
 
 The data is valid only during the callback and may contain zero bytes. The callback is invoked on the UI thread.
@@ -76,7 +76,7 @@ The data is valid only during the callback and may contain zero bytes. The callb
 ### hiyui_terminal_resize_fn
 
 ```c
-typedef void(* hiyui_terminal_resize_fn) (hiyui_terminal_size_t size, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_resize_fn) (hiyui_terminal_size_t size, void *user_data)
 ```
 
 ## Functions
@@ -142,7 +142,7 @@ Returns the required length. With a non-zero capacity, copies at most capacity-1
 ### hiyui_terminal_model_take_output
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_terminal_model_take_output(hiyui_terminal_model_t *model, void(*callback)(const char *, size_t, void *), void *user_data)
+HIYUI_API void HIYUI_CALL hiyui_terminal_model_take_output(hiyui_terminal_model_t *model, void(HIYUI_CALL *callback)(const char *, size_t, void *), void *user_data)
 ```
 
 Passes all pending output bytes to the callback and clears them. A NULL model or callback is a no-op.

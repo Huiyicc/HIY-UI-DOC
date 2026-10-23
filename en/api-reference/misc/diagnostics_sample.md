@@ -8,7 +8,7 @@ title: "diagnostics::Sample"
 
 **Namespace:** `hiyui`
 
-Process and LVGL readings; the memory figures overlap and must not be summed.
+Process, LVGL and resource readings; the memory figures overlap and must not be summed.
 
 ## Public Members
 

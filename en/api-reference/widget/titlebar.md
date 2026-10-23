@@ -39,6 +39,14 @@ TitleBar(TitleBarProps props={})
 
 Aggregate construction from properties
 
+### palette
+
+```cpp
+TitleBar & palette(const TitleBarPalette &value) &
+```
+
+Copies and applies the palette; may be called before mounting, no action on invalid objects.
+
 ### init
 
 ```cpp

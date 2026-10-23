@@ -68,12 +68,6 @@ const struct hiyui_tree_node_t * children
 int child_count
 ```
 
-### lazy_load
-
-```c
-void(* lazy_load
-```
-
 ### lazy_load_ud
 
 ```c
@@ -87,3 +81,11 @@ const hiyui_localized_text_t * localized_text
 ```
 
 The translation description is copied when called and overrides the plain text; a null or invalid description falls back to the plain text.
+
+## Public Methods
+
+### void
+
+```c
+void(HIYUI_CALL *lazy_load)(uint32_t id
+```

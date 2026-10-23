@@ -332,6 +332,26 @@ Widget & imageScale(int value)
 
 图片节点围绕中心缩放，256 为原始大小；非图片节点无操作。
 
+### zoom
+
+```cpp
+Widget & zoom(float factor)
+```
+
+围绕左上角缩放组件及后代的显示与命中区域，不改变布局尺寸，支持挂载前设置。
+
+| 参数 | 说明 |
+|---|---|
+| `factor` | 有限倍率 0.1 至 4，1 恢复原始显示；无效值或失效对象无操作。 |
+
+### zoom
+
+```cpp
+float zoom() const
+```
+
+获取实际生效的缩放倍率，未挂载或失效时返回 1。
+
 ### minimumSize
 
 ```cpp

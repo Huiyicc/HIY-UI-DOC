@@ -28,13 +28,13 @@ Carousel, aligned with hiyui::Carousel
 ### hiyui_carousel_page_fn
 
 ```c
-typedef void(* hiyui_carousel_page_fn) (hiyui_widget_t *page, void *ud)
+typedef void(HIYUI_CALL * hiyui_carousel_page_fn) (hiyui_widget_t *page, void *ud)
 ```
 
 ### hiyui_carousel_change_fn
 
 ```c
-typedef void(* hiyui_carousel_change_fn) (int index, void *ud)
+typedef void(HIYUI_CALL * hiyui_carousel_change_fn) (int index, void *ud)
 ```
 
 ## Functions

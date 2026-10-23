@@ -8,6 +8,7 @@ These pages are generated from source code comments.
 
 ## C Binding
 
+- [abi.h](abi.h)
 - [anim.h](anim.h)
 - [app.h](app.h)
 - [basic.h](basic.h)
@@ -34,6 +35,7 @@ These pages are generated from source code comments.
 - [glass.h](glass.h)
 - [hiyui.h](hiyui.h)
 - [hiyui_accessibility_props_t](hiyui_accessibility_props_t)
+- [hiyui_anim_props_ex_t](hiyui_anim_props_ex_t)
 - [hiyui_anim_props_t](hiyui_anim_props_t)
 - [hiyui_avatar_props_t](hiyui_avatar_props_t)
 - [hiyui_back_request_t](hiyui_back_request_t)
@@ -58,6 +60,7 @@ These pages are generated from source code comments.
 - [hiyui_chat_item_t](hiyui_chat_item_t)
 - [hiyui_chat_list_props_t](hiyui_chat_list_props_t)
 - [hiyui_checkbox_props_t](hiyui_checkbox_props_t)
+- [hiyui_color_picker_palette_t](hiyui_color_picker_palette_t)
 - [hiyui_color_picker_props_t](hiyui_color_picker_props_t)
 - [hiyui_confirm_dialog_props_t](hiyui_confirm_dialog_props_t)
 - [hiyui_context_menu_item_t](hiyui_context_menu_item_t)
@@ -129,6 +132,7 @@ These pages are generated from source code comments.
 - [hiyui_progress_segment_t](hiyui_progress_segment_t)
 - [hiyui_property_change_t](hiyui_property_change_t)
 - [hiyui_property_constraints_t](hiyui_property_constraints_t)
+- [hiyui_property_grid_palette_t](hiyui_property_grid_palette_t)
 - [hiyui_property_grid_props_t](hiyui_property_grid_props_t)
 - [hiyui_property_item_t](hiyui_property_item_t)
 - [hiyui_property_option_t](hiyui_property_option_t)
@@ -168,6 +172,7 @@ These pages are generated from source code comments.
 - [hiyui_terminal_props_t](hiyui_terminal_props_t)
 - [hiyui_terminal_size_t](hiyui_terminal_size_t)
 - [hiyui_text_arg_t](hiyui_text_arg_t)
+- [hiyui_tilt_params_t](hiyui_tilt_params_t)
 - [hiyui_time_picker_props_t](hiyui_time_picker_props_t)
 - [hiyui_time_picker_value_t](hiyui_time_picker_value_t)
 - [hiyui_time_value_t](hiyui_time_value_t)
@@ -238,6 +243,7 @@ These pages are generated from source code comments.
 - [tabs_ex.h](tabs_ex.h)
 - [terminal.h](terminal.h)
 - [theme.h](theme.h)
+- [tilt.h](tilt.h)
 - [time_picker.h](time_picker.h)
 - [title_bar.h](title_bar.h)
 - [tool_bar.h](tool_bar.h)

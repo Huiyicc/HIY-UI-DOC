@@ -40,13 +40,13 @@ typedef struct hiyui_system_tray_s hiyui_system_tray_t
 ### hiyui_system_tray_click_fn
 
 ```c
-typedef void(* hiyui_system_tray_click_fn) (int32_t screen_x, int32_t screen_y, void *user_data)
+typedef void(HIYUI_CALL * hiyui_system_tray_click_fn) (int32_t screen_x, int32_t screen_y, void *user_data)
 ```
 
 ### hiyui_system_tray_notify_fn
 
 ```c
-typedef void(* hiyui_system_tray_notify_fn) (void *user_data)
+typedef void(HIYUI_CALL * hiyui_system_tray_notify_fn) (void *user_data)
 ```
 
 ## 函数

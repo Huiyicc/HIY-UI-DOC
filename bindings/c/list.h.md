@@ -24,19 +24,19 @@ title: "list.h"
 ### hiyui_list_count_fn
 
 ```c
-typedef int(* hiyui_list_count_fn) (void *user_data)
+typedef int(HIYUI_CALL * hiyui_list_count_fn) (void *user_data)
 ```
 
 ### hiyui_list_build_fn
 
 ```c
-typedef void(* hiyui_list_build_fn) (hiyui_widget_t *row, int idx, void *user_data)
+typedef void(HIYUI_CALL * hiyui_list_build_fn) (hiyui_widget_t *row, int idx, void *user_data)
 ```
 
 ### hiyui_list_click_fn
 
 ```c
-typedef void(* hiyui_list_click_fn) (int idx, void *user_data)
+typedef void(HIYUI_CALL * hiyui_list_click_fn) (int idx, void *user_data)
 ```
 
 ## 函数

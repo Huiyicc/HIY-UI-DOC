@@ -68,12 +68,6 @@ const struct hiyui_tree_node_t * children
 int child_count
 ```
 
-### lazy_load
-
-```c
-void(* lazy_load
-```
-
 ### lazy_load_ud
 
 ```c
@@ -87,3 +81,11 @@ const hiyui_localized_text_t * localized_text
 ```
 
 调用时复制翻译描述并覆盖普通文字；空值或无效描述使用普通文字。
+
+## 公开方法
+
+### void
+
+```c
+void(HIYUI_CALL *lazy_load)(uint32_t id
+```

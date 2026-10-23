@@ -20,6 +20,14 @@ const char * text
 
 显示文本，UTF-8 编码
 
+### tooltip
+
+```cpp
+const char * tooltip
+```
+
+悬浮提示文本，UTF-8 编码
+
 ### iconCodepoint
 
 ```cpp

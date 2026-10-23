@@ -32,6 +32,14 @@ MenuBar(MenuBarProps props={})
 
 Aggregate construction from properties
 
+### palette
+
+```cpp
+MenuBar & palette(const MenuBarPalette &value) &
+```
+
+Copies and applies the palette, preserving items and shortcuts; may be called before mounting, no action on invalid objects.
+
 ### init
 
 ```cpp

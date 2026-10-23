@@ -28,7 +28,7 @@ title: "chart.h"
 ### hiyui_chart_tooltip_fn
 
 ```c
-typedef void(* hiyui_chart_tooltip_fn) (hiyui_widget_t *content, const hiyui_chart_hit_t *hits, int count, void *user_data)
+typedef void(HIYUI_CALL * hiyui_chart_tooltip_fn) (hiyui_widget_t *content, const hiyui_chart_hit_t *hits, int count, void *user_data)
 ```
 
 自定义 Tooltip 构建回调，在 content 上创建子组件

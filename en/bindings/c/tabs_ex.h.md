@@ -44,7 +44,7 @@ A session tab bar with connection state, close, rename, pin, horizontal scrollin
 ### hiyui_tabs_ex_event_fn
 
 ```c
-typedef void(* hiyui_tabs_ex_event_fn) (const hiyui_tabs_ex_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_tabs_ex_event_fn) (const hiyui_tabs_ex_event_t *event, void *user_data)
 ```
 
 Event callback. `event-&gt;text` is valid only while the callback runs.

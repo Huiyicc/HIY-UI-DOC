@@ -14,6 +14,14 @@ Property grid supporting custom editors and synchronous or asynchronous commit. 
 
 ## Public Methods
 
+### palette
+
+```cpp
+PropertyGrid & palette(const PropertyGridPalette &value) &
+```
+
+Copies and applies the palette, preserving content and editing state; may be called before mounting, no action on invalid objects.
+
 ### properties
 
 ```cpp

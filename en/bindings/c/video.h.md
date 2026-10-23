@@ -64,19 +64,19 @@ Unknown video duration, in milliseconds.
 ### hiyui_video_state_fn
 
 ```c
-typedef void(* hiyui_video_state_fn) (hiyui_video_playback_state_t state, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_state_fn) (hiyui_video_playback_state_t state, void *user_data)
 ```
 
 ### hiyui_video_position_fn
 
 ```c
-typedef void(* hiyui_video_position_fn) (int64_t position_ms, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_position_fn) (int64_t position_ms, void *user_data)
 ```
 
 ### hiyui_video_error_fn
 
 ```c
-typedef void(* hiyui_video_error_fn) (const char *message, void *user_data)
+typedef void(HIYUI_CALL * hiyui_video_error_fn) (const char *message, void *user_data)
 ```
 
 message is valid only within the current callback; the pointer must not be saved.

@@ -90,6 +90,15 @@ Common widget operations: size, style, events, tooltips
 | `HIYUI_ACCESSIBILITY_SLIDER` |  |
 | `HIYUI_ACCESSIBILITY_PROGRESS` |  |
 | `HIYUI_ACCESSIBILITY_EDIT` |  |
+| `HIYUI_ACCESSIBILITY_COMBO_BOX` |  |
+| `HIYUI_ACCESSIBILITY_TAB` |  |
+| `HIYUI_ACCESSIBILITY_MENU_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_TREE_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_LIST_ITEM` |  |
+| `HIYUI_ACCESSIBILITY_IMAGE` |  |
+| `HIYUI_ACCESSIBILITY_DIALOG` |  |
+| `HIYUI_ACCESSIBILITY_TABLE` |  |
+| `HIYUI_ACCESSIBILITY_CELL` |  |
 
 ### hiyui_cursor_t
 
@@ -122,7 +131,7 @@ Common widget operations: size, style, events, tooltips
 ### hiyui_text_binding_fn
 
 ```c
-typedef void(* hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text, void *user_data)
+typedef void(HIYUI_CALL * hiyui_text_binding_fn) (hiyui_widget_t *widget, const char *text, void *user_data)
 ```
 
 The text is borrowed until the callback returns. The callback runs on the UI thread and may update the node with set_text_content.
@@ -130,7 +139,7 @@ The text is borrowed until the callback returns. The callback runs on the UI thr
 ### hiyui_theme_style_fn
 
 ```c
-typedef void(* hiyui_theme_style_fn) (hiyui_style_spec_set_t *out, void *user_data)
+typedef void(HIYUI_CALL * hiyui_theme_style_fn) (hiyui_style_spec_set_t *out, void *user_data)
 ```
 
 Fills in an already-initialized default style. out is valid only inside the callback. The callback must not change the theme or delete widgets. Output image sources and paths are borrowed values. They must stay valid until the image is replaced or the widget is destroyed.

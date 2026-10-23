@@ -15,7 +15,7 @@ TimePicker / DatePicker 共享。year=0 表示未选择。
 ### hiyui_picker_footer_fn
 
 ```c
-typedef void(* hiyui_picker_footer_fn) (hiyui_widget_t *panel, void *ud)
+typedef void(HIYUI_CALL * hiyui_picker_footer_fn) (hiyui_widget_t *panel, void *ud)
 ```
 
 选择器浮层页脚构建回调，在浮层底部容器内构建自定义子组件

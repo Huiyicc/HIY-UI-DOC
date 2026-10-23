@@ -15,25 +15,25 @@ The paint callback draws content on each frame or manual redraw, and the tick ca
 ### hiyui_paint_fn
 
 ```c
-typedef void(* hiyui_paint_fn) (hiyui_draw_ctx_t *ctx, const hiyui_paint_ctx_t *pc, void *ud)
+typedef void(HIYUI_CALL * hiyui_paint_fn) (hiyui_draw_ctx_t *ctx, const hiyui_paint_ctx_t *pc, void *ud)
 ```
 
 ### hiyui_tick_fn
 
 ```c
-typedef void(* hiyui_tick_fn) (float dt, void *ud)
+typedef void(HIYUI_CALL * hiyui_tick_fn) (float dt, void *ud)
 ```
 
 ### hiyui_painter_event_fn
 
 ```c
-typedef void(* hiyui_painter_event_fn) (hiyui_event_t *event, const hiyui_paint_ctx_t *pc, void *ud)
+typedef void(HIYUI_CALL * hiyui_painter_event_fn) (hiyui_event_t *event, const hiyui_paint_ctx_t *pc, void *ud)
 ```
 
 ### hiyui_painter_change_fn
 
 ```c
-typedef void(* hiyui_painter_change_fn) (const hiyui_paint_ctx_t *pc, void *ud)
+typedef void(HIYUI_CALL * hiyui_painter_change_fn) (const hiyui_paint_ctx_t *pc, void *ud)
 ```
 
 ## Functions

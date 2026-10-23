@@ -56,7 +56,7 @@ title: "terminal.h"
 ### hiyui_terminal_input_fn
 
 ```c
-typedef void(* hiyui_terminal_input_fn) (const hiyui_terminal_input_t *input, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_input_fn) (const hiyui_terminal_input_t *input, void *user_data)
 ```
 
 ### hiyui_terminal_model_t
@@ -68,7 +68,7 @@ typedef struct hiyui_terminal_model hiyui_terminal_model_t
 ### hiyui_terminal_data_fn
 
 ```c
-typedef void(* hiyui_terminal_data_fn) (const char *data, size_t size, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_data_fn) (const char *data, size_t size, void *user_data)
 ```
 
 数据仅在回调期间有效，可包含零字节；回调在 UI 线程调用。
@@ -76,7 +76,7 @@ typedef void(* hiyui_terminal_data_fn) (const char *data, size_t size, void *use
 ### hiyui_terminal_resize_fn
 
 ```c
-typedef void(* hiyui_terminal_resize_fn) (hiyui_terminal_size_t size, void *user_data)
+typedef void(HIYUI_CALL * hiyui_terminal_resize_fn) (hiyui_terminal_size_t size, void *user_data)
 ```
 
 ## 函数
@@ -142,7 +142,7 @@ HIYUI_API size_t HIYUI_CALL hiyui_terminal_model_get_text(hiyui_terminal_model_t
 ### hiyui_terminal_model_take_output
 
 ```c
-HIYUI_API void HIYUI_CALL hiyui_terminal_model_take_output(hiyui_terminal_model_t *model, void(*callback)(const char *, size_t, void *), void *user_data)
+HIYUI_API void HIYUI_CALL hiyui_terminal_model_take_output(hiyui_terminal_model_t *model, void(HIYUI_CALL *callback)(const char *, size_t, void *), void *user_data)
 ```
 
 将所有待发送字节交给回调并清空；NULL 模型或回调无操作。

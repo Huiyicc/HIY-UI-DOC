@@ -127,3 +127,11 @@ size_t enum_value_count
 ```c
 const char * description
 ```
+
+### display_name
+
+```c
+const char * display_name
+```
+
+借用至注册快照销毁，未设置时为 NULL。

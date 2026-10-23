@@ -124,7 +124,7 @@ typedef struct hiyui_property_request_t hiyui_property_request_t
 ### hiyui_property_commit_fn
 
 ```c
-typedef void(* hiyui_property_commit_fn) (hiyui_property_request_t *request, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_commit_fn) (hiyui_property_request_t *request, void *user_data)
 ```
 
 Callback arguments are valid only during the callback. For async handling, save the reply handle with request_defer.
@@ -132,7 +132,7 @@ Callback arguments are valid only during the callback. For async handling, save 
 ### hiyui_property_editor_factory_fn
 
 ```c
-typedef void(* hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hiyui_property_editor_t *editor, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_editor_factory_fn) (hiyui_widget_t *host, const hiyui_property_editor_t *editor, void *user_data)
 ```
 
 Builds only the host subtree. Must not modify the designer or change host ownership. Clone the editor before keeping it.
@@ -140,7 +140,7 @@ Builds only the host subtree. Must not modify the designer or change host owners
 ### hiyui_property_formatter_fn
 
 ```c
-typedef const char *(* hiyui_property_formatter_fn) (const hiyui_property_item_t *item, const hiyui_property_value_t *value, void *user_data)
+typedef const char *(HIYUI_CALL * hiyui_property_formatter_fn) (const hiyui_property_item_t *item, const hiyui_property_value_t *value, void *user_data)
 ```
 
 The returned string is copied when the callback returns. The designer must not be modified during the callback.
@@ -148,13 +148,13 @@ The returned string is copied when the callback returns. The designer must not b
 ### hiyui_property_change_fn
 
 ```c
-typedef void(* hiyui_property_change_fn) (const hiyui_property_change_t *change, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_change_fn) (const hiyui_property_change_t *change, void *user_data)
 ```
 
 ### hiyui_property_id_fn
 
 ```c
-typedef void(* hiyui_property_id_fn) (hiyui_property_id_t id, void *user_data)
+typedef void(HIYUI_CALL * hiyui_property_id_fn) (hiyui_property_id_t id, void *user_data)
 ```
 
 ## Functions
@@ -178,6 +178,14 @@ HIYUI_API void HIYUI_CALL hiyui_property_item_init(hiyui_property_item_t *item)
 ```c
 HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_property_grid_create(hiyui_widget_t *parent, const hiyui_property_grid_props_t *props)
 ```
+
+### hiyui_property_grid_set_palette
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_property_grid_set_palette(hiyui_widget_t *grid, const hiyui_property_grid_palette_t *palette)
+```
+
+Copies and applies the palette while preserving content and editing state; a NULL grid is a no-op and a NULL palette restores theme colors.
 
 ### hiyui_property_grid_set_properties
 
@@ -538,3 +546,59 @@ HIYUI_API int HIYUI_CALL hiyui_property_reply_accept_value(const hiyui_property_
 ```c
 HIYUI_API int HIYUI_CALL hiyui_property_reply_reject(const hiyui_property_reply_t *reply, const char *message)
 ```
+
+### hiyui_property_value_snapshot_view_ptr
+
+```c
+HIYUI_API const hiyui_property_value_t *HIYUI_CALL hiyui_property_value_snapshot_view_ptr(const hiyui_property_value_snapshot_t *snapshot)
+```
+
+Pointer form of the snapshot value view for languages that cannot receive structs by value. NULL for a NULL snapshot; the view dies with the snapshot.
+
+### hiyui_property_value_view_kind
+
+```c
+HIYUI_API hiyui_property_value_kind_t HIYUI_CALL hiyui_property_value_view_kind(const hiyui_property_value_t *view)
+```
+
+Reads the value kind; NULL returns HIYUI_PROPERTY_VALUE_EMPTY.
+
+### hiyui_property_value_view_integer
+
+```c
+HIYUI_API int64_t HIYUI_CALL hiyui_property_value_view_integer(const hiyui_property_value_t *view)
+```
+
+Reads the integer or unsigned value; a kind mismatch or NULL returns 0.
+
+### hiyui_property_value_view_number
+
+```c
+HIYUI_API double HIYUI_CALL hiyui_property_value_view_number(const hiyui_property_value_t *view)
+```
+
+Reads the numeric value; a kind mismatch or NULL returns 0.
+
+### hiyui_property_value_view_boolean
+
+```c
+HIYUI_API int HIYUI_CALL hiyui_property_value_view_boolean(const hiyui_property_value_t *view)
+```
+
+Reads the boolean value; a kind mismatch or NULL returns 0.
+
+### hiyui_property_value_view_text
+
+```c
+HIYUI_API const char *HIYUI_CALL hiyui_property_value_view_text(const hiyui_property_value_t *view)
+```
+
+Reads the text; a kind mismatch or NULL returns NULL, and the text dies with the snapshot.
+
+### hiyui_property_value_snapshot_view_to
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_property_value_snapshot_view_to(const hiyui_property_value_snapshot_t *snapshot, hiyui_property_value_kind_t *kind, int64_t *integer, double *number, int *boolean, const char **text)
+```
+
+Writes the common fields of the snapshot value in one call; every output pointer may be NULL. kind 总是写出；integer、number、boolean、text 仅在类型匹配时写出对应槽，否则写 0 或 NULL。

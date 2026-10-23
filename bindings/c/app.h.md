@@ -56,7 +56,7 @@ typedef struct hiyui_win_close_event_s hiyui_win_close_event_t
 ### hiyui_win_close_request_fn
 
 ```c
-typedef void(* hiyui_win_close_request_fn) (hiyui_win_close_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_win_close_request_fn) (hiyui_win_close_event_t *event, void *user_data)
 ```
 
 ## 函数

@@ -38,7 +38,7 @@ Docking window container
 ### hiyui_dock_event_fn
 
 ```c
-typedef void(* hiyui_dock_event_fn) (const hiyui_dock_event_t *event, void *user_data)
+typedef void(HIYUI_CALL * hiyui_dock_event_fn) (const hiyui_dock_event_t *event, void *user_data)
 ```
 
 ### hiyui_dock_snapshot_t

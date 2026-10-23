@@ -24,6 +24,14 @@ title: "ColorPicker"
 
 ## 公开方法
 
+### palette
+
+```cpp
+ColorPicker & palette(const ColorPickerPalette &value) &
+```
+
+复制并应用实例配色，保留输入草稿、输入模式和弹层状态；可在挂载前调用，失效对象无操作。
+
 ### color
 
 ```cpp

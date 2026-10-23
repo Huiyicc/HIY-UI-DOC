@@ -62,10 +62,16 @@ hiyui_bool_t sortable
 hiyui_sort_direction_t default_sort_order
 ```
 
-### sorter
+### row_b
 
 ```c
-int(* sorter
+int row_b
+```
+
+### user_data
+
+```c
+int void * user_data
 ```
 
 ### sorter_ud
@@ -122,10 +128,28 @@ void * editor_factory_ud
 hiyui_destroy_fn editor_factory_destroy
 ```
 
-### custom_render
+### row_idx
 
 ```c
-void(* custom_render
+int row_idx
+```
+
+### rect
+
+```c
+int hiyui_rect_t rect
+```
+
+### font_size
+
+```c
+int hiyui_rect_t int font_size
+```
+
+### user_data
+
+```c
+int hiyui_rect_t int void * user_data
 ```
 
 ### custom_render_ud
@@ -141,3 +165,17 @@ const hiyui_localized_text_t * localized_title
 ```
 
 Copies the translation description at call time and overrides the plain text. An empty or invalid description falls back to the plain text.
+
+## Public Methods
+
+### int
+
+```c
+int(HIYUI_CALL *sorter)(int row_a
+```
+
+### void
+
+```c
+void(HIYUI_CALL *custom_render)(hiyui_draw_ctx_t *ctx
+```
