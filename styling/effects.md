@@ -108,14 +108,49 @@ hiyui_tilt_attach(card, &params);
 
 ## 主题切换过渡
 
-`ThemeTransition::play(newTheme, dir)` 执行截图 → 切换主题 → 动画揭露的完整流程；全局动画关闭时直接切换主题，无过渡画面。默认效果为 `SlideRevealEffect`（旧画面按方向滑出），可用 `ThemeTransition::setEffect()` 换成自定义 `TransitionEffect` 子类。
+`ThemeTransition::play(newTheme, dir)` 执行截图 → 切换主题 → 动画揭露的完整流程；全局动画关闭时直接切换主题，无过渡画面。效果通过 `ThemeTransition::setEffect()` 设置，默认为 `SlideRevealEffect`。
+
+内置效果：
+
+| 效果 | 时长 | 说明 |
+|---|---|---|
+| `SlideRevealEffect` | 200ms | 旧画面按方向滑出，分割线处 1px 半透明边界 |
+| `CrossFadeEffect` | 300ms | 旧画面整体渐隐 |
+| `RectRevealEffect` | 240ms | 从触发控件矩形起步，快速过渡为圆形扩散 |
 
 ```cpp
 ThemeTransition::setEffect(std::make_unique<SlideRevealEffect>());
 ThemeTransition::play(DarkTheme, TransitionDirection::LeftToRight);
 ```
 
-`TransitionDirection` 有 `LeftToRight` 和 `RightToLeft` 两个值。
+`CrossFadeEffect` 无构造参数。`RectRevealEffect` 的构造参数为触发控件，扩散区域从该控件的圆角矩形轮廓起步，随即变为以控件中心为圆心的圆形向外扩张直至覆盖全屏，控件自身在动画开始时即显示新主题；矩形坐标与圆角在构造时读取，传入 `nullptr` 时以屏幕中心为起点。
+
+```cpp
+ThemeTransition::setEffect(
+    std::make_unique<RectRevealEffect>(themeDropdown.raw()));
+ThemeTransition::play(DarkTheme, TransitionDirection::LeftToRight);
+```
+
+`TransitionDirection` 有 `LeftToRight` 和 `RightToLeft` 两个值。自定义效果继承 `TransitionEffect`，实现 `prepare()` 与 `update()` 后传给 `setEffect()`。
+
+### C API
+
+头文件为 `<hiyui/c/theme.h>`，统一头文件 `<hiyui/c/hiyui.h>` 已包含它。为已创建的 `hiyui_widget_t *themeDropdown` 选择矩形扩散：
+
+```c
+hiyui_theme_transition_set_effect(HIYUI_TRANSITION_KIND_EXPAND,
+                                  themeDropdown);
+hiyui_theme_transition_play_preset(HIYUI_THEME_PRESET_DARK,
+                                   HIYUI_TRANSITION_DIRECTION_LEFT_TO_RIGHT);
+```
+
+| 值 | 说明 |
+|---|---|
+| HIYUI_TRANSITION_KIND_SLIDE | 旧画面左右滑动揭露 |
+| HIYUI_TRANSITION_KIND_FADE | 旧画面整体渐隐 |
+| HIYUI_TRANSITION_KIND_EXPAND | 以 origin 矩形为起点向外扩散 |
+
+`origin` 仅 `HIYUI_TRANSITION_KIND_EXPAND` 使用，`NULL` 时以屏幕中心为起点。
 
 过渡画面覆盖整个屏幕。需要某块区域在过渡期间保持可见时，设置排除区域；排除区内像素始终透明。
 

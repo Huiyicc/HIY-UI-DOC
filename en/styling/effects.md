@@ -108,14 +108,49 @@ When parameters are non-NULL, all fields are copied before `attach` returns and 
 
 ## Theme switch transition
 
-`ThemeTransition::play(newTheme, dir)` runs the full sequence of screenshot → theme switch → animated reveal; when global animation is off, the theme switches directly without a transition visual. The default effect is `SlideRevealEffect` (the old visual slides out in the transition direction); a custom `TransitionEffect` subclass is installed through `ThemeTransition::setEffect()`.
+`ThemeTransition::play(newTheme, dir)` runs the full sequence of screenshot → theme switch → animated reveal; when global animation is off, the theme switches directly without a transition visual. The effect is installed through `ThemeTransition::setEffect()` and defaults to `SlideRevealEffect`.
+
+Built-in effects:
+
+| Effect | Duration | Behavior |
+|---|---|---|
+| `SlideRevealEffect` | 200ms | The old visual slides out in the transition direction with a 1px translucent divider |
+| `CrossFadeEffect` | 300ms | The old visual fades out as a whole |
+| `RectRevealEffect` | 240ms | Starts from the trigger widget's rectangle and quickly becomes an expanding circle |
 
 ```cpp
 ThemeTransition::setEffect(std::make_unique<SlideRevealEffect>());
 ThemeTransition::play(DarkTheme, TransitionDirection::LeftToRight);
 ```
 
-`TransitionDirection` has the two values `LeftToRight` and `RightToLeft`.
+`CrossFadeEffect` takes no constructor arguments. `RectRevealEffect` takes the trigger widget as its constructor argument; the reveal area starts from the widget's rounded rectangle, immediately becomes a circle centered on the widget, and expands until it covers the screen, with the widget itself showing the new theme from the start of the animation. The rectangle and corner radius are read at construction, and a null pointer starts from the screen center.
+
+```cpp
+ThemeTransition::setEffect(
+    std::make_unique<RectRevealEffect>(themeDropdown.raw()));
+ThemeTransition::play(DarkTheme, TransitionDirection::LeftToRight);
+```
+
+`TransitionDirection` has the two values `LeftToRight` and `RightToLeft`. Custom effects derive from `TransitionEffect`, implement `prepare()` and `update()`, and are passed to `setEffect()`.
+
+### C API
+
+The header is `<hiyui/c/theme.h>`, already included by the umbrella header `<hiyui/c/hiyui.h>`. Selecting the rect expand reveal for an existing `hiyui_widget_t *themeDropdown`:
+
+```c
+hiyui_theme_transition_set_effect(HIYUI_TRANSITION_KIND_EXPAND,
+                                  themeDropdown);
+hiyui_theme_transition_play_preset(HIYUI_THEME_PRESET_DARK,
+                                   HIYUI_TRANSITION_DIRECTION_LEFT_TO_RIGHT);
+```
+
+| Value | Behavior |
+|---|---|
+| HIYUI_TRANSITION_KIND_SLIDE | The old visual slides out horizontally |
+| HIYUI_TRANSITION_KIND_FADE | The old visual fades out as a whole |
+| HIYUI_TRANSITION_KIND_EXPAND | A rounded rectangle expands from the origin widget's bounds |
+
+`origin` is used by `HIYUI_TRANSITION_KIND_EXPAND` only; `NULL` starts from the screen center.
 
 The transition visual covers the entire screen. To keep a region visible during the transition, set an exclusion zone; pixels inside the exclusion zone stay transparent.
 
