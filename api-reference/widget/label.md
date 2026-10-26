@@ -98,3 +98,37 @@ Label & text(const LocalizedText &t) &
 ```
 
 绑定随语言更新的文本，复制描述；普通 text 调用替换此绑定。
+
+### bindText
+
+```cpp
+Label & bindText(State< std::string > state, BindingHandle *handle=nullptr) &
+```
+
+绑定状态文本，State 变化更新显示
+
+替换本属性的静态文案与国际化绑定；解除后保留当前显示文本。 挂载前调用时保存配置，挂载完成时建立连接并应用当前值。
+
+
+
+| 参数 | 说明 |
+|---|---|
+| `handle` | 可选出参，接收解绑句柄；挂载前传入时在挂载完成时指向连接 |
+
+### bindText
+
+```cpp
+Label & bindText(State< T > state, F &&converter, BindingHandle *handle=nullptr) &
+```
+
+绑定状态与转换器
+
+转换器接收状态值，返回 std::string 或 LocalizedText；返回 `LocalizedText` 时语言变化重新翻译且不触发业务订阅。转换器内不得写入任何 State。
+
+### clearTextBinding
+
+```cpp
+Label & clearTextBinding() &
+```
+
+解除文本绑定（含数据绑定与国际化绑定），保留当前显示文本；重复调用无操作。

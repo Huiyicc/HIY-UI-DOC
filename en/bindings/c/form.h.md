@@ -75,6 +75,14 @@ HIYUI_API void HIYUI_CALL hiyui_input_set_read_only(hiyui_widget_t *input, int r
 
 A non-zero value disables editing while selection and copy remain allowed.
 
+### hiyui_input_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_input_bind_model(hiyui_widget_t *input, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+Two-way binding of committed text; requires a state created by create_string_text, a type mismatch or missing rules returns InvalidValue.
+
 ### hiyui_slider_create
 
 ```c
@@ -93,6 +101,22 @@ HIYUI_API void HIYUI_CALL hiyui_slider_set_value(hiyui_widget_t *s, int value, h
 HIYUI_API int HIYUI_CALL hiyui_slider_get_value(hiyui_widget_t *s)
 ```
 
+### hiyui_slider_bind_state_value
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_slider_bind_state_value(hiyui_widget_t *slider, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+One-way value display clamped to the widget range; user operations do not write the state.
+
+### hiyui_slider_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_slider_bind_model(hiyui_widget_t *slider, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+Two-way value binding installing the model range; requires a state created by create_int_bounded, a missing range returns InvalidValue.
+
 ### hiyui_switch_create
 
 ```c
@@ -110,6 +134,22 @@ HIYUI_API void HIYUI_CALL hiyui_switch_set_checked(hiyui_widget_t *s, int checke
 ```c
 HIYUI_API int HIYUI_CALL hiyui_switch_is_checked(hiyui_widget_t *s)
 ```
+
+### hiyui_switch_bind_state_checked
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_switch_bind_state_checked(hiyui_widget_t *switch_widget, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+One-way checked display; user toggles do not write the state.
+
+### hiyui_switch_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_switch_bind_model(hiyui_widget_t *switch_widget, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+Two-way checked binding; user toggles and program writes are synced through the model.
 
 ### hiyui_checkbox_create
 

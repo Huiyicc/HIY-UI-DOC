@@ -86,6 +86,40 @@ Slider & range(int minVal, int maxVal, Notify notify=Notify::No) &
 
 设置值范围
 
+### bindValue
+
+```cpp
+Slider & bindValue(State< int32_t > state, BindingHandle *handle=nullptr) &
+```
+
+单向绑定数值，State 变化更新滑块
+
+应用时按组件当前范围钳制；用户操作不写回状态。绑定期间程序 value 调用解除本绑定， 有效 range 变更不解绑。
+
+### model
+
+```cpp
+Slider & model(State< int32_t > state, BindingHandle *handle=nullptr) &
+```
+
+双向绑定数值并安装模型范围
+
+要求带固定区间的状态；挂载完成时一次安装范围与当前值，不产生中间公开事件。 用户拖动、键盘步进和程序 value 写入都经模型规范化并同步全部连接； 有效 range 变更解除本绑定。
+
+
+
+| 名称 | 说明 |
+|---|---|
+| `` | 状态句柄无效或未携带范围约束 |
+
+### clearValueBinding
+
+```cpp
+Slider & clearValueBinding() &
+```
+
+解除数值绑定（单向或双向），保留当前值与范围；重复调用无操作。
+
 ### activeColor
 
 ```cpp

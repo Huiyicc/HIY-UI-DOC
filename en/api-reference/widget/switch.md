@@ -72,6 +72,37 @@ bool isChecked() const
 
 Queries whether currently on
 
+### bindChecked
+
+```cpp
+Switch & bindChecked(State< bool > state, BindingHandle *handle=nullptr) &
+```
+
+One-way checked binding; State changes update the switch
+
+User toggles do not write the state. A program checked call unbinds.
+
+### model
+
+```cpp
+Switch & model(State< bool > state, BindingHandle *handle=nullptr) &
+```
+
+Two-way checked binding
+
+User toggles and program checked writes are synced through the model to all connections.
+
+
+BindingError for an invalid state handle
+
+### clearCheckedBinding
+
+```cpp
+Switch & clearCheckedBinding() &
+```
+
+Removes the checked binding, one-way or two-way, keeping the current state; repeated calls do nothing.
+
 ### onColor
 
 ```cpp

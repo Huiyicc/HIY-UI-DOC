@@ -76,6 +76,30 @@ std::string text() const
 
 获取当前文本内容
 
+### model
+
+```cpp
+Input & model(State< std::string > state, BindingHandle *handle=nullptr) &
+```
+
+双向绑定已提交文本并安装模型文本规则
+
+要求带固定文本规则的状态（State&lt;std::string&gt;::text 创建）；挂载完成时一次应用 规则与当前值。输入法预编辑不写入状态；模型应用与来源控件内容相同时跳过重写， 保持光标、选区与撤销栈。用户编辑与程序写入都经模型规范化并同步全部连接； 有效 multiline 变更解除本绑定。
+
+
+
+| 名称 | 说明 |
+|---|---|
+| `` | 状态句柄无效或未携带文本规则 |
+
+### clearTextBinding
+
+```cpp
+Input & clearTextBinding() &
+```
+
+解除文本模型绑定，保留当前文本与规则配置；重复调用无操作。
+
 ### placeholder
 
 ```cpp

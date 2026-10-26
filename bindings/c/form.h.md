@@ -75,6 +75,14 @@ HIYUI_API void HIYUI_CALL hiyui_input_set_read_only(hiyui_widget_t *input, int r
 
 非 0 禁止编辑，仍允许选择和复制。
 
+### hiyui_input_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_input_bind_model(hiyui_widget_t *input, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+双向绑定已提交文本；要求 create_string_text 创建的状态，类型不符或缺少规则返回 InvalidValue。
+
 ### hiyui_slider_create
 
 ```c
@@ -93,6 +101,22 @@ HIYUI_API void HIYUI_CALL hiyui_slider_set_value(hiyui_widget_t *s, int value, h
 HIYUI_API int HIYUI_CALL hiyui_slider_get_value(hiyui_widget_t *s)
 ```
 
+### hiyui_slider_bind_state_value
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_slider_bind_state_value(hiyui_widget_t *slider, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+单向数值显示，应用时按组件范围钳制，用户操作不写回状态。
+
+### hiyui_slider_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_slider_bind_model(hiyui_widget_t *slider, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+双向数值绑定并安装模型范围；要求 create_int_bounded 创建的状态，缺少范围返回 InvalidValue。
+
 ### hiyui_switch_create
 
 ```c
@@ -110,6 +134,22 @@ HIYUI_API void HIYUI_CALL hiyui_switch_set_checked(hiyui_widget_t *s, int checke
 ```c
 HIYUI_API int HIYUI_CALL hiyui_switch_is_checked(hiyui_widget_t *s)
 ```
+
+### hiyui_switch_bind_state_checked
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_switch_bind_state_checked(hiyui_widget_t *switch_widget, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+单向选中状态显示，用户切换不写回状态。
+
+### hiyui_switch_bind_model
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_switch_bind_model(hiyui_widget_t *switch_widget, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+双向选中状态绑定，用户切换与程序写入都经模型同步。
 
 ### hiyui_checkbox_create
 

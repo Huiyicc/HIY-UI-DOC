@@ -71,6 +71,14 @@ Theme system: ThemeRole enum, preset themes, and switching functions
 | `HIYUI_TRANSITION_DIRECTION_LEFT_TO_RIGHT` = 0 |  |
 | `HIYUI_TRANSITION_DIRECTION_RIGHT_TO_LEFT` |  |
 
+### hiyui_transition_kind_t
+
+| Value | Description |
+|---|---|
+| `HIYUI_TRANSITION_KIND_SLIDE` = 0 |  |
+| `HIYUI_TRANSITION_KIND_FADE` |  |
+| `HIYUI_TRANSITION_KIND_EXPAND` |  |
+
 ### hiyui_widget_type_t
 
 Built-in theme style types.
@@ -368,6 +376,14 @@ HIYUI_API void HIYUI_CALL hiyui_theme_transition_clear_exclusion(void)
 ```
 
 Clears the transition animation exclusion object.
+
+### hiyui_theme_transition_set_effect
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_theme_transition_set_effect(hiyui_transition_kind_t kind, hiyui_widget_t *origin)
+```
+
+Sets the transition animation effect. origin is used by the rect expand reveal only; NULL starts from the screen center.
 
 ### hiyui_icon_font_init
 

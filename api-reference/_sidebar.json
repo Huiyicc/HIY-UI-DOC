@@ -93,8 +93,28 @@
         "link": "/api-reference/core/size"
       },
       {
+        "text": "State",
+        "link": "/api-reference/core/state"
+      },
+      {
+        "text": "StateError",
+        "link": "/api-reference/core/stateerror"
+      },
+      {
+        "text": "StateSubscription",
+        "link": "/api-reference/core/statesubscription"
+      },
+      {
+        "text": "StateWriteResult",
+        "link": "/api-reference/core/statewriteresult"
+      },
+      {
         "text": "TextArg",
         "link": "/api-reference/core/textarg"
+      },
+      {
+        "text": "TextRules",
+        "link": "/api-reference/core/textrules"
       },
       {
         "text": "UndoManager",
@@ -135,6 +155,22 @@
       {
         "text": "WindowProps",
         "link": "/api-reference/core/windowprops"
+      },
+      {
+        "text": "detail::StateCallbackRecord",
+        "link": "/api-reference/core/detail_statecallbackrecord"
+      },
+      {
+        "text": "detail::StateConverterScope",
+        "link": "/api-reference/core/detail_stateconverterscope"
+      },
+      {
+        "text": "detail::StateNode",
+        "link": "/api-reference/core/detail_statenode"
+      },
+      {
+        "text": "detail::StateSubscriptionRecord",
+        "link": "/api-reference/core/detail_statesubscriptionrecord"
       }
     ]
   },
@@ -163,12 +199,20 @@
         "link": "/api-reference/effect/blursource"
       },
       {
+        "text": "CrossFadeEffect",
+        "link": "/api-reference/effect/crossfadeeffect"
+      },
+      {
         "text": "ExclusionZone",
         "link": "/api-reference/effect/exclusionzone"
       },
       {
         "text": "GlassEffect",
         "link": "/api-reference/effect/glasseffect"
+      },
+      {
+        "text": "RectRevealEffect",
+        "link": "/api-reference/effect/rectrevealeffect"
       },
       {
         "text": "SlideRevealEffect",
@@ -644,6 +688,14 @@
         "link": "/api-reference/widget/barchartprops"
       },
       {
+        "text": "BindingError",
+        "link": "/api-reference/widget/bindingerror"
+      },
+      {
+        "text": "BindingHandle",
+        "link": "/api-reference/widget/bindinghandle"
+      },
+      {
         "text": "Box",
         "link": "/api-reference/widget/box"
       },
@@ -1022,6 +1074,14 @@
       {
         "text": "ListState",
         "link": "/api-reference/widget/liststate"
+      },
+      {
+        "text": "Lottie",
+        "link": "/api-reference/widget/lottie"
+      },
+      {
+        "text": "LottieProps",
+        "link": "/api-reference/widget/lottieprops"
       },
       {
         "text": "Menu",
@@ -1608,6 +1668,14 @@
         "link": "/api-reference/widget/windowframeprops"
       },
       {
+        "text": "detail::BindingHandleAccess",
+        "link": "/api-reference/widget/detail_bindinghandleaccess"
+      },
+      {
+        "text": "detail::BindingHandleState",
+        "link": "/api-reference/widget/detail_bindinghandlestate"
+      },
+      {
         "text": "detail::ChatListBubblePayload",
         "link": "/api-reference/widget/detail_chatlistbubblepayload"
       },
@@ -1684,6 +1752,14 @@
         "link": "/api-reference/widget/detail_popupsurface"
       },
       {
+        "text": "detail::PropertyBindingBase",
+        "link": "/api-reference/widget/detail_propertybindingbase"
+      },
+      {
+        "text": "detail::PropertyBindings",
+        "link": "/api-reference/widget/detail_propertybindings"
+      },
+      {
         "text": "detail::PropertyCallback",
         "link": "/api-reference/widget/detail_propertycallback"
       },
@@ -1698,6 +1774,18 @@
       {
         "text": "detail::PropertyCallback< R(Args...)>::Model",
         "link": "/api-reference/widget/detail_propertycallback_r(args...)_model"
+      },
+      {
+        "text": "detail::StateBindingRecord",
+        "link": "/api-reference/widget/detail_statebindingrecord"
+      },
+      {
+        "text": "detail::StatePropertyBinding",
+        "link": "/api-reference/widget/detail_statepropertybinding"
+      },
+      {
+        "text": "detail::StateTextConverter",
+        "link": "/api-reference/widget/detail_statetextconverter"
       },
       {
         "text": "detail::TableCellEditPayload",

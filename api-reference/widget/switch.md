@@ -72,6 +72,40 @@ bool isChecked() const
 
 查询当前是否打开
 
+### bindChecked
+
+```cpp
+Switch & bindChecked(State< bool > state, BindingHandle *handle=nullptr) &
+```
+
+单向绑定选中状态，State 变化更新开关
+
+用户切换不写回状态。绑定期间程序 checked 调用解除本绑定。
+
+### model
+
+```cpp
+Switch & model(State< bool > state, BindingHandle *handle=nullptr) &
+```
+
+双向绑定选中状态
+
+用户切换、程序 checked 写入都经模型同步全部连接。
+
+
+
+| 名称 | 说明 |
+|---|---|
+| `` | 状态句柄无效 |
+
+### clearCheckedBinding
+
+```cpp
+Switch & clearCheckedBinding() &
+```
+
+解除选中状态绑定（单向或双向），保留当前状态；重复调用无操作。
+
 ### onColor
 
 ```cpp

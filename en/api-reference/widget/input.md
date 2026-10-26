@@ -76,6 +76,27 @@ std::string text() const
 
 Returns the current text content
 
+### model
+
+```cpp
+Input & model(State< std::string > state, BindingHandle *handle=nullptr) &
+```
+
+Two-way binding of committed text installing the model text rules
+
+Requires a state with fixed text rules created by State&lt;std::string&gt;::text; the rules and current value are applied once at mount completion. IME pre-edit is not written to the state; when the model value equals the source content the rewrite is skipped, preserving caret, selection and undo stack. User edits and program writes are normalized by the model and synced to all connections; an effective multiline change unbinds.
+
+
+BindingError for an invalid state handle or missing text rules
+
+### clearTextBinding
+
+```cpp
+Input & clearTextBinding() &
+```
+
+Removes the text model binding, keeping the current text and rule configuration; repeated calls do nothing.
+
 ### placeholder
 
 ```cpp

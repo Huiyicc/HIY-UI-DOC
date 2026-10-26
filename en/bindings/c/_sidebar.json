@@ -431,6 +431,10 @@
         "link": "/en/bindings/c/hiyui_logical_rect_t"
       },
       {
+        "text": "hiyui_lottie_props_t",
+        "link": "/en/bindings/c/hiyui_lottie_props_t"
+      },
+      {
         "text": "hiyui_menu_bar_item_t",
         "link": "/en/bindings/c/hiyui_menu_bar_item_t"
       },
@@ -583,6 +587,10 @@
         "link": "/en/bindings/c/hiyui_spin_props_t"
       },
       {
+        "text": "hiyui_state_result_t",
+        "link": "/en/bindings/c/hiyui_state_result_t"
+      },
+      {
         "text": "hiyui_style_set_t",
         "link": "/en/bindings/c/hiyui_style_set_t"
       },
@@ -657,6 +665,10 @@
       {
         "text": "hiyui_text_arg_t",
         "link": "/en/bindings/c/hiyui_text_arg_t"
+      },
+      {
+        "text": "hiyui_text_rules_t",
+        "link": "/en/bindings/c/hiyui_text_rules_t"
       },
       {
         "text": "hiyui_tilt_params_t",
@@ -879,6 +891,10 @@
         "link": "/en/bindings/c/list.h"
       },
       {
+        "text": "lottie.h",
+        "link": "/en/bindings/c/lottie.h"
+      },
+      {
         "text": "misc.h",
         "link": "/en/bindings/c/misc.h"
       },
@@ -913,6 +929,10 @@
       {
         "text": "shape.h",
         "link": "/en/bindings/c/shape.h"
+      },
+      {
+        "text": "state.h",
+        "link": "/en/bindings/c/state.h"
       },
       {
         "text": "style.h",

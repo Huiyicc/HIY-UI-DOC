@@ -82,6 +82,37 @@ Slider & range(int minVal, int maxVal, Notify notify=Notify::No) &
 
 Sets the value range
 
+### bindValue
+
+```cpp
+Slider & bindValue(State< int32_t > state, BindingHandle *handle=nullptr) &
+```
+
+One-way value binding; State changes update the slider
+
+Applied values are clamped to the current range and user operations do not write the state. A program value call unbinds; an effective range change does not.
+
+### model
+
+```cpp
+Slider & model(State< int32_t > state, BindingHandle *handle=nullptr) &
+```
+
+Two-way value binding installing the model range
+
+Requires a bounded state; the range and current value are installed once at mount completion without intermediate public events. User drags, key steps and program value writes are normalized by the model and synced to all connections; an effective range change unbinds.
+
+
+BindingError for an invalid state handle or a missing range constraint
+
+### clearValueBinding
+
+```cpp
+Slider & clearValueBinding() &
+```
+
+Removes the value binding, one-way or two-way, keeping the current value and range; repeated calls do nothing.
+
 ### activeColor
 
 ```cpp

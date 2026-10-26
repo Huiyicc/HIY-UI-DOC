@@ -22,6 +22,22 @@ HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_label_create(hiyui_widget_t *parent, 
 HIYUI_API void HIYUI_CALL hiyui_label_set_text(hiyui_widget_t *label, const char *text)
 ```
 
+### hiyui_label_bind_state_text
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_label_bind_state_text(hiyui_widget_t *label, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+绑定字符串状态到 Label 文本；返回 InvalidArgument 表示空句柄、类型不符或组件未挂载。
+
+### hiyui_label_bind_state_text_convert
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_label_bind_state_text_convert(hiyui_widget_t *label, hiyui_state_t *state, hiyui_state_int_text_fn convert, void *user_data, hiyui_destroy_fn destroy, hiyui_binding_t **handle)
+```
+
+整数状态经转换器显示；返回文本立即被复制，destroy 在连接销毁时调用一次。
+
 ### hiyui_button_create
 
 ```c

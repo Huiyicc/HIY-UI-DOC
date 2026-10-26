@@ -94,3 +94,34 @@ Label & text(const LocalizedText &t) &
 ```
 
 Binds text that updates with the language. Copies the description. A plain text call replaces this binding.
+
+### bindText
+
+```cpp
+Label & bindText(State< std::string > state, BindingHandle *handle=nullptr) &
+```
+
+Binds state text; State changes update the display
+
+Replaces the static text and translation binding of this property; the current text is kept after unbinding. Calls before mounting are saved and connected at mount completion with the current value applied.
+
+
+Optional out parameter receiving the unbind handle; when passed before mounting it targets the connection after mount completes
+
+### bindText
+
+```cpp
+Label & bindText(State< T > state, F &&converter, BindingHandle *handle=nullptr) &
+```
+
+Binds a state with a converter
+
+The converter receives the state value and returns std::string or LocalizedText; a LocalizedText output retranslates on language change without triggering business subscriptions. The converter must not write any State.
+
+### clearTextBinding
+
+```cpp
+Label & clearTextBinding() &
+```
+
+Removes text bindings including data and translation bindings and keeps the displayed text; repeated calls do nothing.

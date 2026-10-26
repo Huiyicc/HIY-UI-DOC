@@ -22,6 +22,22 @@ HIYUI_API hiyui_widget_t *HIYUI_CALL hiyui_label_create(hiyui_widget_t *parent, 
 HIYUI_API void HIYUI_CALL hiyui_label_set_text(hiyui_widget_t *label, const char *text)
 ```
 
+### hiyui_label_bind_state_text
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_label_bind_state_text(hiyui_widget_t *label, hiyui_state_t *state, hiyui_binding_t **handle)
+```
+
+Binds a string state to the label text; InvalidArgument for null handles, a type mismatch or an unmounted widget.
+
+### hiyui_label_bind_state_text_convert
+
+```c
+HIYUI_API hiyui_state_status_t HIYUI_CALL hiyui_label_bind_state_text_convert(hiyui_widget_t *label, hiyui_state_t *state, hiyui_state_int_text_fn convert, void *user_data, hiyui_destroy_fn destroy, hiyui_binding_t **handle)
+```
+
+Displays an integer state through a converter; the returned text is copied immediately and destroy is called once when the connection is released.
+
 ### hiyui_button_create
 
 ```c

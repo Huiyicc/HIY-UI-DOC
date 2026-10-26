@@ -71,6 +71,14 @@ title: "theme.h"
 | `HIYUI_TRANSITION_DIRECTION_LEFT_TO_RIGHT` = 0 |  |
 | `HIYUI_TRANSITION_DIRECTION_RIGHT_TO_LEFT` |  |
 
+### hiyui_transition_kind_t
+
+| 值 | 说明 |
+|---|---|
+| `HIYUI_TRANSITION_KIND_SLIDE` = 0 |  |
+| `HIYUI_TRANSITION_KIND_FADE` |  |
+| `HIYUI_TRANSITION_KIND_EXPAND` |  |
+
 ### hiyui_widget_type_t
 
 内置主题样式类型。
@@ -368,6 +376,14 @@ HIYUI_API void HIYUI_CALL hiyui_theme_transition_clear_exclusion(void)
 ```
 
 清除过渡动画排除对象
+
+### hiyui_theme_transition_set_effect
+
+```c
+HIYUI_API void HIYUI_CALL hiyui_theme_transition_set_effect(hiyui_transition_kind_t kind, hiyui_widget_t *origin)
+```
+
+设置过渡动画效果；origin 仅矩形扩散使用，NULL 时以屏幕中心为起点
 
 ### hiyui_icon_font_init
 
