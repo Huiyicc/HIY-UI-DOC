@@ -97,7 +97,7 @@ Subscriptions added inside a callback do not join the current dispatch; subscrip
 
 ## Widget bindings
 
-`bind*` is always one-way: State changes update the property while user actions and program writes do not write the state. `model*` is always two-way: widget input is normalized by the model and synced to all connections, and the model constraints are installed.
+`bind*` is always one-way: State changes update the property while user actions and program writes do not write the state. `model*` is always two-way: widget input is normalized by the model and synced to all connections, and the model constraints are installed. Program writes during state dispatch emit no public event; a rejected write drops the value and leaves the binding unchanged.
 
 | Widget | Method | Direction | Constraint |
 | --- | --- | --- | --- |
@@ -117,10 +117,10 @@ Binding rules:
 
 - Calls before mounting are saved; the connection is established and the current value applied at mount completion. Post-mount calls apply immediately.
 - One property has at most one top-level source; rebinding replaces the previous connection, and static text, translation bindings and data bindings replace one another.
-- Under a two-way binding the program setters (`value`, `checked`, `text`) write the model; `Notify` only controls whether that program operation emits the widget's public change event.
+- Under a two-way binding the program setters (`value`, `checked`, `text`, `clear`) write the model; `Notify` only controls whether that program operation emits the widget's public change event.
 - Under a one-way binding a program setter unbinds and then applies the manual value; an effective Slider `range()` change unbinds `model` but not the one-way binding.
 - An effective Input `multiline()` change unbinds `model`.
-- Input binds committed text; IME pre-edit is not written to the state. When the model value equals the source content the rewrite is skipped, preserving caret, selection and the undo stack.
+- Input binds committed text; IME pre-edit is not written to the state. When the model value equals the source content the rewrite is skipped, preserving caret, selection and the undo stack. When the write-back of an edit-class operation (typing, pasting, inserting, undo) is rejected, the widget is restored to the model value and the binding enters Failed.
 - Slider `model` installs the model range and current value without intermediate public events; user drags and key steps write the state in real time.
 
 A widget changed by user interaction under a one-way binding diverges from the state until the next Changed write overwrites the widget. Writing the value the state already holds returns `Unchanged` and does not refresh the widget. Use `model` when the widget must always equal the state.
