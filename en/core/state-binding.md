@@ -41,7 +41,7 @@ Model fields may live in a page controller or inside the build function. Binding
 | Creation | Behavior |
 | --- | --- |
 | `State<T>{}` | Independent state with value `T{}`, no constraints |
-| `State<T> s(initial)` | Independent state; the initial value is normalized by the fixed rules |
+| `State<T> s(initial)` | Independent state; the initial value is normalized by the fixed rules; an invalid string initial value throws `StateError` |
 | `State<int32_t>::bounded(initial, min, max)` | Integer state with a fixed closed range; throws `StateError` when min is greater than max |
 | `State<std::string>::text(initial, rules)` | String state with fixed text rules; throws `StateError` for an invalid initial value |
 
@@ -141,7 +141,7 @@ After rebinding a property, an old handle refers only to the old connection. The
 ## Notes
 
 :::warning
-`set` and assignment throw `StateError` on failure; use `trySet` inside LVGL event callbacks. Binding methods throw `BindingError` when constraints are missing (Slider `model` without a range, Input `model` without text rules).
+`set` and assignment throw `StateError` on failure; use `trySet` inside LVGL event callbacks. Binding methods throw `BindingError` when constraints are missing (Slider `model` without a range, Input `model` without text rules). Exceptions thrown by a converter or a widget apply at establishment propagate unchanged, and the passed handle records `ConvertFailed` or `ApplyFailed` and is deactivated.
 :::
 
 :::warning

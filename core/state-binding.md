@@ -41,7 +41,7 @@ void buildSettings(Widget &parent) {
 | 创建方式 | 行为 |
 | --- | --- |
 | `State<T>{}` | 创建值为 `T{}` 的独立状态，无约束 |
-| `State<T> s(初始值)` | 创建独立状态；初始值经固定规则规范化 |
+| `State<T> s(初始值)` | 创建独立状态；初始值经固定规则规范化，字符串初始值非法时抛出 `StateError` |
 | `State<int32_t>::bounded(初始值, min, max)` | 创建带固定闭区间的整数状态；min 大于 max 抛出 `StateError` |
 | `State<std::string>::text(初始值, 规则)` | 创建带固定文本规则的状态；初始值非法时抛出 `StateError` |
 
@@ -141,7 +141,7 @@ StateWriteResult 字段：
 ## 注意事项
 
 :::warning
-`set` 与赋值在失败时抛出 `StateError`；LVGL 事件回调内使用 `trySet`。约束不满足（Slider `model` 缺少范围、Input `model` 缺少文本规则）时绑定方法抛出 `BindingError`。
+`set` 与赋值在失败时抛出 `StateError`；LVGL 事件回调内使用 `trySet`。约束不满足（Slider `model` 缺少范围、Input `model` 缺少文本规则）时绑定方法抛出 `BindingError`。绑定建立时转换器或组件应用抛出的异常原样传播，传入的句柄记录 `ConvertFailed` 或 `ApplyFailed` 并停用。
 :::
 
 :::warning
