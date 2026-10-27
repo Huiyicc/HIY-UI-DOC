@@ -9,7 +9,7 @@ title: 基础组件
 | 组件 | 用途 | 常用字段 |
 | --- | --- | --- |
 | `Label` | 文本 | `text`, `fontSize`, `textColor`, `width`, `ellipsis`, `selectable` |
-| `Icon` | Material Symbols 图标 | `codepoint`, `size`, `style` |
+| `Icon` | Material Symbols 图标 | `codepoint`, `size`, `style`, `animated` |
 | `Image` | 文件或图像描述符 | `src`, `width`, `height`, `fit`, `opacity` |
 | `Avatar` | 图片、SVG 或文字头像 | `src`, `text`, `size`, `circle` |
 
@@ -28,6 +28,22 @@ Label({.text = "Connection restored"}).init(row);
 图标字体随库内置。文件路径源在设置时复制；图片描述符源的像素须在替换源或销毁组件前保持有效。
 
 `Icon::color()` 设置固定颜色或主题角色。`colorFrom(Widget &source)` 跟随已挂载组件当前文字色，响应状态与主题变化；重复调用替换来源，来源销毁后保持最后颜色。`rendered()` 查询图像是否可显示，未挂载或渲染不可用时返回 `false`。C 接口为 `hiyui_icon_color_from()` 和 `hiyui_icon_rendered()`。
+
+`Icon` 的布局盒为 `size` 见方，图标内容居中。
+
+`animated` 默认 `true`。`codepoint()` 与 `iconStyle()` 切换时，两个图标的矢量轮廓做对齐插值，图标形状连续变形到目标；`animated(false)`、主题动画关闭或轮廓不可用（无 FreeType 的平台）时直接切换。流变中再次切换从当前形状接续。`iconSize()`、颜色与透明度变化不参与流变。C 接口为 `hiyui_icon_set_animated()`。
+
+播放与暂停图标之间流变切换。
+
+```cpp
+Icon state({.codepoint = HIYUI_ICON_PLAY_ARROW, .size = 24});
+state.init(parent).color(ThemeRole::Primary).clickable();
+bool playing = true;
+state.onClick([&] {
+  playing = !playing;
+  state.codepoint(playing ? HIYUI_ICON_PLAY_ARROW : HIYUI_ICON_PAUSE);
+});
+```
 
 ## 命令与选择
 

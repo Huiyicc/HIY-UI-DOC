@@ -9,7 +9,7 @@ title: Basic Widgets
 | Widget | Purpose | Common fields |
 | --- | --- | --- |
 | `Label` | Text | `text`, `fontSize`, `textColor`, `width`, `ellipsis`, `selectable` |
-| `Icon` | Material Symbols icon | `codepoint`, `size`, `style` |
+| `Icon` | Material Symbols icon | `codepoint`, `size`, `style`, `animated` |
 | `Image` | File or image descriptor | `src`, `width`, `height`, `fit`, `opacity` |
 | `Avatar` | Image, SVG, or text avatar | `src`, `text`, `size`, `circle` |
 
@@ -28,6 +28,22 @@ Label({.text = "Connection restored"}).init(row);
 The icon font ships with the library. File path sources are copied on assignment; the pixels of an image descriptor source must stay valid until the source is replaced or the widget is destroyed.
 
 `Icon::color()` sets a fixed color or a theme role. `colorFrom(Widget &source)` follows the current text color of a mounted widget and responds to state and theme changes; repeated calls replace the source, and the last color is kept after the source is destroyed. `rendered()` reports whether the image is displayable and returns `false` while unmounted or when rendering is unavailable. The C interfaces are `hiyui_icon_color_from()` and `hiyui_icon_rendered()`.
+
+The layout box of `Icon` is `size` square with the glyph centered.
+
+`animated` defaults to `true`. On `codepoint()` and `iconStyle()` switches the vector outlines of the two icons are aligned and interpolated, so the shape deforms continuously into the target; with `animated(false)`, theme animation disabled, or outlines unavailable (platforms without FreeType) the switch is instant. A switch issued mid-transition continues from the shape on screen. `iconSize()`, color, and opacity changes do not morph. The C interface is `hiyui_icon_set_animated()`.
+
+Morphing between the play and pause icons.
+
+```cpp
+Icon state({.codepoint = HIYUI_ICON_PLAY_ARROW, .size = 24});
+state.init(parent).color(ThemeRole::Primary).clickable();
+bool playing = true;
+state.onClick([&] {
+  playing = !playing;
+  state.codepoint(playing ? HIYUI_ICON_PLAY_ARROW : HIYUI_ICON_PAUSE);
+});
+```
 
 ## Commands and selection
 
